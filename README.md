@@ -1,6 +1,7 @@
 # BloomGame
 Experimental prototype & submission for the Acerola Jam 0 
-(Name to be changed)
+
+(Game name to be changed)
 
 The following paid assets were used and need to be manually added if you want to open this project in Unity:
 
