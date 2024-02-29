@@ -11,5 +11,5 @@ Paid Assets I made:
 - Timeline Baker: (To be released)
 
 Other:
-- Amplify Shader Editor
-- Editor Enhancers bundle: VInspector, VHierarchy 2, VFolders, VFavorites, VTabs
+- Amplify Shader Editor: https://prf.hn/l/OqnlGmm
+- Editor Enhancers bundle (VInspector, VHierarchy 2, VFolders, VFavorites, VTabs): https://prf.hn/l/YLqnZbg
