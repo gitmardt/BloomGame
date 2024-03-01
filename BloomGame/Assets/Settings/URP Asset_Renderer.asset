@@ -15,6 +15,7 @@ MonoBehaviour:
   m_Active: 1
   m_Shader: {fileID: 4800000, guid: 21a9d2df5b3332d498bb521134727cba, type: 3}
   m_RenderPassEvent: 550
+  onlyGameView: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34,7 +35,8 @@ MonoBehaviour:
   - {fileID: 489241746426541101}
   - {fileID: 5643961931203948564}
   - {fileID: -1500616562975771979}
-  m_RendererFeatureMap: 2db40bb9c622ca0614303d337961534eb5f2c2c32fbd2ceb
+  - {fileID: 6988518319326161505}
+  m_RendererFeatureMap: 2db40bb9c622ca0614303d337961534eb5f2c2c32fbd2ceb61eabe796234fc60
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -106,4 +108,21 @@ MonoBehaviour:
   m_Shader: {fileID: 4800000, guid: df63d1710a47fea4da60d67fce28fea0, type: 3}
   renderPassEvent: 600
   profilerName: QuantizationMask
+  onlyGameView: 1
+--- !u!114 &6988518319326161505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64448c0cc825a684ca4c2359a54d8bb9, type: 3}
+  m_Name: ScreenWarpFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  m_Shader: {fileID: 4800000, guid: 7d45c14564438584388ee588a0de6319, type: 3}
+  renderPassEvent: 600
+  profilerName: ScreenWarp
   onlyGameView: 1

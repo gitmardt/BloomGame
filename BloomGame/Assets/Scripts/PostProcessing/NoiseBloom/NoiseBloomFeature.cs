@@ -10,6 +10,7 @@ public class NoiseBloomFeature : ScriptableRendererFeature
     private NoiseBloomPass m_NoiseBloomPass = null;
     private Material m_Material = null;
     [SerializeField] private RenderPassEvent m_RenderPassEvent = RenderPassEvent.BeforeRenderingPostProcessing;
+    [SerializeField] protected bool onlyGameView = false;
 
     public override void Create()
     {
@@ -19,7 +20,9 @@ public class NoiseBloomFeature : ScriptableRendererFeature
 
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
     {
-        if(!GetMaterials())
+        if (onlyGameView) if (renderingData.cameraData.cameraType != CameraType.Game) return;
+
+        if (!GetMaterials())
         {
             Debug.LogErrorFormat("{0}.AddRenderPasses(): Missing material. {1} render pass will not be added.", GetType().Name, name);
             return;

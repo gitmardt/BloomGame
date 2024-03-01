@@ -77,6 +77,7 @@ MonoBehaviour:
   - {fileID: -7889439127903548312}
   - {fileID: 383484505055380267}
   - {fileID: 6444631016328238269}
+  - {fileID: 857575276284910433}
 --- !u!114 &383484505055380267
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -293,6 +294,42 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
+--- !u!114 &857575276284910433
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c51b6330fce43a547a5bf0930cabe777, type: 3}
+  m_Name: ScreenWarpSettings
+  m_EditorClassIdentifier: 
+  active: 1
+  downSampler:
+    m_OverrideState: 1
+    m_Value: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0
+  speed:
+    m_OverrideState: 1
+    m_Value: 1
+  noiseTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: 115c08dc983958b46a6301ab539d3e98, type: 3}
+    dimension: 1
+  noiseScale:
+    m_OverrideState: 1
+    m_Value: 0.1
+  noiseTiling:
+    m_OverrideState: 1
+    m_Value: {x: 2, y: 2}
+  renderTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 8400000, guid: 008483411726a22489eaef8eab5e120b, type: 2}
+    dimension: 1
 --- !u!114 &6444631016328238269
 MonoBehaviour:
   m_ObjectHideFlags: 3
