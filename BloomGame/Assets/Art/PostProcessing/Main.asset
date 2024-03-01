@@ -76,6 +76,7 @@ MonoBehaviour:
   - {fileID: -1582132266350568748}
   - {fileID: -7889439127903548312}
   - {fileID: 383484505055380267}
+  - {fileID: 6444631016328238269}
 --- !u!114 &383484505055380267
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -94,7 +95,7 @@ MonoBehaviour:
     m_Value: 1
   numberOfColors:
     m_OverrideState: 1
-    m_Value: 16
+    m_Value: 4
   noiseTexture:
     m_OverrideState: 1
     m_Value: {fileID: 2800000, guid: 115c08dc983958b46a6301ab539d3e98, type: 3}
@@ -292,6 +293,57 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
+--- !u!114 &6444631016328238269
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aebe2ea953c09df45b2e2a1fb619166d, type: 3}
+  m_Name: NoiseBloomSettings
+  m_EditorClassIdentifier: 
+  active: 1
+  downSampler:
+    m_OverrideState: 1
+    m_Value: 1
+  strength:
+    m_OverrideState: 1
+    m_Value: 0.21
+  threshold:
+    m_OverrideState: 1
+    m_Value: 0.895
+  thresholdRange:
+    m_OverrideState: 1
+    m_Value: 0.347
+  range:
+    m_OverrideState: 1
+    m_Value: 7.6
+  noiseTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: 115c08dc983958b46a6301ab539d3e98, type: 3}
+    dimension: 1
+  noiseSpeed:
+    m_OverrideState: 1
+    m_Value: 1
+  maskTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
+    dimension: 1
+  maskTiling:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1}
+  maskBlend:
+    m_OverrideState: 1
+    m_Value: 0.619
+  maskSpeed:
+    m_OverrideState: 1
+    m_Value: 0
+  fade:
+    m_OverrideState: 1
+    m_Value: 0.902
 --- !u!114 &7408215953293574255
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -304,7 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c23e3b12dc18c42a140437e53d3951, type: 3}
   m_Name: Tonemapping
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   mode:
     m_OverrideState: 1
     m_Value: 2
