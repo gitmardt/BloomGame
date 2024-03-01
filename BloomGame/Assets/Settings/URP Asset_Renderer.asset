@@ -17,7 +17,8 @@ MonoBehaviour:
     hdrDebugViewPS: {fileID: 4800000, guid: 573620ae32aec764abd4d728906d2587, type: 3}
   m_RendererFeatures:
   - {fileID: 489241746426541101}
-  m_RendererFeatureMap: 2db40bb9c622ca06
+  - {fileID: 5643961931203948564}
+  m_RendererFeatureMap: 2db40bb9c622ca0614303d337961534e
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -72,3 +73,21 @@ MonoBehaviour:
   m_Shader: {fileID: 4800000, guid: 55b2719c9ca7da642bfd2d345ae31bb1, type: 3}
   renderPassEvent: 550
   profilerName: Quantization
+  onlyGameView: 0
+--- !u!114 &5643961931203948564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be657e75b0c8fd4a945b33a1b4a916d, type: 3}
+  m_Name: QuantizationMaskRenderFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  m_Shader: {fileID: 4800000, guid: df63d1710a47fea4da60d67fce28fea0, type: 3}
+  renderPassEvent: 600
+  profilerName: QuantizationMask
+  onlyGameView: 1

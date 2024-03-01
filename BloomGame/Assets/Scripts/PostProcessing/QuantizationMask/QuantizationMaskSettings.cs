@@ -1,0 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.Rendering;
+using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+
+[System.Serializable, VolumeComponentMenuForRenderPipeline("Custom/QuantizationMask", typeof(UniversalRenderPipeline))]
+public class QuantizationMaskSettings : BaseSettings
+{
+    public IntParameter numberOfColors = new IntParameter(256);
+    public TextureParameter noiseTexture = new TextureParameter(null);
+    public TextureParameter maskRenderTexture = new TextureParameter(null);
+
+    public override bool IsActive() => active;
+}

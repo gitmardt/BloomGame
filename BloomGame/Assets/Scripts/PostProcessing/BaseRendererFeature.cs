@@ -7,6 +7,7 @@ public abstract class BaseRendererFeature : ScriptableRendererFeature
     [SerializeField] protected Shader m_Shader;
     [SerializeField] protected RenderPassEvent renderPassEvent = RenderPassEvent.AfterRenderingPostProcessing;
     [SerializeField] protected string profilerName = "CustomRenderer";
+    [SerializeField] protected bool onlyGameView = false;
 
     protected Material m_Material;
     protected BasePass m_RenderPass = null;
@@ -17,6 +18,8 @@ public abstract class BaseRendererFeature : ScriptableRendererFeature
 
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
     {
+        if (onlyGameView) if (renderingData.cameraData.cameraType != CameraType.Game) return;
+
         if (!GetMaterials())
         {
             Debug.LogErrorFormat("{0}.AddRenderPasses(): Missing material. {1} render pass will not be added.", GetType().Name, name);
