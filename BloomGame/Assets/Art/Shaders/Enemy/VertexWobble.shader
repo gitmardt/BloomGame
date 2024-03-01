@@ -10,14 +10,15 @@ Shader "VertexWobble"
 		_Tiling("Tiling", Vector) = (1,1,0,0)
 		_Speed("Speed", Vector) = (1,1,0,0)
 		_Strength("Strength", Float) = 0
+		_Color("Color", Color) = (0,0,0,0)
 
 
-		//_TessPhongStrength( "Tess Phong Strength", Range( 0, 1 ) ) = 0.5
-		//_TessValue( "Tess Max Tessellation", Range( 1, 32 ) ) = 16
-		//_TessMin( "Tess Min Distance", Float ) = 10
-		//_TessMax( "Tess Max Distance", Float ) = 25
-		//_TessEdgeLength ( "Tess Edge length", Range( 2, 50 ) ) = 16
-		//_TessMaxDisp( "Tess Max Displacement", Float ) = 25
+		_TessPhongStrength( "Phong Tess Strength", Range( 0, 1 ) ) = 0.5
+		_TessValue( "Max Tessellation", Range( 1, 32 ) ) = 16
+		_TessMin( "Tess Min Distance", Float ) = 10
+		_TessMax( "Tess Max Distance", Float ) = 25
+		_TessEdgeLength ( "Edge length", Range( 2, 50 ) ) = 16
+		_TessMaxDisp( "Max Displacement", Float ) = 25
 
 		[HideInInspector] _QueueOffset("_QueueOffset", Float) = 0
         [HideInInspector] _QueueControl("_QueueControl", Float) = -1
@@ -170,11 +171,6 @@ Shader "VertexWobble"
 
 			HLSLPROGRAM
 
-			#pragma multi_compile_instancing
-			#pragma instancing_options renderinglayer
-			#pragma multi_compile _ LOD_FADE_CROSSFADE
-			#pragma multi_compile_fog
-			#define ASE_FOG 1
 			#define ASE_SRP_VERSION 140009
 
 
@@ -254,6 +250,7 @@ Shader "VertexWobble"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
+			float4 _Color;
 			float2 _Tiling;
 			float2 _Speed;
 			float _Strength;
@@ -423,11 +420,10 @@ Shader "VertexWobble"
 					#endif
 				#endif
 
-				float4 color29 = IsGammaSpace() ? float4(1,1,1,0) : float4(1,1,1,0);
 				
 				float3 BakedAlbedo = 0;
 				float3 BakedEmission = 0;
-				float3 Color = color29.rgb;
+				float3 Color = _Color.rgb;
 				float Alpha = 1;
 				float AlphaClipThreshold = 0.5;
 				float AlphaClipThresholdShadow = 0.5;
@@ -476,9 +472,6 @@ Shader "VertexWobble"
 
 			HLSLPROGRAM
 
-			#pragma multi_compile_instancing
-			#pragma multi_compile _ LOD_FADE_CROSSFADE
-			#define ASE_FOG 1
 			#define ASE_SRP_VERSION 140009
 
 
@@ -532,6 +525,7 @@ Shader "VertexWobble"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
+			float4 _Color;
 			float2 _Tiling;
 			float2 _Speed;
 			float _Strength;
@@ -749,9 +743,6 @@ Shader "VertexWobble"
 
 			
 
-			#pragma multi_compile_instancing
-			#pragma multi_compile _ LOD_FADE_CROSSFADE
-			#define ASE_FOG 1
 			#define ASE_SRP_VERSION 140009
 
 
@@ -801,6 +792,7 @@ Shader "VertexWobble"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
+			float4 _Color;
 			float2 _Tiling;
 			float2 _Speed;
 			float _Strength;
@@ -991,7 +983,6 @@ Shader "VertexWobble"
 
 			
 
-			#define ASE_FOG 1
 			#define ASE_SRP_VERSION 140009
 
 
@@ -1038,6 +1029,7 @@ Shader "VertexWobble"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
+			float4 _Color;
 			float2 _Tiling;
 			float2 _Speed;
 			float _Strength;
@@ -1215,7 +1207,6 @@ Shader "VertexWobble"
 
 			
 
-			#define ASE_FOG 1
 			#define ASE_SRP_VERSION 140009
 
 
@@ -1267,6 +1258,7 @@ Shader "VertexWobble"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
+			float4 _Color;
 			float2 _Tiling;
 			float2 _Speed;
 			float _Strength;
@@ -1443,9 +1435,6 @@ Shader "VertexWobble"
 
 			HLSLPROGRAM
 
-			#pragma multi_compile_instancing
-			#pragma multi_compile _ LOD_FADE_CROSSFADE
-			#define ASE_FOG 1
 			#define ASE_SRP_VERSION 140009
 
 
@@ -1501,6 +1490,7 @@ Shader "VertexWobble"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
+			float4 _Color;
 			float2 _Tiling;
 			float2 _Speed;
 			float _Strength;
@@ -1702,8 +1692,8 @@ Node;AmplifyShaderEditor.SamplerNode;10;-348.4127,69.64285;Inherit;True;Property
 Node;AmplifyShaderEditor.NormalVertexDataNode;22;-44.35246,215.9275;Inherit;False;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;18;154.7351,114.3243;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.RangedFloatNode;26;151.0311,-6.91211;Inherit;False;Property;_Strength;Strength;3;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.ColorNode;29;333.6422,-167.5546;Inherit;False;Constant;_Color0;Color 0;4;0;Create;True;0;0;0;False;0;False;1,1,1,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;28;358.3566,78.21487;Inherit;False;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.ColorNode;29;333.6422,-167.5546;Inherit;False;Property;_Color;Color;4;0;Create;True;0;0;0;False;0;False;0,0,0,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ExtraPrePass;0;0;ExtraPrePass;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;0;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;2;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=ShadowCaster;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;3;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;True;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;False;False;True;1;LightMode=DepthOnly;False;False;0;;0;0;Standard;0;False;0
@@ -1726,4 +1716,4 @@ WireConnection;28;1;18;0
 WireConnection;1;2;29;0
 WireConnection;1;5;28;0
 ASEEND*/
-//CHKSM=5BF10C3D39FD509429FCB1247BA616731A0F8322
+//CHKSM=DBBBC6DA74AB3F12C170F12D6A3E855961DBEC67

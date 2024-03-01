@@ -186,19 +186,10 @@
                 float fastTime = _Time.x * _MaskSpeed; // Adjust the multiplier to control the frequency
 
                 float3 mask = SAMPLE_TEXTURE2D(_MaskTex, sampler_MaskTex, input.texcoord * _MaskTiling);
-                float3 invertedMask = SAMPLE_TEXTURE2D(_MaskTex, sampler_MaskTex, float2(1 - input.texcoord.x, input.texcoord.y) * _MaskTiling);
 
                 float3 maskedCol = float3(0,0,0);
 
-                // Use a smaller value for more frequent toggling
-                if (fmod(fastTime, 1.0) < 0.5)
-                {
-                    maskedCol = screen * mask;
-                }
-                else
-                {
-                    maskedCol = screen * invertedMask;
-                }
+                maskedCol = screen * mask;
 
                 screen = lerp(screen, maskedCol, _MaskBlend);
 

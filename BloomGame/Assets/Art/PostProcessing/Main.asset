@@ -311,33 +311,33 @@ MonoBehaviour:
     m_Value: 1
   strength:
     m_OverrideState: 1
-    m_Value: 0.21
+    m_Value: 1.53
   threshold:
     m_OverrideState: 1
-    m_Value: 0.895
+    m_Value: 0.941
   thresholdRange:
     m_OverrideState: 1
     m_Value: 0.347
   range:
     m_OverrideState: 1
-    m_Value: 7.6
+    m_Value: 22.7
   noiseTexture:
     m_OverrideState: 1
     m_Value: {fileID: 2800000, guid: 115c08dc983958b46a6301ab539d3e98, type: 3}
     dimension: 1
   noiseSpeed:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 2
   maskTexture:
     m_OverrideState: 1
-    m_Value: {fileID: 0}
+    m_Value: {fileID: 8400000, guid: a3620d2c2ac79ab48a9e4d274997f433, type: 2}
     dimension: 1
   maskTiling:
     m_OverrideState: 1
     m_Value: {x: 1, y: 1}
   maskBlend:
     m_OverrideState: 1
-    m_Value: 0.619
+    m_Value: 0.566
   maskSpeed:
     m_OverrideState: 1
     m_Value: 0

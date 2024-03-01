@@ -102,7 +102,7 @@ Shader "PostProcessing/QuantizationMask"
 
                 float4 mask = SAMPLE_TEXTURE2D(_MaskTex, sampler_MaskTex, input.texcoord);
                 
-                if (mask.r > 0.5)
+                if (mask.r > 0.1 && mask.r < 0.5)
                 {
                     // Apply dithering before quantization
                     color.rgb += (noiseValue * ditherThreshold) * (1.0 / _NumColors) - (1.0 / (_NumColors * 2.0));
