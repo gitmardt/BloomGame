@@ -44,10 +44,10 @@ MonoBehaviour:
     m_Value: {r: 1, g: 0.021337267, b: 0, a: 1}
   offset:
     m_OverrideState: 1
-    m_Value: {x: 0.46, y: 1.1}
+    m_Value: {x: 1.22, y: 1.57}
   echoAmount:
     m_OverrideState: 1
-    m_Value: 4
+    m_Value: 3
   renderTexture:
     m_OverrideState: 1
     m_Value: {fileID: 8400000, guid: 646b04c738a341646b541c07a8f485fe, type: 2}

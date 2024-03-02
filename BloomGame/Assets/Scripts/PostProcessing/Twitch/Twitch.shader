@@ -75,7 +75,7 @@ Shader "PostProcessing/Twitch"
                         col += SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord - (_Offset / 100) * i) * (1 - _Color1);
                     }
 
-                    col /= _EchoAmount;
+                    col /= (_EchoAmount + 1);
                 }
 
                 return col;
