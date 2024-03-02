@@ -24,6 +24,18 @@ public class ThirdPersonMovement : MonoBehaviour
     public float crouchHeight = 2f;
     public float floatDamp = 0.5f;
 
+    [Header("Jumping")]
+    //jumping
+    public float jumpingPower = 24f;
+    public float jumpingCooldown = 1f;
+    private bool canJump;
+
+    [Header("Dash")]
+    public float dashAmount = 50f;
+    public float dashDuration = 0.5f;
+    public float dashCooldown = 1f;
+    private bool canDash;
+
     [Header("RB Settings")]
     public float groundDrag = 4;
     public float airDrag = 0;
@@ -47,9 +59,24 @@ public class ThirdPersonMovement : MonoBehaviour
 
         controls = new InputMaster();
 
+        //Movement
         controls.Combat.Movement.performed += ctx => inputDirection = ctx.ReadValue<Vector2>();
         controls.Combat.Movement.canceled += ctx => inputDirection = Vector2.zero;
 
+        //Crouching
+        crouching = false;
+        controls.Combat.Crouch.performed += ctx => crouching = true;
+        controls.Combat.Crouch.canceled += ctx => crouching = false;
+
+        //Jump
+        canJump = true;
+        controls.Combat.Jump.performed += ctx => Jump();
+
+        //Dash
+        canDash = true;
+        controls.Combat.Dash.performed += ctx => Dash();
+
+        //Shoot
         controls.Combat.Shoot.performed += ctx => OnShoot();
     }
 
@@ -132,10 +159,38 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
-    float getFloatHeight()
+    private void Jump() => StartCoroutine(JumpRoutine());
+    private IEnumerator JumpRoutine()
     {
-        return groundHit.point.y + floatHeight;
+        if (canJump)
+        {
+            canJump = false;
+            rb.AddForce(Vector3.up * jumpingPower, ForceMode.Impulse);
+            yield return new WaitForSeconds(jumpingCooldown);
+            canJump = true;
+        }
     }
+
+    private void Dash() => StartCoroutine(DashRoutine());
+    private IEnumerator DashRoutine()
+    {
+        if (canDash)
+        {
+            canDash = false;
+            float t = 0;
+            while(t < dashDuration)
+            {
+                float decel = Utility.Remap(t, 0, dashDuration, 1, 0);
+                rb.AddForce(moveDirection.normalized * dashAmount * decel, ForceMode.Force);
+                yield return null;
+                t += Time.deltaTime;
+            }
+            yield return new WaitForSeconds(dashCooldown);
+            canDash = true;
+        }
+    }
+
+    float getFloatHeight() => groundHit.point.y + floatHeight;
 
     private void SpeedControl()
     {
