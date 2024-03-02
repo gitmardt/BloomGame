@@ -23,6 +23,35 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: {fileID: 2800000, guid: 115c08dc983958b46a6301ab539d3e98, type: 3}
     dimension: 1
+--- !u!114 &-5522460720872658004
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd00931fe3b473499ca00749ad77ed8, type: 3}
+  m_Name: TwitchSettings
+  m_EditorClassIdentifier: 
+  active: 1
+  downSampler:
+    m_OverrideState: 1
+    m_Value: 1
+  tintColor:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.021337267, b: 0, a: 1}
+  offset:
+    m_OverrideState: 1
+    m_Value: {x: 0.46, y: 1.1}
+  echoAmount:
+    m_OverrideState: 1
+    m_Value: 4
+  renderTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 8400000, guid: 646b04c738a341646b541c07a8f485fe, type: 2}
+    dimension: 1
 --- !u!114 &-1582132266350568748
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -78,7 +107,7 @@ MonoBehaviour:
   - {fileID: 383484505055380267}
   - {fileID: 6444631016328238269}
   - {fileID: 857575276284910433}
-  - {fileID: 931779639639581597}
+  - {fileID: -5522460720872658004}
 --- !u!114 &383484505055380267
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -331,25 +360,6 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: {fileID: 8400000, guid: 008483411726a22489eaef8eab5e120b, type: 2}
     dimension: 1
---- !u!114 &931779639639581597
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f6b048c47453ef4d95c4975bfa33130, type: 3}
-  m_Name: TrailSettings
-  m_EditorClassIdentifier: 
-  active: 1
-  downSampler:
-    m_OverrideState: 1
-    m_Value: 1
-  distance:
-    m_OverrideState: 1
-    m_Value: 0.194
 --- !u!114 &6444631016328238269
 MonoBehaviour:
   m_ObjectHideFlags: 3

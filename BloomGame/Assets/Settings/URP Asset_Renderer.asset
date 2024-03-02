@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7584712783754881044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a832ccb9f8b85a243a68885aa8497da3, type: 3}
+  m_Name: TwitchFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  m_Shader: {fileID: 4800000, guid: 774c3328b00b3f64897442b9e10baa71, type: 3}
+  renderPassEvent: 600
+  profilerName: Twitch
+  onlyGameView: 1
 --- !u!114 &-4980782419118923496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14,7 +31,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 1
   m_Shader: {fileID: 4800000, guid: 42625807bc0245e449753833490c572a, type: 3}
-  renderPassEvent: 600
+  renderPassEvent: 550
   profilerName: TrailPass
 --- !u!114 &-1500616562975771979
 MonoBehaviour:
@@ -53,7 +70,8 @@ MonoBehaviour:
   - {fileID: -1500616562975771979}
   - {fileID: 6988518319326161505}
   - {fileID: -4980782419118923496}
-  m_RendererFeatureMap: 2db40bb9c622ca0614303d337961534eb5f2c2c32fbd2ceb61eabe796234fc6018e1e774c7b4e0ba
+  - {fileID: -7584712783754881044}
+  m_RendererFeatureMap: 2db40bb9c622ca0614303d337961534eb5f2c2c32fbd2ceb61eabe796234fc6018e1e774c7b4e0baec17eda0e8afbd96
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
