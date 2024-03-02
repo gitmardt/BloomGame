@@ -68,12 +68,15 @@ Shader "PostProcessing/ScreenWarpShader"
 
                 float2 noise = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, noiseTexcoord).xy;
                 float2 noise2 = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, noiseTexcoord2).xy; 
+                
+                float2 mask = SAMPLE_TEXTURE2D(_MaskTex, sampler_MaskTex, input.texcoord).rg;
 
                 float2 noiseValue = noise * noise2;
 
-                float mask = SAMPLE_TEXTURE2D(_MaskTex, sampler_MaskTex, input.texcoord).r;
-
-                input.texcoord += (noiseValue * _NoiseScale) * mask;
+                if (mask.r > 0.1 && mask.r < 0.5)
+                {
+                    input.texcoord += (noiseValue * _NoiseScale);
+                }
 
                 float4 color = SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord);
 				return color;

@@ -6,7 +6,7 @@ public abstract class BasePass : ScriptableRenderPass
 {
     protected ProfilingSampler m_ProfilingSampler;
     protected Material m_Material;
-    protected BaseSettings m_Settings;
+    internal BaseSettings m_Settings;
     protected ScriptableRenderer m_Renderer;
     protected RenderTextureDescriptor m_Descriptor;
 
