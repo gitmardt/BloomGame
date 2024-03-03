@@ -24,6 +24,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Aim",
+                    "type": "Button",
+                    "id": "cb1c5752-925c-4bb1-823e-28aacf850185",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Shoot",
                     "type": "Button",
                     "id": "0e109a64-f9c9-4a57-bd86-8435be54c71e",
@@ -223,6 +232,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e5a299dd-e6ee-4e78-a3b4-22876ddfddd3",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

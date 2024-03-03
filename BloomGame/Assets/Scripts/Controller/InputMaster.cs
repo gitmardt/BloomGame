@@ -46,6 +46,15 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Aim"",
+                    ""type"": ""Button"",
+                    ""id"": ""cb1c5752-925c-4bb1-823e-28aacf850185"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Shoot"",
                     ""type"": ""Button"",
                     ""id"": ""0e109a64-f9c9-4a57-bd86-8435be54c71e"",
@@ -247,6 +256,17 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e5a299dd-e6ee-4e78-a3b4-22876ddfddd3"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -263,6 +283,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         m_Combat = asset.FindActionMap("Combat", throwIfNotFound: true);
         m_Combat_Movement = m_Combat.FindAction("Movement", throwIfNotFound: true);
         m_Combat_Look = m_Combat.FindAction("Look", throwIfNotFound: true);
+        m_Combat_Aim = m_Combat.FindAction("Aim", throwIfNotFound: true);
         m_Combat_Shoot = m_Combat.FindAction("Shoot", throwIfNotFound: true);
         m_Combat_Dash = m_Combat.FindAction("Dash", throwIfNotFound: true);
         m_Combat_Jump = m_Combat.FindAction("Jump", throwIfNotFound: true);
@@ -330,6 +351,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
     private List<ICombatActions> m_CombatActionsCallbackInterfaces = new List<ICombatActions>();
     private readonly InputAction m_Combat_Movement;
     private readonly InputAction m_Combat_Look;
+    private readonly InputAction m_Combat_Aim;
     private readonly InputAction m_Combat_Shoot;
     private readonly InputAction m_Combat_Dash;
     private readonly InputAction m_Combat_Jump;
@@ -340,6 +362,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         public CombatActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Combat_Movement;
         public InputAction @Look => m_Wrapper.m_Combat_Look;
+        public InputAction @Aim => m_Wrapper.m_Combat_Aim;
         public InputAction @Shoot => m_Wrapper.m_Combat_Shoot;
         public InputAction @Dash => m_Wrapper.m_Combat_Dash;
         public InputAction @Jump => m_Wrapper.m_Combat_Jump;
@@ -359,6 +382,9 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
+            @Aim.started += instance.OnAim;
+            @Aim.performed += instance.OnAim;
+            @Aim.canceled += instance.OnAim;
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
@@ -381,6 +407,9 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
+            @Aim.started -= instance.OnAim;
+            @Aim.performed -= instance.OnAim;
+            @Aim.canceled -= instance.OnAim;
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
@@ -423,6 +452,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);

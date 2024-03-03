@@ -1,17 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.XR;
-using UnityEngine.XR;
+using Cinemachine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class ThirdPersonMovement : MonoBehaviour
 {
     public InputMaster controls;
 
-    [Header("References")]
-    public Transform cam;
+    public CinemachineFreeLook mainCamera, aimCamera;
+    public Transform cinemachineBrainCamera;
     private Rigidbody rb;
 
     [Header("Movement")]
@@ -63,6 +61,11 @@ public class ThirdPersonMovement : MonoBehaviour
         controls.Combat.Movement.performed += ctx => inputDirection = ctx.ReadValue<Vector2>();
         controls.Combat.Movement.canceled += ctx => inputDirection = Vector2.zero;
 
+        //Aim
+        ChangeView(false);
+        controls.Combat.Aim.performed += ctx => ChangeView(true);
+        controls.Combat.Aim.canceled += ctx => ChangeView(false);
+
         //Crouching
         crouching = false;
         controls.Combat.Crouch.performed += ctx => crouching = true;
@@ -78,6 +81,20 @@ public class ThirdPersonMovement : MonoBehaviour
 
         //Shoot
         controls.Combat.Shoot.performed += ctx => OnShoot();
+    }
+
+    private void ChangeView(bool aim)
+    {
+        if (aim)
+        {
+            aimCamera.Priority = 1;
+            mainCamera.Priority = 0;
+        }
+        else
+        {
+            mainCamera.Priority = 1;
+            aimCamera.Priority = 0;
+        }
     }
 
     private void LockCursor()
@@ -97,7 +114,7 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             if (inputDirection.magnitude >= 0.1f)
             {
-                float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.y) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.y) * Mathf.Rad2Deg + cinemachineBrainCamera.eulerAngles.y;
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
