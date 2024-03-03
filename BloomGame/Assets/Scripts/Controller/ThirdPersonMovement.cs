@@ -8,11 +8,15 @@ public class ThirdPersonMovement : MonoBehaviour
 {
     public InputMaster controls;
 
-    public CinemachineFreeLook mainCamera, aimCamera;
+    public CinemachineFreeLook mainCamera;
+    public CinemachineInputProvider cinemachineInput;
     public Transform cinemachineBrainCamera;
+    public Transform aimTarget;
     private Rigidbody rb;
 
     [Header("Movement")]
+    public float aimSensitivity = 1;
+    public float aimDistance = 5f;
     public float speed = 6f;
     public float sprintMultiplier = 2f;
     public float turnSmoothTime = 0.1f;
@@ -47,6 +51,9 @@ public class ThirdPersonMovement : MonoBehaviour
     private float targetHeight;
     private float currentHeight;
     private bool crouching = false;
+    private bool aiming = false;
+    private Vector3 lookDirection;
+    private Vector3 rotation;
 
     private void OnEnable() => controls.Enable();
     private void OnDisable() => controls.Disable();
@@ -60,6 +67,10 @@ public class ThirdPersonMovement : MonoBehaviour
         //Movement
         controls.Combat.Movement.performed += ctx => inputDirection = ctx.ReadValue<Vector2>();
         controls.Combat.Movement.canceled += ctx => inputDirection = Vector2.zero;
+
+        //Look
+        controls.Combat.Look.performed += ctx => lookDirection = ctx.ReadValue<Vector2>();
+        controls.Combat.Look.canceled += ctx => lookDirection = Vector2.zero;
 
         //Aim
         ChangeView(false);
@@ -85,15 +96,16 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private void ChangeView(bool aim)
     {
+        aiming = aim;
         if (aim)
         {
-            aimCamera.Priority = 1;
-            mainCamera.Priority = 0;
+            cinemachineInput.enabled = false;
+            mainCamera.LookAt = aimTarget;
         }
         else
         {
-            mainCamera.Priority = 1;
-            aimCamera.Priority = 0;
+            cinemachineInput.enabled = true;
+            mainCamera.LookAt = transform;
         }
     }
 
@@ -102,10 +114,33 @@ public class ThirdPersonMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void FixedUpdate()
+    private void Update()
     {
         LockCursor();
+    }
+
+    void FixedUpdate() 
+    {
         Move();
+        Aim();
+    }
+
+    private void Aim()
+    {
+        if (aiming)
+        {
+            rotation.x += -lookDirection.y * 0.022f * aimSensitivity;
+            rotation.y += lookDirection.x * 0.022f * aimSensitivity;
+
+            transform.rotation = Quaternion.Euler(rotation);
+
+            Debug.Log(rotation + " < r i > " + lookDirection);
+        }
+        else
+        {
+
+        }
+
     }
 
     private void Move()
