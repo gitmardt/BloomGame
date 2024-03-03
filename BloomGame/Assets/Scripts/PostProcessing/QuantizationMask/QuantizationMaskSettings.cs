@@ -11,6 +11,8 @@ public class QuantizationMaskSettings : BaseSettings
     public IntParameter numberOfColors = new IntParameter(256);
     public TextureParameter noiseTexture = new TextureParameter(null);
     public TextureParameter maskRenderTexture = new TextureParameter(null);
+    public TextureParameter depthTexture = new TextureParameter(null);
+    public TextureParameter environmentTexture = new TextureParameter(null);
 
-    public override bool IsActive() => active;
+    public override bool IsActive() => active && numberOfColors.value > 0;
 }

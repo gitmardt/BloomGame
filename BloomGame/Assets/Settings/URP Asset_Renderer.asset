@@ -29,10 +29,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 209c44dc63519784680b51fe6318e19a, type: 3}
   m_Name: TrailFeature
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   m_Shader: {fileID: 4800000, guid: 42625807bc0245e449753833490c572a, type: 3}
   renderPassEvent: 550
   profilerName: TrailPass
+--- !u!114 &-3177001643330977156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c794a25d44229d544a36607936184253, type: 3}
+  m_Name: DepthFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  m_Shader: {fileID: 4800000, guid: 97024a6a4caafde4eba0216dd6a358ee, type: 3}
+  renderPassEvent: 550
+  profilerName: Depth
+  onlyGameView: 1
 --- !u!114 &-1500616562975771979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,13 +82,14 @@ MonoBehaviour:
     debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7, type: 3}
     hdrDebugViewPS: {fileID: 4800000, guid: 573620ae32aec764abd4d728906d2587, type: 3}
   m_RendererFeatures:
+  - {fileID: -3177001643330977156}
   - {fileID: 489241746426541101}
   - {fileID: 5643961931203948564}
   - {fileID: -1500616562975771979}
   - {fileID: 6988518319326161505}
   - {fileID: -4980782419118923496}
   - {fileID: -7584712783754881044}
-  m_RendererFeatureMap: 2db40bb9c622ca0614303d337961534eb5f2c2c32fbd2ceb61eabe796234fc6018e1e774c7b4e0baec17eda0e8afbd96
+  m_RendererFeatureMap: 7cc26c7ed605e9d32db40bb9c622ca0614303d337961534eb5f2c2c32fbd2ceb61eabe796234fc6018e1e774c7b4e0baec17eda0e8afbd96
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}

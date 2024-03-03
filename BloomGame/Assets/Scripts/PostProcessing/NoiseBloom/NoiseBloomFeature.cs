@@ -21,6 +21,7 @@ public class NoiseBloomFeature : ScriptableRendererFeature
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
     {
         if (onlyGameView) if (renderingData.cameraData.cameraType != CameraType.Game) return;
+        if (!renderingData.cameraData.postProcessEnabled) return;
 
         if (!GetMaterials())
         {

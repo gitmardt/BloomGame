@@ -50,7 +50,7 @@ public abstract class BasePass : ScriptableRenderPass
         descriptor.height /= m_Settings.downSampler.value;
         
         //Reallocate RTHandles
-        SetupDownsampledHandles();
+        SetupDownsampledHandles(descriptor);
         
         //Upsample
         descriptor.width *= m_Settings.downSampler.value;
@@ -59,14 +59,14 @@ public abstract class BasePass : ScriptableRenderPass
         RenderingUtils.ReAllocateIfNeeded(ref source, descriptor, FilterMode.Bilinear, TextureWrapMode.Clamp, name: "_SourceTex");
 
         //Reallocate RTHandles
-        SetupUpsampledHandles();
+        SetupUpsampledHandles(descriptor);
 
-        ConfigureTarget(m_Renderer.cameraColorTargetHandle);
+        ConfigureTarget(m_Renderer.cameraColorTargetHandle, m_Renderer.cameraDepthTargetHandle);
         ConfigureClear(ClearFlag.None, Color.white);
     }
 
-    public virtual void SetupDownsampledHandles() { }
-    public virtual void SetupUpsampledHandles() { }
+    public virtual void SetupDownsampledHandles(RenderTextureDescriptor descriptor) { }
+    public virtual void SetupUpsampledHandles(RenderTextureDescriptor descriptor) { }
 
     public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
     {

@@ -14,5 +14,5 @@ public class ScreenWarpSettings : BaseSettings
     public Vector2Parameter noiseTiling = new(new Vector2(1,1));
     public TextureParameter renderTexture = new(null);
 
-    public override bool IsActive() => active;
+    public override bool IsActive() => active && noiseScale.value > 0;
 }

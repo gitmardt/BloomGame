@@ -1,6 +1,6 @@
-
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class QuantizationMaskPass : BasePass
 {
@@ -19,6 +19,8 @@ public class QuantizationMaskPass : BasePass
         m_Material.SetFloat("_ScreenHeight", m_Descriptor.height);
         m_Material.SetTexture("_NoiseTex", quantizationSettings.noiseTexture.value);
         m_Material.SetTexture("_MaskTex", quantizationSettings.maskRenderTexture.value);
+        m_Material.SetTexture("_DepthTex", quantizationSettings.depthTexture.value);
+        m_Material.SetTexture("_EnvTex", quantizationSettings.environmentTexture.value);
 
         Blitter.BlitCameraTexture(cmd, m_Renderer.cameraColorTargetHandle, source, m_Material, 0);
         Blitter.BlitCameraTexture(cmd, source, m_Renderer.cameraColorTargetHandle);
