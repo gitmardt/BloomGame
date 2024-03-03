@@ -55,6 +55,7 @@ public class ThirdPersonMovement : MonoBehaviour
     private bool aiming = false;
     private Vector3 lookDirection;
     private Vector3 rotation;
+    private Vector3 mousePosition;
 
     private void OnEnable() => controls.Enable();
     private void OnDisable() => controls.Disable();
@@ -110,38 +111,27 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private void LockCursor()
     {
+        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
     {
-        LockCursor();
+        Aim();
     }
 
     void FixedUpdate() 
     {
         Move();
-        Aim();
     }
 
     private void Aim()
     {
-
-
-        //if (aiming)
-        //{
-        //    rotation.x += -lookDirection.y * 0.022f * aimSensitivity;
-        //    rotation.y += lookDirection.x * 0.022f * aimSensitivity;
-        //    
-        //    transform.rotation = Quaternion.Euler(rotation);
-        //    
-        //    Debug.Log(rotation + " < r i > " + lookDirection);
-        //}
-        //else
-        //{
-        //    rotation = transform.eulerAngles;
-        //}
-
+        mousePosition = Mouse.current.position.ReadValue();
+        mousePosition.x /= Screen.width;
+        mousePosition.y /= Screen.height;
+        //mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.y - transform.position.y));
+        Debug.Log(mousePosition);
     }
 
     private void Move()
@@ -150,11 +140,9 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             if (inputDirection.magnitude >= 0.1f)
             {
-                float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.y) * Mathf.Rad2Deg + cinemachineBrainCamera.eulerAngles.y;
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-                transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
+                float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.y) * Mathf.Rad2Deg;
                 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+
                 if (!inAir)
                 {
                     rb.AddForce(moveDirection.normalized * speed, ForceMode.Force);
@@ -166,6 +154,18 @@ public class ThirdPersonMovement : MonoBehaviour
 
                 SpeedControl();
             }
+
+            Vector3 screenPosition = new(mousePosition.x * Screen.width, mousePosition.y * Screen.height, Camera.main.transform.position.y);
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
+            Vector3 direction = worldPosition - transform.position;
+            direction.y = 0; // Ensure the direction is strictly horizontal
+
+            if (direction.magnitude > 0.1f) // Check to avoid jittering when mouse is too close to the player
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * aimSensitivity); 
+            }
+
             CheckGravity();
         }
         else

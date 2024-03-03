@@ -2762,7 +2762,7 @@ MonoBehaviour:
   cinemachineInput: {fileID: 1334922801}
   cinemachineBrainCamera: {fileID: 963194228}
   aimTarget: {fileID: 830306287}
-  aimSensitivity: 5
+  aimSensitivity: 1
   aimDistance: 5
   speed: 8
   sprintMultiplier: 1.5
