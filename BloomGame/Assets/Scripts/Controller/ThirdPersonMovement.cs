@@ -75,8 +75,8 @@ public class ThirdPersonMovement : MonoBehaviour
 
         //Aim
         ChangeView(false);
-        //controls.Combat.Aim.performed += ctx => ChangeView(true);
-        //controls.Combat.Aim.canceled += ctx => ChangeView(false);
+        controls.Combat.Aim.performed += ctx => ChangeView(true);
+        controls.Combat.Aim.canceled += ctx => ChangeView(false);
 
         //Crouching
         crouching = false;
@@ -100,17 +100,11 @@ public class ThirdPersonMovement : MonoBehaviour
         aiming = aim;
         if (aim)
         {
-            cinemachineInput.enabled = false;
-            mainCamera.Priority = 0;
-            aimCamera.Priority = 1;
-            //mainCamera.LookAt = aimTarget;
+            mainCamera.Follow = aimTarget;
         }
         else
         {
-            aimCamera.Priority = 0;
-            mainCamera.Priority = 1;
-            cinemachineInput.enabled = true;
-            //mainCamera.LookAt = transform;
+            mainCamera.Follow = transform;
         }
     }
 
@@ -132,19 +126,21 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private void Aim()
     {
-        if (aiming)
-        {
-            rotation.x += -lookDirection.y * 0.022f * aimSensitivity;
-            rotation.y += lookDirection.x * 0.022f * aimSensitivity;
-            
-            transform.rotation = Quaternion.Euler(rotation);
-            
-            Debug.Log(rotation + " < r i > " + lookDirection);
-        }
-        else
-        {
-            rotation = transform.eulerAngles;
-        }
+
+
+        //if (aiming)
+        //{
+        //    rotation.x += -lookDirection.y * 0.022f * aimSensitivity;
+        //    rotation.y += lookDirection.x * 0.022f * aimSensitivity;
+        //    
+        //    transform.rotation = Quaternion.Euler(rotation);
+        //    
+        //    Debug.Log(rotation + " < r i > " + lookDirection);
+        //}
+        //else
+        //{
+        //    rotation = transform.eulerAngles;
+        //}
 
     }
 
