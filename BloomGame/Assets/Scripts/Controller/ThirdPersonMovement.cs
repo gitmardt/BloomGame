@@ -75,8 +75,8 @@ public class ThirdPersonMovement : MonoBehaviour
 
         //Aim
         ChangeView(false);
-        controls.Combat.Aim.performed += ctx => ChangeView(true);
-        controls.Combat.Aim.canceled += ctx => ChangeView(false);
+        //controls.Combat.Aim.performed += ctx => ChangeView(true);
+        //controls.Combat.Aim.canceled += ctx => ChangeView(false);
 
         //Crouching
         crouching = false;
