@@ -52,8 +52,16 @@ Shader "PostProcessing/Twitch"
             TEXTURE2D(_BlitTexture);
             SAMPLER(sampler_BlitTexture);
 
+            //Masking 
             TEXTURE2D(_MaskTex);
             SAMPLER(sampler_MaskTex);
+
+            TEXTURE2D(_DepthTex);
+            SAMPLER(sampler_DepthTex);
+
+            TEXTURE2D(_EnvTex);
+            SAMPLER(sampler_EnvTex);
+            /////////
 
             float2 _Offset;
             float4 _Color1;
@@ -63,19 +71,25 @@ Shader "PostProcessing/Twitch"
             {
                 float4 col = SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord);
 
+                //Masking
                 float mask = SAMPLE_TEXTURE2D(_MaskTex, sampler_MaskTex, input.texcoord).r;
+                float envMask = SAMPLE_TEXTURE2D(_EnvTex, sampler_EnvTex, input.texcoord).r;
+                float depth = SAMPLE_TEXTURE2D(_DepthTex, sampler_DepthTex, input.texcoord).r;
 
-                if(mask > 0.1 && mask < 0.5)
+                if(mask > 0.2 && mask < 0.5)
                 {
-                    int clampedEchoAmount = clamp(_EchoAmount, 1, 20);
-
-                    for(int i = 0; i < clampedEchoAmount; i++)
+                    if(envMask > depth)
                     {
-                        col += SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord + (_Offset / 100) * i) * _Color1;
-                        col += SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord - (_Offset / 100) * i) * (1 - _Color1);
-                    }
+                        int clampedEchoAmount = clamp(_EchoAmount, 1, 20);
 
-                    col /= (_EchoAmount + 1);
+                        for(int i = 0; i < clampedEchoAmount; i++)
+                        {
+                            col += SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord + (_Offset / 100) * i) * _Color1;
+                            col += SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord - (_Offset / 100) * i) * (1 - _Color1);
+                        }
+
+                        col /= (_EchoAmount + 1);
+                    }
                 }
 
                 return col;

@@ -15,7 +15,11 @@ public class TwitchPass : BasePass
         m_Material.SetVector("_Offset", twitchSettings.offset.value);
         m_Material.SetColor("_Color1", twitchSettings.tintColor.value);
         m_Material.SetInt("_EchoAmount", twitchSettings.echoAmount.value);
-        m_Material.SetTexture("_MaskTex", twitchSettings.renderTexture.value);
+        //Masking
+        m_Material.SetTexture("_MaskTex", twitchSettings.maskRenderTexture.value);
+        m_Material.SetTexture("_DepthTex", twitchSettings.depthTexture.value);
+        m_Material.SetTexture("_EnvTex", twitchSettings.environmentTexture.value);
+        /////
 
         Blitter.BlitCameraTexture(cmd, m_Renderer.cameraColorTargetHandle, source, m_Material, 0);
         Blitter.BlitCameraTexture(cmd, source, m_Renderer.cameraColorTargetHandle);

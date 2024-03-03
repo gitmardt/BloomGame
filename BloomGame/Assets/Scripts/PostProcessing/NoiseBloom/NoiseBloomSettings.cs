@@ -12,11 +12,6 @@ public class NoiseBloomSettings : BaseSettings
     public ClampedFloatParameter range = new(0f, 0f, 50f);
     public TextureParameter noiseTexture = new(null);
     public FloatParameter noiseSpeed = new(0f);
-    //Masking
-    public TextureParameter maskRenderTexture = new TextureParameter(null);
-    public TextureParameter depthTexture = new TextureParameter(null);
-    public TextureParameter environmentTexture = new TextureParameter(null);
-    ////////
     public Vector2Parameter maskTiling = new(new Vector2(1f, 1f));
     public ClampedFloatParameter maskBlend = new(0.5f, 0f, 1f);
     public FloatParameter maskSpeed = new(0f);
