@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
 public class ThirdPersonMovement : MonoBehaviour
 {
     public InputMaster controls;
 
-    public CinemachineFreeLook mainCamera;
+    public CinemachineVirtualCameraBase mainCamera, aimCamera;
     public CinemachineInputProvider cinemachineInput;
     public Transform cinemachineBrainCamera;
     public Transform aimTarget;
@@ -100,12 +101,16 @@ public class ThirdPersonMovement : MonoBehaviour
         if (aim)
         {
             cinemachineInput.enabled = false;
-            mainCamera.LookAt = aimTarget;
+            mainCamera.Priority = 0;
+            aimCamera.Priority = 1;
+            //mainCamera.LookAt = aimTarget;
         }
         else
         {
+            aimCamera.Priority = 0;
+            mainCamera.Priority = 1;
             cinemachineInput.enabled = true;
-            mainCamera.LookAt = transform;
+            //mainCamera.LookAt = transform;
         }
     }
 
@@ -131,14 +136,14 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             rotation.x += -lookDirection.y * 0.022f * aimSensitivity;
             rotation.y += lookDirection.x * 0.022f * aimSensitivity;
-
+            
             transform.rotation = Quaternion.Euler(rotation);
-
+            
             Debug.Log(rotation + " < r i > " + lookDirection);
         }
         else
         {
-
+            rotation = transform.eulerAngles;
         }
 
     }
