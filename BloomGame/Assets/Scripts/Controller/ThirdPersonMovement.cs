@@ -6,8 +6,17 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class ThirdPersonMovement : MonoBehaviour
 {
+    //Temp projectiles
+    [Header("Projectiles")]
+    public GameObject projectile;
+    public Transform barrel, projectileParent;
+    public float projectileSpeed = 10f;
+    public float projectileLifetime = 1f;
+
+
     public InputMaster controls;
 
+    [Header("Main References")]
     public CinemachineVirtualCameraBase mainCamera, aimCamera;
     public CinemachineInputProvider cinemachineInput;
     public Transform cinemachineBrainCamera;
@@ -51,6 +60,7 @@ public class ThirdPersonMovement : MonoBehaviour
     private float currentHeight;
     private bool crouching = false;
     private Vector3 mousePosition;
+    private Vector3 aimDirection;
 
     private void OnEnable() => controls.Enable();
     private void OnDisable() => controls.Disable();
@@ -114,8 +124,6 @@ public class ThirdPersonMovement : MonoBehaviour
         mousePosition = Mouse.current.position.ReadValue();
         mousePosition.x /= Screen.width;
         mousePosition.y /= Screen.height;
-        //mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.y - transform.position.y));
-        Debug.Log(mousePosition);
     }
 
     private void Move()
@@ -141,13 +149,14 @@ public class ThirdPersonMovement : MonoBehaviour
 
             Vector3 screenPosition = new(mousePosition.x * Screen.width, mousePosition.y * Screen.height, Camera.main.transform.position.y);
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
-            Vector3 direction = worldPosition - transform.position;
-            direction.y = 0; // Ensure the direction is strictly horizontal
+            aimDirection = worldPosition - transform.position;
+            aimDirection.y = 0; // Ensure the direction is strictly horizontal
 
-            if (direction.magnitude > 0.1f) // Check to avoid jittering when mouse is too close to the player
+            if (aimDirection.magnitude > 0.1f) // Check to avoid jittering when mouse is too close to the player
             {
-                Quaternion lookRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * aimSensitivity); 
+                Quaternion lookRotation = Quaternion.LookRotation(aimDirection);
+                //transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * aimSensitivity); 
+                transform.rotation = lookRotation;
             }
 
             CheckGravity();
@@ -243,6 +252,21 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void OnShoot()
     {
-        Debug.Log("Shoot!");
+        Debug.Log("Bruh");
+        GameObject projectile = Instantiate(this.projectile, barrel.position, Quaternion.LookRotation(aimDirection), projectileParent);
+        StartCoroutine(ShootRoutine(projectile));
+    }
+
+    private IEnumerator ShootRoutine(GameObject projectile)
+    {
+        Vector3 aimDirection = this.aimDirection;
+        float t = 0;
+        while(t < projectileLifetime)
+        {
+            projectile.transform.position += aimDirection * projectileSpeed;
+            yield return null;
+            t += Time.deltaTime;
+        }
+        Destroy(projectile);
     }
 }
