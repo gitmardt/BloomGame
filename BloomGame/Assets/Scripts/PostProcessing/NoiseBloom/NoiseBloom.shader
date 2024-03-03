@@ -52,6 +52,12 @@
         SAMPLER(sampler_MaskTex);
         float2 _MaskTiling;
 
+        TEXTURE2D(_DepthTex);
+        SAMPLER(sampler_DepthTex);
+
+        TEXTURE2D(_EnvTex);
+        SAMPLER(sampler_EnvTex);
+
         TEXTURE2D(_BlitTexture);
         SAMPLER(sampler_BlitTexture);
         float4 _BlitTexture_TexelSize;
@@ -189,7 +195,17 @@
 
                 float3 maskedCol = float3(0,0,0);
 
-                maskedCol = screen * mask;
+                float envMask = SAMPLE_TEXTURE2D(_EnvTex, sampler_EnvTex, input.texcoord).r;
+                float depth = SAMPLE_TEXTURE2D(_DepthTex, sampler_DepthTex, input.texcoord).r;
+
+                if(envMask > depth)
+                {
+                    maskedCol = screen * (mask * 2);
+                }
+                else
+                {
+                    maskedCol = screen;
+                }
 
                 screen = lerp(screen, maskedCol, _MaskBlend);
 

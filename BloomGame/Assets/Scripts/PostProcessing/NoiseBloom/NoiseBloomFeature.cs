@@ -136,7 +136,11 @@ public class NoiseBloomFeature : ScriptableRendererFeature
                 m_Material.SetFloat("_ThresholdRange", m_Settings.thresholdRange.value);
                 m_Material.SetFloat("_Range", m_Settings.range.value);
                 m_Material.SetTexture("_NoiseTex", m_Settings.noiseTexture.value);
-                m_Material.SetTexture("_MaskTex", m_Settings.maskTexture.value);
+                //Masking
+                m_Material.SetTexture("_MaskTex", m_Settings.maskRenderTexture.value);
+                m_Material.SetTexture("_DepthTex", m_Settings.depthTexture.value);
+                m_Material.SetTexture("_EnvTex", m_Settings.environmentTexture.value);
+                /////
                 m_Material.SetVector("_MaskTiling", m_Settings.maskTiling.value);
                 m_Material.SetFloat("_Speed", m_Settings.noiseSpeed.value);
                 m_Material.SetFloat("_MaskSpeed", m_Settings.maskSpeed.value);
