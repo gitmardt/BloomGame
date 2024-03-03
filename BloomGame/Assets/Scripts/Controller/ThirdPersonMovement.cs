@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
@@ -44,7 +43,6 @@ public class ThirdPersonMovement : MonoBehaviour
     public float airDrag = 0;
 
     //Private variables
-    private float turnSmoothVelocity;
     private Vector3 inputDirection;
     private Vector3 moveDirection;
     private RaycastHit groundHit;
@@ -52,9 +50,6 @@ public class ThirdPersonMovement : MonoBehaviour
     private float targetHeight;
     private float currentHeight;
     private bool crouching = false;
-    private bool aiming = false;
-    private Vector3 lookDirection;
-    private Vector3 rotation;
     private Vector3 mousePosition;
 
     private void OnEnable() => controls.Enable();
@@ -69,10 +64,6 @@ public class ThirdPersonMovement : MonoBehaviour
         //Movement
         controls.Combat.Movement.performed += ctx => inputDirection = ctx.ReadValue<Vector2>();
         controls.Combat.Movement.canceled += ctx => inputDirection = Vector2.zero;
-
-        //Look
-        controls.Combat.Look.performed += ctx => lookDirection = ctx.ReadValue<Vector2>();
-        controls.Combat.Look.canceled += ctx => lookDirection = Vector2.zero;
 
         //Aim
         ChangeView(false);
@@ -98,15 +89,8 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private void ChangeView(bool aim)
     {
-        aiming = aim;
-        if (aim)
-        {
-            mainCamera.Follow = aimTarget;
-        }
-        else
-        {
-            mainCamera.Follow = transform;
-        }
+        if (aim) mainCamera.Follow = aimTarget;
+        else mainCamera.Follow = transform;
     }
 
     private void LockCursor()
