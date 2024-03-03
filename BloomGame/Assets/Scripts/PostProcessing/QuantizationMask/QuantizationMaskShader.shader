@@ -9,7 +9,7 @@ Shader "PostProcessing/QuantizationMask"
         HLSLINCLUDE
 
         #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-
+        
         uniform float4 _BlitScaleBias;
 
         int _NumColors;
@@ -19,11 +19,19 @@ Shader "PostProcessing/QuantizationMask"
         TEXTURE2D(_NoiseTex);
         SAMPLER(sampler_NoiseTex);
 
+        TEXTURE2D(_BlitTexture);
+        SAMPLER(sampler_BlitTexture);
+        
+        //Masking 
         TEXTURE2D(_MaskTex);
         SAMPLER(sampler_MaskTex);
 
+        TEXTURE2D(_DepthTex);
+        SAMPLER(sampler_DepthTex);
+
         TEXTURE2D(_EnvTex);
         SAMPLER(sampler_EnvTex);
+        /////////
 
         static const int bayer2[2][2] = {
             { 0, 2 }, 
@@ -70,22 +78,6 @@ Shader "PostProcessing/QuantizationMask"
             return output;
         }
 
-        TEXTURE2D(_BlitTexture);
-        SAMPLER(sampler_BlitTexture);
-
-        TEXTURE2D(_CameraDepthTexture);
-        SAMPLER(sampler_CameraDepthTexture);
-
-        TEXTURE2D(_DepthTex);
-        SAMPLER(sampler_DepthTex);
-
-        float _lowestDepth;
-        float _highestDepth;
-        float _depth;
-
-        TEXTURE2D(_HighestDepthTexture);
-        SAMPLER(sampler_HighestDepthTexture);
-
         ENDHLSL
 
         Pass
@@ -99,42 +91,38 @@ Shader "PostProcessing/QuantizationMask"
 
             half4 frag_quantize (Varyings input) : SV_Target
             {
-                //2X2   
-                //float2 screenPos = input.texcoord * float2(_ScreenWidth, _ScreenHeight);
-                //int x = int(screenPos.x) % 2;
-                //int y = int(screenPos.y) % 2;
-                //float ditherThreshold = bayer2[y][x] / 4.0; // Adjust for 2x2 matrix size
-
-                //4X4
-                //float2 screenPos = input.texcoord * float2(_ScreenWidth, _ScreenHeight);
-                //int x = int(screenPos.x) % 4;
-                //int y = int(screenPos.y) % 4;
-                //float ditherThreshold = bayer4[y][x] / 16.0;
-
-                //8X8
-                float2 screenPos = input.texcoord * float2(_ScreenWidth, _ScreenHeight);
-                int x = int(screenPos.x) % 8;
-                int y = int(screenPos.y) % 8;
-                float ditherThreshold = bayer8[y][x] / 64.0; // Adjust for 8x8 matrix size
-
-                // Sample the noise texture
-                float noiseValue = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, input.texcoord).r;
-
                 float4 color = SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord);
 
-                float4 mask = SAMPLE_TEXTURE2D(_MaskTex, sampler_MaskTex, input.texcoord);
-                float4 envMask = SAMPLE_TEXTURE2D(_EnvTex, sampler_EnvTex, input.texcoord);
+                //Masking
+                float mask = SAMPLE_TEXTURE2D(_MaskTex, sampler_MaskTex, input.texcoord).r;
+                float envMask = SAMPLE_TEXTURE2D(_EnvTex, sampler_EnvTex, input.texcoord).r;
+                float depth = SAMPLE_TEXTURE2D(_DepthTex, sampler_DepthTex, input.texcoord).r;
 
-                _depth = SAMPLE_TEXTURE2D(_DepthTex, sampler_DepthTex, input.texcoord).r;
-
-                if (mask.r > 0.2 && mask.r < 0.5) 
+                if (mask > 0.2 && mask < 0.5) 
                 {
-                    if(envMask.r < _depth)
+                    if(envMask > depth)
                     {
-                        //color.rgb *= 100;
-                    }
-                    else
-                    {
+                        //2X2   
+                        //float2 screenPos = input.texcoord * float2(_ScreenWidth, _ScreenHeight);
+                        //int x = int(screenPos.x) % 2;
+                        //int y = int(screenPos.y) % 2;
+                        //float ditherThreshold = bayer2[y][x] / 4.0; // Adjust for 2x2 matrix size
+
+                        //4X4
+                        //float2 screenPos = input.texcoord * float2(_ScreenWidth, _ScreenHeight);
+                        //int x = int(screenPos.x) % 4;
+                        //int y = int(screenPos.y) % 4;
+                        //float ditherThreshold = bayer4[y][x] / 16.0;
+
+                        //8X8
+                        float2 screenPos = input.texcoord * float2(_ScreenWidth, _ScreenHeight);
+                        int x = int(screenPos.x) % 8;
+                        int y = int(screenPos.y) % 8;
+                        float ditherThreshold = bayer8[y][x] / 64.0; // Adjust for 8x8 matrix size
+
+                        // Sample the noise texture
+                        float noiseValue = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, input.texcoord).r;
+
                         // Apply dithering before quantization
                         color.rgb += (noiseValue * ditherThreshold) * (1.0 / _NumColors) - (1.0 / (_NumColors * 2.0));
                     
@@ -142,33 +130,9 @@ Shader "PostProcessing/QuantizationMask"
                         color.rgb = floor(color.rgb * _NumColors) / (_NumColors - 1);
                     }
                 }
+                /////////
 
                 return color;
-            }
-            ENDHLSL
-        }
-
-        Pass
-        {
-            Name "GetMinMaxDepth"
-
-            HLSLPROGRAM
-         
-            #pragma vertex Vert
-            #pragma fragment frag_setdepth
-
-            half4 frag_setdepth (Varyings input) : SV_Target
-            {
-                float4 color = SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord);
-
-                float4 mask = SAMPLE_TEXTURE2D(_MaskTex, sampler_MaskTex, input.texcoord);
-
-                if (mask.r > 0.2 && mask.r < 0.5) 
-                {
-                    _depth = SAMPLE_TEXTURE2D(_DepthTex, sampler_DepthTex, input.texcoord).r;
-                }
-
-                return _depth;
             }
             ENDHLSL
         }

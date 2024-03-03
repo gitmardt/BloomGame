@@ -46,8 +46,16 @@ Shader "PostProcessing/ScreenWarpShader"
             TEXTURE2D(_NoiseTex);
             SAMPLER(sampler_NoiseTex);
 
+            //Masking 
             TEXTURE2D(_MaskTex);
             SAMPLER(sampler_MaskTex);
+
+            TEXTURE2D(_DepthTex);
+            SAMPLER(sampler_DepthTex);
+
+            TEXTURE2D(_EnvTex);
+            SAMPLER(sampler_EnvTex);
+            /////////
 
             float _Intensity;
             float _Speed;
@@ -56,26 +64,32 @@ Shader "PostProcessing/ScreenWarpShader"
 
             half4 frag (Varyings input) : SV_Target
             {
-                float offset = _Time.x * _Speed;
+                //Masking
+                float mask = SAMPLE_TEXTURE2D(_MaskTex, sampler_MaskTex, input.texcoord).r;
+                float envMask = SAMPLE_TEXTURE2D(_EnvTex, sampler_EnvTex, input.texcoord).r;
+                float depth = SAMPLE_TEXTURE2D(_DepthTex, sampler_DepthTex, input.texcoord).r;
 
-                float2 noiseTexcoord = input.texcoord * _Tiling;
-
-                noiseTexcoord.y += offset;
-
-                float2 noiseTexcoord2 =  input.texcoord * _Tiling;
-                noiseTexcoord2.y -= offset;
-                noiseTexcoord2.x += 0.25;
-
-                float2 noise = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, noiseTexcoord).xy;
-                float2 noise2 = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, noiseTexcoord2).xy; 
-                
-                float2 mask = SAMPLE_TEXTURE2D(_MaskTex, sampler_MaskTex, input.texcoord).rg;
-
-                float2 noiseValue = noise * noise2;
-
-                if (mask.r > 0.1 && mask.r < 0.5)
+                if (mask > 0.2 && mask < 0.5) 
                 {
-                    input.texcoord += (noiseValue * _NoiseScale);
+                    if(envMask > depth)
+                    {
+                        float offset = _Time.x * _Speed;
+
+                        float2 noiseTexcoord = input.texcoord * _Tiling;
+
+                        noiseTexcoord.y += offset;
+
+                        float2 noiseTexcoord2 =  input.texcoord * _Tiling;
+                        noiseTexcoord2.y -= offset;
+                        noiseTexcoord2.x += 0.25;
+
+                        float2 noise = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, noiseTexcoord).xy;
+                        float2 noise2 = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, noiseTexcoord2).xy; 
+
+                        float2 noiseValue = noise * noise2;
+
+                        input.texcoord += (noiseValue * _NoiseScale);
+                    }
                 }
 
                 float4 color = SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord);

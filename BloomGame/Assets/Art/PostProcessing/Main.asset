@@ -384,9 +384,17 @@ MonoBehaviour:
   noiseTiling:
     m_OverrideState: 1
     m_Value: {x: 2, y: 2}
-  renderTexture:
+  maskRenderTexture:
     m_OverrideState: 1
     m_Value: {fileID: 8400000, guid: 008483411726a22489eaef8eab5e120b, type: 2}
+    dimension: 1
+  depthTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 8400000, guid: 39befe7dd04aaa942842ff97f11a442d, type: 2}
+    dimension: 1
+  environmentTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 8400000, guid: 65eaa0f67b7314a4e846d25515b7f550, type: 2}
     dimension: 1
 --- !u!114 &6444631016328238269
 MonoBehaviour:
