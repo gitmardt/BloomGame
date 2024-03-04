@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e078003d0a940d4ebd2097a597116bf, type: 3}
+  m_Name: hitmarker_Shoot1
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -1152887430, guid: 212be121114cf1b4c9173a15e3a8900a, type: 3}
+  - {fileID: 1412090135, guid: 212be121114cf1b4c9173a15e3a8900a, type: 3}
+  - {fileID: -736598416, guid: 212be121114cf1b4c9173a15e3a8900a, type: 3}
+  - {fileID: 1655167500, guid: 212be121114cf1b4c9173a15e3a8900a, type: 3}
+  - {fileID: -663281719, guid: 212be121114cf1b4c9173a15e3a8900a, type: 3}
+  - {fileID: -1743763234, guid: 212be121114cf1b4c9173a15e3a8900a, type: 3}
+  - {fileID: 1763939993, guid: 212be121114cf1b4c9173a15e3a8900a, type: 3}
+  - {fileID: 1293028471, guid: 212be121114cf1b4c9173a15e3a8900a, type: 3}
+  - {fileID: 1149215769, guid: 212be121114cf1b4c9173a15e3a8900a, type: 3}
+  - {fileID: 2040193614, guid: 212be121114cf1b4c9173a15e3a8900a, type: 3}
+  animationSpeed: 60

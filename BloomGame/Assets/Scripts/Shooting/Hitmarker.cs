@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(RawImage))]
+[RequireComponent(typeof(Image))]
 public class Hitmarker : MonoBehaviour
 {
-    RawImage rawImage;
+    [HideInInspector] public Image image;
     public ThirdPersonMovement player;
     public Transform target;
     public Canvas canvas; // Reference to the Canvas
@@ -15,16 +15,19 @@ public class Hitmarker : MonoBehaviour
 
     private void Awake()
     {
-        rawImage = GetComponent<RawImage>();
+        image = GetComponent<Image>();
     }
 
     private void FixedUpdate()
     {
         //Vector2 screenPoint = Camera.main.WorldToScreenPoint(target.position);
-        //RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.GetComponent<RectTransform>(), screenPoint, null, out Vector2 aimTargetPosition);
+        //RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.GetComponent<RectTransform>(), screenPoint, null, out Vector2 aimTargetPosition)
 
         Vector3 mousePosition = Mouse.current.position.ReadValue();
+
         RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.GetComponent<RectTransform>(), mousePosition, null, out Vector2 screenPosition);
-        rawImage.rectTransform.anchoredPosition = Vector3.Lerp(rawImage.rectTransform.anchoredPosition, screenPosition, Time.deltaTime * smoothAimDelay);
+        image.rectTransform.anchoredPosition = Vector3.Lerp(image.rectTransform.anchoredPosition, screenPosition, Time.deltaTime * smoothAimDelay);
+
+        Debug.Log(mousePosition + " " + screenPosition); 
     }
 }

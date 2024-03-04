@@ -1547,8 +1547,9 @@ GameObject:
   m_Component:
   - component: {fileID: 446256170}
   - component: {fileID: 446256172}
-  - component: {fileID: 446256171}
+  - component: {fileID: 446256174}
   - component: {fileID: 446256173}
+  - component: {fileID: 446256175}
   m_Layer: 5
   m_Name: AimTargetVisualizer
   m_TagString: Untagged
@@ -1572,36 +1573,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -910, y: -490}
-  m_SizeDelta: {x: 15, y: 15}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &446256171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 446256169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Texture: {fileID: 0}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
 --- !u!222 &446256172
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1622,10 +1596,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7416cafbdd68db44b86226829c69f709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  image: {fileID: 0}
   player: {fileID: 1190501861}
   target: {fileID: 830306287}
   canvas: {fileID: 1668200610}
-  smoothAimDelay: 1
+  smoothAimDelay: 25
+--- !u!114 &446256174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446256169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -1160747689, guid: 212be121114cf1b4c9173a15e3a8900a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &446256175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446256169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7b5dac1fbcf94458f35d06dc893e14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &468200902
 GameObject:
   m_ObjectHideFlags: 0
@@ -2312,7 +2329,7 @@ Transform:
   m_GameObject: {fileID: 830306286}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 4.13}
+  m_LocalPosition: {x: 0, y: 0, z: 3.05}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2531,7 +2548,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.34660745, y: 0.0039057871, z: -0.001443255, w: 0.9380011}
-  m_LocalPosition: {x: 0, y: 16.93, z: -7.87}
+  m_LocalPosition: {x: 0, y: 16.93, z: -8.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3073,6 +3090,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1299186f55126dc42888218f7e0e28b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitmarker: {fileID: 446256173}
+  hitmarkerAM: {fileID: 446256175}
+  In: {fileID: 11400000, guid: f3f3564c811fc6b4c8ae973806f78c08, type: 2}
+  Out: {fileID: 11400000, guid: 587b42c998f7e8a43b1d725321ef3fa0, type: 2}
+  Shoot1: {fileID: 11400000, guid: cc6bf71f3732ba94c876692c8f6ea4a1, type: 2}
+  Shoot2: {fileID: 11400000, guid: f729ec08e2039444ba920603fc8ecae9, type: 2}
   projectile: {fileID: 5836685977124248342, guid: fcd7eaace6c488349af14c846f72f5b9, type: 3}
   barrel: {fileID: 195961909}
   projectileParent: {fileID: 1425387522}
@@ -4374,8 +4397,8 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_Camera: {fileID: 963194227}
+  m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -4820,7 +4843,7 @@ Transform:
   m_GameObject: {fileID: 1941874317}
   serializedVersion: 2
   m_LocalRotation: {x: 0.34660745, y: 0.0039057871, z: -0.001443255, w: 0.9380011}
-  m_LocalPosition: {x: -0.99599993, y: 11.93, z: -7.87}
+  m_LocalPosition: {x: -0.99599993, y: 11.93, z: -8.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

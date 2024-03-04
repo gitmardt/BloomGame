@@ -6,6 +6,12 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class ThirdPersonMovement : MonoBehaviour
 {
+    [Header("Hitmarker info")]
+    public Hitmarker hitmarker;
+    public SpriteAnimationManager hitmarkerAM;
+    public SpriteAnimation In, Out, Shoot1, Shoot2;
+    private int shootIndex = 0;
+
     //Temp projectiles
     [Header("Projectiles")]
     public GameObject projectile;
@@ -61,6 +67,7 @@ public class ThirdPersonMovement : MonoBehaviour
     private bool crouching = false;
     [HideInInspector] public Vector3 aimDirection;
     private Plane groundPlane = new(Vector3.up,Vector3.zero);
+    private bool aiming;
 
     private void OnEnable() => controls.Enable();
     private void OnDisable() => controls.Disable();
@@ -76,9 +83,9 @@ public class ThirdPersonMovement : MonoBehaviour
         controls.Combat.Movement.canceled += ctx => inputDirection = Vector2.zero;
 
         //Aim
-        ChangeView(false);
-        controls.Combat.Aim.performed += ctx => ChangeView(true);
-        controls.Combat.Aim.canceled += ctx => ChangeView(false);
+        ChangeView(true);
+        controls.Combat.Aim.performed += ctx => ChangeView(false);
+        controls.Combat.Aim.canceled += ctx => ChangeView(true);
 
         //Crouching
         crouching = false;
@@ -99,8 +106,17 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private void ChangeView(bool aim)
     {
-        if (aim) mainCamera.Follow = aimTarget;
-        else mainCamera.Follow = aimTargetClose;
+        aiming = aim;
+        if (aim)
+        {
+            mainCamera.Follow = aimTarget;
+            hitmarkerAM.PlaySpriteAnimation(In, hitmarker.image);
+        }
+        else 
+        { 
+            mainCamera.Follow = aimTargetClose;
+            hitmarkerAM.PlaySpriteAnimation(Out, hitmarker.image);
+        }
     }
 
     private void LockCursor()
@@ -244,6 +260,15 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void OnShoot()
     {
+        shootIndex++;
+        if (shootIndex == 100) shootIndex = 0;
+
+        if (aiming)
+        {
+            if (shootIndex % 2 == 0) hitmarkerAM.PlaySpriteAnimation(Shoot1, hitmarker.image);
+            else hitmarkerAM.PlaySpriteAnimation(Shoot2, hitmarker.image);
+        }
+
         GameObject projectile = Instantiate(this.projectile, barrel.position, Quaternion.LookRotation(aimDirection), projectileParent);
         ParticleProjectile pp = projectile.GetComponent<ParticleProjectile>();
         pp.speed = projectileSpeed;
