@@ -245,7 +245,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public void OnShoot()
     {
         GameObject projectile = Instantiate(this.projectile, barrel.position, Quaternion.LookRotation(aimDirection), projectileParent);
-        StartCoroutine(ShootRoutine(projectile));
+        //StartCoroutine(ShootRoutine(projectile));
     }
 
     private IEnumerator ShootRoutine(GameObject projectile)
