@@ -18,13 +18,13 @@ public class ParticleProjectile : MonoBehaviour
         var main = particles.main;
         main.startSpeed = speed;
         randomSpread = Random.Range(-spread, spread);
-        transform.rotation = Quaternion.Euler(0, randomSpread , 0);
-        //direction.y += randomSpread;
+        transform.eulerAngles += new Vector3(0, randomSpread , 0);
+        //direction.x += randomSpread / 2;
     }
 
     private void Update()
     {
-        trailParent.position += direction.normalized * (speed * Time.deltaTime);
+        trailParent.position += transform.forward * (speed * Time.deltaTime);
     }
 
 
