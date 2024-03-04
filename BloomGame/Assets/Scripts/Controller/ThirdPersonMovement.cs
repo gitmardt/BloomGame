@@ -61,6 +61,7 @@ public class ThirdPersonMovement : MonoBehaviour
     private bool crouching = false;
     private Vector3 mousePosition;
     private Vector3 aimDirection;
+    private Plane groundPlane = new(Vector3.up,Vector3.zero);
 
     private void OnEnable() => controls.Enable();
     private void OnDisable() => controls.Disable();
@@ -121,9 +122,14 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private void Aim()
     {
-        mousePosition = Mouse.current.position.ReadValue();
-        mousePosition.x /= Screen.width;
-        mousePosition.y /= Screen.height;
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if (groundPlane.Raycast(ray, out float rayDistance))
+        {
+            Vector3 point = ray.GetPoint(rayDistance);
+            aimDirection = point - transform.position;
+            aimDirection.y = 0;
+            Debug.Log(aimDirection);
+        }
     }
 
     private void Move()
@@ -147,16 +153,11 @@ public class ThirdPersonMovement : MonoBehaviour
                 SpeedControl();
             }
 
-            Vector3 screenPosition = new(mousePosition.x * Screen.width, mousePosition.y * Screen.height, Camera.main.transform.position.y);
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
-            aimDirection = worldPosition - transform.position;
-            aimDirection.y = 0; // Ensure the direction is strictly horizontal
 
             if (aimDirection.magnitude > 0.1f) // Check to avoid jittering when mouse is too close to the player
             {
                 Quaternion lookRotation = Quaternion.LookRotation(aimDirection);
                 transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * aimSensitivity); 
-                //transform.rotation = lookRotation;
             }
 
             CheckGravity();
@@ -244,7 +245,6 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void OnShoot()
     {
-        Debug.Log("Bruh");
         GameObject projectile = Instantiate(this.projectile, barrel.position, Quaternion.LookRotation(aimDirection), projectileParent);
         StartCoroutine(ShootRoutine(projectile));
     }
