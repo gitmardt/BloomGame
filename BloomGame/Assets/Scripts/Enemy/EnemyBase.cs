@@ -19,9 +19,27 @@ public class EnemyBase : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
+    private void Start()
+    {
+        player = ThirdPersonMovement.instance.gameObject.transform;
+    }
+
     // Update is called once per frame
     void Update()
     {
         agent.destination = player.position;
+    }
+
+    public void Damage()
+    {
+        health--;
+        Debug.Log("Health is " + health);
+        if(health == 0) Die();
+    }
+
+    public void Die()
+    {
+        Debug.Log("I died");
+        Destroy(gameObject);
     }
 }

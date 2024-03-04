@@ -5,6 +5,8 @@ public class ParticleProjectile : MonoBehaviour
 {
     public ParticleSystem particles;
     public Transform trailParent;
+    public string tagName = "Enemy";
+
     public List<ParticleCollisionEvent> collisionEvents;
     [HideInInspector] public Vector3 direction;
     [HideInInspector] public float speed = 75f;
@@ -19,7 +21,6 @@ public class ParticleProjectile : MonoBehaviour
         main.startSpeed = speed;
         randomSpread = Random.Range(-spread, spread);
         transform.eulerAngles += new Vector3(0, randomSpread , 0);
-        //direction.x += randomSpread / 2;
     }
 
     private void Update()
@@ -32,11 +33,21 @@ public class ParticleProjectile : MonoBehaviour
     {
         ParticlePhysicsExtensions.GetCollisionEvents(particles, other, collisionEvents);
 
+        if (other.CompareTag(tagName))
+        {
+            Debug.Log("Test");
+            if(other.GetComponent<EnemyBase>() != null)
+            {
+                EnemyBase enemy = other.GetComponent<EnemyBase>();
+                enemy.Damage();
+            }
+        }
+
         Debug.Log("Particle " + particles.name + " collided with " + other.name);
 
         for (int i = 0; i < collisionEvents.Count; i++)
         {
-
+            //Impact particle?
         }
     }
 }

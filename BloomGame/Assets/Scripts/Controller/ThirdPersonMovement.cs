@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class ThirdPersonMovement : MonoBehaviour
 {
+    public static ThirdPersonMovement instance;
+
     [Header("Hitmarker info")]
     public Hitmarker hitmarker;
     public SpriteAnimationManager hitmarkerAM;
@@ -74,6 +76,8 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
+
         rb = GetComponent<Rigidbody>();
 
         controls = new InputMaster();

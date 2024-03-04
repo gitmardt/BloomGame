@@ -27,7 +27,5 @@ public class Hitmarker : MonoBehaviour
 
         RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.GetComponent<RectTransform>(), mousePosition, null, out Vector2 screenPosition);
         image.rectTransform.anchoredPosition = Vector3.Lerp(image.rectTransform.anchoredPosition, screenPosition, Time.deltaTime * smoothAimDelay);
-
-        Debug.Log(mousePosition + " " + screenPosition); 
     }
 }
