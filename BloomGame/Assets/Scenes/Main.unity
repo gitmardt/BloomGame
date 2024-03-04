@@ -2911,7 +2911,7 @@ MonoBehaviour:
   projectile: {fileID: 6394089040514735461, guid: 263b3f49a0e04a04088ff716b0d9a252, type: 3}
   barrel: {fileID: 195961909}
   projectileParent: {fileID: 1425387522}
-  projectileSpeed: 0.2
+  projectileSpeed: 1
   projectileLifetime: 1
   mainCamera: {fileID: 1941874319}
   aimCamera: {fileID: 0}

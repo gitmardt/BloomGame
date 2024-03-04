@@ -128,7 +128,6 @@ public class ThirdPersonMovement : MonoBehaviour
             Vector3 point = ray.GetPoint(rayDistance);
             aimDirection = point - transform.position;
             aimDirection.y = 0;
-            Debug.Log(aimDirection);
         }
     }
 
@@ -255,7 +254,7 @@ public class ThirdPersonMovement : MonoBehaviour
         float t = 0;
         while(t < projectileLifetime)
         {
-            projectile.transform.position += aimDirection * projectileSpeed;
+            projectile.transform.position += aimDirection.normalized * (projectileSpeed * Time.deltaTime);
             yield return null;
             t += Time.deltaTime;
         }
