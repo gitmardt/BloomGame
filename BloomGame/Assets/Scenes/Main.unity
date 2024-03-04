@@ -1622,8 +1622,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7416cafbdd68db44b86226829c69f709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1190501861}
   target: {fileID: 830306287}
   canvas: {fileID: 1668200610}
+  smoothAimDelay: 1
 --- !u!1 &468200902
 GameObject:
   m_ObjectHideFlags: 0
@@ -3100,6 +3102,7 @@ MonoBehaviour:
   dashCooldown: 0.5
   groundDrag: 2
   airDrag: 0
+  aimDirection: {x: 0, y: 0, z: 0}
 --- !u!54 &1190501862
 Rigidbody:
   m_ObjectHideFlags: 0

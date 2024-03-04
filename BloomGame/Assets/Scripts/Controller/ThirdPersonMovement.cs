@@ -59,8 +59,7 @@ public class ThirdPersonMovement : MonoBehaviour
     private float targetHeight;
     private float currentHeight;
     private bool crouching = false;
-    private Vector3 mousePosition;
-    private Vector3 aimDirection;
+    [HideInInspector] public Vector3 aimDirection;
     private Plane groundPlane = new(Vector3.up,Vector3.zero);
 
     private void OnEnable() => controls.Enable();
@@ -107,11 +106,12 @@ public class ThirdPersonMovement : MonoBehaviour
     private void LockCursor()
     {
         Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
     {
+        LockCursor();
         Aim();
     }
 
