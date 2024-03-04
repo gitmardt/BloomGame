@@ -1960,6 +1960,7 @@ MonoBehaviour:
   shader:
   - {fileID: 4800000, guid: fa82d0beebf404647a6104296cb238b4, type: 3}
   - {fileID: 4800000, guid: caa130db32aa173408855ee249b4cfef, type: 3}
+  - {fileID: 4800000, guid: 21edb5ebc238479468e78796f06f1fe4, type: 3}
 --- !u!4 &661366387
 Transform:
   m_ObjectHideFlags: 0

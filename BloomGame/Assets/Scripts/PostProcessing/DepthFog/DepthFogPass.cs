@@ -23,6 +23,7 @@ public class DepthFogPass : BasePass
         m_Material.SetFloat("_Speed", settings.speed.value);
         m_Material.SetFloat("_MinDepth", settings.valueRange.value.x);
         m_Material.SetFloat("_MaxDepth", settings.valueRange.value.y);
+        m_Material.SetFloat("_Range", settings.blurRange.value);
 
         Blitter.BlitCameraTexture(cmd, m_Renderer.cameraColorTargetHandle, source, m_Material, 0);
         Blitter.BlitCameraTexture(cmd, source, m_Renderer.cameraColorTargetHandle);
