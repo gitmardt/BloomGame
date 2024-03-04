@@ -4,7 +4,13 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyBase : MonoBehaviour
 {
+    //References
     public Transform player;
+
+    //Variables
+    public float health = 5;
+
+    //Private variables
     private NavMeshAgent agent;
 
     // Start is called before the first frame update
