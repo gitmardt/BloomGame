@@ -12,7 +12,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public Transform barrel, projectileParent;
     public float projectileSpeed = 10f;
     public float projectileLifetime = 1f;
-
+    public float projectileSpread = 6f;
 
     public InputMaster controls;
 
@@ -245,19 +245,16 @@ public class ThirdPersonMovement : MonoBehaviour
     public void OnShoot()
     {
         GameObject projectile = Instantiate(this.projectile, barrel.position, Quaternion.LookRotation(aimDirection), projectileParent);
-        //StartCoroutine(ShootRoutine(projectile));
+        ParticleProjectile pp = projectile.GetComponent<ParticleProjectile>();
+        pp.speed = projectileSpeed;
+        pp.direction = aimDirection;
+        pp.spread = projectileSpread;
+        StartCoroutine(ShootRoutine(projectile));
     }
 
     private IEnumerator ShootRoutine(GameObject projectile)
     {
-        Vector3 aimDirection = this.aimDirection;
-        float t = 0;
-        while(t < projectileLifetime)
-        {
-            projectile.transform.position += aimDirection.normalized * (projectileSpeed * Time.deltaTime);
-            yield return null;
-            t += Time.deltaTime;
-        }
+        yield return new WaitForSeconds(projectileLifetime);
         Destroy(projectile);
     }
 }
