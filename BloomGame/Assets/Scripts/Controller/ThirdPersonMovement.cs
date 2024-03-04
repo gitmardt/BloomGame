@@ -20,7 +20,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public CinemachineVirtualCameraBase mainCamera, aimCamera;
     public CinemachineInputProvider cinemachineInput;
     public Transform cinemachineBrainCamera;
-    public Transform aimTarget;
+    public Transform aimTarget, aimTargetClose;
     private Rigidbody rb;
 
     [Header("Movement")]
@@ -100,7 +100,7 @@ public class ThirdPersonMovement : MonoBehaviour
     private void ChangeView(bool aim)
     {
         if (aim) mainCamera.Follow = aimTarget;
-        else mainCamera.Follow = transform;
+        else mainCamera.Follow = aimTargetClose;
     }
 
     private void LockCursor()
@@ -155,8 +155,8 @@ public class ThirdPersonMovement : MonoBehaviour
             if (aimDirection.magnitude > 0.1f) // Check to avoid jittering when mouse is too close to the player
             {
                 Quaternion lookRotation = Quaternion.LookRotation(aimDirection);
-                //transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * aimSensitivity); 
-                transform.rotation = lookRotation;
+                transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * aimSensitivity); 
+                //transform.rotation = lookRotation;
             }
 
             CheckGravity();
@@ -171,21 +171,13 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         if (rb.position.y <= getFloatHeight())
         {
-            //canJump = true;
-
+            canJump = true;
             rb.useGravity = false;
             rb.drag = groundDrag;
 
             // set the target height to the float height plus the distance to the ground
-            if (!crouching)
-            {
-                targetHeight = groundHit.point.y + floatHeight;
-            }
-            else
-            {
-                targetHeight = groundHit.point.y + crouchHeight;
-            }
-
+            if (!crouching) targetHeight = groundHit.point.y + floatHeight;
+            else targetHeight = groundHit.point.y + crouchHeight;
 
             // smoothly adjust the current height towards the target float height
             currentHeight = Mathf.Lerp(transform.position.y, targetHeight, Time.deltaTime * (floatDamp - rb.velocity.y));
@@ -201,7 +193,7 @@ public class ThirdPersonMovement : MonoBehaviour
             rb.drag = airDrag;
             rb.useGravity = true;
             inAir = true;
-            //canJump = false;
+            canJump = false;
         }
     }
 
