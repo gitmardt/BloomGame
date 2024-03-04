@@ -42,6 +42,9 @@ Shader "PostProcessing/DepthFog"
 
             TEXTURE2D(_BlitTexture);
             SAMPLER(sampler_BlitTexture);
+
+            TEXTURE2D(_NoiseTex);
+            SAMPLER(sampler_NoiseTex);
             
             TEXTURE2D(_DepthTex);
             SAMPLER(sampler_DepthTex);
@@ -51,14 +54,23 @@ Shader "PostProcessing/DepthFog"
 
             float _Intensity;
             float4 _ShadowColor;
+            float _Speed;
+            float _MinDepth;
+            float _MaxDepth;
 
             half4 frag (Varyings input) : SV_Target
             {
                 float4 color = SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord);
                 float depth = SAMPLE_TEXTURE2D(_DepthTex, sampler_DepthTex, input.texcoord).r * SAMPLE_TEXTURE2D(_EnvTex, sampler_EnvTex, input.texcoord).r;
-                depth *= _Intensity;
+                float normalizedDepth = (depth - _MinDepth) / (_MaxDepth - _MinDepth);
+                
 
-                return lerp(color, _ShadowColor, depth);
+                float2 offset = _Time.x * _Speed;
+                float noise = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, input.texcoord + offset).r;
+
+                normalizedDepth *= _Intensity * noise;
+
+                return lerp(color, _ShadowColor, normalizedDepth);
             }
             ENDHLSL
         }
