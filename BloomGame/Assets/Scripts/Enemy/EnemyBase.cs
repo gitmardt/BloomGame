@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class EnemyBase : MonoBehaviour
 {
     //References
-    public Transform player;
+    Transform player;
 
     //Variables
     public float health = 5;

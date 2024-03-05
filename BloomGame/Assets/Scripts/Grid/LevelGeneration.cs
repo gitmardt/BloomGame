@@ -29,12 +29,9 @@ public class LevelGeneration : MonoBehaviour
         ScatterAssets(grid);
     }
 
-    private void ScatterAssets(SquareGrid grid)
+    [Button]
+    public void ClearGrid()
     {
-        if (environmentPrefabs == null || environmentPrefabs.Count == 0) { 
-            Debug.LogWarning("Can't generate because Environment Prefabs list is empty"); 
-            return; }
-
         for (int i = 0; i < scatteredObjects.Count; i++)
         {
 #if UNITY_EDITOR
@@ -45,6 +42,15 @@ public class LevelGeneration : MonoBehaviour
         }
 
         scatteredObjects.Clear();
+    }
+
+    private void ScatterAssets(SquareGrid grid)
+    {
+        if (environmentPrefabs == null || environmentPrefabs.Count == 0) { 
+            Debug.LogWarning("Can't generate because Environment Prefabs list is empty"); 
+            return; }
+
+        ClearGrid();
 
         for (int i = 0; i < grid.randomlyPickedPoints.Count; i++)
         {

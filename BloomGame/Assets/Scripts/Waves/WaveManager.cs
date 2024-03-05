@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VInspector;
 
 [System.Serializable]
 public class SpawnEnemy
@@ -19,8 +20,10 @@ public class SpawnMoment
 public class WaveManager : MonoBehaviour
 {
     public SquareGrid grid;
+    public GameObject enemyStorage;
     public SpawnMoment[] waves;
 
+    [Button]
     public void StartWave()
     {
         StartCoroutine(WaveRoutine());
@@ -39,7 +42,12 @@ public class WaveManager : MonoBehaviour
     {
         for (int i = 0; i < enemies.Length; i++)
         {
-
+            for (int u = 0; u < enemies[i].amount; u++)
+            {
+                Vector3 randomSpawnPoint = grid.borderPoints[Random.Range(0, grid.borderPoints.Count)];
+                GameObject Enemy = Instantiate(enemies[i].enemyType, randomSpawnPoint, Quaternion.identity, enemyStorage.transform);
+                Enemy.name = enemies[i].enemyType.name + u;
+            }
         }
     }
 }
