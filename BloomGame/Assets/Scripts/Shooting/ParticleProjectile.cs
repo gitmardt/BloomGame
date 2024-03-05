@@ -8,7 +8,6 @@ public class ParticleProjectile : MonoBehaviour
     public string tagName = "Enemy";
 
     public List<ParticleCollisionEvent> collisionEvents;
-    [HideInInspector] public Vector3 direction;
     [HideInInspector] public float speed = 75f;
     [HideInInspector] public float spread = 6f;
     private float randomSpread = 0f;

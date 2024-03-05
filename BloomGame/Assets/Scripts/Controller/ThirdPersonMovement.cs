@@ -71,6 +71,9 @@ public class ThirdPersonMovement : MonoBehaviour
     private Plane groundPlane = new(Vector3.up,Vector3.zero);
     private bool aiming;
 
+    //Debug
+    public Transform debugSphere;
+
     private void OnEnable() => controls.Enable();
     private void OnDisable() => controls.Disable();
 
@@ -142,12 +145,20 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private void Aim()
     {
+        groundPlane.SetNormalAndPosition(Vector3.up, new Vector3(0, transform.position.y, 0));
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+
+        //Debug.DrawRay(ray.origin, ray.direction * 100, Color.yellow); 
+
         if (groundPlane.Raycast(ray, out float rayDistance))
         {
             Vector3 point = ray.GetPoint(rayDistance);
-            aimDirection = point - transform.position;
-            aimDirection.y = 0;
+
+            point.y = transform.position.y; 
+
+            //debugSphere.position = point; 
+
+            aimDirection = point - barrel.position; 
         }
     }
 
@@ -276,7 +287,6 @@ public class ThirdPersonMovement : MonoBehaviour
         GameObject projectile = Instantiate(this.projectile, barrel.position, Quaternion.LookRotation(aimDirection), projectileParent);
         ParticleProjectile pp = projectile.GetComponent<ParticleProjectile>();
         pp.speed = projectileSpeed;
-        pp.direction = aimDirection;
         pp.spread = projectileSpread;
         StartCoroutine(ShootRoutine(projectile));
     }
