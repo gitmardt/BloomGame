@@ -7,6 +7,7 @@ public class SquareGrid : MonoBehaviour
     public int gridSize = 10;
     public int safeAreaSize = 5;
     public float cellSize = 1;
+    public Vector2 randomOffset;
     public int minRandomPoints = 5;
     public int maxRandomPoints = 10;
 
@@ -51,11 +52,13 @@ public class SquareGrid : MonoBehaviour
             for (int y = -gridSize; y <= gridSize; y ++)
             {
                 Vector3 point = new(x * cellSize, 0, y * cellSize);
+
+                if(!CheckBorder(point))
+                    point += new Vector3(Random.Range(-randomOffset.x, randomOffset.x), 0, Random.Range(-randomOffset.y, randomOffset.y));
+
                 points.Add(point);
-
-                if(CheckBorder(point))
+                if (CheckBorder(point))
                     borderPoints.Add(point);
-
                 if (CheckSafeArea(point))
                     safePoints.Add(point);
             }

@@ -33,7 +33,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     [Header("Movement")]
     public float aimSensitivity = 1;
-    public float aimDistance = 5f;
+    public float minimumDistanceBeforeAiming = 0.3f;
     public float speed = 6f;
     public float sprintMultiplier = 2f;
     public float turnSmoothTime = 0.1f;
@@ -184,7 +184,7 @@ public class ThirdPersonMovement : MonoBehaviour
             }
 
 
-            if (aimDirection.magnitude > 0.1f) // Check to avoid jittering when mouse is too close to the player
+            if (aimDirection.magnitude > minimumDistanceBeforeAiming) // Check to avoid jittering when mouse is too close to the player
             {
                 Quaternion lookRotation = Quaternion.LookRotation(aimDirection);
                 transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * aimSensitivity); 
