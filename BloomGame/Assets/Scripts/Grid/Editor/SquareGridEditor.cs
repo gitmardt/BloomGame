@@ -16,9 +16,12 @@ public class SquareGridEditor : Editor
             grid.CreateGrid();
         }
 
-        if (GUI.changed)
+        if (grid.dynamicEditing)
         {
-            grid.CreateGrid();
+            if (GUI.changed)
+            {
+                grid.CreateGrid();
+            }
         }
 
         EditorGUILayout.HelpBox("Point amount: " + grid.points.Count, MessageType.Info);

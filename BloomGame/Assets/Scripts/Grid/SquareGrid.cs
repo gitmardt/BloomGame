@@ -4,12 +4,16 @@ using VInspector;
 
 public class SquareGrid : MonoBehaviour
 {
+    public bool dynamicEditing = false;
+
+    [Header("Grid options")]
     public int gridSize = 10;
     public int safeAreaSize = 5;
     public float cellSize = 1;
     public Vector2 randomOffset;
     public int minRandomPoints = 5;
     public int maxRandomPoints = 10;
+    public int amountOfSpawnPoints = 5;
 
     [Header("Gizmo options")]
     public Color mainGizmoColor = Color.red;
@@ -59,20 +63,21 @@ public class SquareGrid : MonoBehaviour
                 points.Add(point);
                 if (CheckBorder(point))
                     borderPoints.Add(point);
+
                 if (CheckSafeArea(point))
                     safePoints.Add(point);
             }
         }
 
-        int randomPointAmount = Random.Range(minRandomPoints, maxRandomPoints);
-        if (randomPointAmount > points.Count) Debug.LogWarning("Can't make grid because you are trying to get more random points than there are available points in the grid");
+        int randomPointAmount = Mathf.Min(Random.Range(minRandomPoints, maxRandomPoints),points.Count);
 
         for (int i = 0; i < randomPointAmount; i++)
         {
-            int random = Random.Range(0, points.Count - 1);
+            int random = Random.Range(0, points.Count);
 
-            if (!CheckBorder(points[random]) && !CheckSafeArea(points[random])) 
-                randomlyPickedPoints.Add(points[random]);
+            if (!CheckBorder(points[random]) && !CheckSafeArea(points[random]))
+                if (!randomlyPickedPoints.Contains(points[random])) 
+                    randomlyPickedPoints.Add(points[random]);
         }
     }
 
@@ -113,6 +118,5 @@ public class SquareGrid : MonoBehaviour
                 Gizmos.DrawSphere(safePoints[i], pointGizmoSphereRadius + 0.1f);
             }
         }
-
     }
 }
