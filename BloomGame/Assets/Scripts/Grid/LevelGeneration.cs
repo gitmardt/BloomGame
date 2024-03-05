@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using VInspector;
 
@@ -9,7 +10,7 @@ public class LevelGeneration : MonoBehaviour
     SquareGrid squareGrid;
 
     public GameObject environmentFolder;
-    public List<GameObject> environmentPrefabs = new();
+    public List<GenerationPrefab> environmentPrefabs = new();
 
     private List<GameObject> scatteredObjects = new();
 
@@ -47,8 +48,11 @@ public class LevelGeneration : MonoBehaviour
 
         for (int i = 0; i < grid.randomlyPickedPoints.Count; i++)
         {
-            GameObject prefabToPlace = environmentPrefabs[Random.Range(0, environmentPrefabs.Count)];
-            GameObject instancedPrefab = Instantiate(prefabToPlace, grid.randomlyPickedPoints[i], Quaternion.identity, environmentFolder.transform);
+            int random = Random.Range(0, environmentPrefabs.Count);
+            GameObject prefabToPlace = environmentPrefabs[random].prefab;
+            GameObject instancedPrefab = Instantiate(prefabToPlace, grid.randomlyPickedPoints[i], 
+                Quaternion.Euler(environmentPrefabs[random].randomRotations[Random.Range(0, environmentPrefabs[random].randomRotations.Length)]),
+                environmentFolder.transform);
             instancedPrefab.name = "RandomlyPlacedObject" + i;
             scatteredObjects.Add(instancedPrefab);
         }
