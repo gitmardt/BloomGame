@@ -17,7 +17,7 @@ public class ThirdPersonMovement : MonoBehaviour
     //Temp projectiles
     [Header("Projectiles")]
     public GameObject projectile;
-    public Transform barrel, projectileParent;
+    public Transform barrel, barrel2, projectileParent;
     public float projectileSpeed = 10f;
     public float projectileLifetime = 1f;
     public float projectileSpread = 6f;
@@ -182,6 +182,10 @@ public class ThirdPersonMovement : MonoBehaviour
 
                 SpeedControl();
             }
+            else
+            {
+                moveDirection = Vector3.zero;
+            }
 
 
             if (aimDirection.magnitude > minimumDistanceBeforeAiming) // Check to avoid jittering when mouse is too close to the player
@@ -284,7 +288,11 @@ public class ThirdPersonMovement : MonoBehaviour
             else hitmarkerAM.PlaySpriteAnimation(Shoot2, hitmarker.image);
         }
 
-        GameObject projectile = Instantiate(this.projectile, barrel.position, Quaternion.LookRotation(aimDirection), projectileParent);
+        Vector3 spawnPosition;
+        if (shootIndex % 2 == 0) spawnPosition = barrel.position;
+        else spawnPosition = barrel2.position;
+
+        GameObject projectile = Instantiate(this.projectile, spawnPosition, Quaternion.LookRotation(aimDirection), projectileParent);
         ParticleProjectile pp = projectile.GetComponent<ParticleProjectile>();
         pp.speed = projectileSpeed;
         pp.spread = projectileSpread;

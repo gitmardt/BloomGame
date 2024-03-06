@@ -34,7 +34,7 @@ public class ParticleProjectile : MonoBehaviour
 
         if (other.CompareTag(tagName))
         {
-            Debug.Log("Test");
+            //Debug.Log("Test");
             if(other.GetComponent<EnemyBase>() != null)
             {
                 EnemyBase enemy = other.GetComponent<EnemyBase>();
@@ -42,7 +42,7 @@ public class ParticleProjectile : MonoBehaviour
             }
         }
 
-        Debug.Log("Particle " + particles.name + " collided with " + other.name);
+        //Debug.Log("Particle " + particles.name + " collided with " + other.name);
 
         for (int i = 0; i < collisionEvents.Count; i++)
         {

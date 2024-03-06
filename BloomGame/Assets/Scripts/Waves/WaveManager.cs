@@ -9,12 +9,15 @@ public class WaveManager : MonoBehaviour
     public SquareGrid grid;
     public GameObject enemyStorage;
     public Wave[] waves;
-    int testIndex = 1;
+    public int testIndex = 0;
+    public bool onStart = false;
+
+    public void Start() { if (onStart) StartWave(); }
 
     public void StartWave(int index) => StartCoroutine(WaveRoutine(waves[index]));
 
     [Button]
-    public void StartWave() => StartCoroutine(WaveRoutine(waves[testIndex]));
+    public void StartWave() => StartCoroutine(WaveRoutine(waves[Mathf.Min(testIndex,waves.Length-1)]));
 
     IEnumerator WaveRoutine(Wave wave)
     {
@@ -32,7 +35,7 @@ public class WaveManager : MonoBehaviour
             for (int u = 0; u < enemies[i].amount; u++)
             {
                 Vector3 randomSpawnPoint = grid.borderPoints[UnityEngine.Random.Range(0, grid.borderPoints.Count)];
-                GameObject Enemy = Instantiate(enemies[i].enemyType, randomSpawnPoint, Quaternion.identity, enemyStorage.transform);
+                GameObject Enemy = Instantiate(enemies[i].enemyType, randomSpawnPoint + new Vector3(0,5,0), Quaternion.identity, enemyStorage.transform);
                 Enemy.name = enemies[i].enemyType.name + u;
             }
         }

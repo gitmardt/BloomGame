@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEngine;
 
 public class SimpleGizmo : MonoBehaviour
@@ -11,3 +12,4 @@ public class SimpleGizmo : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radius);
     }
 }
+#endif

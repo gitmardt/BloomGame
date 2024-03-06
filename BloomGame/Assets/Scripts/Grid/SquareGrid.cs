@@ -15,6 +15,7 @@ public class SquareGrid : MonoBehaviour
     public int maxRandomPoints = 10;
     public int amountOfSpawnPoints = 5;
 
+#if UNITY_EDITOR
     [Header("Gizmo options")]
     public Color mainGizmoColor = Color.red;
     public Color outerGizmoColor = Color.blue;
@@ -22,6 +23,7 @@ public class SquareGrid : MonoBehaviour
     public Color safeAreaGizmoColor = Color.yellow;
     public float pointGizmoSphereRadius = 0.2f;
     public bool viewMainPoints, viewBorderPoints, viewRandomPoints, viewSafePoints;
+#endif
 
     [HideInInspector] public List<Vector3> points = new();
     [HideInInspector] public List<Vector3> borderPoints = new();
@@ -81,6 +83,7 @@ public class SquareGrid : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
     void OnDrawGizmosSelected()
     {
         if (viewMainPoints)
@@ -119,4 +122,5 @@ public class SquareGrid : MonoBehaviour
             }
         }
     }
+#endif
 }
