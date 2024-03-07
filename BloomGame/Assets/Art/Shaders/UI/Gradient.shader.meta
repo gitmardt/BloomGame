@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: a3bf905538cf5c14890f2544894da8cc
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _gradient: {fileID: 2800000, guid: d5e76b65d0b649e49a38e17ea0f39f2b, type: 3}
+  - _ButtonTexture: {fileID: 2800000, guid: 00e03fa6e00c99f40be12930b47b3967, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

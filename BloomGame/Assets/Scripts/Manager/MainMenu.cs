@@ -1,14 +1,11 @@
 using Cinemachine;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Timeline;
 
 public class MainMenu : MonoBehaviour
 {
     public GameState playState = GameState.Combat;
     public CinemachineVirtualCameraBase menuCam, combatCam;
+    public GameObject mainMenuUI;
 
     private Player player;
     private GameManager manager;
@@ -31,6 +28,7 @@ public class MainMenu : MonoBehaviour
             player.hitmarkerAM.PlaySpriteAnimation(player.Out, player.hitmarker.image);
             menuCam.Priority = 1;
             combatCam.Priority = 0;
+            mainMenuUI.SetActive(true);
         }
     }
 
@@ -39,6 +37,12 @@ public class MainMenu : MonoBehaviour
         manager.UpdateGameState(playState);
         menuCam.Priority = 0;
         combatCam.Priority = 1;
+        mainMenuUI.SetActive(false);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     // Update is called once per frame
