@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Hitmarker : MonoBehaviour
 {
     [HideInInspector] public Image image;
-    public ThirdPersonMovement player;
+    public Player player;
     public Transform target;
     public Canvas canvas; // Reference to the Canvas
     public float smoothAimDelay = 5f;

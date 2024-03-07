@@ -21,7 +21,7 @@ public class EnemyBase : MonoBehaviour
 
     private void Start()
     {
-        player = ThirdPersonMovement.instance.gameObject.transform;
+        player = Player.instance.gameObject.transform;
     }
 
     // Update is called once per frame

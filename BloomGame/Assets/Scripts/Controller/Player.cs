@@ -4,9 +4,9 @@ using Cinemachine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
-public class ThirdPersonMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
-    public static ThirdPersonMovement instance;
+    public static Player instance;
 
     [Header("Hitmarker info")]
     public Hitmarker hitmarker;
@@ -78,7 +78,6 @@ public class ThirdPersonMovement : MonoBehaviour
     private void Awake()
     {
         GameManager.OnGameStateChanged += OnGameStateChanged;
-
 
         instance = this;
 
