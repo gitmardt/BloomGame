@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Fire
-  m_Shader: {fileID: -6465566751694194690, guid: ddc7ab54b5549dc41a904b948ce545e9, type: 3}
+  m_Shader: {fileID: 4800000, guid: 630e1103ebe286840a53ab182aaadd6d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -58,6 +58,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Fire:
+        m_Texture: {fileID: 2800000, guid: 8335b109ab809bf449ec88130ab389a3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Fire1:
@@ -117,7 +121,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _noisev2:
-        m_Texture: {fileID: 2800000, guid: 115c08dc983958b46a6301ab539d3e98, type: 3}
+        m_Texture: {fileID: 2800000, guid: aa0aa2eb2444e4449b855584c3ef3da5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _noisev3:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -150,6 +158,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
+    - _DistortionAmount: 0.1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
@@ -184,6 +193,7 @@ Material:
     - _TessPhongStrength: 0.5
     - _TessValue: 16
     - _UVSec: 0
+    - _VertexDistortion: 0.2
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
@@ -191,6 +201,10 @@ Material:
     - _Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _Speed: {r: 1, g: 1, b: 0, a: 0}
+    - _Speed: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _Speed1: {r: 1, g: 1, b: 0, a: 0}
+    - _Speed2: {r: 0, g: 0.5, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
+    - _Tint: {r: 222.18867, g: 123.36174, b: 26.20149, a: 0}
+    - _VertexSpeed: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
