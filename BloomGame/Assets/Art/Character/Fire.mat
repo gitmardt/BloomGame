@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Fire
-  m_Shader: {fileID: 4800000, guid: 2f853c2a45e0b3146a3b5b1217c25a20, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: ddc7ab54b5549dc41a904b948ce545e9, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -60,6 +60,18 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Fire1:
+        m_Texture: {fileID: 2800000, guid: 55a1637f1f3019d4d900e2b2cba200ec, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Fire2:
+        m_Texture: {fileID: 2800000, guid: 9630c2cdbf293244d847d76f8e3a1c78, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Fire3:
+        m_Texture: {fileID: 2800000, guid: 5c65bc45124153248abf6b6b6a7bf2d8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -76,12 +88,40 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_26b885c4c4444704a501aa1357d6dc77_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 55a1637f1f3019d4d900e2b2cba200ec, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_39d7e201e52541da8a6b82be9753690d_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 55a1637f1f3019d4d900e2b2cba200ec, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_745274864d4149b6b5a4b88f68975643_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 9630c2cdbf293244d847d76f8e3a1c78, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_a03a5737607c41cfa39c6393e1c8e2ff_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 55a1637f1f3019d4d900e2b2cba200ec, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_b2ee2f5d3d6342b6b4003890e17c7c9e_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 2b31dbecd31c2d74f9c57dea75b410db, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_b9234be141d640238bf8f21caa094f8f_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 55a1637f1f3019d4d900e2b2cba200ec, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _noisev2:
         m_Texture: {fileID: 2800000, guid: 115c08dc983958b46a6301ab539d3e98, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -113,9 +153,15 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
+    - _GlobalIntensity: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _Intensity1: 1
+    - _Intensity2: 1
+    - _Intensity3: 1
+    - _Intensity4: 1
+    - _Intensity5: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -126,6 +172,7 @@ Material:
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+    - _Speed: 2
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Strength: 0
