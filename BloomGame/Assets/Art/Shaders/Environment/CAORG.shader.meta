@@ -2,7 +2,8 @@ fileFormatVersion: 2
 guid: fa82d0beebf404647a6104296cb238b4
 ShaderImporter:
   externalObjects: {}
-  defaultTextures: []
+  defaultTextures:
+  - _rocks_floor: {fileID: 2800000, guid: 9bd9cc99b0871324fa73a6ca934a1d61, type: 3}
   nonModifiableTextures: []
   userData: 
   assetBundleName: 

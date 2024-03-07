@@ -33,6 +33,8 @@ Shader "CAORG"
 		[Toggle]_RandomGrayscaleTextureOrWorldspace("RandomGrayscaleTextureOrWorldspace", Float) = 0
 		_WorldSpaceGradientMinRG("WorldSpaceGradientMinRG", Range( 0 , 1)) = 0.9
 		_WorldSpaceGradientMaxRG("WorldSpaceGradientMaxRG", Range( 0 , 1)) = 1
+		_rocks_floor("rocks_floor", 2D) = "white" {}
+		_RockBlend("RockBlend", Range( 0 , 1)) = 0.5
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 
 
@@ -283,22 +285,24 @@ Shader "CAORG"
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _ShadowColor;
+			float4 _rocks_floor_ST;
+			float4 _CurvatureColor;
+			float4 _RGColor4;
+			float4 _RGColor1;
+			float4 _RGColor3;
 			float4 _BaseColor;
 			float4 _COARG_ST;
-			float4 _CurvatureColor;
-			float4 _RGColor3;
-			float4 _RGColor4;
 			float4 _RGColor2;
-			float4 _RGColor1;
-			float _CurvatureRemapMax;
 			float _CurvatureRemapMin;
 			float _CurvatureColorBlend;
+			float _CurvatureRemapMax;
+			float _CurvatureIntensity;
 			float _AORemapMax;
 			float _AORemapMin;
 			float _BaseColorBlend;
-			float _GradientBlend;
+			float _RimIntensity;
+			float _WorldSpaceGradientMaxRG;
 			float _WorldSpaceGradientMinRG;
-			float _CurvatureIntensity;
 			float _WorldSpaceGradientMax;
 			float _WorldSpaceGradientMin;
 			float _RandomGrayscaleTextureOrWorldspace;
@@ -307,8 +311,8 @@ Shader "CAORG"
 			float _LightBlend;
 			float _LightIntensity;
 			float _UseRandomFromGrayscale;
-			float _WorldSpaceGradientMaxRG;
-			float _RimIntensity;
+			float _GradientBlend;
+			float _RockBlend;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -320,6 +324,7 @@ Shader "CAORG"
 			CBUFFER_END
 
 			sampler2D _COARG;
+			sampler2D _rocks_floor;
 
 
 			float3 AdditionalLightsFlat14x( float3 WorldPosition, float2 ScreenUV )
@@ -540,10 +545,13 @@ Shader "CAORG"
 				float4 lerpResult37 = lerp( lerpResult16 , _CurvatureColor , _CurvatureColorBlend);
 				float temp_output_126_0 = (0.0 + (tex2DNode111.g - _CurvatureRemapMin) * (1.0 - 0.0) / (_CurvatureRemapMax - _CurvatureRemapMin));
 				float4 lerpResult107 = lerp( ( lerpResult16 + ( ( lerpResult37 * ( temp_output_126_0 * _CurvatureIntensity ) ) * (0.0 + (temp_output_12_0 - 0.0) * (_CurvatureIntensity - 0.0) / (1.0 - 0.0)) ) ) , ( lerpResult16 + float4( ( ( temp_output_126_0 * temp_output_19_0 ) * _RimIntensity ) , 0.0 ) ) , temp_output_19_0.y);
+				float4 color129 = IsGammaSpace() ? float4(1,1,1,0) : float4(1,1,1,0);
+				float2 uv_rocks_floor = IN.ase_texcoord4.xy * _rocks_floor_ST.xy + _rocks_floor_ST.zw;
+				float4 lerpResult130 = lerp( color129 , tex2D( _rocks_floor, uv_rocks_floor ) , _RockBlend);
 				
 				float3 BakedAlbedo = 0;
 				float3 BakedEmission = 0;
-				float3 Color = lerpResult107.rgb;
+				float3 Color = ( lerpResult107 * lerpResult130 ).rgb;
 				float Alpha = 1;
 				float AlphaClipThreshold = 0.5;
 				float AlphaClipThresholdShadow = 0.5;
@@ -648,22 +656,24 @@ Shader "CAORG"
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _ShadowColor;
+			float4 _rocks_floor_ST;
+			float4 _CurvatureColor;
+			float4 _RGColor4;
+			float4 _RGColor1;
+			float4 _RGColor3;
 			float4 _BaseColor;
 			float4 _COARG_ST;
-			float4 _CurvatureColor;
-			float4 _RGColor3;
-			float4 _RGColor4;
 			float4 _RGColor2;
-			float4 _RGColor1;
-			float _CurvatureRemapMax;
 			float _CurvatureRemapMin;
 			float _CurvatureColorBlend;
+			float _CurvatureRemapMax;
+			float _CurvatureIntensity;
 			float _AORemapMax;
 			float _AORemapMin;
 			float _BaseColorBlend;
-			float _GradientBlend;
+			float _RimIntensity;
+			float _WorldSpaceGradientMaxRG;
 			float _WorldSpaceGradientMinRG;
-			float _CurvatureIntensity;
 			float _WorldSpaceGradientMax;
 			float _WorldSpaceGradientMin;
 			float _RandomGrayscaleTextureOrWorldspace;
@@ -672,8 +682,8 @@ Shader "CAORG"
 			float _LightBlend;
 			float _LightIntensity;
 			float _UseRandomFromGrayscale;
-			float _WorldSpaceGradientMaxRG;
-			float _RimIntensity;
+			float _GradientBlend;
+			float _RockBlend;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -937,22 +947,24 @@ Shader "CAORG"
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _ShadowColor;
+			float4 _rocks_floor_ST;
+			float4 _CurvatureColor;
+			float4 _RGColor4;
+			float4 _RGColor1;
+			float4 _RGColor3;
 			float4 _BaseColor;
 			float4 _COARG_ST;
-			float4 _CurvatureColor;
-			float4 _RGColor3;
-			float4 _RGColor4;
 			float4 _RGColor2;
-			float4 _RGColor1;
-			float _CurvatureRemapMax;
 			float _CurvatureRemapMin;
 			float _CurvatureColorBlend;
+			float _CurvatureRemapMax;
+			float _CurvatureIntensity;
 			float _AORemapMax;
 			float _AORemapMin;
 			float _BaseColorBlend;
-			float _GradientBlend;
+			float _RimIntensity;
+			float _WorldSpaceGradientMaxRG;
 			float _WorldSpaceGradientMinRG;
-			float _CurvatureIntensity;
 			float _WorldSpaceGradientMax;
 			float _WorldSpaceGradientMin;
 			float _RandomGrayscaleTextureOrWorldspace;
@@ -961,8 +973,8 @@ Shader "CAORG"
 			float _LightBlend;
 			float _LightIntensity;
 			float _UseRandomFromGrayscale;
-			float _WorldSpaceGradientMaxRG;
-			float _RimIntensity;
+			float _GradientBlend;
+			float _RockBlend;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -1194,22 +1206,24 @@ Shader "CAORG"
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _ShadowColor;
+			float4 _rocks_floor_ST;
+			float4 _CurvatureColor;
+			float4 _RGColor4;
+			float4 _RGColor1;
+			float4 _RGColor3;
 			float4 _BaseColor;
 			float4 _COARG_ST;
-			float4 _CurvatureColor;
-			float4 _RGColor3;
-			float4 _RGColor4;
 			float4 _RGColor2;
-			float4 _RGColor1;
-			float _CurvatureRemapMax;
 			float _CurvatureRemapMin;
 			float _CurvatureColorBlend;
+			float _CurvatureRemapMax;
+			float _CurvatureIntensity;
 			float _AORemapMax;
 			float _AORemapMin;
 			float _BaseColorBlend;
-			float _GradientBlend;
+			float _RimIntensity;
+			float _WorldSpaceGradientMaxRG;
 			float _WorldSpaceGradientMinRG;
-			float _CurvatureIntensity;
 			float _WorldSpaceGradientMax;
 			float _WorldSpaceGradientMin;
 			float _RandomGrayscaleTextureOrWorldspace;
@@ -1218,8 +1232,8 @@ Shader "CAORG"
 			float _LightBlend;
 			float _LightIntensity;
 			float _UseRandomFromGrayscale;
-			float _WorldSpaceGradientMaxRG;
-			float _RimIntensity;
+			float _GradientBlend;
+			float _RockBlend;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -1443,22 +1457,24 @@ Shader "CAORG"
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _ShadowColor;
+			float4 _rocks_floor_ST;
+			float4 _CurvatureColor;
+			float4 _RGColor4;
+			float4 _RGColor1;
+			float4 _RGColor3;
 			float4 _BaseColor;
 			float4 _COARG_ST;
-			float4 _CurvatureColor;
-			float4 _RGColor3;
-			float4 _RGColor4;
 			float4 _RGColor2;
-			float4 _RGColor1;
-			float _CurvatureRemapMax;
 			float _CurvatureRemapMin;
 			float _CurvatureColorBlend;
+			float _CurvatureRemapMax;
+			float _CurvatureIntensity;
 			float _AORemapMax;
 			float _AORemapMin;
 			float _BaseColorBlend;
-			float _GradientBlend;
+			float _RimIntensity;
+			float _WorldSpaceGradientMaxRG;
 			float _WorldSpaceGradientMinRG;
-			float _CurvatureIntensity;
 			float _WorldSpaceGradientMax;
 			float _WorldSpaceGradientMin;
 			float _RandomGrayscaleTextureOrWorldspace;
@@ -1467,8 +1483,8 @@ Shader "CAORG"
 			float _LightBlend;
 			float _LightIntensity;
 			float _UseRandomFromGrayscale;
-			float _WorldSpaceGradientMaxRG;
-			float _RimIntensity;
+			float _GradientBlend;
+			float _RockBlend;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -1697,22 +1713,24 @@ Shader "CAORG"
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _ShadowColor;
+			float4 _rocks_floor_ST;
+			float4 _CurvatureColor;
+			float4 _RGColor4;
+			float4 _RGColor1;
+			float4 _RGColor3;
 			float4 _BaseColor;
 			float4 _COARG_ST;
-			float4 _CurvatureColor;
-			float4 _RGColor3;
-			float4 _RGColor4;
 			float4 _RGColor2;
-			float4 _RGColor1;
-			float _CurvatureRemapMax;
 			float _CurvatureRemapMin;
 			float _CurvatureColorBlend;
+			float _CurvatureRemapMax;
+			float _CurvatureIntensity;
 			float _AORemapMax;
 			float _AORemapMin;
 			float _BaseColorBlend;
-			float _GradientBlend;
+			float _RimIntensity;
+			float _WorldSpaceGradientMaxRG;
 			float _WorldSpaceGradientMinRG;
-			float _CurvatureIntensity;
 			float _WorldSpaceGradientMax;
 			float _WorldSpaceGradientMin;
 			float _RandomGrayscaleTextureOrWorldspace;
@@ -1721,8 +1739,8 @@ Shader "CAORG"
 			float _LightBlend;
 			float _LightIntensity;
 			float _UseRandomFromGrayscale;
-			float _WorldSpaceGradientMaxRG;
-			float _RimIntensity;
+			float _GradientBlend;
+			float _RockBlend;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -1970,6 +1988,11 @@ Node;AmplifyShaderEditor.RangedFloatNode;125;-1327.797,467.3295;Inherit;False;Pr
 Node;AmplifyShaderEditor.TFHCRemapNode;126;-1033.647,365.6938;Inherit;False;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.LerpOp;37;-885.5185,684.7714;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.FunctionNode;19;-3374.851,-212.392;Inherit;False;SRP Additional Light;-1;;1;6c86746ad131a0a408ca599df5f40861;8,212,0,6,0,9,0,23,0,24,0,142,0,168,0,154,0;6;2;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;15;FLOAT3;0,0,0;False;14;FLOAT3;1,1,1;False;18;FLOAT;0.5;False;32;FLOAT4;0,0,0,0;False;1;FLOAT3;0
+Node;AmplifyShaderEditor.SamplerNode;127;460.7564,-515.4186;Inherit;True;Property;_rocks_floor;rocks_floor;27;0;Create;True;0;0;0;False;0;False;-1;9bd9cc99b0871324fa73a6ca934a1d61;9bd9cc99b0871324fa73a6ca934a1d61;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.LerpOp;130;865.4642,-567.3039;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
+Node;AmplifyShaderEditor.RangedFloatNode;131;806.1069,-357.2811;Inherit;False;Property;_RockBlend;RockBlend;28;0;Create;True;0;0;0;False;0;False;0.5;0;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;128;878.1535,-226.2556;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.ColorNode;129;515.6068,-721.4783;Inherit;False;Constant;_Color0;Color 0;28;0;Create;True;0;0;0;False;0;False;1,1,1,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;3;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=ShadowCaster;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;4;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;False;False;True;1;LightMode=DepthOnly;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;5;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;Meta;0;4;Meta;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Meta;False;False;0;;0;0;Standard;0;False;0
@@ -1979,7 +2002,7 @@ Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;8;0,0;Float;False;False;-1;
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;9;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthNormals;0;8;DepthNormals;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=DepthNormalsOnly;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;10;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthNormalsOnly;0;9;DepthNormalsOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=DepthNormalsOnly;False;True;9;d3d11;metal;vulkan;xboxone;xboxseries;playstation;ps4;ps5;switch;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;1;-2186.553,57.70703;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ExtraPrePass;0;0;ExtraPrePass;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;0;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;2;896.9647,-249.5752;Float;False;True;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;CAORG;2992e84f91cbeb14eab234972e07ea9d;True;Forward;0;1;Forward;8;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;1;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForwardOnly;False;False;0;;0;0;Standard;21;Surface;0;0;  Blend;0;0;Two Sided;1;0;Forward Only;0;0;Cast Shadows;1;0;  Use Shadow Threshold;0;0;GPU Instancing;1;0;LOD CrossFade;1;0;Built-in Fog;1;0;Meta Pass;0;0;Extra Pre Pass;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Vertex Position,InvertActionOnDeselection;1;0;0;10;False;True;True;True;False;False;True;True;True;False;False;;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;2;1196.442,-231.6424;Float;False;True;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;CAORG;2992e84f91cbeb14eab234972e07ea9d;True;Forward;0;1;Forward;8;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;1;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForwardOnly;False;False;0;;0;0;Standard;21;Surface;0;0;  Blend;0;0;Two Sided;1;0;Forward Only;0;0;Cast Shadows;1;0;  Use Shadow Threshold;0;0;GPU Instancing;1;0;LOD CrossFade;1;0;Built-in Fog;1;0;Meta Pass;0;0;Extra Pre Pass;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Vertex Position,InvertActionOnDeselection;1;0;0;10;False;True;True;True;False;False;True;True;True;False;False;;False;0
 WireConnection;41;0;37;0
 WireConnection;41;1;35;0
 WireConnection;12;0;11;2
@@ -2050,6 +2073,11 @@ WireConnection;126;2;125;0
 WireConnection;37;0;16;0
 WireConnection;37;1;39;0
 WireConnection;37;2;40;0
-WireConnection;2;2;107;0
+WireConnection;130;0;129;0
+WireConnection;130;1;127;0
+WireConnection;130;2;131;0
+WireConnection;128;0;107;0
+WireConnection;128;1;130;0
+WireConnection;2;2;128;0
 ASEEND*/
-//CHKSM=85D1348A2048B037ECC6B8C0ACA66D43725686D0
+//CHKSM=DA1DD5B1C22DED38264F97D240B1DD27334658A8
