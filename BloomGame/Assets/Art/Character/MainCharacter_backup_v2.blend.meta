@@ -1,49 +1,9 @@
 fileFormatVersion: 2
-guid: b08cfbe7b512e4c488caa0c75b4a7526
+guid: bdca39cb792aeb9408527e2fedb31969
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Body
-    second: {fileID: 2100000, guid: 0c042cbe1ee586e42a9a9c6fefa3e318, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Cables
-    second: {fileID: 2100000, guid: 7e9e937f315f6824b9c0b43af4f5f6fd, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Display
-    second: {fileID: 2100000, guid: 9dab9a806a5f87a4fa77737eb5e37f68, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Eyes
-    second: {fileID: 2100000, guid: a6473943c22000c428724baa7ce6c945, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Fire
-    second: {fileID: 2100000, guid: b704cae5ac9785042a6c5a6e13e9cd02, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Gun
-    second: {fileID: 2100000, guid: 19984066d1024ae45ba804080a72ec03, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: LittleGlow
-    second: {fileID: 2100000, guid: 7a73b19a01f625a4c823b14b67b763db, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Orb
-    second: {fileID: 2100000, guid: 571fc51c6a215e24599efa5ff00f3dc4, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
