@@ -73,12 +73,13 @@ public class ThirdPersonMovement : MonoBehaviour
 
     //Debug
     public Transform debugSphere;
-
-    private void OnEnable() => controls.Enable();
-    private void OnDisable() => controls.Disable();
+    public Vector3 lookDirection, mousePosition;
 
     private void Awake()
     {
+        GameManager.OnGameStateChanged += OnGameStateChanged;
+
+
         instance = this;
 
         rb = GetComponent<Rigidbody>();
@@ -93,6 +94,10 @@ public class ThirdPersonMovement : MonoBehaviour
         ChangeView(true);
         controls.Combat.Aim.performed += ctx => ChangeView(false);
         controls.Combat.Aim.canceled += ctx => ChangeView(true);
+
+        ////Look
+        //controls.Combat.Look.performed += ctx => lookDirection = ctx.ReadValue<Vector2>();
+        //controls.Combat.Look.performed += ctx => lookDirection = Vector2.zero;
 
         //Crouching
         crouching = false;
@@ -109,6 +114,12 @@ public class ThirdPersonMovement : MonoBehaviour
 
         //Shoot
         controls.Combat.Shoot.performed += ctx => OnShoot();
+    }
+
+    private void OnGameStateChanged(GameState state)
+    {
+        if (state == GameState.Combat) controls.Enable();
+        else controls.Disable();
     }
 
     private void ChangeView(bool aim)
@@ -146,7 +157,9 @@ public class ThirdPersonMovement : MonoBehaviour
     private void Aim()
     {
         groundPlane.SetNormalAndPosition(Vector3.up, new Vector3(0, transform.position.y, 0));
-        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        Ray ray = Camera.main.ScreenPointToRay(controls.Combat.Look.ReadValue<Vector2>());
+
+        //Debug.Log(Mouse.current.position.ReadValue() + " < mp ld > " + controls.Combat.Look.ReadValue<Vector2>());
 
         //Debug.DrawRay(ray.origin, ray.direction * 100, Color.yellow); 
 
