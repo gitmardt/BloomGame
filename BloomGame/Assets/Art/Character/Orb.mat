@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Orb
-  m_Shader: {fileID: 4800000, guid: 2f853c2a45e0b3146a3b5b1217c25a20, type: 3}
+  m_Shader: {fileID: 4800000, guid: 9ba6de2015e36c24dab4b219992d41cd, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -133,6 +133,7 @@ Material:
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _Speed: {r: 1, g: 1, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
+    - _Tint: {r: 2.6082375, g: 0.8073348, b: 0.3823594, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2722141859407264862
 MonoBehaviour:

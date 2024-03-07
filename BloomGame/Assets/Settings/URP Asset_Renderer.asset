@@ -83,13 +83,13 @@ MonoBehaviour:
     hdrDebugViewPS: {fileID: 4800000, guid: 573620ae32aec764abd4d728906d2587, type: 3}
   m_RendererFeatures:
   - {fileID: -3177001643330977156}
-  - {fileID: 489241746426541101}
   - {fileID: 5643961931203948564}
   - {fileID: -1500616562975771979}
+  - {fileID: 489241746426541101}
   - {fileID: 6988518319326161505}
   - {fileID: -4980782419118923496}
   - {fileID: -7584712783754881044}
-  m_RendererFeatureMap: 7cc26c7ed605e9d32db40bb9c622ca0614303d337961534eb5f2c2c32fbd2ceb61eabe796234fc6018e1e774c7b4e0baec17eda0e8afbd96
+  m_RendererFeatureMap: 7cc26c7ed605e9d314303d337961534eb5f2c2c32fbd2ceb2db40bb9c622ca0661eabe796234fc6018e1e774c7b4e0baec17eda0e8afbd96
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 1
   m_Shader: {fileID: 4800000, guid: 55b2719c9ca7da642bfd2d345ae31bb1, type: 3}
-  renderPassEvent: 600
+  renderPassEvent: 550
   profilerName: Quantization
   onlyGameView: 0
 --- !u!114 &5643961931203948564

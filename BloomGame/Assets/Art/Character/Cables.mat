@@ -90,11 +90,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _AORemapMax: 1
-    - _AORemapMin: 0
+    - _AORemapMin: 0.109
     - _AlphaClip: 0
     - _AlphaCutoff: 0.5
     - _AlphaToMask: 0
-    - _BaseColorBlend: 0.47
+    - _BaseColorBlend: 0.283
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -102,9 +102,9 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _CurvatureColorBlend: 0.5
-    - _CurvatureIntensity: 1
+    - _CurvatureIntensity: 0.16
     - _CurvatureRemapMax: 1
-    - _CurvatureRemapMin: 0.109
+    - _CurvatureRemapMin: 0.309
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
@@ -115,8 +115,8 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _GradientBlend: 0
-    - _LightBlend: 0.315
-    - _LightIntensity: 0.117
+    - _LightBlend: 0.847
+    - _LightIntensity: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -127,7 +127,7 @@ Material:
     - _RGRemapMin: 0
     - _RandomGrayscaleTextureOrWorldspace: 0
     - _ReceiveShadows: 1
-    - _RimIntensity: 0.119
+    - _RimIntensity: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -137,14 +137,14 @@ Material:
     - _UVSec: 0
     - _UseRandomFromGrayscale: 0
     - _WorkflowMode: 1
-    - _WorldSpaceGradientMax: 1
+    - _WorldSpaceGradientMax: 0.856
     - _WorldSpaceGradientMaxRG: 1
-    - _WorldSpaceGradientMin: 0.9
+    - _WorldSpaceGradientMin: 0.724
     - _WorldSpaceGradientMinRG: 0.9
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
-    - _Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    - _BaseColor: {r: 0.2735849, g: 0.2735849, b: 0.2735849, a: 1}
+    - _Color: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
     - _CurvatureColor: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _RGColor1: {r: 0.1520559, g: 0.6320754, b: 0.2457457, a: 0}
