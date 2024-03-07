@@ -12,6 +12,7 @@ Shader "InfiniteRoom"
 		_ShadowThreshold("ShadowThreshold", Range( 0 , 1)) = 1
 		_ShadowThresholdUpper("ShadowThresholdUpper", Range( 0 , 1)) = 1
 		_ShadowTextureIntensity("ShadowTextureIntensity", Float) = 1
+		_LightIntensity("LightIntensity", Range( 0 , 1)) = 0.56
 		_ShadowTextureTint("ShadowTextureTint", Color) = (0.7735849,0.3350769,0.1569064,0)
 		_Tint("Tint", Color) = (1,1,1,0)
 		_Tint2("Tint2", Color) = (1,1,1,0)
@@ -277,6 +278,7 @@ Shader "InfiniteRoom"
 			float4 _ShadowTextureTint;
 			float _ShadowThreshold;
 			float _ShadowThresholdUpper;
+			float _LightIntensity;
 			float _ShadowTextureIntensity;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
@@ -523,7 +525,7 @@ Shader "InfiniteRoom"
 				float3 temp_output_10_0 = localAdditionalLightsLambert14x128_g1;
 				float2 uv_Main = IN.ase_texcoord7.xy * _Main_ST.xy + _Main_ST.zw;
 				float4 lerpResult108 = lerp( _Tint2 , _Tint , tex2D( _Main, uv_Main ));
-				float4 lerpResult15 = lerp( _ShadowColor , lerpResult108 , float4( temp_output_10_0 , 0.0 ));
+				float4 lerpResult15 = lerp( _ShadowColor , lerpResult108 , float4( ( temp_output_10_0 * _LightIntensity ) , 0.0 ));
 				float2 uv_noise = IN.ase_texcoord7.xy * _noise_ST.xy + _noise_ST.zw;
 				float temp_output_51_0 = (0.0 + (temp_output_10_0.x - _ShadowThreshold) * (1.0 - 0.0) / (_ShadowThresholdUpper - _ShadowThreshold));
 				
@@ -641,6 +643,7 @@ Shader "InfiniteRoom"
 			float4 _ShadowTextureTint;
 			float _ShadowThreshold;
 			float _ShadowThresholdUpper;
+			float _LightIntensity;
 			float _ShadowTextureIntensity;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
@@ -912,6 +915,7 @@ Shader "InfiniteRoom"
 			float4 _ShadowTextureTint;
 			float _ShadowThreshold;
 			float _ShadowThresholdUpper;
+			float _LightIntensity;
 			float _ShadowTextureIntensity;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
@@ -1151,6 +1155,7 @@ Shader "InfiniteRoom"
 			float4 _ShadowTextureTint;
 			float _ShadowThreshold;
 			float _ShadowThresholdUpper;
+			float _LightIntensity;
 			float _ShadowTextureIntensity;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
@@ -1382,6 +1387,7 @@ Shader "InfiniteRoom"
 			float4 _ShadowTextureTint;
 			float _ShadowThreshold;
 			float _ShadowThresholdUpper;
+			float _LightIntensity;
 			float _ShadowTextureIntensity;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
@@ -1618,6 +1624,7 @@ Shader "InfiniteRoom"
 			float4 _ShadowTextureTint;
 			float _ShadowThreshold;
 			float _ShadowThresholdUpper;
+			float _LightIntensity;
 			float _ShadowTextureIntensity;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
@@ -1809,9 +1816,9 @@ Node;AmplifyShaderEditor.CommentaryNode;103;-391.4023,-321.5569;Inherit;False;94
 Node;AmplifyShaderEditor.CommentaryNode;102;-662.1638,741.5807;Inherit;False;1430.749;848.1973;Comment;11;37;52;39;40;38;54;23;35;18;51;53;NoiseHighlight;0.8584906,0,0,1;0;0
 Node;AmplifyShaderEditor.FunctionNode;10;-334.1948,202.0391;Inherit;False;SRP Additional Light;-1;;1;6c86746ad131a0a408ca599df5f40861;8,212,0,6,1,9,0,23,0,24,0,142,0,168,0,154,0;6;2;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;15;FLOAT3;0,0,0;False;14;FLOAT3;1,1,1;False;18;FLOAT;0.5;False;32;FLOAT4;0,0,0,0;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.BreakToComponentsNode;34;-156.2983,385.9831;Inherit;False;FLOAT3;1;0;FLOAT3;0,0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15
-Node;AmplifyShaderEditor.ColorNode;37;-217.0983,1380.778;Inherit;False;Property;_ShadowTextureTint;ShadowTextureTint;6;0;Create;True;0;0;0;False;0;False;0.7735849,0.3350769,0.1569064,0;0.7735849,0.3350769,0.1569064,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ColorNode;37;-217.0983,1380.778;Inherit;False;Property;_ShadowTextureTint;ShadowTextureTint;8;0;Create;True;0;0;0;False;0;False;0.7735849,0.3350769,0.1569064,0;0.7735849,0.3350769,0.1569064,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;52;37.98536,1091.129;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0
-Node;AmplifyShaderEditor.RangedFloatNode;39;142.9333,1390.756;Inherit;False;Property;_ShadowTextureIntensity;ShadowTextureIntensity;5;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;39;142.9333,1390.756;Inherit;False;Property;_ShadowTextureIntensity;ShadowTextureIntensity;6;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;40;345.8647,1233.787;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;38;141.103,1248.726;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;54;217.4257,1096.084;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0
@@ -1825,9 +1832,12 @@ Node;AmplifyShaderEditor.TFHCCompareWithRange;36;1179.36,320.8874;Inherit;False;
 Node;AmplifyShaderEditor.LerpOp;15;817.6987,183.3155;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;41;948.2789,614.0825;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.RangedFloatNode;35;-577.1163,1065.573;Inherit;False;Property;_ShadowThresholdUpper;ShadowThresholdUpper;4;0;Create;True;0;0;0;False;0;False;1;0;0;1;0;1;FLOAT;0
-Node;AmplifyShaderEditor.ColorNode;109;-21.49595,-55.34637;Inherit;False;Property;_Tint;Tint;7;0;Create;True;0;0;0;False;0;False;1,1,1,0;1,1,1,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ColorNode;109;-21.49595,-55.34637;Inherit;False;Property;_Tint;Tint;9;0;Create;True;0;0;0;False;0;False;1,1,1,0;1,1,1,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.LerpOp;108;237.1591,-176.5934;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.ColorNode;110;-25.87723,-270.9163;Inherit;False;Property;_Tint2;Tint2;8;0;Create;True;0;0;0;False;0;False;1,1,1,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ColorNode;110;-25.87723,-270.9163;Inherit;False;Property;_Tint2;Tint2;10;0;Create;True;0;0;0;False;0;False;1,1,1,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;114;114.7335,227.3641;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0
+Node;AmplifyShaderEditor.RangedFloatNode;112;151.7762,368.8047;Inherit;False;Property;_LightIntensity;LightIntensity;7;0;Create;True;0;0;0;False;0;False;0.56;0.56;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;113;424.415,470.7782;Inherit;False;Property;_LightBlend;LightBlend;5;0;Create;True;0;0;0;False;0;False;0.54;0;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;324.7728,-19.59894;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ExtraPrePass;0;0;ExtraPrePass;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;0;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;2;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=ShadowCaster;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;3;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;False;False;True;1;LightMode=DepthOnly;False;False;0;;0;0;Standard;0;False;0
@@ -1858,12 +1868,14 @@ WireConnection;36;3;41;0
 WireConnection;36;4;15;0
 WireConnection;15;0;12;0
 WireConnection;15;1;108;0
-WireConnection;15;2;10;0
+WireConnection;15;2;114;0
 WireConnection;41;0;15;0
 WireConnection;41;1;40;0
 WireConnection;108;0;110;0
 WireConnection;108;1;109;0
 WireConnection;108;2;13;0
+WireConnection;114;0;10;0
+WireConnection;114;1;112;0
 WireConnection;1;2;36;0
 ASEEND*/
-//CHKSM=C10CE7CF52035059D374949AF8D6EC9964324721
+//CHKSM=57811E33E2B702BE9E12764C0D70C32000869043
