@@ -136,7 +136,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
-    - _Strength: 0.2
+    - _Strength: 0.1
     - _Surface: 0
     - _TessEdgeLength: 16
     - _TessMax: 25
