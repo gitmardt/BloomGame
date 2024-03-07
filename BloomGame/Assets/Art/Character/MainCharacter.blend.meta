@@ -32,6 +32,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: FireOrb
+    second: {fileID: 2100000, guid: 0694125171e4c4f4bbdcb2cb73210279, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Gun
     second: {fileID: 2100000, guid: 19984066d1024ae45ba804080a72ec03, type: 2}
   - first:
