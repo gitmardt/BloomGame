@@ -56,9 +56,12 @@ public class LevelGeneration : MonoBehaviour
         {
             int random = Random.Range(0, environmentPrefabs.Count);
             GameObject prefabToPlace = environmentPrefabs[random].prefab;
-            GameObject instancedPrefab = Instantiate(prefabToPlace, grid.randomlyPickedPoints[i], 
-                Quaternion.Euler(environmentPrefabs[random].randomRotations[Random.Range(0, environmentPrefabs[random].randomRotations.Length)]),
-                environmentFolder.transform);
+
+            Quaternion randomRotation;
+            if (!environmentPrefabs[random].allRotations) randomRotation = Quaternion.Euler(environmentPrefabs[random].randomRotations[Random.Range(0, environmentPrefabs[random].randomRotations.Length)]);
+            else randomRotation = Quaternion.Euler(0, Random.Range(0, 360),0);
+
+            GameObject instancedPrefab = Instantiate(prefabToPlace, grid.randomlyPickedPoints[i], randomRotation, environmentFolder.transform);
             instancedPrefab.name = "RandomlyPlacedObject" + i;
             scatteredObjects.Add(instancedPrefab);
         }

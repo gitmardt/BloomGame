@@ -59,6 +59,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NoiseTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -68,6 +72,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _rocks_floor:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -116,9 +124,10 @@ Material:
     - _GlossyReflections: 1
     - _GradientBlend: 0
     - _LightBlend: 0.754
-    - _LightIntensity: 0.04
+    - _LightIntensity: 0.057
     - _Metallic: 0
     - _Mode: 0
+    - _NoiseIntensity: 1.2
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _QueueControl: 0
@@ -128,6 +137,7 @@ Material:
     - _RandomGrayscaleTextureOrWorldspace: 0
     - _ReceiveShadows: 1
     - _RimIntensity: 0.005
+    - _RockBlend: 0.5
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -147,11 +157,12 @@ Material:
     - _Color: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
     - _CurvatureColor: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+    - _NoiseSpeed: {r: 1, g: 1, b: 0, a: 0}
     - _RGColor1: {r: 0.1520559, g: 0.6320754, b: 0.2457457, a: 0}
     - _RGColor2: {r: 0.8962264, g: 0.1564169, b: 0.1564169, a: 0}
     - _RGColor3: {r: 0.8207547, g: 0.8166445, b: 0.2361605, a: 0}
     - _RGColor4: {r: 0.120016, g: 0.7209349, b: 0.8207547, a: 0}
-    - _ShadowColor: {r: 0.12077188, g: 0, b: 0.2264151, a: 0}
+    - _ShadowColor: {r: 0.1916071, g: 0, b: 0.3584906, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &4906370206814660653

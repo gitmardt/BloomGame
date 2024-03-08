@@ -58,5 +58,5 @@ Material:
     - _Color: {r: 1.1010393, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _NoiseTiling: {r: 1, g: 1, b: 0, a: 0}
-    - _ShadowColor: {r: 0.12077188, g: 0, b: 0.2264151, a: 0}
+    - _ShadowColor: {r: 0.1916071, g: 0, b: 0.3584906, a: 0}
   m_BuildTextureStacks: []

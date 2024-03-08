@@ -124,6 +124,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _LightIntensity: 0.56
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -147,7 +148,7 @@ Material:
     - _BaseColor: {r: 0.8000157, g: 0.01576118, b: 0.027599484, a: 1}
     - _Color: {r: 0.8000157, g: 0.01576118, b: 0.027599484, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
-    - _ShadowColor: {r: 0.12077188, g: 0, b: 0.2264151, a: 0}
+    - _ShadowColor: {r: 0.1916071, g: 0, b: 0.3584906, a: 0}
     - _ShadowTextureTint: {r: 0.091496885, g: 0, b: 0.3018868, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _Tint: {r: 0.87180287, g: 0.6839622, b: 1, a: 0}

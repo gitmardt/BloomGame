@@ -8,4 +8,5 @@ public class GenerationPrefab : ScriptableObject
 {
     public GameObject prefab;
     public Vector3[] randomRotations;
+    public bool allRotations;
 }
