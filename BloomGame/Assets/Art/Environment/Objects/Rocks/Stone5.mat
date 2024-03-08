@@ -115,7 +115,7 @@ Material:
     - _AlphaClip: 0
     - _AlphaCutoff: 0.5
     - _AlphaToMask: 0
-    - _BaseColorBlend: 0.493
+    - _BaseColorBlend: 0.95
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -162,7 +162,7 @@ Material:
     - _WorkflowMode: 1
     - _WorldSpaceGradientMax: 0.808
     - _WorldSpaceGradientMaxRG: 1
-    - _WorldSpaceGradientMin: 0.726
+    - _WorldSpaceGradientMin: 0.56
     - _WorldSpaceGradientMinRG: 0.9
     - _ZWrite: 1
     m_Colors:

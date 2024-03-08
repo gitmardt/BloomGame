@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
+using Cinemachine.Utility;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
@@ -72,8 +73,8 @@ public class Player : MonoBehaviour
     private bool aiming;
 
     //Debug
-    public Transform debugSphere;
-    public Vector3 lookDirection, mousePosition;
+    //public Transform debugSphere;
+    //public Vector3 lookDirection, mousePosition;
 
     private void Awake()
     {
@@ -158,17 +159,14 @@ public class Player : MonoBehaviour
         groundPlane.SetNormalAndPosition(Vector3.up, new Vector3(0, transform.position.y, 0));
         Ray ray = Camera.main.ScreenPointToRay(controls.Combat.Look.ReadValue<Vector2>());
 
-        Debug.DrawRay(ray.origin, ray.direction * 100, Color.yellow); 
+        //Debug.DrawRay(ray.origin, ray.direction * 100, Color.yellow); 
 
         if (groundPlane.Raycast(ray, out float rayDistance))
         {
             Vector3 point = ray.GetPoint(rayDistance);
 
-            point.y = transform.position.y; 
-
-            //debugSphere.position = point; 
-
-            aimDirection = point - barrel.position; 
+            aimDirection = point - transform.position;
+            aimDirection.y = 0; 
         }
     }
 
@@ -197,10 +195,10 @@ public class Player : MonoBehaviour
                 moveDirection = Vector3.zero;
             }
 
-
             if (aimDirection.magnitude > minimumAimDistance) 
             {
-                Quaternion lookRotation = Quaternion.LookRotation(aimDirection);
+                Quaternion lookRotation = Quaternion.LookRotation(aimDirection.normalized);
+                //Debug.Log(transform.rotation + " " + lookRotation.eulerAngles);
                 transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * aimSensitivity); 
             }
 
@@ -309,8 +307,9 @@ public class Player : MonoBehaviour
             spawnPosition = barrel.position;
         }
 
-
-        GameObject projectile = Instantiate(this.projectile, spawnPosition, Quaternion.LookRotation(aimDirection), projectileParent);
+        Vector3 newAim = aimDirection - barrel.localPosition;
+        newAim.y = 0;
+        GameObject projectile = Instantiate(this.projectile, spawnPosition, Quaternion.LookRotation(newAim.normalized), projectileParent);
         ParticleProjectile pp = projectile.GetComponent<ParticleProjectile>();
         pp.speed = projectileSpeed;
         pp.spread = projectileSpread;

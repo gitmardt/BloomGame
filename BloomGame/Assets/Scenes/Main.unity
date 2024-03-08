@@ -2125,6 +2125,38 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5614212884629125163, guid: b08cfbe7b512e4c488caa0c75b4a7526, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.21
+      objectReference: {fileID: 0}
+    - target: {fileID: -5614212884629125163, guid: b08cfbe7b512e4c488caa0c75b4a7526, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5614212884629125163, guid: b08cfbe7b512e4c488caa0c75b4a7526, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70580244
+      objectReference: {fileID: 0}
+    - target: {fileID: -5614212884629125163, guid: b08cfbe7b512e4c488caa0c75b4a7526, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.70580244
+      objectReference: {fileID: 0}
+    - target: {fileID: -5614212884629125163, guid: b08cfbe7b512e4c488caa0c75b4a7526, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.042929497
+      objectReference: {fileID: 0}
+    - target: {fileID: -5614212884629125163, guid: b08cfbe7b512e4c488caa0c75b4a7526, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.0429295
+      objectReference: {fileID: 0}
+    - target: {fileID: -5614212884629125163, guid: b08cfbe7b512e4c488caa0c75b4a7526, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -5614212884629125163, guid: b08cfbe7b512e4c488caa0c75b4a7526, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 6.961
+      objectReference: {fileID: 0}
     - target: {fileID: -5568371526223589888, guid: b08cfbe7b512e4c488caa0c75b4a7526, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2152,6 +2184,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b08cfbe7b512e4c488caa0c75b4a7526, type: 3}
       propertyPath: m_Name
       value: MainCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b08cfbe7b512e4c488caa0c75b4a7526, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1911825272030050744, guid: b08cfbe7b512e4c488caa0c75b4a7526, type: 3}
       propertyPath: m_IsActive
@@ -3650,13 +3686,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518517408}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.12930329, w: 0.9916051}
   m_LocalPosition: {x: -0.489, y: -1.928, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1670603628}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -14.859}
 --- !u!114 &518517410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9641,7 +9677,7 @@ MonoBehaviour:
   aimTarget: {fileID: 830306287}
   aimTargetClose: {fileID: 1212517483}
   aimSensitivity: 15
-  minimumDistanceBeforeAiming: 0.3
+  minimumAimDistance: 0.3
   speed: 8
   sprintMultiplier: 1.5
   turnSmoothTime: 0.2
@@ -9658,9 +9694,6 @@ MonoBehaviour:
   groundDrag: 2
   airDrag: 0
   aimDirection: {x: 0, y: 0, z: 0}
-  debugSphere: {fileID: 0}
-  lookDirection: {x: 0, y: 0, z: 0}
-  mousePosition: {x: 0, y: 0, z: 0}
 --- !u!54 &1190501862
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10922,8 +10955,8 @@ MonoBehaviour:
   preset: {fileID: 11400000, guid: 934276265d3666d43ad798fa9b224c36, type: 2}
   positionShake:
   - noiseType: 0
-    amplitude: {x: 0.05, y: 0.1, z: 0.05}
-    frequency: {x: 0.3, y: 0.6, z: 0.7}
+    amplitude: {x: 0.05, y: 0.3, z: 0.05}
+    frequency: {x: 0.3, y: 0.4, z: 0.5}
     offset: {x: 0, y: 0, z: 0}
     phase: {x: 0, y: 0, z: 0}
     randomizePhase: 0

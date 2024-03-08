@@ -134,7 +134,7 @@ Material:
     - _ReceiveShadows: 1
     - _ShadowTextureIntensity: 1
     - _ShadowThreshold: 0
-    - _ShadowThresholdUpper: 0.835
+    - _ShadowThresholdUpper: 0.72
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
