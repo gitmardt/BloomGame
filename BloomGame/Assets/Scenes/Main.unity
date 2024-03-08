@@ -21969,8 +21969,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   propertyType: 0
-  property: _TransparencyIntensity
-  Float: 0.85
+  property: _RimIntensity
+  Float: 0.2
   Vector: {x: 0, y: 0, z: 0}
   textureProperty: {fileID: 0}
   shader:
@@ -23805,9 +23805,9 @@ Canvas:
   m_GameObject: {fileID: 743205309}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_RenderMode: 1
+  m_Camera: {fileID: 963194227}
+  m_PlaneDistance: 1.75
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0

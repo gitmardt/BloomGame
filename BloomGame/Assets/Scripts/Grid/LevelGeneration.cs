@@ -75,7 +75,7 @@ public class LevelGeneration : MonoBehaviour
 
             GameObject instancedPrefab = Instantiate(prefabToPlace, grid.randomlyPickedPoints[i], randomRotation, environmentFolder.transform);
 
-            if (environmentPrefabs[random].randomScale) instancedPrefab.transform.localScale *= Random.Range( 1 - environmentPrefabs[random].scaleModifier, 1 + environmentPrefabs[random].scaleModifier);
+            if (environmentPrefabs[random].randomScale) instancedPrefab.transform.localScale *= Random.Range( 1 + environmentPrefabs[random].scaleModifierMin, 1 + environmentPrefabs[random].scaleModifierMax);
 
             instancedPrefab.name = "RandomlyPlacedObject" + environmentPrefabs[random].prefab.name + "_" + i;
             scatteredObjects.Add(instancedPrefab);

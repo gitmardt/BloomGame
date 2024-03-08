@@ -19,6 +19,7 @@ MonoBehaviour:
   - {x: 0, y: 180, z: 0}
   - {x: 0, y: 270, z: 0}
   allRotations: 1
-  randomScale: 0
-  scaleModifier: 0.2
-  percentChange: 0.1
+  randomScale: 1
+  scaleModifierMin: -0.2
+  scaleModifierMax: 0.2
+  percentChange: 0.796

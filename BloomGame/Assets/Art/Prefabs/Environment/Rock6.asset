@@ -21,4 +21,4 @@ MonoBehaviour:
   allRotations: 1
   randomScale: 0
   scaleModifier: 0.2
-  percentChange: 0.1
+  percentChange: 1

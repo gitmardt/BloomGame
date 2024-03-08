@@ -10,6 +10,7 @@ public class GenerationPrefab : ScriptableObject
     public Vector3[] randomRotations;
     public bool allRotations;
     public bool randomScale = true;
-    public float scaleModifier = 0.2f;
+    public float scaleModifierMin = -0.2f;
+    public float scaleModifierMax = 0.2f;
     [Range(0,1)] public float percentChange = 0.1f;
 }
