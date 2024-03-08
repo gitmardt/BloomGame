@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.AI.Navigation;
 using UnityEngine;
 
@@ -5,6 +6,7 @@ public class CombatManager : MonoBehaviour
 {
     public LevelGeneration generator;
     public NavMeshSurface navMeshSurface;
+    public float waveStartDelay = 1f;
 
     private void Awake()
     {
@@ -24,6 +26,12 @@ public class CombatManager : MonoBehaviour
         generator.ClearGrid();
         generator.GenerateLevel();
         navMeshSurface.BuildNavMesh();
+        StartCoroutine(WaveDelay());
+    }
+
+    IEnumerator WaveDelay()
+    {
+        yield return new WaitForSeconds(waveStartDelay);
         WaveManager.instance.StartWave(0);
     }
 }
