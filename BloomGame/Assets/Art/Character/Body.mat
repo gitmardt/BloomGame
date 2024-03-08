@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Body
-  m_Shader: {fileID: 4800000, guid: fa82d0beebf404647a6104296cb238b4, type: 3}
+  m_Shader: {fileID: 4800000, guid: 7e84f9c3cb22e354993ccfc8603d0f42, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -131,6 +131,7 @@ Material:
     - _CurvatureRemapMax: 1
     - _CurvatureRemapMin: 0.309
     - _Cutoff: 0.5
+    - _DepthFade: 0
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -144,7 +145,7 @@ Material:
     - _LightIntensity: 0.05
     - _Metallic: 0
     - _Mode: 0
-    - _NoiseIntensity: 1.2
+    - _NoiseIntensity: 5.33
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _QueueControl: 0
@@ -153,8 +154,8 @@ Material:
     - _RGRemapMin: 0
     - _RandomGrayscaleTextureOrWorldspace: 0
     - _ReceiveShadows: 1
-    - _RimIntensity: 0.004
-    - _RockBlend: 0.5
+    - _RimIntensity: 0.082
+    - _RockBlend: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -168,6 +169,7 @@ Material:
     - _TessMin: 10
     - _TessPhongStrength: 0.5
     - _TessValue: 16
+    - _TransparencyMinimum: 0.5
     - _UVSec: 0
     - _UseRandomFromGrayscale: 0
     - _WorkflowMode: 1
@@ -178,9 +180,11 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
+    - _CameraDepthFade: {r: 1, g: 0, b: 0, a: 0}
     - _Color: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
     - _CurvatureColor: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+    - _LightRemap: {r: 0, g: 1, b: 0, a: 0}
     - _NoiseSpeed: {r: 1, g: 1, b: 0, a: 0}
     - _RGColor1: {r: 0.1520559, g: 0.6320754, b: 0.2457457, a: 0}
     - _RGColor2: {r: 0.8962264, g: 0.1564169, b: 0.1564169, a: 0}

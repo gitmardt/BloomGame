@@ -1,6 +1,6 @@
 // Made with Amplify Shader Editor v1.9.3.2
 // Available at the Unity Asset Store - http://u3d.as/y3X 
-Shader "CAORG"
+Shader "CAORG_Env"
 {
 	Properties
 	{
@@ -39,6 +39,10 @@ Shader "CAORG"
 		_NoiseIntensity("NoiseIntensity", Float) = 1
 		_NoiseSpeed("NoiseSpeed", Vector) = (1,1,0,0)
 		_LightRemap("LightRemap", Vector) = (0,1,0,0)
+		_TransparencyMinimum("TransparencyMinimum", Float) = 0.5
+		_CameraDepthFade("CameraDepthFade", Vector) = (1,0,0,0)
+		[Toggle]_DepthFade("DepthFade", Float) = 1
+		_TransparencyIntensity("TransparencyIntensity", Float) = 2
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 
 
@@ -255,6 +259,7 @@ Shader "CAORG"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
             #endif
 
+			#define ASE_NEEDS_VERT_POSITION
 			#define ASE_NEEDS_FRAG_WORLD_POSITION
 			#pragma multi_compile _ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
 			#pragma multi_compile_fragment _ _ADDITIONAL_LIGHT_SHADOWS
@@ -288,28 +293,30 @@ Shader "CAORG"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _ShadowColor;
-			float4 _RGColor1;
-			float4 _rocks_floor_ST;
-			float4 _CurvatureColor;
-			float4 _RGColor4;
 			float4 _RGColor2;
+			float4 _rocks_floor_ST;
+			float4 _RGColor4;
+			float4 _ShadowColor;
 			float4 _RGColor3;
 			float4 _BaseColor;
+			float4 _CurvatureColor;
+			float4 _RGColor1;
 			float4 _COARG_ST;
+			float2 _CameraDepthFade;
 			float2 _LightRemap;
 			float2 _NoiseSpeed;
-			float _CurvatureRemapMin;
-			float _CurvatureColorBlend;
 			float _CurvatureRemapMax;
 			float _CurvatureIntensity;
+			float _NoiseIntensity;
 			float _RockBlend;
 			float _AORemapMax;
-			float _NoiseIntensity;
 			float _AORemapMin;
-			float _WorldSpaceGradientMaxRG;
-			float _GradientBlend;
+			float _BaseColorBlend;
+			float _CurvatureRemapMin;
+			float _CurvatureColorBlend;
 			float _WorldSpaceGradientMinRG;
+			float _WorldSpaceGradientMaxRG;
+			float _RimIntensity;
 			float _WorldSpaceGradientMax;
 			float _WorldSpaceGradientMin;
 			float _RandomGrayscaleTextureOrWorldspace;
@@ -318,8 +325,10 @@ Shader "CAORG"
 			float _LightBlend;
 			float _LightIntensity;
 			float _UseRandomFromGrayscale;
-			float _BaseColorBlend;
-			float _RimIntensity;
+			float _DepthFade;
+			float _TransparencyMinimum;
+			float _GradientBlend;
+			float _TransparencyIntensity;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -380,14 +389,17 @@ Shader "CAORG"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
+				float3 customSurfaceDepth152 = v.positionOS.xyz;
+				float customEye152 = -TransformWorldToView(TransformObjectToWorld(customSurfaceDepth152)).z;
+				o.ase_texcoord3.x = customEye152;
 				float4 ase_clipPos = TransformObjectToHClip((v.positionOS).xyz);
 				float4 screenPos = ComputeScreenPos(ase_clipPos);
-				o.ase_texcoord3 = screenPos;
+				o.ase_texcoord4 = screenPos;
 				
-				o.ase_texcoord4.xy = v.ase_texcoord.xy;
+				o.ase_texcoord3.yz = v.ase_texcoord.xy;
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
-				o.ase_texcoord4.zw = 0;
+				o.ase_texcoord3.w = 0;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = v.positionOS.xyz;
@@ -531,9 +543,11 @@ Shader "CAORG"
 					#endif
 				#endif
 
+				float customEye152 = IN.ase_texcoord3.x;
+				float cameraDepthFade152 = (( customEye152 -_ProjectionParams.y - _CameraDepthFade.y ) / _CameraDepthFade.x);
 				float3 worldPosValue184_g1 = WorldPosition;
 				float3 WorldPosition123_g1 = worldPosValue184_g1;
-				float4 screenPos = IN.ase_texcoord3;
+				float4 screenPos = IN.ase_texcoord4;
 				float4 ase_screenPosNorm = screenPos / screenPos.w;
 				ase_screenPosNorm.z = ( UNITY_NEAR_CLIP_VALUE >= 0 ) ? ase_screenPosNorm.z : ase_screenPosNorm.z * 0.5 + 0.5;
 				float2 ScreenUV183_g1 = (ase_screenPosNorm).xy;
@@ -544,7 +558,7 @@ Shader "CAORG"
 				float3 temp_cast_1 = (_LightRemap.y).xxx;
 				float3 temp_output_54_0 = ( (temp_cast_0 + (temp_output_19_0 - float3( 0,0,0 )) * (temp_cast_1 - temp_cast_0) / (float3( 1,1,1 ) - float3( 0,0,0 ))) * _LightIntensity );
 				float4 lerpResult52 = lerp( _BaseColor , float4( temp_output_54_0 , 0.0 ) , _LightBlend);
-				float2 uv_COARG = IN.ase_texcoord4.xy * _COARG_ST.xy + _COARG_ST.zw;
+				float2 uv_COARG = IN.ase_texcoord3.yz * _COARG_ST.xy + _COARG_ST.zw;
 				float4 tex2DNode111 = tex2D( _COARG, uv_COARG );
 				float temp_output_121_0 = (0.0 + (tex2DNode111.b - _RGRemapMin) * (1.0 - 0.0) / (_RGRemapMax - _RGRemapMin));
 				float temp_output_12_0 = (_WorldSpaceGradientMin + (WorldPosition.y - 0.0) * (_WorldSpaceGradientMax - _WorldSpaceGradientMin) / (1.0 - 0.0));
@@ -553,21 +567,41 @@ Shader "CAORG"
 				float4 lerpResult48 = lerp( _BaseColor , (( temp_output_121_0 >= 0.0 && temp_output_121_0 <= 0.5 ) ? lerpResult84 :  lerpResult85 ) , _GradientBlend);
 				float4 lerpResult63 = lerp( (( _UseRandomFromGrayscale )?( lerpResult48 ):( lerpResult52 )) , _ShadowColor , _BaseColorBlend);
 				float4 color134 = IsGammaSpace() ? float4(1,1,1,0) : float4(1,1,1,0);
-				float2 uv_rocks_floor = IN.ase_texcoord4.xy * _rocks_floor_ST.xy + _rocks_floor_ST.zw;
+				float2 uv_rocks_floor = IN.ase_texcoord3.yz * _rocks_floor_ST.xy + _rocks_floor_ST.zw;
 				float lerpResult133 = lerp( color134.r , tex2D( _rocks_floor, uv_rocks_floor ).r , _RockBlend);
 				float4 lerpResult16 = lerp( _ShadowColor , lerpResult63 , ( ( (0.0 + (( 1.0 - tex2DNode111.r ) - _AORemapMin) * (1.0 - 0.0) / (_AORemapMax - _AORemapMin)) * lerpResult133 ) * temp_output_12_0 ));
 				float4 lerpResult37 = lerp( lerpResult16 , _CurvatureColor , _CurvatureColorBlend);
 				float temp_output_126_0 = (0.0 + (tex2DNode111.g - _CurvatureRemapMin) * (1.0 - 0.0) / (_CurvatureRemapMax - _CurvatureRemapMin));
-				float2 texCoord140 = IN.ase_texcoord4.xy * float2( 1,1 ) + ( _TimeParameters.x * _NoiseSpeed );
+				float2 texCoord140 = IN.ase_texcoord3.yz * float2( 1,1 ) + ( _TimeParameters.x * _NoiseSpeed );
 				float4 temp_output_142_0 = ( _NoiseIntensity * tex2D( _NoiseTexture, texCoord140 ) );
 				float4 temp_output_33_0 = ( lerpResult16 + ( ( ( lerpResult37 * ( temp_output_126_0 * _CurvatureIntensity ) ) * (0.0 + (temp_output_12_0 - 0.0) * (_CurvatureIntensity - 0.0) / (1.0 - 0.0)) ) * temp_output_142_0 ) );
 				float3 temp_cast_3 = (_LightRemap.x).xxx;
 				float3 temp_cast_4 = (_LightRemap.y).xxx;
+				float4 temp_output_149_0 = ( temp_output_33_0 + ( float4( ( ( temp_output_126_0 * temp_output_54_0 ) * _RimIntensity ) , 0.0 ) * temp_output_142_0 ) );
+				float3 temp_cast_6 = (_LightRemap.x).xxx;
+				float3 temp_cast_7 = (_LightRemap.y).xxx;
+				float clampResult159 = clamp( cameraDepthFade152 , 0.0 , 1.0 );
+				float4 lerpResult158 = lerp( temp_output_149_0 , _ShadowColor , ( clampResult159 * temp_output_142_0 ));
+				float3 temp_cast_9 = (_LightRemap.x).xxx;
+				float3 temp_cast_10 = (_LightRemap.y).xxx;
+				float4 temp_output_168_0 = ( _TransparencyIntensity * _ShadowColor );
+				float4 lerpResult171 = lerp( temp_output_168_0 , ( temp_output_168_0 + tex2DNode111.r ) , 0.0);
+				float4 ifLocalVar167 = 0;
+				if( cameraDepthFade152 >= _TransparencyMinimum )
+				ifLocalVar167 = (( _DepthFade )?( lerpResult158 ):( temp_output_149_0 ));
+				else
+				ifLocalVar167 = lerpResult171;
+				
+				float ifLocalVar153 = 0;
+				if( cameraDepthFade152 >= _TransparencyMinimum )
+				ifLocalVar153 = 1.0;
+				else
+				ifLocalVar153 = 0.3;
 				
 				float3 BakedAlbedo = 0;
 				float3 BakedEmission = 0;
-				float3 Color = ( temp_output_33_0 + ( float4( ( ( temp_output_126_0 * temp_output_54_0 ) * _RimIntensity ) , 0.0 ) * temp_output_142_0 ) ).rgb;
-				float Alpha = 1;
+				float3 Color = ifLocalVar167.rgb;
+				float Alpha = ifLocalVar153;
 				float AlphaClipThreshold = 0.5;
 				float AlphaClipThresholdShadow = 0.5;
 
@@ -645,7 +679,8 @@ Shader "CAORG"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
             #endif
 
-			
+			#define ASE_NEEDS_VERT_POSITION
+
 
 			struct VertexInput
 			{
@@ -664,34 +699,36 @@ Shader "CAORG"
 				#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR) && defined(ASE_NEEDS_FRAG_SHADOWCOORDS)
 					float4 shadowCoord : TEXCOORD1;
 				#endif
-				
+				float4 ase_texcoord2 : TEXCOORD2;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _ShadowColor;
-			float4 _RGColor1;
-			float4 _rocks_floor_ST;
-			float4 _CurvatureColor;
-			float4 _RGColor4;
 			float4 _RGColor2;
+			float4 _rocks_floor_ST;
+			float4 _RGColor4;
+			float4 _ShadowColor;
 			float4 _RGColor3;
 			float4 _BaseColor;
+			float4 _CurvatureColor;
+			float4 _RGColor1;
 			float4 _COARG_ST;
+			float2 _CameraDepthFade;
 			float2 _LightRemap;
 			float2 _NoiseSpeed;
-			float _CurvatureRemapMin;
-			float _CurvatureColorBlend;
 			float _CurvatureRemapMax;
 			float _CurvatureIntensity;
+			float _NoiseIntensity;
 			float _RockBlend;
 			float _AORemapMax;
-			float _NoiseIntensity;
 			float _AORemapMin;
-			float _WorldSpaceGradientMaxRG;
-			float _GradientBlend;
+			float _BaseColorBlend;
+			float _CurvatureRemapMin;
+			float _CurvatureColorBlend;
 			float _WorldSpaceGradientMinRG;
+			float _WorldSpaceGradientMaxRG;
+			float _RimIntensity;
 			float _WorldSpaceGradientMax;
 			float _WorldSpaceGradientMin;
 			float _RandomGrayscaleTextureOrWorldspace;
@@ -700,8 +737,10 @@ Shader "CAORG"
 			float _LightBlend;
 			float _LightIntensity;
 			float _UseRandomFromGrayscale;
-			float _BaseColorBlend;
-			float _RimIntensity;
+			float _DepthFade;
+			float _TransparencyMinimum;
+			float _GradientBlend;
+			float _TransparencyIntensity;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -725,7 +764,13 @@ Shader "CAORG"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( o );
 
+				float3 customSurfaceDepth152 = v.positionOS.xyz;
+				float customEye152 = -TransformWorldToView(TransformObjectToWorld(customSurfaceDepth152)).z;
+				o.ase_texcoord2.x = customEye152;
 				
+				
+				//setting value to unused interpolator channels and avoid initialization warnings
+				o.ase_texcoord2.yzw = 0;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = v.positionOS.xyz;
@@ -875,9 +920,16 @@ Shader "CAORG"
 					#endif
 				#endif
 
+				float customEye152 = IN.ase_texcoord2.x;
+				float cameraDepthFade152 = (( customEye152 -_ProjectionParams.y - _CameraDepthFade.y ) / _CameraDepthFade.x);
+				float ifLocalVar153 = 0;
+				if( cameraDepthFade152 >= _TransparencyMinimum )
+				ifLocalVar153 = 1.0;
+				else
+				ifLocalVar153 = 0.3;
 				
 
-				float Alpha = 1;
+				float Alpha = ifLocalVar153;
 				float AlphaClipThreshold = 0.5;
 				float AlphaClipThresholdShadow = 0.5;
 
@@ -939,7 +991,8 @@ Shader "CAORG"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
             #endif
 
-			
+			#define ASE_NEEDS_VERT_POSITION
+
 
 			struct VertexInput
 			{
@@ -958,34 +1011,36 @@ Shader "CAORG"
 				#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR) && defined(ASE_NEEDS_FRAG_SHADOWCOORDS)
 				float4 shadowCoord : TEXCOORD1;
 				#endif
-				
+				float4 ase_texcoord2 : TEXCOORD2;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _ShadowColor;
-			float4 _RGColor1;
-			float4 _rocks_floor_ST;
-			float4 _CurvatureColor;
-			float4 _RGColor4;
 			float4 _RGColor2;
+			float4 _rocks_floor_ST;
+			float4 _RGColor4;
+			float4 _ShadowColor;
 			float4 _RGColor3;
 			float4 _BaseColor;
+			float4 _CurvatureColor;
+			float4 _RGColor1;
 			float4 _COARG_ST;
+			float2 _CameraDepthFade;
 			float2 _LightRemap;
 			float2 _NoiseSpeed;
-			float _CurvatureRemapMin;
-			float _CurvatureColorBlend;
 			float _CurvatureRemapMax;
 			float _CurvatureIntensity;
+			float _NoiseIntensity;
 			float _RockBlend;
 			float _AORemapMax;
-			float _NoiseIntensity;
 			float _AORemapMin;
-			float _WorldSpaceGradientMaxRG;
-			float _GradientBlend;
+			float _BaseColorBlend;
+			float _CurvatureRemapMin;
+			float _CurvatureColorBlend;
 			float _WorldSpaceGradientMinRG;
+			float _WorldSpaceGradientMaxRG;
+			float _RimIntensity;
 			float _WorldSpaceGradientMax;
 			float _WorldSpaceGradientMin;
 			float _RandomGrayscaleTextureOrWorldspace;
@@ -994,8 +1049,10 @@ Shader "CAORG"
 			float _LightBlend;
 			float _LightIntensity;
 			float _UseRandomFromGrayscale;
-			float _BaseColorBlend;
-			float _RimIntensity;
+			float _DepthFade;
+			float _TransparencyMinimum;
+			float _GradientBlend;
+			float _TransparencyIntensity;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -1016,7 +1073,13 @@ Shader "CAORG"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
+				float3 customSurfaceDepth152 = v.positionOS.xyz;
+				float customEye152 = -TransformWorldToView(TransformObjectToWorld(customSurfaceDepth152)).z;
+				o.ase_texcoord2.x = customEye152;
 				
+				
+				//setting value to unused interpolator channels and avoid initialization warnings
+				o.ase_texcoord2.yzw = 0;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = v.positionOS.xyz;
@@ -1149,9 +1212,16 @@ Shader "CAORG"
 					#endif
 				#endif
 
+				float customEye152 = IN.ase_texcoord2.x;
+				float cameraDepthFade152 = (( customEye152 -_ProjectionParams.y - _CameraDepthFade.y ) / _CameraDepthFade.x);
+				float ifLocalVar153 = 0;
+				if( cameraDepthFade152 >= _TransparencyMinimum )
+				ifLocalVar153 = 1.0;
+				else
+				ifLocalVar153 = 0.3;
 				
 
-				float Alpha = 1;
+				float Alpha = ifLocalVar153;
 				float AlphaClipThreshold = 0.5;
 
 				#ifdef _ALPHATEST_ON
@@ -1207,7 +1277,8 @@ Shader "CAORG"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
-			
+			#define ASE_NEEDS_VERT_POSITION
+
 
 			struct VertexInput
 			{
@@ -1220,34 +1291,36 @@ Shader "CAORG"
 			struct VertexOutput
 			{
 				float4 positionCS : SV_POSITION;
-				
+				float4 ase_texcoord : TEXCOORD0;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _ShadowColor;
-			float4 _RGColor1;
-			float4 _rocks_floor_ST;
-			float4 _CurvatureColor;
-			float4 _RGColor4;
 			float4 _RGColor2;
+			float4 _rocks_floor_ST;
+			float4 _RGColor4;
+			float4 _ShadowColor;
 			float4 _RGColor3;
 			float4 _BaseColor;
+			float4 _CurvatureColor;
+			float4 _RGColor1;
 			float4 _COARG_ST;
+			float2 _CameraDepthFade;
 			float2 _LightRemap;
 			float2 _NoiseSpeed;
-			float _CurvatureRemapMin;
-			float _CurvatureColorBlend;
 			float _CurvatureRemapMax;
 			float _CurvatureIntensity;
+			float _NoiseIntensity;
 			float _RockBlend;
 			float _AORemapMax;
-			float _NoiseIntensity;
 			float _AORemapMin;
-			float _WorldSpaceGradientMaxRG;
-			float _GradientBlend;
+			float _BaseColorBlend;
+			float _CurvatureRemapMin;
+			float _CurvatureColorBlend;
 			float _WorldSpaceGradientMinRG;
+			float _WorldSpaceGradientMaxRG;
+			float _RimIntensity;
 			float _WorldSpaceGradientMax;
 			float _WorldSpaceGradientMin;
 			float _RandomGrayscaleTextureOrWorldspace;
@@ -1256,8 +1329,10 @@ Shader "CAORG"
 			float _LightBlend;
 			float _LightIntensity;
 			float _UseRandomFromGrayscale;
-			float _BaseColorBlend;
-			float _RimIntensity;
+			float _DepthFade;
+			float _TransparencyMinimum;
+			float _GradientBlend;
+			float _TransparencyIntensity;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -1289,7 +1364,13 @@ Shader "CAORG"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
+				float3 customSurfaceDepth152 = v.positionOS.xyz;
+				float customEye152 = -TransformWorldToView(TransformObjectToWorld(customSurfaceDepth152)).z;
+				o.ase_texcoord.x = customEye152;
 				
+				
+				//setting value to unused interpolator channels and avoid initialization warnings
+				o.ase_texcoord.yzw = 0;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = v.positionOS.xyz;
@@ -1397,9 +1478,16 @@ Shader "CAORG"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
+				float customEye152 = IN.ase_texcoord.x;
+				float cameraDepthFade152 = (( customEye152 -_ProjectionParams.y - _CameraDepthFade.y ) / _CameraDepthFade.x);
+				float ifLocalVar153 = 0;
+				if( cameraDepthFade152 >= _TransparencyMinimum )
+				ifLocalVar153 = 1.0;
+				else
+				ifLocalVar153 = 0.3;
 				
 
-				surfaceDescription.Alpha = 1;
+				surfaceDescription.Alpha = ifLocalVar153;
 				surfaceDescription.AlphaClipThreshold = 0.5;
 
 				#if _ALPHATEST_ON
@@ -1461,7 +1549,8 @@ Shader "CAORG"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
             #endif
 
-			
+			#define ASE_NEEDS_VERT_POSITION
+
 
 			struct VertexInput
 			{
@@ -1474,34 +1563,36 @@ Shader "CAORG"
 			struct VertexOutput
 			{
 				float4 positionCS : SV_POSITION;
-				
+				float4 ase_texcoord : TEXCOORD0;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _ShadowColor;
-			float4 _RGColor1;
-			float4 _rocks_floor_ST;
-			float4 _CurvatureColor;
-			float4 _RGColor4;
 			float4 _RGColor2;
+			float4 _rocks_floor_ST;
+			float4 _RGColor4;
+			float4 _ShadowColor;
 			float4 _RGColor3;
 			float4 _BaseColor;
+			float4 _CurvatureColor;
+			float4 _RGColor1;
 			float4 _COARG_ST;
+			float2 _CameraDepthFade;
 			float2 _LightRemap;
 			float2 _NoiseSpeed;
-			float _CurvatureRemapMin;
-			float _CurvatureColorBlend;
 			float _CurvatureRemapMax;
 			float _CurvatureIntensity;
+			float _NoiseIntensity;
 			float _RockBlend;
 			float _AORemapMax;
-			float _NoiseIntensity;
 			float _AORemapMin;
-			float _WorldSpaceGradientMaxRG;
-			float _GradientBlend;
+			float _BaseColorBlend;
+			float _CurvatureRemapMin;
+			float _CurvatureColorBlend;
 			float _WorldSpaceGradientMinRG;
+			float _WorldSpaceGradientMaxRG;
+			float _RimIntensity;
 			float _WorldSpaceGradientMax;
 			float _WorldSpaceGradientMin;
 			float _RandomGrayscaleTextureOrWorldspace;
@@ -1510,8 +1601,10 @@ Shader "CAORG"
 			float _LightBlend;
 			float _LightIntensity;
 			float _UseRandomFromGrayscale;
-			float _BaseColorBlend;
-			float _RimIntensity;
+			float _DepthFade;
+			float _TransparencyMinimum;
+			float _GradientBlend;
+			float _TransparencyIntensity;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -1542,7 +1635,13 @@ Shader "CAORG"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
+				float3 customSurfaceDepth152 = v.positionOS.xyz;
+				float customEye152 = -TransformWorldToView(TransformObjectToWorld(customSurfaceDepth152)).z;
+				o.ase_texcoord.x = customEye152;
 				
+				
+				//setting value to unused interpolator channels and avoid initialization warnings
+				o.ase_texcoord.yzw = 0;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = v.positionOS.xyz;
@@ -1648,9 +1747,16 @@ Shader "CAORG"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
+				float customEye152 = IN.ase_texcoord.x;
+				float cameraDepthFade152 = (( customEye152 -_ProjectionParams.y - _CameraDepthFade.y ) / _CameraDepthFade.x);
+				float ifLocalVar153 = 0;
+				if( cameraDepthFade152 >= _TransparencyMinimum )
+				ifLocalVar153 = 1.0;
+				else
+				ifLocalVar153 = 0.3;
 				
 
-				surfaceDescription.Alpha = 1;
+				surfaceDescription.Alpha = ifLocalVar153;
 				surfaceDescription.AlphaClipThreshold = 0.5;
 
 				#if _ALPHATEST_ON
@@ -1719,7 +1825,8 @@ Shader "CAORG"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
             #endif
 
-			
+			#define ASE_NEEDS_VERT_POSITION
+
 
 			struct VertexInput
 			{
@@ -1733,34 +1840,36 @@ Shader "CAORG"
 			{
 				float4 positionCS : SV_POSITION;
 				float3 normalWS : TEXCOORD0;
-				
+				float4 ase_texcoord1 : TEXCOORD1;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _ShadowColor;
-			float4 _RGColor1;
-			float4 _rocks_floor_ST;
-			float4 _CurvatureColor;
-			float4 _RGColor4;
 			float4 _RGColor2;
+			float4 _rocks_floor_ST;
+			float4 _RGColor4;
+			float4 _ShadowColor;
 			float4 _RGColor3;
 			float4 _BaseColor;
+			float4 _CurvatureColor;
+			float4 _RGColor1;
 			float4 _COARG_ST;
+			float2 _CameraDepthFade;
 			float2 _LightRemap;
 			float2 _NoiseSpeed;
-			float _CurvatureRemapMin;
-			float _CurvatureColorBlend;
 			float _CurvatureRemapMax;
 			float _CurvatureIntensity;
+			float _NoiseIntensity;
 			float _RockBlend;
 			float _AORemapMax;
-			float _NoiseIntensity;
 			float _AORemapMin;
-			float _WorldSpaceGradientMaxRG;
-			float _GradientBlend;
+			float _BaseColorBlend;
+			float _CurvatureRemapMin;
+			float _CurvatureColorBlend;
 			float _WorldSpaceGradientMinRG;
+			float _WorldSpaceGradientMaxRG;
+			float _RimIntensity;
 			float _WorldSpaceGradientMax;
 			float _WorldSpaceGradientMin;
 			float _RandomGrayscaleTextureOrWorldspace;
@@ -1769,8 +1878,10 @@ Shader "CAORG"
 			float _LightBlend;
 			float _LightIntensity;
 			float _UseRandomFromGrayscale;
-			float _BaseColorBlend;
-			float _RimIntensity;
+			float _DepthFade;
+			float _TransparencyMinimum;
+			float _GradientBlend;
+			float _TransparencyIntensity;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -1799,7 +1910,13 @@ Shader "CAORG"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
+				float3 customSurfaceDepth152 = v.positionOS.xyz;
+				float customEye152 = -TransformWorldToView(TransformObjectToWorld(customSurfaceDepth152)).z;
+				o.ase_texcoord1.x = customEye152;
 				
+				
+				//setting value to unused interpolator channels and avoid initialization warnings
+				o.ase_texcoord1.yzw = 0;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = v.positionOS.xyz;
@@ -1914,9 +2031,16 @@ Shader "CAORG"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
+				float customEye152 = IN.ase_texcoord1.x;
+				float cameraDepthFade152 = (( customEye152 -_ProjectionParams.y - _CameraDepthFade.y ) / _CameraDepthFade.x);
+				float ifLocalVar153 = 0;
+				if( cameraDepthFade152 >= _TransparencyMinimum )
+				ifLocalVar153 = 1.0;
+				else
+				ifLocalVar153 = 0.3;
 				
 
-				surfaceDescription.Alpha = 1;
+				surfaceDescription.Alpha = ifLocalVar153;
 				surfaceDescription.AlphaClipThreshold = 0.5;
 
 				#if _ALPHATEST_ON
@@ -1957,10 +2081,16 @@ Shader "CAORG"
 }
 /*ASEBEGIN
 Version=19302
+Node;AmplifyShaderEditor.PosVertexDataNode;157;969.5255,-1046.936;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.Vector2Node;155;880.5314,-894.2026;Inherit;False;Property;_CameraDepthFade;CameraDepthFade;34;0;Create;True;0;0;0;False;0;False;1,0;1,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
 Node;AmplifyShaderEditor.CommentaryNode;61;-3883.951,-273.5331;Inherit;False;1078.587;676.2566;Comment;7;54;20;53;19;108;146;148;Additional Light;1,1,1,1;0;0
 Node;AmplifyShaderEditor.CommentaryNode;60;-2203.553,-2159.564;Inherit;False;2188.003;1320.082;Comment;18;123;122;121;71;70;66;65;100;99;49;95;83;82;98;92;84;85;48;RandomFromGrayscale;1,1,1,1;0;0
 Node;AmplifyShaderEditor.CommentaryNode;59;-2432.454,-236.1162;Inherit;False;1009.579;728.455;;11;1;115;119;116;30;13;14;27;12;11;135;AO & World Space gradient;1,1,1,1;0;0
 Node;AmplifyShaderEditor.CommentaryNode;58;-1111.313,473.1478;Inherit;False;1553.559;874.4055;;16;37;126;125;35;124;40;39;34;101;42;105;106;56;41;143;144;Curvature;0.7347139,0.09491812,0.745283,1;0;0
+Node;AmplifyShaderEditor.CameraDepthFade;152;1159.997,-889.5605;Inherit;False;3;2;FLOAT3;0,0,0;False;0;FLOAT;1;False;1;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;154;1513.456,-945.0544;Inherit;False;Property;_TransparencyMinimum;TransparencyMinimum;33;0;Create;True;0;0;0;False;0;False;0.5;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;165;1539.27,-701.2092;Inherit;False;Constant;_Float0;Float 0;36;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;166;1585.444,-623.799;Inherit;False;Constant;_Float1;Float 1;36;0;Create;True;0;0;0;False;0;False;0.3;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;41;-415.4695,641.7504;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.ColorNode;15;-335.3734,-157.5999;Inherit;False;Property;_ShadowColor;ShadowColor;1;0;Create;True;0;0;0;False;0;False;0,0.04705883,0.04705883,1;0,0.04705883,0.04705883,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.ColorNode;17;-887.4938,-552.128;Inherit;False;Property;_BaseColor;BaseColor;2;0;Create;True;0;0;0;False;0;False;1,1,1,0;1,1,1,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
@@ -1969,11 +2099,9 @@ Node;AmplifyShaderEditor.RangedFloatNode;64;-321.6177,-390.1295;Inherit;False;Pr
 Node;AmplifyShaderEditor.LerpOp;48;-387.6386,-1656.108;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.LerpOp;85;-1109.623,-1456.336;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.LerpOp;84;-1115.134,-1764.965;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
-Node;AmplifyShaderEditor.TFHCCompareWithRange;92;-910.041,-1675.703;Inherit;False;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0.5;False;3;COLOR;0,0,0,0;False;4;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.TFHCRemapNode;98;-892.9872,-1247.204;Inherit;False;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.TFHCRemapNode;82;-1328.694,-1682.298;Inherit;False;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0.5;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.TFHCRemapNode;83;-1360.126,-1258.879;Inherit;False;5;0;FLOAT;0;False;1;FLOAT;0.5;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0
-Node;AmplifyShaderEditor.ToggleSwitchNode;95;-1331.372,-2014.922;Inherit;False;Property;_RandomGrayscaleTextureOrWorldspace;RandomGrayscaleTextureOrWorldspace;24;0;Create;True;0;0;0;False;0;False;0;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;14;-2361.053,275.707;Inherit;False;Property;_WorldSpaceGradientMax;WorldSpaceGradientMax;7;0;Create;True;0;0;0;False;0;False;1;0;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;13;-2354.053,193.7072;Inherit;False;Property;_WorldSpaceGradientMin;WorldSpaceGradientMin;6;0;Create;True;0;0;0;False;0;False;0.9;0;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;49;-690.6689,-1523.26;Inherit;False;Property;_GradientBlend;GradientBlend;23;0;Create;True;0;0;0;False;0;False;0;0.58;0;1;0;1;FLOAT;0
@@ -2034,6 +2162,19 @@ Node;AmplifyShaderEditor.TFHCRemapNode;146;-3511.373,35.51086;Inherit;False;5;0;
 Node;AmplifyShaderEditor.RangedFloatNode;53;-3533.643,-150.1891;Inherit;False;Property;_LightIntensity;LightIntensity;5;0;Create;True;0;0;0;False;0;False;0.56;0.56;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;105;-200.5455,946.2218;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;149;705.1801,-355.1448;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.LerpOp;158;1612.986,-441.6011;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.ClampOpNode;159;990.8895,-649.3125;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;160;1316.933,-552.1458;Inherit;False;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.TFHCCompareWithRange;92;-910.041,-1675.703;Inherit;False;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0.5;False;3;COLOR;0,0,0,0;False;4;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.ToggleSwitchNode;95;-1331.372,-2014.922;Inherit;False;Property;_RandomGrayscaleTextureOrWorldspace;RandomGrayscaleTextureOrWorldspace;24;0;Create;True;0;0;0;False;0;False;0;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.ToggleSwitchNode;162;1537.209,-161.6499;Inherit;False;Property;_DepthFade;DepthFade;35;0;Create;True;0;0;0;False;0;False;1;True;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.ConditionalIfNode;153;1919.522,-778.6835;Inherit;False;False;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.ConditionalIfNode;167;2047.081,-358.5174;Inherit;False;False;5;0;FLOAT;0;False;1;FLOAT;0;False;2;COLOR;0,0,0,0;False;3;COLOR;0,0,0,0;False;4;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.RangedFloatNode;169;1695.321,141.2418;Inherit;False;Property;_TransparencyIntensity;TransparencyIntensity;36;0;Create;True;0;0;0;False;0;False;2;2;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.LerpOp;171;2214.387,-70.96249;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
+Node;AmplifyShaderEditor.SimpleAddOpNode;170;2047.245,62.75156;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;168;1916.312,-84.75204;Inherit;False;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.RangedFloatNode;172;1898.21,235.4655;Inherit;False;Constant;_TransparencyAO;TransparencyAO;37;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;3;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=ShadowCaster;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;4;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;False;False;True;1;LightMode=DepthOnly;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;5;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;Meta;0;4;Meta;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Meta;False;False;0;;0;0;Standard;0;False;0
@@ -2043,7 +2184,10 @@ Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;8;0,0;Float;False;False;-1;
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;9;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthNormals;0;8;DepthNormals;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=DepthNormalsOnly;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;10;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthNormalsOnly;0;9;DepthNormalsOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=DepthNormalsOnly;False;True;9;d3d11;metal;vulkan;xboxone;xboxseries;playstation;ps4;ps5;switch;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;1;-2186.553,57.70703;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ExtraPrePass;0;0;ExtraPrePass;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;0;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;2;1254.257,-265.7387;Float;False;True;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;CAORG;2992e84f91cbeb14eab234972e07ea9d;True;Forward;0;1;Forward;8;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;1;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForwardOnly;False;False;0;;0;0;Standard;21;Surface;0;0;  Blend;0;0;Two Sided;1;0;Forward Only;0;0;Cast Shadows;1;0;  Use Shadow Threshold;0;0;GPU Instancing;1;0;LOD CrossFade;1;0;Built-in Fog;1;0;Meta Pass;0;0;Extra Pre Pass;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Vertex Position,InvertActionOnDeselection;1;0;0;10;False;True;True;True;False;False;True;True;True;False;False;;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;2;2383.287,-244.859;Float;False;True;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;CAORG_Env;2992e84f91cbeb14eab234972e07ea9d;True;Forward;0;1;Forward;8;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;1;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForwardOnly;False;False;0;;0;0;Standard;21;Surface;0;638455299573032619;  Blend;0;0;Two Sided;1;0;Forward Only;0;0;Cast Shadows;1;0;  Use Shadow Threshold;0;0;GPU Instancing;1;0;LOD CrossFade;1;0;Built-in Fog;1;0;Meta Pass;0;0;Extra Pre Pass;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Vertex Position,InvertActionOnDeselection;1;0;0;10;False;True;True;True;False;False;True;True;True;False;False;;False;0
+WireConnection;152;2;157;0
+WireConnection;152;0;155;1
+WireConnection;152;1;155;2
 WireConnection;41;0;37;0
 WireConnection;41;1;35;0
 WireConnection;63;0;44;0
@@ -2058,16 +2202,11 @@ WireConnection;85;2;83;0
 WireConnection;84;0;71;0
 WireConnection;84;1;70;0
 WireConnection;84;2;82;0
-WireConnection;92;0;121;0
-WireConnection;92;3;84;0
-WireConnection;92;4;85;0
 WireConnection;98;0;12;0
 WireConnection;98;3;99;0
 WireConnection;98;4;100;0
 WireConnection;82;0;95;0
 WireConnection;83;0;95;0
-WireConnection;95;0;121;0
-WireConnection;95;1;98;0
 WireConnection;44;0;52;0
 WireConnection;44;1;48;0
 WireConnection;30;0;111;1
@@ -2131,6 +2270,37 @@ WireConnection;105;0;126;0
 WireConnection;105;1;54;0
 WireConnection;149;0;33;0
 WireConnection;149;1;144;0
-WireConnection;2;2;149;0
+WireConnection;158;0;149;0
+WireConnection;158;1;15;0
+WireConnection;158;2;160;0
+WireConnection;159;0;152;0
+WireConnection;160;0;159;0
+WireConnection;160;1;142;0
+WireConnection;92;0;121;0
+WireConnection;92;3;84;0
+WireConnection;92;4;85;0
+WireConnection;95;0;121;0
+WireConnection;95;1;98;0
+WireConnection;162;0;149;0
+WireConnection;162;1;158;0
+WireConnection;153;0;152;0
+WireConnection;153;1;154;0
+WireConnection;153;2;165;0
+WireConnection;153;3;165;0
+WireConnection;153;4;166;0
+WireConnection;167;0;152;0
+WireConnection;167;1;154;0
+WireConnection;167;2;162;0
+WireConnection;167;3;162;0
+WireConnection;167;4;171;0
+WireConnection;171;0;168;0
+WireConnection;171;1;170;0
+WireConnection;171;2;172;0
+WireConnection;170;0;168;0
+WireConnection;170;1;111;1
+WireConnection;168;0;169;0
+WireConnection;168;1;15;0
+WireConnection;2;2;167;0
+WireConnection;2;3;153;0
 ASEEND*/
-//CHKSM=7EE577E3E9F6AE8C5C0426F9FDE7DB81E1F1E021
+//CHKSM=42B8D25F313AA792797F29A375167EA9E27D206D

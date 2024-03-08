@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using VInspector;
 
@@ -52,19 +53,32 @@ public class LevelGeneration : MonoBehaviour
 
         ClearGrid();
 
+
         for (int i = 0; i < grid.randomlyPickedPoints.Count; i++)
         {
             int random = Random.Range(0, environmentPrefabs.Count);
+
+            for (int u = 0; u < environmentPrefabs.Count; u++)
+            {
+                if (environmentPrefabs[u].percentChange > Random.value)
+                {
+                    random = u;
+                }
+            }
+
             GameObject prefabToPlace = environmentPrefabs[random].prefab;
 
             Quaternion randomRotation;
             if (!environmentPrefabs[random].allRotations) randomRotation = Quaternion.Euler(environmentPrefabs[random].randomRotations[Random.Range(0, environmentPrefabs[random].randomRotations.Length)]);
-            else randomRotation = Quaternion.Euler(0, Random.Range(0, 360),0);
+            else randomRotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
+
 
             GameObject instancedPrefab = Instantiate(prefabToPlace, grid.randomlyPickedPoints[i], randomRotation, environmentFolder.transform);
+
+            if (environmentPrefabs[random].randomScale) instancedPrefab.transform.localScale *= Random.Range( 1 - environmentPrefabs[random].scaleModifier, 1 + environmentPrefabs[random].scaleModifier);
+
             instancedPrefab.name = "RandomlyPlacedObject" + environmentPrefabs[random].prefab.name + "_" + i;
             scatteredObjects.Add(instancedPrefab);
         }
-
     }
 }

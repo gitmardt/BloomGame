@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 7e84f9c3cb22e354993ccfc8603d0f42
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _rocks_floor: {fileID: 2800000, guid: 9bd9cc99b0871324fa73a6ca934a1d61, type: 3}
+  - _NoiseTexture: {fileID: 2800000, guid: 115c08dc983958b46a6301ab539d3e98, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

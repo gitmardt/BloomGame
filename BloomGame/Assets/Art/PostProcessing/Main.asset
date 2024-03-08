@@ -72,6 +72,41 @@ MonoBehaviour:
   echoAmount:
     m_OverrideState: 1
     m_Value: 3
+--- !u!114 &-4333525503352236266
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fb22bf29c1cf3040b0a5b750601e988, type: 3}
+  m_Name: PlayerQuantizationSettings
+  m_EditorClassIdentifier: 
+  active: 1
+  maskRenderTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 8400000, guid: b6e52ebddcca6154e942853194666ccb, type: 2}
+    dimension: 1
+  depthTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
+    dimension: 1
+  environmentTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
+    dimension: 1
+  downSampler:
+    m_OverrideState: 1
+    m_Value: 1
+  numberOfColors:
+    m_OverrideState: 1
+    m_Value: 4
+  noiseTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: 115c08dc983958b46a6301ab539d3e98, type: 3}
+    dimension: 1
 --- !u!114 &-1983950267635678015
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -160,6 +195,7 @@ MonoBehaviour:
   - {fileID: 857575276284910433}
   - {fileID: -5522460720872658004}
   - {fileID: -1983950267635678015}
+  - {fileID: -4333525503352236266}
 --- !u!114 &383484505055380267
 MonoBehaviour:
   m_ObjectHideFlags: 3
