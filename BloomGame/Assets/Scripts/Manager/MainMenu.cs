@@ -26,9 +26,6 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         GameManager.instance.UpdateGameState(playState);
-        menuCam.Priority = 0;
-        combatCam.Priority = 1;
-        mainMenuUI.SetActive(false);
     }
 
     public void QuitGame()

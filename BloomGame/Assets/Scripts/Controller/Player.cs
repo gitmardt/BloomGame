@@ -118,11 +118,17 @@ public class Player : MonoBehaviour
 
     private void OnGameStateChanged(GameState state)
     {
-        if (state == GameState.Combat) controls.Enable();
+        if (state == GameState.Combat) StartCoroutine(StartDelay());
         else controls.Disable();
     }
 
-    private void ChangeView(bool aim)
+    IEnumerator StartDelay()
+    {
+        yield return new WaitForSeconds(0.2f);
+        controls.Enable();
+    }
+
+        private void ChangeView(bool aim)
     {
         aiming = aim;
         if (aim)

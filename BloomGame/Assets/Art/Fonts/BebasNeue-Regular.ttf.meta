@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f210b64d6f945014083194f55bdb03c0
+guid: f5fc5b1f506b6e04f858fba75b416d3c
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Cubano
+  - Bebas Neue
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
