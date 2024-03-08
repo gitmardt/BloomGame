@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     //Temp projectiles
     [Header("Projectiles")]
     public GameObject projectile;
+    public bool twoBarrels;
     public Transform barrel, barrel2, projectileParent;
     public float projectileSpeed = 10f;
     public float projectileLifetime = 1f;
@@ -25,15 +26,14 @@ public class Player : MonoBehaviour
     public InputMaster controls;
 
     [Header("Main References")]
-    public CinemachineVirtualCameraBase mainCamera, aimCamera;
-    public CinemachineInputProvider cinemachineInput;
+    public CinemachineVirtualCameraBase mainCamera;
     public Transform cinemachineBrainCamera;
     public Transform aimTarget, aimTargetClose;
     private Rigidbody rb;
 
     [Header("Movement")]
     public float aimSensitivity = 1;
-    public float minimumDistanceBeforeAiming = 0.3f;
+    public float minimumAimDistance = 0.3f;
     public float speed = 6f;
     public float sprintMultiplier = 2f;
     public float turnSmoothTime = 0.1f;
@@ -158,9 +158,7 @@ public class Player : MonoBehaviour
         groundPlane.SetNormalAndPosition(Vector3.up, new Vector3(0, transform.position.y, 0));
         Ray ray = Camera.main.ScreenPointToRay(controls.Combat.Look.ReadValue<Vector2>());
 
-        //Debug.Log(Mouse.current.position.ReadValue() + " < mp ld > " + controls.Combat.Look.ReadValue<Vector2>());
-
-        //Debug.DrawRay(ray.origin, ray.direction * 100, Color.yellow); 
+        Debug.DrawRay(ray.origin, ray.direction * 100, Color.yellow); 
 
         if (groundPlane.Raycast(ray, out float rayDistance))
         {
@@ -200,7 +198,7 @@ public class Player : MonoBehaviour
             }
 
 
-            if (aimDirection.magnitude > minimumDistanceBeforeAiming) // Check to avoid jittering when mouse is too close to the player
+            if (aimDirection.magnitude > minimumAimDistance) 
             {
                 Quaternion lookRotation = Quaternion.LookRotation(aimDirection);
                 transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * aimSensitivity); 
@@ -301,8 +299,16 @@ public class Player : MonoBehaviour
         }
 
         Vector3 spawnPosition;
-        if (shootIndex % 2 == 0) spawnPosition = barrel.position;
-        else spawnPosition = barrel2.position;
+        if (twoBarrels)
+        {
+            if (shootIndex % 2 == 0) spawnPosition = barrel.position;
+            else spawnPosition = barrel2.position;
+        }
+        else 
+        {
+            spawnPosition = barrel.position;
+        }
+
 
         GameObject projectile = Instantiate(this.projectile, spawnPosition, Quaternion.LookRotation(aimDirection), projectileParent);
         ParticleProjectile pp = projectile.GetComponent<ParticleProjectile>();
