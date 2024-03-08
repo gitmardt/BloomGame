@@ -6,11 +6,15 @@ using VInspector;
 
 public class WaveManager : MonoBehaviour
 {
+    public static WaveManager instance;
+
     public SquareGrid grid;
     public GameObject enemyStorage;
     public Wave[] waves;
     public int testIndex = 0;
     public bool onStart = false;
+
+    public void Awake() => instance = this;
 
     public void Start() { if (onStart) StartWave(); }
 

@@ -12,7 +12,7 @@ public class LevelGeneration : MonoBehaviour
     public GameObject environmentFolder;
     public List<GenerationPrefab> environmentPrefabs = new();
 
-    private List<GameObject> scatteredObjects = new();
+    public List<GameObject> scatteredObjects = new();
 
     private SquareGrid GetGrid()
     {
@@ -62,7 +62,7 @@ public class LevelGeneration : MonoBehaviour
             else randomRotation = Quaternion.Euler(0, Random.Range(0, 360),0);
 
             GameObject instancedPrefab = Instantiate(prefabToPlace, grid.randomlyPickedPoints[i], randomRotation, environmentFolder.transform);
-            instancedPrefab.name = "RandomlyPlacedObject" + i;
+            instancedPrefab.name = "RandomlyPlacedObject" + environmentPrefabs[random].prefab.name + "_" + i;
             scatteredObjects.Add(instancedPrefab);
         }
 
