@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c17049f8474168d4ebc48049d7fb66ef, type: 3}
+  m_Name: SmokePrefab
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4779045472929466261, guid: 0be0f7dd421df0844a453db65772a1af, type: 3}
+  randomRotations:
+  - {x: 0, y: 0, z: 0}
+  allRotations: 0
+  randomScale: 1
+  scaleModifierMin: -0.2
+  scaleModifierMax: 1
+  percentChange: 0.5

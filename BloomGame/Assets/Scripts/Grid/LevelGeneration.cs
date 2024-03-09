@@ -12,6 +12,7 @@ public class LevelGeneration : MonoBehaviour
 
     public GameObject environmentFolder;
     public List<GenerationPrefab> environmentPrefabs = new();
+    public List<GenerationPrefab> vfxPrefabs = new();
 
     public List<GameObject> scatteredObjects = new();
 
@@ -79,6 +80,34 @@ public class LevelGeneration : MonoBehaviour
 
             instancedPrefab.name = "RandomlyPlacedObject" + environmentPrefabs[random].prefab.name + "_" + i;
             scatteredObjects.Add(instancedPrefab);
+        }
+
+        for (int i = 0; i < grid.points.Count; i++)
+        {
+            if (!grid.randomlyPickedPoints.Contains(grid.points[i]))
+            {
+                int random = Random.Range(0, vfxPrefabs.Count);
+
+                bool spawn = true;
+
+                for (int u = 0; u < vfxPrefabs.Count; u++)
+                {
+                    if (vfxPrefabs[u].percentChange > Random.value) random = u;
+                    else spawn = false;
+                }
+
+                if (spawn)
+                {
+                    GameObject prefabToPlace = vfxPrefabs[random].prefab;
+                    GameObject instancedPrefab = Instantiate(prefabToPlace, grid.points[i] + prefabToPlace.transform.position, Quaternion.identity, environmentFolder.transform);
+
+                    if (vfxPrefabs[random].randomScale) instancedPrefab.transform.localScale *= Random.Range(1 + vfxPrefabs[random].scaleModifierMin, 1 + vfxPrefabs[random].scaleModifierMax);
+
+                    instancedPrefab.name = "VFX_" + vfxPrefabs[random].prefab.name + "_" + i;
+                    scatteredObjects.Add(instancedPrefab);
+                }
+
+            }
         }
     }
 }
