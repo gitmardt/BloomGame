@@ -467,6 +467,9 @@ MonoBehaviour:
   noiseTiling:
     m_OverrideState: 1
     m_Value: {x: 2, y: 2}
+  maskMultiplier:
+    m_OverrideState: 1
+    m_Value: 1.45
 --- !u!114 &6444631016328238269
 MonoBehaviour:
   m_ObjectHideFlags: 3

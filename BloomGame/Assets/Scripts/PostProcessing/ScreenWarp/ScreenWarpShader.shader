@@ -61,6 +61,7 @@ Shader "PostProcessing/ScreenWarpShader"
             float _Speed;
             float _NoiseScale;
             float2 _Tiling;
+            float _MaskMultiplier;
 
             half4 frag (Varyings input) : SV_Target
             {
@@ -86,7 +87,7 @@ Shader "PostProcessing/ScreenWarpShader"
                         float2 noise = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, noiseTexcoord).xy;
                         float2 noise2 = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, noiseTexcoord2).xy; 
 
-                        float2 noiseValue = noise * noise2;
+                        float2 noiseValue = noise * noise2 * (mask * _MaskMultiplier);
 
                         input.texcoord += (noiseValue * _NoiseScale);
                     }

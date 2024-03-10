@@ -102749,7 +102749,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8293931153996851951, guid: 3c6338c7f73be3e449412acf61903e4f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.26
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8293931153996851951, guid: 3c6338c7f73be3e449412acf61903e4f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -102873,6 +102873,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1777694158}
     m_Modifications:
+    - target: {fileID: 3519599617408848760, guid: a70b0388dc93f8746b337b5b7e6f8a60, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268506291166294543, guid: a70b0388dc93f8746b337b5b7e6f8a60, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807705442313772391, guid: a70b0388dc93f8746b337b5b7e6f8a60, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 6977498461682850705, guid: a70b0388dc93f8746b337b5b7e6f8a60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -102916,6 +102928,10 @@ PrefabInstance:
     - target: {fileID: 8973848208678981798, guid: a70b0388dc93f8746b337b5b7e6f8a60, type: 3}
       propertyPath: m_Name
       value: TwitchEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8973848208678981798, guid: a70b0388dc93f8746b337b5b7e6f8a60, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8973848208678981798, guid: a70b0388dc93f8746b337b5b7e6f8a60, type: 3}
       propertyPath: m_IsActive
