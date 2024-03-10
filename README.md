@@ -3,7 +3,7 @@ Experimental prototype & submission for the Acerola Jam 0
 
 (Game name to be changed)
 
-The following paid assets were used and need to be manually added if you want to open this project in Unity:
+The following paid tools were used and need to be manually added if you want to open this project in Unity:
 
 Paid Assets I made:
 - Smooth Shake Pro: https://prf.hn/l/gxqwDbq
