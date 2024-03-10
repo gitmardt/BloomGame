@@ -15,14 +15,16 @@ Shader "GlowOrb"
 		_FresnelSettings("FresnelSettings", Vector) = (0,1,2.52,0)
 		_BaseColorBlend("BaseColorBlend", Range( 0 , 1)) = 0.5
 		_SineRange("SineRange", Vector) = (0,0.3,0,0)
+		[Toggle]_VertexDisplacement("VertexDisplacement", Float) = 0
+		_Strength("Strength", Float) = 1
 
 
-		//_TessPhongStrength( "Tess Phong Strength", Range( 0, 1 ) ) = 0.5
-		//_TessValue( "Tess Max Tessellation", Range( 1, 32 ) ) = 16
-		//_TessMin( "Tess Min Distance", Float ) = 10
-		//_TessMax( "Tess Max Distance", Float ) = 25
-		//_TessEdgeLength ( "Tess Edge length", Range( 2, 50 ) ) = 16
-		//_TessMaxDisp( "Tess Max Displacement", Float ) = 25
+		_TessPhongStrength( "Phong Tess Strength", Range( 0, 1 ) ) = 0.5
+		_TessValue( "Max Tessellation", Range( 1, 32 ) ) = 16
+		_TessMin( "Tess Min Distance", Float ) = 10
+		_TessMax( "Tess Max Distance", Float ) = 25
+		_TessEdgeLength ( "Edge length", Range( 2, 50 ) ) = 16
+		_TessMaxDisp( "Max Displacement", Float ) = 25
 
 		[HideInInspector] _QueueOffset("_QueueOffset", Float) = 0
         [HideInInspector] _QueueControl("_QueueControl", Float) = -1
@@ -175,11 +177,6 @@ Shader "GlowOrb"
 
 			HLSLPROGRAM
 
-			#pragma multi_compile_instancing
-			#pragma instancing_options renderinglayer
-			#pragma multi_compile _ LOD_FADE_CROSSFADE
-			#pragma multi_compile_fog
-			#define ASE_FOG 1
 			#define ASE_SRP_VERSION 140009
 
 
@@ -230,8 +227,8 @@ Shader "GlowOrb"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
             #endif
 
-			#define ASE_NEEDS_FRAG_WORLD_POSITION
 			#define ASE_NEEDS_VERT_NORMAL
+			#define ASE_NEEDS_FRAG_WORLD_POSITION
 
 
 			struct VertexInput
@@ -266,6 +263,8 @@ Shader "GlowOrb"
 			float2 _Speed;
 			float2 _Speed2;
 			float2 _SineRange;
+			float _VertexDisplacement;
+			float _Strength;
 			float _DistortionAmount;
 			float _BaseColorBlend;
 			#ifdef ASE_TESSELLATION
@@ -278,8 +277,8 @@ Shader "GlowOrb"
 			#endif
 			CBUFFER_END
 
-			sampler2D _Fire;
 			sampler2D _noisev2;
+			sampler2D _Fire;
 
 
 					float2 voronoihash21( float2 p )
@@ -323,6 +322,10 @@ Shader "GlowOrb"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
+				float4 temp_cast_0 = (0.0).xxxx;
+				float2 texCoord16 = v.ase_texcoord.xy * float2( 1,1 ) + ( _Speed * _TimeParameters.x );
+				float4 tex2DNode20 = tex2Dlod( _noisev2, float4( texCoord16, 0, 0.0) );
+				
 				float3 ase_worldNormal = TransformObjectToWorldNormal(v.normalOS);
 				o.ase_texcoord4.xyz = ase_worldNormal;
 				
@@ -338,7 +341,7 @@ Shader "GlowOrb"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = defaultVertexValue;
+				float3 vertexValue = (( _VertexDisplacement )?( ( _Strength * ( tex2DNode20 * float4( v.normalOS , 0.0 ) ) ) ):( temp_cast_0 )).rgb;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.positionOS.xyz = vertexValue;
@@ -548,9 +551,6 @@ Shader "GlowOrb"
 
 			HLSLPROGRAM
 
-			#pragma multi_compile_instancing
-			#pragma multi_compile _ LOD_FADE_CROSSFADE
-			#define ASE_FOG 1
 			#define ASE_SRP_VERSION 140009
 
 
@@ -578,13 +578,14 @@ Shader "GlowOrb"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
             #endif
 
-			
+			#define ASE_NEEDS_VERT_NORMAL
+
 
 			struct VertexInput
 			{
 				float4 positionOS : POSITION;
 				float3 normalOS : NORMAL;
-				
+				float4 ase_texcoord : TEXCOORD0;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -608,6 +609,8 @@ Shader "GlowOrb"
 			float2 _Speed;
 			float2 _Speed2;
 			float2 _SineRange;
+			float _VertexDisplacement;
+			float _Strength;
 			float _DistortionAmount;
 			float _BaseColorBlend;
 			#ifdef ASE_TESSELLATION
@@ -620,7 +623,8 @@ Shader "GlowOrb"
 			#endif
 			CBUFFER_END
 
-			
+			sampler2D _noisev2;
+
 
 			
 			float3 _LightDirection;
@@ -633,6 +637,9 @@ Shader "GlowOrb"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( o );
 
+				float4 temp_cast_0 = (0.0).xxxx;
+				float2 texCoord16 = v.ase_texcoord.xy * float2( 1,1 ) + ( _Speed * _TimeParameters.x );
+				float4 tex2DNode20 = tex2Dlod( _noisev2, float4( texCoord16, 0, 0.0) );
 				
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
@@ -641,7 +648,7 @@ Shader "GlowOrb"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = defaultVertexValue;
+				float3 vertexValue = (( _VertexDisplacement )?( ( _Strength * ( tex2DNode20 * float4( v.normalOS , 0.0 ) ) ) ):( temp_cast_0 )).rgb;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.positionOS.xyz = vertexValue;
@@ -690,7 +697,8 @@ Shader "GlowOrb"
 			{
 				float4 vertex : INTERNALTESSPOS;
 				float3 normalOS : NORMAL;
-				
+				float4 ase_texcoord : TEXCOORD0;
+
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -707,7 +715,7 @@ Shader "GlowOrb"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				o.vertex = v.positionOS;
 				o.normalOS = v.normalOS;
-				
+				o.ase_texcoord = v.ase_texcoord;
 				return o;
 			}
 
@@ -746,7 +754,7 @@ Shader "GlowOrb"
 				VertexInput o = (VertexInput) 0;
 				o.positionOS = patch[0].vertex * bary.x + patch[1].vertex * bary.y + patch[2].vertex * bary.z;
 				o.normalOS = patch[0].normalOS * bary.x + patch[1].normalOS * bary.y + patch[2].normalOS * bary.z;
-				
+				o.ase_texcoord = patch[0].ase_texcoord * bary.x + patch[1].ase_texcoord * bary.y + patch[2].ase_texcoord * bary.z;
 				#if defined(ASE_PHONG_TESSELLATION)
 				float3 pp[3];
 				for (int i = 0; i < 3; ++i)
@@ -821,9 +829,6 @@ Shader "GlowOrb"
 
 			
 
-			#pragma multi_compile_instancing
-			#pragma multi_compile _ LOD_FADE_CROSSFADE
-			#define ASE_FOG 1
 			#define ASE_SRP_VERSION 140009
 
 
@@ -847,13 +852,14 @@ Shader "GlowOrb"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
             #endif
 
-			
+			#define ASE_NEEDS_VERT_NORMAL
+
 
 			struct VertexInput
 			{
 				float4 positionOS : POSITION;
 				float3 normalOS : NORMAL;
-				
+				float4 ase_texcoord : TEXCOORD0;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -877,6 +883,8 @@ Shader "GlowOrb"
 			float2 _Speed;
 			float2 _Speed2;
 			float2 _SineRange;
+			float _VertexDisplacement;
+			float _Strength;
 			float _DistortionAmount;
 			float _BaseColorBlend;
 			#ifdef ASE_TESSELLATION
@@ -889,7 +897,8 @@ Shader "GlowOrb"
 			#endif
 			CBUFFER_END
 
-			
+			sampler2D _noisev2;
+
 
 			
 			VertexOutput VertexFunction( VertexInput v  )
@@ -899,6 +908,9 @@ Shader "GlowOrb"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
+				float4 temp_cast_0 = (0.0).xxxx;
+				float2 texCoord16 = v.ase_texcoord.xy * float2( 1,1 ) + ( _Speed * _TimeParameters.x );
+				float4 tex2DNode20 = tex2Dlod( _noisev2, float4( texCoord16, 0, 0.0) );
 				
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
@@ -907,7 +919,7 @@ Shader "GlowOrb"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = defaultVertexValue;
+				float3 vertexValue = (( _VertexDisplacement )?( ( _Strength * ( tex2DNode20 * float4( v.normalOS , 0.0 ) ) ) ):( temp_cast_0 )).rgb;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.positionOS.xyz = vertexValue;
@@ -939,7 +951,8 @@ Shader "GlowOrb"
 			{
 				float4 vertex : INTERNALTESSPOS;
 				float3 normalOS : NORMAL;
-				
+				float4 ase_texcoord : TEXCOORD0;
+
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -956,7 +969,7 @@ Shader "GlowOrb"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				o.vertex = v.positionOS;
 				o.normalOS = v.normalOS;
-				
+				o.ase_texcoord = v.ase_texcoord;
 				return o;
 			}
 
@@ -995,7 +1008,7 @@ Shader "GlowOrb"
 				VertexInput o = (VertexInput) 0;
 				o.positionOS = patch[0].vertex * bary.x + patch[1].vertex * bary.y + patch[2].vertex * bary.z;
 				o.normalOS = patch[0].normalOS * bary.x + patch[1].normalOS * bary.y + patch[2].normalOS * bary.z;
-				
+				o.ase_texcoord = patch[0].ase_texcoord * bary.x + patch[1].ase_texcoord * bary.y + patch[2].ase_texcoord * bary.z;
 				#if defined(ASE_PHONG_TESSELLATION)
 				float3 pp[3];
 				for (int i = 0; i < 3; ++i)
@@ -1063,7 +1076,6 @@ Shader "GlowOrb"
 
 			
 
-			#define ASE_FOG 1
 			#define ASE_SRP_VERSION 140009
 
 
@@ -1090,13 +1102,14 @@ Shader "GlowOrb"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
-			
+			#define ASE_NEEDS_VERT_NORMAL
+
 
 			struct VertexInput
 			{
 				float4 positionOS : POSITION;
 				float3 normalOS : NORMAL;
-				
+				float4 ase_texcoord : TEXCOORD0;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1114,6 +1127,8 @@ Shader "GlowOrb"
 			float2 _Speed;
 			float2 _Speed2;
 			float2 _SineRange;
+			float _VertexDisplacement;
+			float _Strength;
 			float _DistortionAmount;
 			float _BaseColorBlend;
 			#ifdef ASE_TESSELLATION
@@ -1126,7 +1141,8 @@ Shader "GlowOrb"
 			#endif
 			CBUFFER_END
 
-			
+			sampler2D _noisev2;
+
 
 			
 			int _ObjectId;
@@ -1147,6 +1163,9 @@ Shader "GlowOrb"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
+				float4 temp_cast_0 = (0.0).xxxx;
+				float2 texCoord16 = v.ase_texcoord.xy * float2( 1,1 ) + ( _Speed * _TimeParameters.x );
+				float4 tex2DNode20 = tex2Dlod( _noisev2, float4( texCoord16, 0, 0.0) );
 				
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
@@ -1155,7 +1174,7 @@ Shader "GlowOrb"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = defaultVertexValue;
+				float3 vertexValue = (( _VertexDisplacement )?( ( _Strength * ( tex2DNode20 * float4( v.normalOS , 0.0 ) ) ) ):( temp_cast_0 )).rgb;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.positionOS.xyz = vertexValue;
@@ -1177,7 +1196,8 @@ Shader "GlowOrb"
 			{
 				float4 vertex : INTERNALTESSPOS;
 				float3 normalOS : NORMAL;
-				
+				float4 ase_texcoord : TEXCOORD0;
+
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1194,7 +1214,7 @@ Shader "GlowOrb"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				o.vertex = v.positionOS;
 				o.normalOS = v.normalOS;
-				
+				o.ase_texcoord = v.ase_texcoord;
 				return o;
 			}
 
@@ -1233,7 +1253,7 @@ Shader "GlowOrb"
 				VertexInput o = (VertexInput) 0;
 				o.positionOS = patch[0].vertex * bary.x + patch[1].vertex * bary.y + patch[2].vertex * bary.z;
 				o.normalOS = patch[0].normalOS * bary.x + patch[1].normalOS * bary.y + patch[2].normalOS * bary.z;
-				
+				o.ase_texcoord = patch[0].ase_texcoord * bary.x + patch[1].ase_texcoord * bary.y + patch[2].ase_texcoord * bary.z;
 				#if defined(ASE_PHONG_TESSELLATION)
 				float3 pp[3];
 				for (int i = 0; i < 3; ++i)
@@ -1287,7 +1307,6 @@ Shader "GlowOrb"
 
 			
 
-			#define ASE_FOG 1
 			#define ASE_SRP_VERSION 140009
 
 
@@ -1319,13 +1338,14 @@ Shader "GlowOrb"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
             #endif
 
-			
+			#define ASE_NEEDS_VERT_NORMAL
+
 
 			struct VertexInput
 			{
 				float4 positionOS : POSITION;
 				float3 normalOS : NORMAL;
-				
+				float4 ase_texcoord : TEXCOORD0;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1343,6 +1363,8 @@ Shader "GlowOrb"
 			float2 _Speed;
 			float2 _Speed2;
 			float2 _SineRange;
+			float _VertexDisplacement;
+			float _Strength;
 			float _DistortionAmount;
 			float _BaseColorBlend;
 			#ifdef ASE_TESSELLATION
@@ -1355,7 +1377,8 @@ Shader "GlowOrb"
 			#endif
 			CBUFFER_END
 
-			
+			sampler2D _noisev2;
+
 
 			
 			float4 _SelectionID;
@@ -1375,6 +1398,9 @@ Shader "GlowOrb"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
+				float4 temp_cast_0 = (0.0).xxxx;
+				float2 texCoord16 = v.ase_texcoord.xy * float2( 1,1 ) + ( _Speed * _TimeParameters.x );
+				float4 tex2DNode20 = tex2Dlod( _noisev2, float4( texCoord16, 0, 0.0) );
 				
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
@@ -1383,7 +1409,7 @@ Shader "GlowOrb"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = defaultVertexValue;
+				float3 vertexValue = (( _VertexDisplacement )?( ( _Strength * ( tex2DNode20 * float4( v.normalOS , 0.0 ) ) ) ):( temp_cast_0 )).rgb;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.positionOS.xyz = vertexValue;
@@ -1403,7 +1429,8 @@ Shader "GlowOrb"
 			{
 				float4 vertex : INTERNALTESSPOS;
 				float3 normalOS : NORMAL;
-				
+				float4 ase_texcoord : TEXCOORD0;
+
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1420,7 +1447,7 @@ Shader "GlowOrb"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				o.vertex = v.positionOS;
 				o.normalOS = v.normalOS;
-				
+				o.ase_texcoord = v.ase_texcoord;
 				return o;
 			}
 
@@ -1459,7 +1486,7 @@ Shader "GlowOrb"
 				VertexInput o = (VertexInput) 0;
 				o.positionOS = patch[0].vertex * bary.x + patch[1].vertex * bary.y + patch[2].vertex * bary.z;
 				o.normalOS = patch[0].normalOS * bary.x + patch[1].normalOS * bary.y + patch[2].normalOS * bary.z;
-				
+				o.ase_texcoord = patch[0].ase_texcoord * bary.x + patch[1].ase_texcoord * bary.y + patch[2].ase_texcoord * bary.z;
 				#if defined(ASE_PHONG_TESSELLATION)
 				float3 pp[3];
 				for (int i = 0; i < 3; ++i)
@@ -1515,9 +1542,6 @@ Shader "GlowOrb"
 
 			HLSLPROGRAM
 
-			#pragma multi_compile_instancing
-			#pragma multi_compile _ LOD_FADE_CROSSFADE
-			#define ASE_FOG 1
 			#define ASE_SRP_VERSION 140009
 
 
@@ -1552,13 +1576,14 @@ Shader "GlowOrb"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
             #endif
 
-			
+			#define ASE_NEEDS_VERT_NORMAL
+
 
 			struct VertexInput
 			{
 				float4 positionOS : POSITION;
 				float3 normalOS : NORMAL;
-				
+				float4 ase_texcoord : TEXCOORD0;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1577,6 +1602,8 @@ Shader "GlowOrb"
 			float2 _Speed;
 			float2 _Speed2;
 			float2 _SineRange;
+			float _VertexDisplacement;
+			float _Strength;
 			float _DistortionAmount;
 			float _BaseColorBlend;
 			#ifdef ASE_TESSELLATION
@@ -1589,7 +1616,8 @@ Shader "GlowOrb"
 			#endif
 			CBUFFER_END
 
-			
+			sampler2D _noisev2;
+
 
 			
 			struct SurfaceDescription
@@ -1607,6 +1635,9 @@ Shader "GlowOrb"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
+				float4 temp_cast_0 = (0.0).xxxx;
+				float2 texCoord16 = v.ase_texcoord.xy * float2( 1,1 ) + ( _Speed * _TimeParameters.x );
+				float4 tex2DNode20 = tex2Dlod( _noisev2, float4( texCoord16, 0, 0.0) );
 				
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
@@ -1615,7 +1646,7 @@ Shader "GlowOrb"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = defaultVertexValue;
+				float3 vertexValue = (( _VertexDisplacement )?( ( _Strength * ( tex2DNode20 * float4( v.normalOS , 0.0 ) ) ) ):( temp_cast_0 )).rgb;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.positionOS.xyz = vertexValue;
@@ -1639,7 +1670,8 @@ Shader "GlowOrb"
 			{
 				float4 vertex : INTERNALTESSPOS;
 				float3 normalOS : NORMAL;
-				
+				float4 ase_texcoord : TEXCOORD0;
+
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1656,7 +1688,7 @@ Shader "GlowOrb"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				o.vertex = v.positionOS;
 				o.normalOS = v.normalOS;
-				
+				o.ase_texcoord = v.ase_texcoord;
 				return o;
 			}
 
@@ -1695,7 +1727,7 @@ Shader "GlowOrb"
 				VertexInput o = (VertexInput) 0;
 				o.positionOS = patch[0].vertex * bary.x + patch[1].vertex * bary.y + patch[2].vertex * bary.z;
 				o.normalOS = patch[0].normalOS * bary.x + patch[1].normalOS * bary.y + patch[2].normalOS * bary.z;
-				
+				o.ase_texcoord = patch[0].ase_texcoord * bary.x + patch[1].ase_texcoord * bary.y + patch[2].ase_texcoord * bary.z;
 				#if defined(ASE_PHONG_TESSELLATION)
 				float3 pp[3];
 				for (int i = 0; i < 3; ++i)
@@ -1768,13 +1800,18 @@ Version=19302
 Node;AmplifyShaderEditor.SimpleTimeNode;11;-3388.946,12.17356;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.Vector2Node;12;-3379.12,-323.0058;Inherit;False;Property;_Speed;Speed;3;0;Create;True;0;0;0;False;0;False;0,1;1,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;13;-3105.557,-45.57854;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT;0;False;1;FLOAT2;0
+Node;AmplifyShaderEditor.TextureCoordinatesNode;16;-2853.06,-61.69538;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.SamplerNode;20;-2520.747,-71.1764;Inherit;True;Property;_noisev2;noisev2;1;0;Create;True;0;0;0;False;0;False;-1;115c08dc983958b46a6301ab539d3e98;115c08dc983958b46a6301ab539d3e98;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.NormalVertexDataNode;59;-580.6453,657.7418;Inherit;False;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;60;-428.7124,586.0505;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT3;0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.RangedFloatNode;62;-217.4643,640.3383;Inherit;False;Property;_Strength;Strength;10;0;Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;61;-190.4299,741.6808;Inherit;False;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.RangedFloatNode;58;-352.0403,480.3243;Inherit;False;Constant;_Float0;Float 0;10;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.Vector2Node;14;-3387.998,283.6445;Inherit;False;Property;_Speed2;Speed2;4;0;Create;True;0;0;0;False;0;False;0,1;0,1;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;15;-3149.486,203.0675;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT2;0,0;False;1;FLOAT2;0
-Node;AmplifyShaderEditor.TextureCoordinatesNode;16;-2853.06,-61.69538;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.TextureCoordinatesNode;17;-2377.294,-341.5301;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.RangedFloatNode;18;-2391.088,-552.5718;Inherit;False;Property;_DistortionAmount;DistortionAmount;2;0;Create;True;0;0;0;False;0;False;0.1;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TextureCoordinatesNode;19;-2828.786,253.0258;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.SamplerNode;20;-2520.747,-71.1764;Inherit;True;Property;_noisev2;noisev2;1;0;Create;True;0;0;0;False;0;False;-1;115c08dc983958b46a6301ab539d3e98;115c08dc983958b46a6301ab539d3e98;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.VoronoiNode;21;-2528.47,272.5879;Inherit;False;0;0;1;0;1;False;1;False;False;False;4;0;FLOAT2;0,0;False;1;FLOAT;2;False;2;FLOAT;5;False;3;FLOAT;0;False;3;FLOAT;0;FLOAT2;1;FLOAT2;2
 Node;AmplifyShaderEditor.LerpOp;22;-2016.054,-199.8973;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;23;-1863.816,158.555;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
@@ -1797,6 +1834,7 @@ Node;AmplifyShaderEditor.Vector3Node;39;-1200.041,-574.6001;Inherit;False;Proper
 Node;AmplifyShaderEditor.Vector2Node;48;-1412.141,-1135.6;Inherit;False;Property;_SineRange;SineRange;8;0;Create;True;0;0;0;False;0;False;0,0.3;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
 Node;AmplifyShaderEditor.TFHCRemapNode;47;-1094.883,-944.8724;Inherit;False;5;0;FLOAT;0;False;1;FLOAT;-1;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SinTimeNode;53;-1837.718,-931.6572;Inherit;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ToggleSwitchNode;57;-85.49094,503.5905;Inherit;False;Property;_VertexDisplacement;VertexDisplacement;9;0;Create;True;0;0;0;False;0;False;0;True;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ExtraPrePass;0;0;ExtraPrePass;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;0;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;2;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=ShadowCaster;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;3;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;True;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;False;False;True;1;LightMode=DepthOnly;False;False;0;;0;0;Standard;0;False;0
@@ -1809,11 +1847,15 @@ Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;9;0,0;Float;False;False;-1;
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;1;796.0278,-45.06396;Float;False;True;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;GlowOrb;2992e84f91cbeb14eab234972e07ea9d;True;Forward;0;1;Forward;8;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;1;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForwardOnly;False;False;0;;0;0;Standard;21;Surface;0;0;  Blend;0;0;Two Sided;1;0;Forward Only;0;0;Cast Shadows;1;0;  Use Shadow Threshold;0;0;GPU Instancing;1;0;LOD CrossFade;1;0;Built-in Fog;1;0;Meta Pass;0;0;Extra Pre Pass;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Vertex Position,InvertActionOnDeselection;1;0;0;10;False;True;True;True;False;False;True;True;True;False;False;;False;0
 WireConnection;13;0;12;0
 WireConnection;13;1;11;0
+WireConnection;16;1;13;0
+WireConnection;20;1;16;0
+WireConnection;60;0;20;0
+WireConnection;60;1;59;0
+WireConnection;61;0;62;0
+WireConnection;61;1;60;0
 WireConnection;15;0;11;0
 WireConnection;15;1;14;0
-WireConnection;16;1;13;0
 WireConnection;19;1;15;0
-WireConnection;20;1;16;0
 WireConnection;21;0;19;0
 WireConnection;22;0;17;0
 WireConnection;22;1;20;0
@@ -1844,6 +1886,9 @@ WireConnection;42;2;41;0
 WireConnection;47;0;53;4
 WireConnection;47;3;48;1
 WireConnection;47;4;48;2
+WireConnection;57;0;58;0
+WireConnection;57;1;61;0
 WireConnection;1;2;42;0
+WireConnection;1;5;57;0
 ASEEND*/
-//CHKSM=E106AEA17CAFB63E707B9EC471EF84825556D85A
+//CHKSM=4129A36A946CEE40984F9FC84FBD68932708D245

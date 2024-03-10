@@ -61,7 +61,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Eyes:
-        m_Texture: {fileID: 2800000, guid: 74d96950996371b45bfcc3b8de535249, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8e42a3aa9a0a6de478f7f66c5ef11e36, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -85,7 +85,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _noisev2:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 115c08dc983958b46a6301ab539d3e98, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -136,7 +136,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
-    - _Strength: 0
+    - _Strength: 1
     - _Surface: 0
     - _UVSec: 0
     - _WorkflowMode: 1
@@ -146,7 +146,7 @@ Material:
     - _Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _Speed: {r: 1, g: 1, b: 0, a: 0}
-    - _Tiling: {r: 1, g: 1, b: 0, a: 0}
-    - _Tint: {r: 0, g: 0, b: 0, a: 0}
+    - _Speed: {r: 0.2, g: 0.2, b: 0, a: 0}
+    - _Tiling: {r: 0.2, g: 0.2, b: 0, a: 0}
+    - _Tint: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

@@ -17,6 +17,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: head
+    second: {fileID: 2100000, guid: f0e792147a9b42046844417d191be639, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: horns
     second: {fileID: 2100000, guid: 2c28f07cba1ab8c46bab7a18c6dc24ca, type: 2}
   materials:

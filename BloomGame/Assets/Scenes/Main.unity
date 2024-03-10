@@ -32109,7 +32109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7daa3b5eaf0b1b4982e2dd2f1ca680f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Color: {r: 0.1916071, g: 0, b: 0.3584906, a: 0}
+  Color: {r: 0.22351238, g: 0, b: 0.41509432, a: 0}
   colorProperty: _ShadowColor
   shader:
   - {fileID: 4800000, guid: fa82d0beebf404647a6104296cb238b4, type: 3}
@@ -70668,7 +70668,7 @@ MonoBehaviour:
   grid: {fileID: 6907278}
   enemyStorage: {fileID: 115744870}
   waves:
-  - {fileID: 11400000, guid: 10afc1e1f4f826f4494f4cdd4c757fc6, type: 2}
+  - {fileID: 11400000, guid: deaee6c7a28bb704bb7506f49d8beabf, type: 2}
   testIndex: 0
   onStart: 0
 --- !u!1 &1439954878
@@ -103043,6 +103043,10 @@ PrefabInstance:
     - target: {fileID: 2549892707977204346, guid: c0657403074038d45b55331f9a907507, type: 3}
       propertyPath: m_Name
       value: BloomEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549892707977204346, guid: c0657403074038d45b55331f9a907507, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
