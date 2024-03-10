@@ -102879,7 +102879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6977498461682850705, guid: a70b0388dc93f8746b337b5b7e6f8a60, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6977498461682850705, guid: a70b0388dc93f8746b337b5b7e6f8a60, type: 3}
       propertyPath: m_LocalPosition.z
@@ -103043,6 +103043,10 @@ PrefabInstance:
     - target: {fileID: 2549892707977204346, guid: c0657403074038d45b55331f9a907507, type: 3}
       propertyPath: m_Name
       value: BloomEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549892707977204346, guid: c0657403074038d45b55331f9a907507, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

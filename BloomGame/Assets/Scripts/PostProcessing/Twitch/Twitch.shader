@@ -66,6 +66,7 @@ Shader "PostProcessing/Twitch"
             float2 _Offset;
             float4 _Color1;
             int _EchoAmount;
+            float _MaskMultiplier;
 
             half4 frag (Varyings input) : SV_Target
             {
@@ -81,6 +82,8 @@ Shader "PostProcessing/Twitch"
                     if(envMask > depth)
                     {
                         int clampedEchoAmount = clamp(_EchoAmount, 1, 20);
+                        _Offset.x *= (mask * _MaskMultiplier);
+                        _Offset.y *= (mask * _MaskMultiplier);
 
                         for(int i = 0; i < clampedEchoAmount; i++)
                         {

@@ -72,6 +72,9 @@ MonoBehaviour:
   echoAmount:
     m_OverrideState: 1
     m_Value: 3
+  maskMultiplier:
+    m_OverrideState: 1
+    m_Value: 1.98
 --- !u!114 &-4333525503352236266
 MonoBehaviour:
   m_ObjectHideFlags: 3
