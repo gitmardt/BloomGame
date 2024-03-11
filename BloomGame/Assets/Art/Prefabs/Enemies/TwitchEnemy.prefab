@@ -176,7 +176,7 @@ PlayableDirector:
     value: {fileID: 4892323643419049220}
   - key: {fileID: 674688507134049771, guid: bb8cb01124758e24c9d1ed44045be86d, type: 2}
     value: {fileID: 6142446536031484525}
-  - key: {fileID: 2879592003713607912, guid: bb8cb01124758e24c9d1ed44045be86d, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 3928251262206203261}
   - key: {fileID: -8725663613800181282, guid: bb8cb01124758e24c9d1ed44045be86d, type: 2}
     value: {fileID: 8577913747359902917}
@@ -197,7 +197,10 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 4a875ad801d039542a96e179b29f5bf2, type: 2}
+    - {fileID: 11400000, guid: f712a7d0a790fa74f95ff9a47566e845, type: 2}
     m_Events:
+    - m_PersistentCalls:
+        m_Calls: []
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1834958610840605210}
@@ -373,7 +376,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6977498461682850705}
   - component: {fileID: 2548716417110747104}
-  - component: {fileID: 4692600125823052282}
   - component: {fileID: 1834958610840605210}
   m_Layer: 11
   m_Name: TwitchEnemy
@@ -423,29 +425,6 @@ NavMeshAgent:
   m_BaseOffset: 0.49999997
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!136 &4692600125823052282
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8973848208678981798}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.3
-  m_Height: 1.57
-  m_Direction: 0
-  m_Center: {x: -0.00000032782555, y: 0.75, z: 0}
 --- !u!114 &1834958610840605210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,12 +438,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTimeline: {fileID: 8376624566705088566}
-  attackDistance: 5
+  attackDistance: 3
   attackDamage: 1
   destroyOnAttack: 1
   health: 5
   hitPosition: {fileID: 5919238472751573648}
-  attackRange: 5
+  attackRange: 3
   attackClip: {fileID: 6720303635017113406, guid: 4948aa22429573548888cc3f1281ca2e, type: 3}
 --- !u!1001 &640466825249866266
 PrefabInstance:

@@ -42,7 +42,7 @@ PlayableDirector:
   m_GameObject: {fileID: 890978391796206489}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: bb8cb01124758e24c9d1ed44045be86d, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 319a67fd8a0c99c4e9ad12a37f30e9d2, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -58,6 +58,22 @@ PlayableDirector:
     value: {fileID: 7094477790246391937}
   - key: {fileID: 0}
     value: {fileID: 3594530272359491851}
+  - key: {fileID: 6741465493030581519, guid: bb8cb01124758e24c9d1ed44045be86d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 674688507134049771, guid: bb8cb01124758e24c9d1ed44045be86d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -8725663613800181282, guid: bb8cb01124758e24c9d1ed44045be86d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 1627957458043806157, guid: 319a67fd8a0c99c4e9ad12a37f30e9d2, type: 2}
+    value: {fileID: 8234536559502777766}
+  - key: {fileID: -420737954762567457, guid: 319a67fd8a0c99c4e9ad12a37f30e9d2, type: 2}
+    value: {fileID: 8477012586817745381}
+  - key: {fileID: 6223345725211361678, guid: 319a67fd8a0c99c4e9ad12a37f30e9d2, type: 2}
+    value: {fileID: 3594530272359491851}
+  - key: {fileID: -7684398859796988813, guid: 319a67fd8a0c99c4e9ad12a37f30e9d2, type: 2}
+    value: {fileID: 4428637292335996164}
+  - key: {fileID: 8920136190426050180, guid: 319a67fd8a0c99c4e9ad12a37f30e9d2, type: 2}
+    value: {fileID: 7094477790246391937}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &8234536559502777766
@@ -116,7 +132,7 @@ Transform:
   m_GameObject: {fileID: 2507736801051773135}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.56, z: 0.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -238,7 +254,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2390417828050425774}
   - component: {fileID: 1346868689918108818}
-  - component: {fileID: 5985313174855640981}
   - component: {fileID: 5338931082024478021}
   m_Layer: 7
   m_Name: BloomEnemy
@@ -287,29 +302,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!136 &5985313174855640981
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2549892707977204346}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.25
-  m_Height: 4.15
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.05, z: 0}
 --- !u!114 &5338931082024478021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,12 +315,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTimeline: {fileID: 6993934459734310638}
-  attackDistance: 4
+  attackDistance: 5
   attackDamage: 1
   destroyOnAttack: 1
   health: 5
   hitPosition: {fileID: 6607517297309817139}
-  attackRange: 4
+  attackRange: 5
   attackShake: {fileID: 8477012586817745381}
 --- !u!1 &3361093407944490617
 GameObject:
@@ -402,11 +394,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28f4da6a320254541813a7e53577bf09, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.74
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28f4da6a320254541813a7e53577bf09, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28f4da6a320254541813a7e53577bf09, type: 3}
       propertyPath: m_LocalRotation.w
@@ -414,7 +406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28f4da6a320254541813a7e53577bf09, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -1.4148723e-11
+      value: -1.4148751e-11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28f4da6a320254541813a7e53577bf09, type: 3}
       propertyPath: m_LocalRotation.y
