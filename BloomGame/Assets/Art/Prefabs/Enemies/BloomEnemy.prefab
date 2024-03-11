@@ -406,7 +406,23 @@ MonoBehaviour:
       m_RotationOrder: 0
     blendingMode: 0
     lifetime: 1
-  rotationShake: []
+  rotationShake:
+  - noiseType: 0
+    amplitude: {x: 5, y: 5, z: 5}
+    frequency: {x: 2.3, y: 1.8, z: 2}
+    offset: {x: 0, y: 0, z: 0}
+    phase: {x: 0, y: 0, z: 0}
+    randomizePhase: 1
+    maximum: {x: 0, y: 0, z: 0}
+    stepSize: {x: 0, y: 0, z: 0}
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    blendingMode: 0
+    lifetime: 1
   scaleShake: []
   FOVShake: []
 --- !u!4 &2028876191313052355 stripped
