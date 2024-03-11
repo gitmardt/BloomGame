@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Orb 1
-  m_Shader: {fileID: 4800000, guid: 4a664a8c9d373054b94c9c2c44fd5442, type: 3}
+  m_Name: OrbTransparent
+  m_Shader: {fileID: 4800000, guid: c69504a3de4a5034489fbf1a90bf9227, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -84,10 +84,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _firewave_01:
-        m_Texture: {fileID: 2800000, guid: c0521657127b7ae49876a512ca533a45, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _noisev2:
         m_Texture: {fileID: 2800000, guid: 115c08dc983958b46a6301ab539d3e98, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -139,6 +135,7 @@ Material:
     - _SrcBlendAlpha: 1
     - _Strength: 1
     - _Surface: 0
+    - _Transparency: 0.265
     - _VertexDisplacement: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
@@ -149,8 +146,7 @@ Material:
     - _FresnelSettings: {r: 0, g: 1, b: 2.52, a: 0}
     - _SineRange: {r: 0, g: 0.3, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _Speed: {r: 1, g: 0, b: 0, a: 0}
-    - _Speed2: {r: -1, g: 0, b: 0, a: 0}
-    - _Tint: {r: 1.3041189, g: 0.7434314, b: 0.17069621, a: 0}
-    - _Tint1: {r: 0.8113208, g: 0.4715394, b: 0.3099858, a: 0}
+    - _Speed: {r: 0, g: 1, b: 0, a: 0}
+    - _Speed2: {r: 0, g: 1, b: 0, a: 0}
+    - _Tint1: {r: 0.8117647, g: 0.57832545, b: 0.309804, a: 0}
   m_BuildTextureStacks: []

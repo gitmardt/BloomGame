@@ -70,13 +70,11 @@ public class Player : MonoBehaviour
     private float targetHeight;
     private float currentHeight;
     private bool crouching = false;
-    [HideInInspector] public Vector3 aimDirection;
     private Plane groundPlane = new(Vector3.up,Vector3.zero);
     private bool aiming;
 
-    //Debug
-    //public Transform debugSphere;
-    //public Vector3 lookDirection, mousePosition;
+    [HideInInspector] public Vector3 aimDirection;
+    [HideInInspector] public Vector3 mousePosition;
 
     private void Awake()
     {
@@ -137,11 +135,13 @@ public class Player : MonoBehaviour
         {
             mainCamera.Follow = aimTarget;
             hitmarkerAM.PlaySpriteAnimation(In, hitmarker.image);
+            LightMinionSpawner.instance.transparentLightMinionObj.SetActive(false);
         }
         else 
         { 
             mainCamera.Follow = aimTargetClose;
             hitmarkerAM.PlaySpriteAnimation(Out, hitmarker.image);
+            LightMinionSpawner.instance.transparentLightMinionObj.SetActive(true);
         }
     }
 
@@ -172,6 +172,8 @@ public class Player : MonoBehaviour
         if (groundPlane.Raycast(ray, out float rayDistance))
         {
             Vector3 point = ray.GetPoint(rayDistance);
+
+            mousePosition = point;
 
             aimDirection = point - transform.position;
             aimDirection.y = 0; 
