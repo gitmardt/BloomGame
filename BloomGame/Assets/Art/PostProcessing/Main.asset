@@ -81,7 +81,7 @@ MonoBehaviour:
     m_Value: 0.71
   vignetteTexture:
     m_OverrideState: 1
-    m_Value: {fileID: 2800000, guid: 43f8c91ad4bffd94f9d9a713857c51c4, type: 3}
+    m_Value: {fileID: 2800000, guid: 66083bee015dc1e4d9a9624144f462e1, type: 3}
     dimension: 1
 --- !u!114 &-4333525503352236266
 MonoBehaviour:

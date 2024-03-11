@@ -130,7 +130,7 @@ public class Player : MonoBehaviour
         controls.Enable();
     }
 
-        private void ChangeView(bool aim)
+    private void ChangeView(bool aim)
     {
         aiming = aim;
         if (aim)

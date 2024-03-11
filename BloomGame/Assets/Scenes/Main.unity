@@ -54823,7 +54823,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3072778847026268853, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
   m_PrefabInstance: {fileID: 7733134799482445815}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1831793384}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1299186f55126dc42888218f7e0e28b4, type: 3}
@@ -84359,6 +84359,27 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
+--- !u!1 &1831793384 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2835201349753883143, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+  m_PrefabInstance: {fileID: 7733134799482445815}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &1831793387
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831793384}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.51, y: 1.16, z: 1.51}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.27, y: 0.69, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1833146243
 GameObject:
   m_ObjectHideFlags: 0
@@ -97963,42 +97984,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6993934459734310638, guid: c0657403074038d45b55331f9a907507, type: 3}
-      propertyPath: m_SceneBindings.Array.size
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 6993934459734310638, guid: c0657403074038d45b55331f9a907507, type: 3}
-      propertyPath: m_SceneBindings.Array.data[5].key
-      value: 
-      objectReference: {fileID: 6741465493030581519, guid: bb8cb01124758e24c9d1ed44045be86d, type: 2}
-    - target: {fileID: 6993934459734310638, guid: c0657403074038d45b55331f9a907507, type: 3}
-      propertyPath: m_SceneBindings.Array.data[6].key
-      value: 
-      objectReference: {fileID: 674688507134049771, guid: bb8cb01124758e24c9d1ed44045be86d, type: 2}
-    - target: {fileID: 6993934459734310638, guid: c0657403074038d45b55331f9a907507, type: 3}
-      propertyPath: m_SceneBindings.Array.data[7].key
-      value: 
-      objectReference: {fileID: -8725663613800181282, guid: bb8cb01124758e24c9d1ed44045be86d, type: 2}
-    - target: {fileID: 6993934459734310638, guid: c0657403074038d45b55331f9a907507, type: 3}
-      propertyPath: m_SceneBindings.Array.data[8].value
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6993934459734310638, guid: c0657403074038d45b55331f9a907507, type: 3}
-      propertyPath: m_SceneBindings.Array.data[9].value
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6993934459734310638, guid: c0657403074038d45b55331f9a907507, type: 3}
-      propertyPath: m_SceneBindings.Array.data[10].value
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6993934459734310638, guid: c0657403074038d45b55331f9a907507, type: 3}
-      propertyPath: m_SceneBindings.Array.data[11].value
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6993934459734310638, guid: c0657403074038d45b55331f9a907507, type: 3}
-      propertyPath: m_SceneBindings.Array.data[12].value
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -98119,7 +98104,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2835201349753883143, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1831793387}
   m_SourcePrefab: {fileID: 100100000, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
 --- !u!1001 &8389300888345497716
 PrefabInstance:
