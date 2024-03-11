@@ -135,13 +135,15 @@ public class Player : MonoBehaviour
         {
             mainCamera.Follow = aimTarget;
             hitmarkerAM.PlaySpriteAnimation(In, hitmarker.image);
-            LightMinionSpawner.instance.transparentLightMinionObj.SetActive(false);
+            LightMinionSpawner.instance.spawnMode = false;
+            LightMinionSpawner.instance.StopSpawning();
         }
         else 
         { 
             mainCamera.Follow = aimTargetClose;
             hitmarkerAM.PlaySpriteAnimation(Out, hitmarker.image);
-            LightMinionSpawner.instance.transparentLightMinionObj.SetActive(true);
+            LightMinionSpawner.instance.spawnMode = true;
+            LightMinionSpawner.instance.StartSpawning();
         }
     }
 
@@ -297,6 +299,12 @@ public class Player : MonoBehaviour
 
     public void OnShoot()
     {
+        if (LightMinionSpawner.instance.spawnMode)
+        {
+            LightMinionSpawner.instance.SpawnLight();
+            return;
+        }
+
         shootIndex++;
         if (shootIndex == 100) shootIndex = 0;
 
