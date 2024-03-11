@@ -33,6 +33,8 @@ Shader "PostProcessing/QuantizationMask"
         SAMPLER(sampler_EnvTex);
         /////////
 
+        float _EnvMultiplier;
+
         static const int bayer2[2][2] = {
             { 0, 2 }, 
             { 3, 1 } 
@@ -98,39 +100,43 @@ Shader "PostProcessing/QuantizationMask"
                 float envMask = SAMPLE_TEXTURE2D(_EnvTex, sampler_EnvTex, input.texcoord).r;
                 float depth = SAMPLE_TEXTURE2D(_DepthTex, sampler_DepthTex, input.texcoord).r;
 
+                //8X8
+                //float2 screenPos = input.texcoord * float2(_ScreenWidth, _ScreenHeight);
+                //int x = int(screenPos.x) % 8;
+                //int y = int(screenPos.y) % 8;
+                //float ditherThreshold = bayer8[y][x] / 64.0; // Adjust for 8x8 matrix size
+
+                // Sample the noise texture
+                float noiseValue = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, input.texcoord).r;
+
                 if (mask > 0.2 && mask < 0.5) 
                 {
                     if(envMask > depth)
                     {
-                        //2X2   
-                        //float2 screenPos = input.texcoord * float2(_ScreenWidth, _ScreenHeight);
-                        //int x = int(screenPos.x) % 2;
-                        //int y = int(screenPos.y) % 2;
-                        //float ditherThreshold = bayer2[y][x] / 4.0; // Adjust for 2x2 matrix size
+                      //// Apply dithering before quantization
+                      //color.rgb += (noiseValue * ditherThreshold) * (1.0 / _NumColors) - (1.0 / (_NumColors * 2.0));
+                      //
+                      //// Quantize color
+                      //color.rgb = floor(color.rgb * _NumColors) / (_NumColors - 1);
 
-                        //4X4
-                        //float2 screenPos = input.texcoord * float2(_ScreenWidth, _ScreenHeight);
-                        //int x = int(screenPos.x) % 4;
-                        //int y = int(screenPos.y) % 4;
-                        //float ditherThreshold = bayer4[y][x] / 16.0;
-
-                        //8X8
-                        float2 screenPos = input.texcoord * float2(_ScreenWidth, _ScreenHeight);
-                        int x = int(screenPos.x) % 8;
-                        int y = int(screenPos.y) % 8;
-                        float ditherThreshold = bayer8[y][x] / 64.0; // Adjust for 8x8 matrix size
-
-                        // Sample the noise texture
-                        float noiseValue = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, input.texcoord).r;
-
-                        // Apply dithering before quantization
-                        color.rgb += (noiseValue * ditherThreshold) * (1.0 / _NumColors) - (1.0 / (_NumColors * 2.0));
-                    
-                        // Quantize color
-                        color.rgb = floor(color.rgb * _NumColors) / (_NumColors - 1);
+                      color.rgb = 1.0 - color.rgb;
                     }
+
+   
+
                 }
-                /////////
+
+                //if(envMask < _EnvMultiplier)
+                //{
+                //    float newNumColors = _NumColors * (1 - envMask);
+                //
+                //    // Apply dithering before quantization
+                //    color.rgb += (noiseValue * ditherThreshold) * (1.0 / newNumColors) - (1.0 / (newNumColors * 2.0));
+                //    
+                //    // Quantize color
+                //    color.rgb = floor(color.rgb * newNumColors ) / (newNumColors - 1);
+                //}
+                ///////////
 
                 return color;
             }

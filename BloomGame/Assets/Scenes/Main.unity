@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 1666355}
   - component: {fileID: 1666357}
   - component: {fileID: 1666356}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_881
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3442,7 +3442,7 @@ GameObject:
   - component: {fileID: 12698249}
   - component: {fileID: 12698251}
   - component: {fileID: 12698250}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_959
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3665,7 +3665,7 @@ GameObject:
   - component: {fileID: 14770101}
   - component: {fileID: 14770103}
   - component: {fileID: 14770102}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_626
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3782,7 +3782,7 @@ GameObject:
   - component: {fileID: 16735828}
   - component: {fileID: 16735830}
   - component: {fileID: 16735829}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_219
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3899,7 +3899,7 @@ GameObject:
   - component: {fileID: 20186938}
   - component: {fileID: 20186940}
   - component: {fileID: 20186939}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_794
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4122,7 +4122,7 @@ GameObject:
   - component: {fileID: 21023164}
   - component: {fileID: 21023166}
   - component: {fileID: 21023165}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4451,7 +4451,7 @@ GameObject:
   - component: {fileID: 23767039}
   - component: {fileID: 23767041}
   - component: {fileID: 23767040}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_987
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4568,7 +4568,7 @@ GameObject:
   - component: {fileID: 28865302}
   - component: {fileID: 28865304}
   - component: {fileID: 28865303}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_726
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4685,7 +4685,7 @@ GameObject:
   - component: {fileID: 33623920}
   - component: {fileID: 33623922}
   - component: {fileID: 33623921}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_435
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5120,7 +5120,7 @@ GameObject:
   - component: {fileID: 43098078}
   - component: {fileID: 43098080}
   - component: {fileID: 43098079}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1033
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5237,7 +5237,7 @@ GameObject:
   - component: {fileID: 44590881}
   - component: {fileID: 44590883}
   - component: {fileID: 44590882}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_946
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6107,7 +6107,7 @@ GameObject:
   - component: {fileID: 72185922}
   - component: {fileID: 72185924}
   - component: {fileID: 72185923}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_330
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6224,7 +6224,7 @@ GameObject:
   - component: {fileID: 73831067}
   - component: {fileID: 73831069}
   - component: {fileID: 73831068}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6481,7 +6481,7 @@ GameObject:
   - component: {fileID: 83998572}
   - component: {fileID: 83998574}
   - component: {fileID: 83998573}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_565
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6810,7 +6810,7 @@ GameObject:
   - component: {fileID: 88336047}
   - component: {fileID: 88336049}
   - component: {fileID: 88336048}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1059
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7139,7 +7139,7 @@ GameObject:
   - component: {fileID: 102680453}
   - component: {fileID: 102680455}
   - component: {fileID: 102680454}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_676
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7256,7 +7256,7 @@ GameObject:
   - component: {fileID: 103210696}
   - component: {fileID: 103210698}
   - component: {fileID: 103210697}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_730
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7585,7 +7585,7 @@ GameObject:
   - component: {fileID: 106110832}
   - component: {fileID: 106110834}
   - component: {fileID: 106110833}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_629
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7702,7 +7702,7 @@ GameObject:
   - component: {fileID: 106978133}
   - component: {fileID: 106978135}
   - component: {fileID: 106978134}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_148
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8412,7 +8412,7 @@ GameObject:
   - component: {fileID: 132992665}
   - component: {fileID: 132992667}
   - component: {fileID: 132992666}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_839
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8893,7 +8893,7 @@ GameObject:
   - component: {fileID: 141697620}
   - component: {fileID: 141697622}
   - component: {fileID: 141697621}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_612
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9116,7 +9116,7 @@ GameObject:
   - component: {fileID: 142422641}
   - component: {fileID: 142422643}
   - component: {fileID: 142422642}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_807
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9233,7 +9233,7 @@ GameObject:
   - component: {fileID: 142619119}
   - component: {fileID: 142619121}
   - component: {fileID: 142619120}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_146
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9690,7 +9690,7 @@ GameObject:
   - component: {fileID: 152831039}
   - component: {fileID: 152831041}
   - component: {fileID: 152831040}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_235
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10231,7 +10231,7 @@ GameObject:
   - component: {fileID: 168089866}
   - component: {fileID: 168089868}
   - component: {fileID: 168089867}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_342
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10348,7 +10348,7 @@ GameObject:
   - component: {fileID: 168309622}
   - component: {fileID: 168309624}
   - component: {fileID: 168309623}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1067
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10465,7 +10465,7 @@ GameObject:
   - component: {fileID: 168821417}
   - component: {fileID: 168821419}
   - component: {fileID: 168821418}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10582,7 +10582,7 @@ GameObject:
   - component: {fileID: 170457901}
   - component: {fileID: 170457903}
   - component: {fileID: 170457902}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_43
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10699,7 +10699,7 @@ GameObject:
   - component: {fileID: 173586168}
   - component: {fileID: 173586170}
   - component: {fileID: 173586169}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_426
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10922,7 +10922,7 @@ GameObject:
   - component: {fileID: 180043258}
   - component: {fileID: 180043260}
   - component: {fileID: 180043259}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_823
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11145,7 +11145,7 @@ GameObject:
   - component: {fileID: 183878053}
   - component: {fileID: 183878055}
   - component: {fileID: 183878054}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_845
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11368,7 +11368,7 @@ GameObject:
   - component: {fileID: 187958125}
   - component: {fileID: 187958127}
   - component: {fileID: 187958126}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1088
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11485,7 +11485,7 @@ GameObject:
   - component: {fileID: 190551678}
   - component: {fileID: 190551680}
   - component: {fileID: 190551679}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_849
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11602,7 +11602,7 @@ GameObject:
   - component: {fileID: 197542191}
   - component: {fileID: 197542193}
   - component: {fileID: 197542192}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_168
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11825,7 +11825,7 @@ GameObject:
   - component: {fileID: 207367037}
   - component: {fileID: 207367039}
   - component: {fileID: 207367038}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_684
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11942,7 +11942,7 @@ GameObject:
   - component: {fileID: 208875941}
   - component: {fileID: 208875943}
   - component: {fileID: 208875942}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_952
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12821,7 +12821,7 @@ GameObject:
   - component: {fileID: 218393484}
   - component: {fileID: 218393486}
   - component: {fileID: 218393485}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1069
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12938,7 +12938,7 @@ GameObject:
   - component: {fileID: 224816408}
   - component: {fileID: 224816410}
   - component: {fileID: 224816409}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_200
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13166,7 +13166,7 @@ GameObject:
   - component: {fileID: 233115871}
   - component: {fileID: 233115873}
   - component: {fileID: 233115872}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_552
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14131,7 +14131,7 @@ GameObject:
   - component: {fileID: 258643104}
   - component: {fileID: 258643106}
   - component: {fileID: 258643105}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_863
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14694,7 +14694,7 @@ GameObject:
   - component: {fileID: 267656925}
   - component: {fileID: 267656927}
   - component: {fileID: 267656926}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_978
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14811,7 +14811,7 @@ GameObject:
   - component: {fileID: 269269809}
   - component: {fileID: 269269811}
   - component: {fileID: 269269810}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_61
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15776,7 +15776,7 @@ GameObject:
   - component: {fileID: 291047200}
   - component: {fileID: 291047202}
   - component: {fileID: 291047201}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_99
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16829,7 +16829,7 @@ GameObject:
   - component: {fileID: 344562714}
   - component: {fileID: 344562716}
   - component: {fileID: 344562715}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_480
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17158,7 +17158,7 @@ GameObject:
   - component: {fileID: 353399619}
   - component: {fileID: 353399621}
   - component: {fileID: 353399620}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17381,7 +17381,7 @@ GameObject:
   - component: {fileID: 360544462}
   - component: {fileID: 360544464}
   - component: {fileID: 360544463}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_993
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17710,7 +17710,7 @@ GameObject:
   - component: {fileID: 363307929}
   - component: {fileID: 363307931}
   - component: {fileID: 363307930}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_555
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18039,7 +18039,7 @@ GameObject:
   - component: {fileID: 370985396}
   - component: {fileID: 370985398}
   - component: {fileID: 370985397}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_812
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18368,7 +18368,7 @@ GameObject:
   - component: {fileID: 373619798}
   - component: {fileID: 373619800}
   - component: {fileID: 373619799}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_610
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18909,7 +18909,7 @@ GameObject:
   - component: {fileID: 385442482}
   - component: {fileID: 385442484}
   - component: {fileID: 385442483}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_299
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19132,7 +19132,7 @@ GameObject:
   - component: {fileID: 386117328}
   - component: {fileID: 386117330}
   - component: {fileID: 386117329}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_406
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19355,7 +19355,7 @@ GameObject:
   - component: {fileID: 392928269}
   - component: {fileID: 392928271}
   - component: {fileID: 392928270}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_686
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19706,7 +19706,7 @@ GameObject:
   - component: {fileID: 401762014}
   - component: {fileID: 401762016}
   - component: {fileID: 401762015}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_782
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19823,7 +19823,7 @@ GameObject:
   - component: {fileID: 405304091}
   - component: {fileID: 405304093}
   - component: {fileID: 405304092}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_174
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19940,7 +19940,7 @@ GameObject:
   - component: {fileID: 406228060}
   - component: {fileID: 406228062}
   - component: {fileID: 406228061}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_924
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20163,7 +20163,7 @@ GameObject:
   - component: {fileID: 408149222}
   - component: {fileID: 408149224}
   - component: {fileID: 408149223}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_643
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20386,7 +20386,7 @@ GameObject:
   - component: {fileID: 411223020}
   - component: {fileID: 411223022}
   - component: {fileID: 411223021}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_907
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20503,7 +20503,7 @@ GameObject:
   - component: {fileID: 414960421}
   - component: {fileID: 414960423}
   - component: {fileID: 414960422}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1056
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20620,7 +20620,7 @@ GameObject:
   - component: {fileID: 419495075}
   - component: {fileID: 419495077}
   - component: {fileID: 419495076}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_735
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21267,7 +21267,7 @@ GameObject:
   - component: {fileID: 438118385}
   - component: {fileID: 438118387}
   - component: {fileID: 438118386}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_979
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21914,7 +21914,7 @@ GameObject:
   - component: {fileID: 451042671}
   - component: {fileID: 451042673}
   - component: {fileID: 451042672}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_753
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22455,7 +22455,7 @@ GameObject:
   - component: {fileID: 465967972}
   - component: {fileID: 465967974}
   - component: {fileID: 465967973}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_719
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22572,7 +22572,7 @@ GameObject:
   - component: {fileID: 466010546}
   - component: {fileID: 466010548}
   - component: {fileID: 466010547}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_495
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22689,7 +22689,7 @@ GameObject:
   - component: {fileID: 467254783}
   - component: {fileID: 467254785}
   - component: {fileID: 467254784}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_616
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22806,7 +22806,7 @@ GameObject:
   - component: {fileID: 469155000}
   - component: {fileID: 469155002}
   - component: {fileID: 469155001}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_442
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23029,7 +23029,7 @@ GameObject:
   - component: {fileID: 475143639}
   - component: {fileID: 475143641}
   - component: {fileID: 475143640}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_607
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23464,7 +23464,7 @@ GameObject:
   - component: {fileID: 480162852}
   - component: {fileID: 480162854}
   - component: {fileID: 480162853}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_762
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23581,7 +23581,7 @@ GameObject:
   - component: {fileID: 481205957}
   - component: {fileID: 481205959}
   - component: {fileID: 481205958}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_469
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23698,7 +23698,7 @@ GameObject:
   - component: {fileID: 487054312}
   - component: {fileID: 487054314}
   - component: {fileID: 487054313}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24451,7 +24451,7 @@ GameObject:
   - component: {fileID: 496362927}
   - component: {fileID: 496362929}
   - component: {fileID: 496362928}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_560
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25310,7 +25310,7 @@ GameObject:
   - component: {fileID: 508260889}
   - component: {fileID: 508260891}
   - component: {fileID: 508260890}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_894
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25427,7 +25427,7 @@ GameObject:
   - component: {fileID: 508818037}
   - component: {fileID: 508818039}
   - component: {fileID: 508818038}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_257
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25544,7 +25544,7 @@ GameObject:
   - component: {fileID: 512232384}
   - component: {fileID: 512232386}
   - component: {fileID: 512232385}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_873
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26315,7 +26315,7 @@ GameObject:
   - component: {fileID: 523260042}
   - component: {fileID: 523260044}
   - component: {fileID: 523260043}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26644,7 +26644,7 @@ GameObject:
   - component: {fileID: 526849878}
   - component: {fileID: 526849880}
   - component: {fileID: 526849879}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_33
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27079,7 +27079,7 @@ GameObject:
   - component: {fileID: 537321670}
   - component: {fileID: 537321672}
   - component: {fileID: 537321671}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28044,7 +28044,7 @@ GameObject:
   - component: {fileID: 578662742}
   - component: {fileID: 578662744}
   - component: {fileID: 578662743}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_460
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28161,7 +28161,7 @@ GameObject:
   - component: {fileID: 579245699}
   - component: {fileID: 579245701}
   - component: {fileID: 579245700}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_679
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28384,7 +28384,7 @@ GameObject:
   - component: {fileID: 582866295}
   - component: {fileID: 582866297}
   - component: {fileID: 582866296}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_292
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28501,7 +28501,7 @@ GameObject:
   - component: {fileID: 583385612}
   - component: {fileID: 583385614}
   - component: {fileID: 583385613}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_927
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28852,7 +28852,7 @@ GameObject:
   - component: {fileID: 593569768}
   - component: {fileID: 593569770}
   - component: {fileID: 593569769}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_659
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29111,7 +29111,7 @@ GameObject:
   - component: {fileID: 596595040}
   - component: {fileID: 596595042}
   - component: {fileID: 596595041}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1086
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29440,7 +29440,7 @@ GameObject:
   - component: {fileID: 608711673}
   - component: {fileID: 608711675}
   - component: {fileID: 608711674}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_990
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29557,7 +29557,7 @@ GameObject:
   - component: {fileID: 611786540}
   - component: {fileID: 611786542}
   - component: {fileID: 611786541}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29780,7 +29780,7 @@ GameObject:
   - component: {fileID: 615622546}
   - component: {fileID: 615622548}
   - component: {fileID: 615622547}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_385
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30109,7 +30109,7 @@ GameObject:
   - component: {fileID: 628761022}
   - component: {fileID: 628761024}
   - component: {fileID: 628761023}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_90
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30226,7 +30226,7 @@ GameObject:
   - component: {fileID: 630864209}
   - component: {fileID: 630864211}
   - component: {fileID: 630864210}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_346
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30343,7 +30343,7 @@ GameObject:
   - component: {fileID: 633758623}
   - component: {fileID: 633758625}
   - component: {fileID: 633758624}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_283
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30778,7 +30778,7 @@ GameObject:
   - component: {fileID: 657003020}
   - component: {fileID: 657003022}
   - component: {fileID: 657003021}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_752
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31397,7 +31397,7 @@ GameObject:
   - component: {fileID: 661725374}
   - component: {fileID: 661725376}
   - component: {fileID: 661725375}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_692
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31514,7 +31514,7 @@ GameObject:
   - component: {fileID: 666430504}
   - component: {fileID: 666430506}
   - component: {fileID: 666430505}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_529
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31737,7 +31737,7 @@ GameObject:
   - component: {fileID: 676481528}
   - component: {fileID: 676481530}
   - component: {fileID: 676481529}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1038
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32066,7 +32066,7 @@ GameObject:
   - component: {fileID: 685941380}
   - component: {fileID: 685941382}
   - component: {fileID: 685941381}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_763
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32289,7 +32289,7 @@ GameObject:
   - component: {fileID: 688642382}
   - component: {fileID: 688642384}
   - component: {fileID: 688642383}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_856
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32936,7 +32936,7 @@ GameObject:
   - component: {fileID: 692971130}
   - component: {fileID: 692971132}
   - component: {fileID: 692971131}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33265,7 +33265,7 @@ GameObject:
   - component: {fileID: 697733282}
   - component: {fileID: 697733284}
   - component: {fileID: 697733283}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_388
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33387,7 +33387,7 @@ GameObject:
   - component: {fileID: 702169158}
   - component: {fileID: 702169160}
   - component: {fileID: 702169159}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_940
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33504,7 +33504,7 @@ GameObject:
   - component: {fileID: 703156422}
   - component: {fileID: 703156424}
   - component: {fileID: 703156423}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_341
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33833,7 +33833,7 @@ GameObject:
   - component: {fileID: 719533425}
   - component: {fileID: 719533427}
   - component: {fileID: 719533426}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_203
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34162,7 +34162,7 @@ GameObject:
   - component: {fileID: 723920935}
   - component: {fileID: 723920937}
   - component: {fileID: 723920936}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_725
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34703,7 +34703,7 @@ GameObject:
   - component: {fileID: 734891040}
   - component: {fileID: 734891042}
   - component: {fileID: 734891041}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1060
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34820,7 +34820,7 @@ GameObject:
   - component: {fileID: 735306600}
   - component: {fileID: 735306602}
   - component: {fileID: 735306601}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_774
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35390,7 +35390,7 @@ GameObject:
   - component: {fileID: 750524573}
   - component: {fileID: 750524575}
   - component: {fileID: 750524574}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_428
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35719,7 +35719,7 @@ GameObject:
   - component: {fileID: 757932638}
   - component: {fileID: 757932640}
   - component: {fileID: 757932639}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_776
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36048,7 +36048,7 @@ GameObject:
   - component: {fileID: 767992730}
   - component: {fileID: 767992732}
   - component: {fileID: 767992731}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_563
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36271,7 +36271,7 @@ GameObject:
   - component: {fileID: 770340352}
   - component: {fileID: 770340354}
   - component: {fileID: 770340353}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36812,7 +36812,7 @@ GameObject:
   - component: {fileID: 777127578}
   - component: {fileID: 777127580}
   - component: {fileID: 777127579}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_859
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37671,7 +37671,7 @@ GameObject:
   - component: {fileID: 804010840}
   - component: {fileID: 804010842}
   - component: {fileID: 804010841}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_960
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38212,7 +38212,7 @@ GameObject:
   - component: {fileID: 828160831}
   - component: {fileID: 828160833}
   - component: {fileID: 828160832}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_858
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38435,7 +38435,7 @@ GameObject:
   - component: {fileID: 830116958}
   - component: {fileID: 830116960}
   - component: {fileID: 830116959}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_513
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38557,7 +38557,7 @@ GameObject:
   - component: {fileID: 832214961}
   - component: {fileID: 832214963}
   - component: {fileID: 832214962}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_717
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38780,7 +38780,7 @@ GameObject:
   - component: {fileID: 833137640}
   - component: {fileID: 833137642}
   - component: {fileID: 833137641}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_744
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39109,7 +39109,7 @@ GameObject:
   - component: {fileID: 835172899}
   - component: {fileID: 835172901}
   - component: {fileID: 835172900}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_413
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39226,7 +39226,7 @@ GameObject:
   - component: {fileID: 835194794}
   - component: {fileID: 835194796}
   - component: {fileID: 835194795}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_465
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39527,7 +39527,7 @@ GameObject:
   - component: {fileID: 844354106}
   - component: {fileID: 844354108}
   - component: {fileID: 844354107}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_417
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40174,7 +40174,7 @@ GameObject:
   - component: {fileID: 859529574}
   - component: {fileID: 859529576}
   - component: {fileID: 859529575}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_82
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40397,7 +40397,7 @@ GameObject:
   - component: {fileID: 864669986}
   - component: {fileID: 864669988}
   - component: {fileID: 864669987}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_503
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40514,7 +40514,7 @@ GameObject:
   - component: {fileID: 870429896}
   - component: {fileID: 870429898}
   - component: {fileID: 870429897}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_165
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40949,7 +40949,7 @@ GameObject:
   - component: {fileID: 877513647}
   - component: {fileID: 877513649}
   - component: {fileID: 877513648}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_296
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41066,7 +41066,7 @@ GameObject:
   - component: {fileID: 880464117}
   - component: {fileID: 880464119}
   - component: {fileID: 880464118}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_906
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41925,7 +41925,7 @@ GameObject:
   - component: {fileID: 892813328}
   - component: {fileID: 892813330}
   - component: {fileID: 892813329}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_113
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42148,7 +42148,7 @@ GameObject:
   - component: {fileID: 898286365}
   - component: {fileID: 898286367}
   - component: {fileID: 898286366}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_568
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42265,7 +42265,7 @@ GameObject:
   - component: {fileID: 900664417}
   - component: {fileID: 900664419}
   - component: {fileID: 900664418}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_259
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42700,7 +42700,7 @@ GameObject:
   - component: {fileID: 915623947}
   - component: {fileID: 915623949}
   - component: {fileID: 915623948}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_282
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42817,7 +42817,7 @@ GameObject:
   - component: {fileID: 915907686}
   - component: {fileID: 915907688}
   - component: {fileID: 915907687}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_520
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42934,7 +42934,7 @@ GameObject:
   - component: {fileID: 920560369}
   - component: {fileID: 920560371}
   - component: {fileID: 920560370}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_783
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43369,7 +43369,7 @@ GameObject:
   - component: {fileID: 933809704}
   - component: {fileID: 933809706}
   - component: {fileID: 933809705}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_587
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43486,7 +43486,7 @@ GameObject:
   - component: {fileID: 934161228}
   - component: {fileID: 934161230}
   - component: {fileID: 934161229}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_929
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44239,7 +44239,7 @@ GameObject:
   - component: {fileID: 941197085}
   - component: {fileID: 941197087}
   - component: {fileID: 941197086}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_149
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44356,7 +44356,7 @@ GameObject:
   - component: {fileID: 941873190}
   - component: {fileID: 941873192}
   - component: {fileID: 941873191}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_423
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44579,7 +44579,7 @@ GameObject:
   - component: {fileID: 950925438}
   - component: {fileID: 950925440}
   - component: {fileID: 950925439}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_197
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44696,7 +44696,7 @@ GameObject:
   - component: {fileID: 951516895}
   - component: {fileID: 951516897}
   - component: {fileID: 951516896}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_511
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44919,7 +44919,7 @@ GameObject:
   - component: {fileID: 961815396}
   - component: {fileID: 961815398}
   - component: {fileID: 961815397}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_861
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45322,7 +45322,7 @@ GameObject:
   - component: {fileID: 967415954}
   - component: {fileID: 967415956}
   - component: {fileID: 967415955}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_745
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45439,7 +45439,7 @@ GameObject:
   - component: {fileID: 970921893}
   - component: {fileID: 970921895}
   - component: {fileID: 970921894}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_577
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45556,7 +45556,7 @@ GameObject:
   - component: {fileID: 972170170}
   - component: {fileID: 972170172}
   - component: {fileID: 972170171}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_569
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45673,7 +45673,7 @@ GameObject:
   - component: {fileID: 972739190}
   - component: {fileID: 972739192}
   - component: {fileID: 972739191}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1052
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45790,7 +45790,7 @@ GameObject:
   - component: {fileID: 973226729}
   - component: {fileID: 973226731}
   - component: {fileID: 973226730}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1079
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46261,7 +46261,7 @@ GameObject:
   - component: {fileID: 990492888}
   - component: {fileID: 990492890}
   - component: {fileID: 990492889}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_446
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46484,7 +46484,7 @@ GameObject:
   - component: {fileID: 996145196}
   - component: {fileID: 996145198}
   - component: {fileID: 996145197}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_147
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46601,7 +46601,7 @@ GameObject:
   - component: {fileID: 997028877}
   - component: {fileID: 997028879}
   - component: {fileID: 997028878}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_405
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46857,7 +46857,7 @@ GameObject:
   - component: {fileID: 1007248651}
   - component: {fileID: 1007248653}
   - component: {fileID: 1007248652}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_755
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47080,7 +47080,7 @@ GameObject:
   - component: {fileID: 1009850663}
   - component: {fileID: 1009850665}
   - component: {fileID: 1009850664}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_124
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48363,7 +48363,7 @@ GameObject:
   - component: {fileID: 1065737865}
   - component: {fileID: 1065737867}
   - component: {fileID: 1065737866}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_319
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49434,7 +49434,7 @@ GameObject:
   - component: {fileID: 1092966932}
   - component: {fileID: 1092966934}
   - component: {fileID: 1092966933}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_733
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49551,7 +49551,7 @@ GameObject:
   - component: {fileID: 1101324762}
   - component: {fileID: 1101324764}
   - component: {fileID: 1101324763}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49774,7 +49774,7 @@ GameObject:
   - component: {fileID: 1108053042}
   - component: {fileID: 1108053044}
   - component: {fileID: 1108053043}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_953
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49891,7 +49891,7 @@ GameObject:
   - component: {fileID: 1108703235}
   - component: {fileID: 1108703237}
   - component: {fileID: 1108703236}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1082
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50114,7 +50114,7 @@ GameObject:
   - component: {fileID: 1110644829}
   - component: {fileID: 1110644831}
   - component: {fileID: 1110644830}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_693
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50867,7 +50867,7 @@ GameObject:
   - component: {fileID: 1121592574}
   - component: {fileID: 1121592576}
   - component: {fileID: 1121592575}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_183
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51090,7 +51090,7 @@ GameObject:
   - component: {fileID: 1125053227}
   - component: {fileID: 1125053229}
   - component: {fileID: 1125053228}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_107
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51207,7 +51207,7 @@ GameObject:
   - component: {fileID: 1125328674}
   - component: {fileID: 1125328676}
   - component: {fileID: 1125328675}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_829
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51536,7 +51536,7 @@ GameObject:
   - component: {fileID: 1133260621}
   - component: {fileID: 1133260623}
   - component: {fileID: 1133260622}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_87
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51653,7 +51653,7 @@ GameObject:
   - component: {fileID: 1140018686}
   - component: {fileID: 1140018688}
   - component: {fileID: 1140018687}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_997
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51876,7 +51876,7 @@ GameObject:
   - component: {fileID: 1142801778}
   - component: {fileID: 1142801780}
   - component: {fileID: 1142801779}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_233
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52099,7 +52099,7 @@ GameObject:
   - component: {fileID: 1143143037}
   - component: {fileID: 1143143039}
   - component: {fileID: 1143143038}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_567
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52216,7 +52216,7 @@ GameObject:
   - component: {fileID: 1145242901}
   - component: {fileID: 1145242903}
   - component: {fileID: 1145242902}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_537
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52439,7 +52439,7 @@ GameObject:
   - component: {fileID: 1154548171}
   - component: {fileID: 1154548173}
   - component: {fileID: 1154548172}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_872
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53134,7 +53134,7 @@ GameObject:
   - component: {fileID: 1170078347}
   - component: {fileID: 1170078349}
   - component: {fileID: 1170078348}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1053
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53251,7 +53251,7 @@ GameObject:
   - component: {fileID: 1172066261}
   - component: {fileID: 1172066263}
   - component: {fileID: 1172066262}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_231
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53898,7 +53898,7 @@ GameObject:
   - component: {fileID: 1185867080}
   - component: {fileID: 1185867082}
   - component: {fileID: 1185867081}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_999
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54349,7 +54349,7 @@ GameObject:
   - component: {fileID: 1196969992}
   - component: {fileID: 1196969994}
   - component: {fileID: 1196969993}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54678,7 +54678,7 @@ GameObject:
   - component: {fileID: 1203292535}
   - component: {fileID: 1203292537}
   - component: {fileID: 1203292536}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_79
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55007,7 +55007,7 @@ GameObject:
   - component: {fileID: 1213900658}
   - component: {fileID: 1213900660}
   - component: {fileID: 1213900659}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1081
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55265,7 +55265,7 @@ GameObject:
   - component: {fileID: 1226202052}
   - component: {fileID: 1226202054}
   - component: {fileID: 1226202053}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_542
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56124,7 +56124,7 @@ GameObject:
   - component: {fileID: 1251685491}
   - component: {fileID: 1251685493}
   - component: {fileID: 1251685492}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_635
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56241,7 +56241,7 @@ GameObject:
   - component: {fileID: 1253205488}
   - component: {fileID: 1253205490}
   - component: {fileID: 1253205489}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_604
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56358,7 +56358,7 @@ GameObject:
   - component: {fileID: 1254306111}
   - component: {fileID: 1254306113}
   - component: {fileID: 1254306112}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_905
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56581,7 +56581,7 @@ GameObject:
   - component: {fileID: 1254966113}
   - component: {fileID: 1254966115}
   - component: {fileID: 1254966114}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_452
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57674,7 +57674,7 @@ GameObject:
   - component: {fileID: 1290589473}
   - component: {fileID: 1290589475}
   - component: {fileID: 1290589474}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_821
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58003,7 +58003,7 @@ GameObject:
   - component: {fileID: 1297283631}
   - component: {fileID: 1297283633}
   - component: {fileID: 1297283632}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_890
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58120,7 +58120,7 @@ GameObject:
   - component: {fileID: 1302099848}
   - component: {fileID: 1302099850}
   - component: {fileID: 1302099849}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1064
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58387,7 +58387,7 @@ GameObject:
   - component: {fileID: 1314667952}
   - component: {fileID: 1314667954}
   - component: {fileID: 1314667953}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_360
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58504,7 +58504,7 @@ GameObject:
   - component: {fileID: 1315175064}
   - component: {fileID: 1315175066}
   - component: {fileID: 1315175065}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1063
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58727,7 +58727,7 @@ GameObject:
   - component: {fileID: 1316980066}
   - component: {fileID: 1316980068}
   - component: {fileID: 1316980067}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_746
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59056,7 +59056,7 @@ GameObject:
   - component: {fileID: 1320617759}
   - component: {fileID: 1320617761}
   - component: {fileID: 1320617760}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_562
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59173,7 +59173,7 @@ GameObject:
   - component: {fileID: 1321381116}
   - component: {fileID: 1321381118}
   - component: {fileID: 1321381117}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1075
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59825,7 +59825,7 @@ GameObject:
   - component: {fileID: 1334908038}
   - component: {fileID: 1334908040}
   - component: {fileID: 1334908039}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_178
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60082,7 +60082,7 @@ GameObject:
   - component: {fileID: 1348644028}
   - component: {fileID: 1348644030}
   - component: {fileID: 1348644029}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60411,7 +60411,7 @@ GameObject:
   - component: {fileID: 1354993509}
   - component: {fileID: 1354993511}
   - component: {fileID: 1354993510}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60528,7 +60528,7 @@ GameObject:
   - component: {fileID: 1355995239}
   - component: {fileID: 1355995241}
   - component: {fileID: 1355995240}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_832
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60645,7 +60645,7 @@ GameObject:
   - component: {fileID: 1357198922}
   - component: {fileID: 1357198924}
   - component: {fileID: 1357198923}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_318
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61085,7 +61085,7 @@ GameObject:
   - component: {fileID: 1371774850}
   - component: {fileID: 1371774852}
   - component: {fileID: 1371774851}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_512
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61308,7 +61308,7 @@ GameObject:
   - component: {fileID: 1375490589}
   - component: {fileID: 1375490591}
   - component: {fileID: 1375490590}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_162
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61955,7 +61955,7 @@ GameObject:
   - component: {fileID: 1390234661}
   - component: {fileID: 1390234663}
   - component: {fileID: 1390234662}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_914
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62178,7 +62178,7 @@ GameObject:
   - component: {fileID: 1396635843}
   - component: {fileID: 1396635845}
   - component: {fileID: 1396635844}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1078
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62295,7 +62295,7 @@ GameObject:
   - component: {fileID: 1396985131}
   - component: {fileID: 1396985133}
   - component: {fileID: 1396985132}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62676,7 +62676,7 @@ GameObject:
   - component: {fileID: 1404298985}
   - component: {fileID: 1404298987}
   - component: {fileID: 1404298986}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_646
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62899,7 +62899,7 @@ GameObject:
   - component: {fileID: 1405855313}
   - component: {fileID: 1405855315}
   - component: {fileID: 1405855314}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_598
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63016,7 +63016,7 @@ GameObject:
   - component: {fileID: 1406319853}
   - component: {fileID: 1406319855}
   - component: {fileID: 1406319854}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_367
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63133,7 +63133,7 @@ GameObject:
   - component: {fileID: 1414418822}
   - component: {fileID: 1414418824}
   - component: {fileID: 1414418823}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_439
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63462,7 +63462,7 @@ GameObject:
   - component: {fileID: 1419937373}
   - component: {fileID: 1419937375}
   - component: {fileID: 1419937374}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_36
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63579,7 +63579,7 @@ GameObject:
   - component: {fileID: 1420100564}
   - component: {fileID: 1420100566}
   - component: {fileID: 1420100565}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1057
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65254,7 +65254,7 @@ GameObject:
   - component: {fileID: 1450653719}
   - component: {fileID: 1450653721}
   - component: {fileID: 1450653720}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_685
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65583,7 +65583,7 @@ GameObject:
   - component: {fileID: 1454666610}
   - component: {fileID: 1454666612}
   - component: {fileID: 1454666611}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_502
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65806,7 +65806,7 @@ GameObject:
   - component: {fileID: 1459265756}
   - component: {fileID: 1459265758}
   - component: {fileID: 1459265757}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1072
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67054,7 +67054,7 @@ GameObject:
   - component: {fileID: 1494536738}
   - component: {fileID: 1494536740}
   - component: {fileID: 1494536739}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_264
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67595,7 +67595,7 @@ GameObject:
   - component: {fileID: 1511760413}
   - component: {fileID: 1511760415}
   - component: {fileID: 1511760414}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1074
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68242,7 +68242,7 @@ GameObject:
   - component: {fileID: 1523373016}
   - component: {fileID: 1523373018}
   - component: {fileID: 1523373017}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68530,7 +68530,7 @@ GameObject:
   - component: {fileID: 1528195448}
   - component: {fileID: 1528195450}
   - component: {fileID: 1528195449}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_879
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68753,7 +68753,7 @@ GameObject:
   - component: {fileID: 1534755444}
   - component: {fileID: 1534755446}
   - component: {fileID: 1534755445}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_806
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69400,7 +69400,7 @@ GameObject:
   - component: {fileID: 1542786444}
   - component: {fileID: 1542786446}
   - component: {fileID: 1542786445}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_973
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69517,7 +69517,7 @@ GameObject:
   - component: {fileID: 1544143541}
   - component: {fileID: 1544143543}
   - component: {fileID: 1544143542}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_321
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69740,7 +69740,7 @@ GameObject:
   - component: {fileID: 1547543944}
   - component: {fileID: 1547543946}
   - component: {fileID: 1547543945}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_962
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70281,7 +70281,7 @@ GameObject:
   - component: {fileID: 1552641079}
   - component: {fileID: 1552641081}
   - component: {fileID: 1552641080}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_533
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71452,7 +71452,7 @@ MonoBehaviour:
     NearClipPlane: 0.1
     FarClipPlane: 1000
     Dutch: 0
-    ModeOverride: 0
+    ModeOverride: 2
     LensShift: {x: 0, y: 0}
     GateFit: 2
     FocusDistance: 10
@@ -71932,7 +71932,7 @@ GameObject:
   - component: {fileID: 1585335956}
   - component: {fileID: 1585335958}
   - component: {fileID: 1585335957}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_743
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72049,7 +72049,7 @@ GameObject:
   - component: {fileID: 1585692610}
   - component: {fileID: 1585692612}
   - component: {fileID: 1585692611}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1016
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72166,7 +72166,7 @@ GameObject:
   - component: {fileID: 1585711206}
   - component: {fileID: 1585711208}
   - component: {fileID: 1585711207}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_916
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73025,7 +73025,7 @@ GameObject:
   - component: {fileID: 1599144281}
   - component: {fileID: 1599144283}
   - component: {fileID: 1599144282}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1055
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73566,7 +73566,7 @@ GameObject:
   - component: {fileID: 1602900986}
   - component: {fileID: 1602900988}
   - component: {fileID: 1602900987}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_850
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74107,7 +74107,7 @@ GameObject:
   - component: {fileID: 1620416740}
   - component: {fileID: 1620416742}
   - component: {fileID: 1620416741}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1061
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74224,7 +74224,7 @@ GameObject:
   - component: {fileID: 1622887390}
   - component: {fileID: 1622887392}
   - component: {fileID: 1622887391}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_793
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74447,7 +74447,7 @@ GameObject:
   - component: {fileID: 1626306968}
   - component: {fileID: 1626306970}
   - component: {fileID: 1626306969}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_638
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74776,7 +74776,7 @@ GameObject:
   - component: {fileID: 1636141595}
   - component: {fileID: 1636141597}
   - component: {fileID: 1636141596}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_538
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74893,7 +74893,7 @@ GameObject:
   - component: {fileID: 1638514246}
   - component: {fileID: 1638514248}
   - component: {fileID: 1638514247}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_246
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75010,7 +75010,7 @@ GameObject:
   - component: {fileID: 1641215893}
   - component: {fileID: 1641215895}
   - component: {fileID: 1641215894}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_855
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75233,7 +75233,7 @@ GameObject:
   - component: {fileID: 1650216489}
   - component: {fileID: 1650216491}
   - component: {fileID: 1650216490}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_595
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75456,7 +75456,7 @@ GameObject:
   - component: {fileID: 1652648307}
   - component: {fileID: 1652648309}
   - component: {fileID: 1652648308}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_110
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75679,7 +75679,7 @@ GameObject:
   - component: {fileID: 1662328853}
   - component: {fileID: 1662328855}
   - component: {fileID: 1662328854}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_925
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75902,7 +75902,7 @@ GameObject:
   - component: {fileID: 1667162742}
   - component: {fileID: 1667162744}
   - component: {fileID: 1667162743}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1080
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76019,7 +76019,7 @@ GameObject:
   - component: {fileID: 1667730176}
   - component: {fileID: 1667730178}
   - component: {fileID: 1667730177}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_275
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76136,7 +76136,7 @@ GameObject:
   - component: {fileID: 1667881998}
   - component: {fileID: 1667882000}
   - component: {fileID: 1667881999}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_354
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76779,7 +76779,7 @@ GameObject:
   - component: {fileID: 1682723288}
   - component: {fileID: 1682723290}
   - component: {fileID: 1682723289}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77007,7 +77007,7 @@ GameObject:
   - component: {fileID: 1688493908}
   - component: {fileID: 1688493910}
   - component: {fileID: 1688493909}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1019
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77654,7 +77654,7 @@ GameObject:
   - component: {fileID: 1709996163}
   - component: {fileID: 1709996165}
   - component: {fileID: 1709996164}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_72
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78195,7 +78195,7 @@ GameObject:
   - component: {fileID: 1733244423}
   - component: {fileID: 1733244425}
   - component: {fileID: 1733244424}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_824
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78758,7 +78758,7 @@ GameObject:
   - component: {fileID: 1742674389}
   - component: {fileID: 1742674391}
   - component: {fileID: 1742674390}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_862
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78875,7 +78875,7 @@ GameObject:
   - component: {fileID: 1744340699}
   - component: {fileID: 1744340701}
   - component: {fileID: 1744340700}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_357
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79098,7 +79098,7 @@ GameObject:
   - component: {fileID: 1745527043}
   - component: {fileID: 1745527045}
   - component: {fileID: 1745527044}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_163
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79460,7 +79460,7 @@ GameObject:
   - component: {fileID: 1759055312}
   - component: {fileID: 1759055314}
   - component: {fileID: 1759055313}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_768
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79577,7 +79577,7 @@ GameObject:
   - component: {fileID: 1761938205}
   - component: {fileID: 1761938207}
   - component: {fileID: 1761938206}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_701
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79694,7 +79694,7 @@ GameObject:
   - component: {fileID: 1764465341}
   - component: {fileID: 1764465343}
   - component: {fileID: 1764465342}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_230
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79917,7 +79917,7 @@ GameObject:
   - component: {fileID: 1768989580}
   - component: {fileID: 1768989582}
   - component: {fileID: 1768989581}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_732
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80140,7 +80140,7 @@ GameObject:
   - component: {fileID: 1769551070}
   - component: {fileID: 1769551072}
   - component: {fileID: 1769551071}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_462
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80469,7 +80469,7 @@ GameObject:
   - component: {fileID: 1774646563}
   - component: {fileID: 1774646565}
   - component: {fileID: 1774646564}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_677
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80586,7 +80586,7 @@ GameObject:
   - component: {fileID: 1777620849}
   - component: {fileID: 1777620851}
   - component: {fileID: 1777620850}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_470
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80738,7 +80738,7 @@ GameObject:
   - component: {fileID: 1778639558}
   - component: {fileID: 1778639560}
   - component: {fileID: 1778639559}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_84
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80961,7 +80961,7 @@ GameObject:
   - component: {fileID: 1780512657}
   - component: {fileID: 1780512659}
   - component: {fileID: 1780512658}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_528
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81290,7 +81290,7 @@ GameObject:
   - component: {fileID: 1790989238}
   - component: {fileID: 1790989240}
   - component: {fileID: 1790989239}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_263
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81937,7 +81937,7 @@ GameObject:
   - component: {fileID: 1811155953}
   - component: {fileID: 1811155955}
   - component: {fileID: 1811155954}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_665
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82478,7 +82478,7 @@ GameObject:
   - component: {fileID: 1815729662}
   - component: {fileID: 1815729664}
   - component: {fileID: 1815729663}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_316
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82827,7 +82827,7 @@ GameObject:
   - component: {fileID: 1821936817}
   - component: {fileID: 1821936819}
   - component: {fileID: 1821936818}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_741
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82944,7 +82944,7 @@ GameObject:
   - component: {fileID: 1821989512}
   - component: {fileID: 1821989514}
   - component: {fileID: 1821989513}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_767
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83273,7 +83273,7 @@ GameObject:
   - component: {fileID: 1828948983}
   - component: {fileID: 1828948985}
   - component: {fileID: 1828948984}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_734
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83496,7 +83496,7 @@ GameObject:
   - component: {fileID: 1838648449}
   - component: {fileID: 1838648451}
   - component: {fileID: 1838648450}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1023
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83613,7 +83613,7 @@ GameObject:
   - component: {fileID: 1840835027}
   - component: {fileID: 1840835029}
   - component: {fileID: 1840835028}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_729
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83730,7 +83730,7 @@ GameObject:
   - component: {fileID: 1840942707}
   - component: {fileID: 1840942709}
   - component: {fileID: 1840942708}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83953,7 +83953,7 @@ GameObject:
   - component: {fileID: 1852588825}
   - component: {fileID: 1852588827}
   - component: {fileID: 1852588826}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_592
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84600,7 +84600,7 @@ GameObject:
   - component: {fileID: 1873439076}
   - component: {fileID: 1873439078}
   - component: {fileID: 1873439077}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85035,7 +85035,7 @@ GameObject:
   - component: {fileID: 1876379261}
   - component: {fileID: 1876379263}
   - component: {fileID: 1876379262}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_300
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85152,7 +85152,7 @@ GameObject:
   - component: {fileID: 1876763812}
   - component: {fileID: 1876763814}
   - component: {fileID: 1876763813}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_790
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85481,7 +85481,7 @@ GameObject:
   - component: {fileID: 1884195708}
   - component: {fileID: 1884195710}
   - component: {fileID: 1884195709}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_371
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85598,7 +85598,7 @@ GameObject:
   - component: {fileID: 1885962530}
   - component: {fileID: 1885962532}
   - component: {fileID: 1885962531}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_325
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85715,7 +85715,7 @@ GameObject:
   - component: {fileID: 1898037604}
   - component: {fileID: 1898037606}
   - component: {fileID: 1898037605}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_181
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85970,7 +85970,7 @@ GameObject:
   - component: {fileID: 1905592810}
   - component: {fileID: 1905592812}
   - component: {fileID: 1905592811}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_803
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86150,7 +86150,7 @@ GameObject:
   - component: {fileID: 1915137718}
   - component: {fileID: 1915137720}
   - component: {fileID: 1915137719}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1073
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86373,7 +86373,7 @@ GameObject:
   - component: {fileID: 1917315119}
   - component: {fileID: 1917315121}
   - component: {fileID: 1917315120}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_900
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86808,7 +86808,7 @@ GameObject:
   - component: {fileID: 1932201551}
   - component: {fileID: 1932201553}
   - component: {fileID: 1932201552}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_956
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86925,7 +86925,7 @@ GameObject:
   - component: {fileID: 1932653916}
   - component: {fileID: 1932653918}
   - component: {fileID: 1932653917}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_995
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87042,7 +87042,7 @@ GameObject:
   - component: {fileID: 1937275470}
   - component: {fileID: 1937275472}
   - component: {fileID: 1937275471}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_709
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87371,7 +87371,7 @@ GameObject:
   - component: {fileID: 1941483129}
   - component: {fileID: 1941483131}
   - component: {fileID: 1941483130}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87711,7 +87711,7 @@ GameObject:
   - component: {fileID: 1945431024}
   - component: {fileID: 1945431026}
   - component: {fileID: 1945431025}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_393
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88252,7 +88252,7 @@ GameObject:
   - component: {fileID: 1955836909}
   - component: {fileID: 1955836911}
   - component: {fileID: 1955836910}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_167
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88369,7 +88369,7 @@ GameObject:
   - component: {fileID: 1958268464}
   - component: {fileID: 1958268466}
   - component: {fileID: 1958268465}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_438
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88804,7 +88804,7 @@ GameObject:
   - component: {fileID: 1974194079}
   - component: {fileID: 1974194081}
   - component: {fileID: 1974194080}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_266
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88921,7 +88921,7 @@ GameObject:
   - component: {fileID: 1976023763}
   - component: {fileID: 1976023765}
   - component: {fileID: 1976023764}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_860
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89462,7 +89462,7 @@ GameObject:
   - component: {fileID: 1997256684}
   - component: {fileID: 1997256686}
   - component: {fileID: 1997256685}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_731
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89897,7 +89897,7 @@ GameObject:
   - component: {fileID: 2005703006}
   - component: {fileID: 2005703008}
   - component: {fileID: 2005703007}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_295
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90226,7 +90226,7 @@ GameObject:
   - component: {fileID: 2009217605}
   - component: {fileID: 2009217607}
   - component: {fileID: 2009217606}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_101
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90343,7 +90343,7 @@ GameObject:
   - component: {fileID: 2018820126}
   - component: {fileID: 2018820128}
   - component: {fileID: 2018820127}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_56
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91114,7 +91114,7 @@ GameObject:
   - component: {fileID: 2028681393}
   - component: {fileID: 2028681395}
   - component: {fileID: 2028681394}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_131
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91231,7 +91231,7 @@ GameObject:
   - component: {fileID: 2029661068}
   - component: {fileID: 2029661070}
   - component: {fileID: 2029661069}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_100
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91560,7 +91560,7 @@ GameObject:
   - component: {fileID: 2032551193}
   - component: {fileID: 2032551195}
   - component: {fileID: 2032551194}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_46
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91995,7 +91995,7 @@ GameObject:
   - component: {fileID: 2039174793}
   - component: {fileID: 2039174795}
   - component: {fileID: 2039174794}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_390
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92748,7 +92748,7 @@ GameObject:
   - component: {fileID: 2060002764}
   - component: {fileID: 2060002766}
   - component: {fileID: 2060002765}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_277
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93501,7 +93501,7 @@ GameObject:
   - component: {fileID: 2073852300}
   - component: {fileID: 2073852302}
   - component: {fileID: 2073852301}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_550
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93724,7 +93724,7 @@ GameObject:
   - component: {fileID: 2085937175}
   - component: {fileID: 2085937177}
   - component: {fileID: 2085937176}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_895
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93841,7 +93841,7 @@ GameObject:
   - component: {fileID: 2087577579}
   - component: {fileID: 2087577581}
   - component: {fileID: 2087577580}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_847
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94064,7 +94064,7 @@ GameObject:
   - component: {fileID: 2094364294}
   - component: {fileID: 2094364296}
   - component: {fileID: 2094364295}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_135
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94287,7 +94287,7 @@ GameObject:
   - component: {fileID: 2098007594}
   - component: {fileID: 2098007596}
   - component: {fileID: 2098007595}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_989
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94828,7 +94828,7 @@ GameObject:
   - component: {fileID: 2102436491}
   - component: {fileID: 2102436493}
   - component: {fileID: 2102436492}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_660
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95369,7 +95369,7 @@ GameObject:
   - component: {fileID: 2117580461}
   - component: {fileID: 2117580463}
   - component: {fileID: 2117580462}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_304
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95486,7 +95486,7 @@ GameObject:
   - component: {fileID: 2120700952}
   - component: {fileID: 2120700954}
   - component: {fileID: 2120700953}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_416
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95709,7 +95709,7 @@ GameObject:
   - component: {fileID: 2136919174}
   - component: {fileID: 2136919176}
   - component: {fileID: 2136919175}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_1050
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96038,7 +96038,7 @@ GameObject:
   - component: {fileID: 2139626199}
   - component: {fileID: 2139626201}
   - component: {fileID: 2139626200}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_45
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96155,7 +96155,7 @@ GameObject:
   - component: {fileID: 2139932539}
   - component: {fileID: 2139932541}
   - component: {fileID: 2139932540}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_290
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96272,7 +96272,7 @@ GameObject:
   - component: {fileID: 2142178319}
   - component: {fileID: 2142178321}
   - component: {fileID: 2142178320}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_985
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96389,7 +96389,7 @@ GameObject:
   - component: {fileID: 2146322587}
   - component: {fileID: 2146322589}
   - component: {fileID: 2146322588}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Smoke_395
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96529,15 +96529,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8293931153996851951, guid: 3c6338c7f73be3e449412acf61903e4f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8293931153996851951, guid: 3c6338c7f73be3e449412acf61903e4f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8293931153996851951, guid: 3c6338c7f73be3e449412acf61903e4f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8293931153996851951, guid: 3c6338c7f73be3e449412acf61903e4f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -96926,6 +96926,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 485593333026705908, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485593333026705908, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 872151505384663630, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 872151505384663630, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 18.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 872151505384663630, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16.050001
+      objectReference: {fileID: 0}
+    - target: {fileID: 872151505384663630, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9260743
+      objectReference: {fileID: 0}
+    - target: {fileID: 872151505384663630, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.37734112
+      objectReference: {fileID: 0}
+    - target: {fileID: 872151505384663630, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.00000002253463
+      objectReference: {fileID: 0}
+    - target: {fileID: 872151505384663630, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.00000000918203
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024730066084369102, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      propertyPath: m_Lens.ModeOverride
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3072778847026268853, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
       propertyPath: hitmarker
       value: 
@@ -96942,13 +96982,17 @@ PrefabInstance:
       propertyPath: cinemachineBrainCamera
       value: 
       objectReference: {fileID: 963194228}
+    - target: {fileID: 4315423676511972583, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      propertyPath: m_FollowOffset.y
+      value: 15.83
+      objectReference: {fileID: 0}
     - target: {fileID: 6757757193857777099, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
       propertyPath: m_Name
       value: PlayerParent
       objectReference: {fileID: 0}
     - target: {fileID: 9071546185402175517, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.61
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9071546185402175517, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -96956,7 +97000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9071546185402175517, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9071546185402175517, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
       propertyPath: m_LocalRotation.w

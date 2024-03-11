@@ -20,7 +20,7 @@ public class ScreenWarpPass : BasePass
         m_Material.SetFloat("_Speed", settings.speed.value);
         m_Material.SetFloat("_NoiseScale", settings.noiseScale.value);
         m_Material.SetVector("_Tiling", settings.noiseTiling.value);
-        m_Material.SetFloat("_MaskMultiplier", settings.maskMultiplier.value);
+        m_Material.SetFloat("_MaskMultiplier", settings.envEffectRange.value);
         //Masking
         m_Material.SetTexture("_MaskTex", settings.maskRenderTexture.value);
         m_Material.SetTexture("_DepthTex", settings.depthTexture.value);

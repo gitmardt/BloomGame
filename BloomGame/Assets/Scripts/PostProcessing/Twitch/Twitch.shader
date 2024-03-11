@@ -82,8 +82,8 @@ Shader "PostProcessing/Twitch"
                     if(envMask > depth)
                     {
                         int clampedEchoAmount = clamp(_EchoAmount, 1, 20);
-                        _Offset.x *= (mask * _MaskMultiplier);
-                        _Offset.y *= (mask * _MaskMultiplier);
+                        //_Offset.x *= (mask * _MaskMultiplier);
+                        //_Offset.y *= (mask * _MaskMultiplier);
 
                         for(int i = 0; i < clampedEchoAmount; i++)
                         {
@@ -93,6 +93,21 @@ Shader "PostProcessing/Twitch"
 
                         col /= (_EchoAmount + 1);
                     }
+                }
+
+                if(envMask < _MaskMultiplier)
+                {
+                    int clampedEchoAmount = clamp(_EchoAmount, 1, 20);
+                    _Offset.x *= (envMask);
+                    _Offset.y *= (envMask);
+
+                    for(int i = 0; i < clampedEchoAmount; i++)
+                    {
+                        col += SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord + (_Offset / 100) * i) * _Color1;
+                        col += SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord - (_Offset / 100) * i) * (1 - _Color1);
+                    }
+
+                    col /= (_EchoAmount + 1);
                 }
 
                 return col;

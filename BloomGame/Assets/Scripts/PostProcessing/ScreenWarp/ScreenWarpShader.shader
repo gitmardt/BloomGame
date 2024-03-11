@@ -70,30 +70,37 @@ Shader "PostProcessing/ScreenWarpShader"
                 float envMask = SAMPLE_TEXTURE2D(_EnvTex, sampler_EnvTex, input.texcoord).r;
                 float depth = SAMPLE_TEXTURE2D(_DepthTex, sampler_DepthTex, input.texcoord).r;
 
+                float2 newTexcoord = input.texcoord;
+
+                 float offset = _Time.x * _Speed;
+
+                float2 noiseTexcoord = input.texcoord * _Tiling;
+
+                noiseTexcoord.y += offset;
+
+                float2 noiseTexcoord2 =  input.texcoord * _Tiling;
+                noiseTexcoord2.y -= offset;
+                noiseTexcoord2.x += 0.25;
+
+                float2 noise = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, noiseTexcoord).xy;
+                float2 noise2 = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, noiseTexcoord2).xy; 
+
+                float2 noiseValue = noise * noise2;
+
                 if (mask > 0.2 && mask < 0.5) 
                 {
                     if(envMask > depth)
                     {
-                        float offset = _Time.x * _Speed;
-
-                        float2 noiseTexcoord = input.texcoord * _Tiling;
-
-                        noiseTexcoord.y += offset;
-
-                        float2 noiseTexcoord2 =  input.texcoord * _Tiling;
-                        noiseTexcoord2.y -= offset;
-                        noiseTexcoord2.x += 0.25;
-
-                        float2 noise = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, noiseTexcoord).xy;
-                        float2 noise2 = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, noiseTexcoord2).xy; 
-
-                        float2 noiseValue = noise * noise2 * (mask * _MaskMultiplier);
-
-                        input.texcoord += (noiseValue * _NoiseScale);
+                        newTexcoord += (noiseValue * _NoiseScale);
                     }
                 }
 
-                float4 color = SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord);
+                if(envMask < _MaskMultiplier)
+                {
+                    newTexcoord += noiseValue * (_NoiseScale * (envMask));
+                }
+
+                float4 color = SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, newTexcoord);
 				return color;
             }
             ENDHLSL

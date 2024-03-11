@@ -12,7 +12,7 @@ public class ScreenWarpSettings : BaseSettings
     public TextureParameter noiseTexture = new(null);
     public FloatParameter noiseScale = new(1);
     public Vector2Parameter noiseTiling = new(new Vector2(1,1));
-    public ClampedFloatParameter maskMultiplier = new(1, 0, 5);
+    public ClampedFloatParameter envEffectRange = new(1, 0, 5);
 
     public override bool IsActive() => active && noiseScale.value > 0;
 }

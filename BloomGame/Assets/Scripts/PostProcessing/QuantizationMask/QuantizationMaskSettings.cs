@@ -10,6 +10,7 @@ public class QuantizationMaskSettings : BaseSettings
 {
     public IntParameter numberOfColors = new IntParameter(256);
     public TextureParameter noiseTexture = new TextureParameter(null);
+    public FloatParameter envMultiplier = new FloatParameter(1);
 
     public override bool IsActive() => active && numberOfColors.value > 0;
 }
