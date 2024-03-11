@@ -31070,6 +31070,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InvertedEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3443197889535534767, guid: cf6aeb422ac4d134cb9070c601dd9090, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
