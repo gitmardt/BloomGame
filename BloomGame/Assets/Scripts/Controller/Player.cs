@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
 {
     public static Player instance;
 
+    public float health = 25;
+
     [Header("Hitmarker info")]
     public Hitmarker hitmarker;
     public SpriteAnimationManager hitmarkerAM;
