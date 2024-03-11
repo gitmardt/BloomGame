@@ -138,6 +138,12 @@ Material:
     - _SrcBlendAlpha: 1
     - _Strength: 0.35
     - _Surface: 0
+    - _TessEdgeLength: 16
+    - _TessMax: 25
+    - _TessMaxDisp: 25
+    - _TessMin: 10
+    - _TessPhongStrength: 0.5
+    - _TessValue: 16
     - _UVSec: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
@@ -148,5 +154,5 @@ Material:
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _Speed: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _Tiling: {r: 5, g: 5, b: 0, a: 0}
-    - _Tint: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 0}
+    - _Tint: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
