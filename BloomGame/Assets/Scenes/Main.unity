@@ -41125,6 +41125,9 @@ MonoBehaviour:
   transparentLightMinionObj: {fileID: 505544725}
   lightMinionSpawnObj: {fileID: 3501758545935972874, guid: 9f3f160607b3e5841a1d8997acc811db, type: 3}
   lightMinionParentFolder: {fileID: 802726350}
+  decalProjector: {fileID: 669576205}
+  decalProjectorScale: {x: 7.965, y: 7.965, z: 7.965}
+  tweenDuration: 0.2
   spawnMode: 0
 --- !u!1 &870429895
 GameObject:
@@ -97712,7 +97715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7522116502226271068, guid: 9f3f160607b3e5841a1d8997acc811db, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.92
       objectReference: {fileID: 0}
     - target: {fileID: 7522116502226271068, guid: 9f3f160607b3e5841a1d8997acc811db, type: 3}
       propertyPath: m_LocalPosition.y
@@ -97720,7 +97723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7522116502226271068, guid: 9f3f160607b3e5841a1d8997acc811db, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -13.24
       objectReference: {fileID: 0}
     - target: {fileID: 7522116502226271068, guid: 9f3f160607b3e5841a1d8997acc811db, type: 3}
       propertyPath: m_LocalRotation.w

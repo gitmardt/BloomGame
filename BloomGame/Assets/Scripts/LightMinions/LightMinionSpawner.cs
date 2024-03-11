@@ -1,6 +1,8 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class LightMinionSpawner : MonoBehaviour
 {
@@ -9,10 +11,15 @@ public class LightMinionSpawner : MonoBehaviour
     public GameObject transparentLightMinionObj;
     public GameObject lightMinionSpawnObj;
     public GameObject lightMinionParentFolder;
+    public DecalProjector decalProjector;
+    public Vector3 decalProjectorScale;
+    public float tweenDuration = 0.5f;
 
     private List<GameObject> lightMinions = new();
 
     public bool spawnMode = false;
+
+    private Coroutine activeRoutine = null;
 
     private void Awake()
     {
@@ -22,7 +29,7 @@ public class LightMinionSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spawnMode) SpawnMode();
+        SpawnMode();
     }
 
     void SpawnMode()
@@ -39,11 +46,21 @@ public class LightMinionSpawner : MonoBehaviour
 
     public void StartSpawning()
     {
+        if (activeRoutine != null) StopCoroutine(activeRoutine);
+        activeRoutine = null;
         transparentLightMinionObj.SetActive(true);
+        DOVirtual.Float(0, 1, tweenDuration, x => { decalProjector.fadeFactor = x; });
     }
 
     public void StopSpawning()
     {
+        activeRoutine = StartCoroutine(StopRoutine());
+    }
+
+    private IEnumerator StopRoutine()
+    {
+        DOVirtual.Float(1, 0, tweenDuration, x => { decalProjector.fadeFactor = x; });
+        yield return new WaitForSeconds(tweenDuration);
         transparentLightMinionObj.SetActive(false);
     }
 }
