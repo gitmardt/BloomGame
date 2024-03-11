@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 2390417828050425774}
   - component: {fileID: 1346868689918108818}
   - component: {fileID: 5338931082024478021}
-  - component: {fileID: 9140446106484061112}
+  - component: {fileID: 3276160776050636674}
   m_Layer: 7
   m_Name: BloomEnemy
   m_TagString: Enemy
@@ -299,8 +299,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 3.7
-  m_BaseOffset: 0.5
+  m_Height: 4.72
+  m_BaseOffset: -0.73
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &5338931082024478021
@@ -319,12 +319,12 @@ MonoBehaviour:
   attackDistance: 5
   attackDamage: 1
   destroyOnAttack: 0
-  health: 5
+  health: 2
   hitPosition: {fileID: 6607517297309817139}
   attackRange: 5
   attackShake: {fileID: 8477012586817745381}
---- !u!135 &9140446106484061112
-SphereCollider:
+--- !u!136 &3276160776050636674
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -341,9 +341,11 @@ SphereCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.54
-  m_Center: {x: 0, y: 1.58, z: 0}
+  serializedVersion: 2
+  m_Radius: 1.52
+  m_Height: 6.05
+  m_Direction: 1
+  m_Center: {x: 0, y: 2.83, z: 0}
 --- !u!1 &3361093407944490617
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,7 +418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28f4da6a320254541813a7e53577bf09, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.52
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28f4da6a320254541813a7e53577bf09, type: 3}
       propertyPath: m_LocalPosition.z

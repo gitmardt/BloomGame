@@ -14,22 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnMoments:
   - enemies:
-    - enemyType: {fileID: 3949588602773202674, guid: c276d3e531ec9a94d9861ac9f0aab8c5, type: 3}
+    - enemyType: {fileID: 3443197889535534767, guid: cf6aeb422ac4d134cb9070c601dd9090, type: 3}
       amount: 15
     - enemyType: {fileID: 5596285507308239934, guid: 3c6338c7f73be3e449412acf61903e4f, type: 3}
-      amount: 15
+      amount: 0
     - enemyType: {fileID: 2549892707977204346, guid: c0657403074038d45b55331f9a907507, type: 3}
-      amount: 15
+      amount: 0
     - enemyType: {fileID: 8973848208678981798, guid: a70b0388dc93f8746b337b5b7e6f8a60, type: 3}
-      amount: 15
+      amount: 0
     waitForSeconds: 60
   - enemies:
-    - enemyType: {fileID: 3949588602773202674, guid: c276d3e531ec9a94d9861ac9f0aab8c5, type: 3}
+    - enemyType: {fileID: 3443197889535534767, guid: cf6aeb422ac4d134cb9070c601dd9090, type: 3}
       amount: 25
     - enemyType: {fileID: 8973848208678981798, guid: a70b0388dc93f8746b337b5b7e6f8a60, type: 3}
-      amount: 25
+      amount: 0
     - enemyType: {fileID: 5596285507308239934, guid: 3c6338c7f73be3e449412acf61903e4f, type: 3}
-      amount: 25
+      amount: 0
     - enemyType: {fileID: 2549892707977204346, guid: c0657403074038d45b55331f9a907507, type: 3}
-      amount: 25
+      amount: 0
     waitForSeconds: 15
