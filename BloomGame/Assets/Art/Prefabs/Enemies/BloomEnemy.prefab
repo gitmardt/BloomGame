@@ -50,13 +50,13 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: 1627957458043806157, guid: bb8cb01124758e24c9d1ed44045be86d, type: 2}
     value: {fileID: 8234536559502777766}
-  - key: {fileID: 2032791565028937906, guid: bb8cb01124758e24c9d1ed44045be86d, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 8477012586817745381}
-  - key: {fileID: -5315864585409012601, guid: bb8cb01124758e24c9d1ed44045be86d, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 4428637292335996164}
-  - key: {fileID: -6828829647878638467, guid: bb8cb01124758e24c9d1ed44045be86d, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 7094477790246391937}
-  - key: {fileID: -2291296860625425120, guid: bb8cb01124758e24c9d1ed44045be86d, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 3594530272359491851}
   m_ExposedReferences:
     m_References: []
@@ -279,7 +279,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 10
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -414,7 +414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28f4da6a320254541813a7e53577bf09, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -1.4148722e-11
+      value: -1.4148723e-11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28f4da6a320254541813a7e53577bf09, type: 3}
       propertyPath: m_LocalRotation.y

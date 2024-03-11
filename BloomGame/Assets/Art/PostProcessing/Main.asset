@@ -503,7 +503,7 @@ MonoBehaviour:
     m_Value: 3.87
   threshold:
     m_OverrideState: 1
-    m_Value: 0.979
+    m_Value: 0.881
   thresholdRange:
     m_OverrideState: 1
     m_Value: 0.347
