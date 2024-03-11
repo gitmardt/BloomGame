@@ -24,6 +24,9 @@ Shader "PostProcessing/Quantization"
             TEXTURE2D(_NoiseTex);
             SAMPLER(sampler_NoiseTex);
 
+            TEXTURE2D(_Vignette);
+            SAMPLER(sampler_Vignette);
+
             static const int bayer2[2][2] = {
                 { 0, 2 }, 
                 { 3, 1 } 
@@ -96,7 +99,7 @@ Shader "PostProcessing/Quantization"
                 float noiseValue = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, input.texcoord).r;
 
                 float4 color = SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord);
-                
+
                 // Apply dithering before quantization
                 color.rgb += (noiseValue * ditherThreshold) * (1.0 / _NumColors) - (1.0 / (_NumColors * 2.0));
                 

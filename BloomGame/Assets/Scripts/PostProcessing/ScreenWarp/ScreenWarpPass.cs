@@ -25,6 +25,7 @@ public class ScreenWarpPass : BasePass
         m_Material.SetTexture("_MaskTex", settings.maskRenderTexture.value);
         m_Material.SetTexture("_DepthTex", settings.depthTexture.value);
         m_Material.SetTexture("_EnvTex", settings.environmentTexture.value);
+        m_Material.SetTexture("_Vignette", settings.vignetteTexture.value);
         /////
 
         Blitter.BlitCameraTexture(cmd, m_Renderer.cameraColorTargetHandle, source, m_Material, 0);

@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 5885623544036859487}
   - component: {fileID: 5987438804848616620}
   - component: {fileID: 8654880954406946461}
+  - component: {fileID: 2029158669246613745}
   m_Layer: 0
   m_Name: QuantizeEnemyV2
   m_TagString: Untagged
@@ -257,11 +258,32 @@ MonoBehaviour:
   attackTimeline: {fileID: 596376435935741302}
   attackDistance: 10
   attackDamage: 1
-  destroyOnAttack: 1
+  destroyOnAttack: 0
   health: 5
   hitPosition: {fileID: 3906005154926041870}
   attackRange: 10
   attackClip: {fileID: 6720303635017113406, guid: a35bea2a9ac8dfd41a075cdbeca7882c, type: 3}
+--- !u!135 &2029158669246613745
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3949588602773202674}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.11
+  m_Center: {x: 0, y: 1.83, z: 0}
 --- !u!1 &4967308237972093147
 GameObject:
   m_ObjectHideFlags: 0
@@ -5202,12 +5224,6 @@ PlayableDirector:
     value: {fileID: 7167432525229157126}
   - key: {fileID: -8140743379382911602, guid: 70cbe05de37af5541a6f406996bb8e18, type: 2}
     value: {fileID: 6763907825963605299}
-  - key: {fileID: 2881868598524349195, guid: 70cbe05de37af5541a6f406996bb8e18, type: 2}
-    value: {fileID: 3523189490326219682}
-  - key: {fileID: -7305925638835654030, guid: 70cbe05de37af5541a6f406996bb8e18, type: 2}
-    value: {fileID: 2687675620835372070}
-  - key: {fileID: -7343834340403477192, guid: 70cbe05de37af5541a6f406996bb8e18, type: 2}
-    value: {fileID: 3223676710068385645}
   m_ExposedReferences:
     m_References:
     - 0bdd98eb81b93d442a5bd4522f215e21: {fileID: 5395126240207756123}

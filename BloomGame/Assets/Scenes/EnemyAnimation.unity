@@ -400,10 +400,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TwitchEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 8973848208678981798, guid: a70b0388dc93f8746b337b5b7e6f8a60, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -696,10 +692,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuantizeEnemyV2
       objectReference: {fileID: 0}
-    - target: {fileID: 3949588602773202674, guid: c276d3e531ec9a94d9861ac9f0aab8c5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -862,9 +854,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: BloomEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 2549892707977204346, guid: c0657403074038d45b55331f9a907507, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 6993934459734310638, guid: c0657403074038d45b55331f9a907507, type: 3}
+      propertyPath: m_SceneBindings.Array.data[6].key
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993934459734310638, guid: c0657403074038d45b55331f9a907507, type: 3}
+      propertyPath: m_SceneBindings.Array.data[7].key
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -883,9 +879,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: WarpEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 5596285507308239934, guid: 3c6338c7f73be3e449412acf61903e4f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 7352350323199172882, guid: 3c6338c7f73be3e449412acf61903e4f, type: 3}
+      propertyPath: m_SceneBindings.Array.data[5].key
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7352350323199172882, guid: 3c6338c7f73be3e449412acf61903e4f, type: 3}
+      propertyPath: m_SceneBindings.Array.data[6].key
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8293931153996851951, guid: 3c6338c7f73be3e449412acf61903e4f, type: 3}
       propertyPath: m_LocalPosition.x

@@ -174,12 +174,8 @@ PlayableDirector:
     value: {fileID: 5349275781641121979}
   - key: {fileID: 6741465493030581519, guid: bb8cb01124758e24c9d1ed44045be86d, type: 2}
     value: {fileID: 4892323643419049220}
-  - key: {fileID: 674688507134049771, guid: bb8cb01124758e24c9d1ed44045be86d, type: 2}
-    value: {fileID: 6142446536031484525}
   - key: {fileID: 0}
     value: {fileID: 3928251262206203261}
-  - key: {fileID: -8725663613800181282, guid: bb8cb01124758e24c9d1ed44045be86d, type: 2}
-    value: {fileID: 8577913747359902917}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &5349275781641121979
@@ -377,6 +373,7 @@ GameObject:
   - component: {fileID: 6977498461682850705}
   - component: {fileID: 2548716417110747104}
   - component: {fileID: 1834958610840605210}
+  - component: {fileID: 6355463369680606358}
   m_Layer: 11
   m_Name: TwitchEnemy
   m_TagString: Enemy
@@ -440,11 +437,32 @@ MonoBehaviour:
   attackTimeline: {fileID: 8376624566705088566}
   attackDistance: 3
   attackDamage: 1
-  destroyOnAttack: 1
+  destroyOnAttack: 0
   health: 5
   hitPosition: {fileID: 5919238472751573648}
   attackRange: 3
   attackClip: {fileID: 6720303635017113406, guid: 4948aa22429573548888cc3f1281ca2e, type: 3}
+--- !u!135 &6355463369680606358
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8973848208678981798}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.29
+  m_Center: {x: 0, y: 0.73, z: 0}
 --- !u!1001 &640466825249866266
 PrefabInstance:
   m_ObjectHideFlags: 0

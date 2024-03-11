@@ -17,6 +17,7 @@ public class QuantizationPass : BasePass
         m_Material.SetFloat("_ScreenWidth", m_Descriptor.width);
         m_Material.SetFloat("_ScreenHeight", m_Descriptor.height);
         m_Material.SetTexture("_NoiseTex", quantizationSettings.noiseTexture.value);
+        m_Material.SetTexture("_Vignette", quantizationSettings.vignetteTexture.value);
 
         Blitter.BlitCameraTexture(cmd, m_Renderer.cameraColorTargetHandle, source, m_Material, 0);
         Blitter.BlitCameraTexture(cmd, source, m_Renderer.cameraColorTargetHandle);

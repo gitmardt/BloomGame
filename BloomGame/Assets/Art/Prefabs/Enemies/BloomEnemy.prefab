@@ -60,20 +60,14 @@ PlayableDirector:
     value: {fileID: 3594530272359491851}
   - key: {fileID: 6741465493030581519, guid: bb8cb01124758e24c9d1ed44045be86d, type: 2}
     value: {fileID: 0}
-  - key: {fileID: 674688507134049771, guid: bb8cb01124758e24c9d1ed44045be86d, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 0}
-  - key: {fileID: -8725663613800181282, guid: bb8cb01124758e24c9d1ed44045be86d, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 0}
   - key: {fileID: 1627957458043806157, guid: 319a67fd8a0c99c4e9ad12a37f30e9d2, type: 2}
     value: {fileID: 8234536559502777766}
   - key: {fileID: -420737954762567457, guid: 319a67fd8a0c99c4e9ad12a37f30e9d2, type: 2}
     value: {fileID: 8477012586817745381}
-  - key: {fileID: 6223345725211361678, guid: 319a67fd8a0c99c4e9ad12a37f30e9d2, type: 2}
-    value: {fileID: 3594530272359491851}
-  - key: {fileID: -7684398859796988813, guid: 319a67fd8a0c99c4e9ad12a37f30e9d2, type: 2}
-    value: {fileID: 4428637292335996164}
-  - key: {fileID: 8920136190426050180, guid: 319a67fd8a0c99c4e9ad12a37f30e9d2, type: 2}
-    value: {fileID: 7094477790246391937}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &8234536559502777766
@@ -255,6 +249,7 @@ GameObject:
   - component: {fileID: 2390417828050425774}
   - component: {fileID: 1346868689918108818}
   - component: {fileID: 5338931082024478021}
+  - component: {fileID: 9140446106484061112}
   m_Layer: 7
   m_Name: BloomEnemy
   m_TagString: Enemy
@@ -317,11 +312,32 @@ MonoBehaviour:
   attackTimeline: {fileID: 6993934459734310638}
   attackDistance: 5
   attackDamage: 1
-  destroyOnAttack: 1
+  destroyOnAttack: 0
   health: 5
   hitPosition: {fileID: 6607517297309817139}
   attackRange: 5
   attackShake: {fileID: 8477012586817745381}
+--- !u!135 &9140446106484061112
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2549892707977204346}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.54
+  m_Center: {x: 0, y: 1.58, z: 0}
 --- !u!1 &3361093407944490617
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28f4da6a320254541813a7e53577bf09, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -1.4148751e-11
+      value: -1.4148753e-11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28f4da6a320254541813a7e53577bf09, type: 3}
       propertyPath: m_LocalRotation.y

@@ -55,6 +55,9 @@ Shader "PostProcessing/ScreenWarpShader"
 
             TEXTURE2D(_EnvTex);
             SAMPLER(sampler_EnvTex);
+
+            TEXTURE2D(_Vignette);
+            SAMPLER(sampler_Vignette);
             /////////
 
             float _Intensity;
@@ -97,7 +100,9 @@ Shader "PostProcessing/ScreenWarpShader"
 
                 if(envMask < _MaskMultiplier)
                 {
-                    newTexcoord += noiseValue * (_NoiseScale * (envMask));
+                    float vignetteMask = SAMPLE_TEXTURE2D(_Vignette, sampler_Vignette, input.texcoord).r;
+
+                    newTexcoord += noiseValue * (_NoiseScale * (envMask * vignetteMask));
                 }
 
                 float4 color = SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, newTexcoord);

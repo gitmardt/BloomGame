@@ -20,6 +20,7 @@ public class TwitchPass : BasePass
         m_Material.SetTexture("_MaskTex", twitchSettings.maskRenderTexture.value);
         m_Material.SetTexture("_DepthTex", twitchSettings.depthTexture.value);
         m_Material.SetTexture("_EnvTex", twitchSettings.environmentTexture.value);
+        m_Material.SetTexture("_Vignette", twitchSettings.vignetteTexture.value);
         /////
 
         Blitter.BlitCameraTexture(cmd, m_Renderer.cameraColorTargetHandle, source, m_Material, 0);

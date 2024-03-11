@@ -10,6 +10,7 @@ public class QuantizationSettings : BaseSettings
 {
     public IntParameter numberOfColors = new IntParameter(256);
     public TextureParameter noiseTexture = new TextureParameter(null);
+    public TextureParameter vignetteTexture = new(null);
 
     public override bool IsActive() => active && numberOfColors.value > 0;
 }

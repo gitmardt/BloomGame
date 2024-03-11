@@ -27,7 +27,10 @@ public class ParticleProjectile : MonoBehaviour
         trailParent.position += transform.forward * (speed * Time.deltaTime);
     }
 
-
+    private void OnParticleTrigger()
+    {
+        
+    }
     private void OnParticleCollision(GameObject other)
     {
         ParticlePhysicsExtensions.GetCollisionEvents(particles, other, collisionEvents);

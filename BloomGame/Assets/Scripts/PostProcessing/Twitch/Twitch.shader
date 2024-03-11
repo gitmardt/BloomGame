@@ -61,6 +61,9 @@ Shader "PostProcessing/Twitch"
 
             TEXTURE2D(_EnvTex);
             SAMPLER(sampler_EnvTex);
+
+            TEXTURE2D(_Vignette);
+            SAMPLER(sampler_Vignette);
             /////////
 
             float2 _Offset;
@@ -98,8 +101,10 @@ Shader "PostProcessing/Twitch"
                 if(envMask < _MaskMultiplier)
                 {
                     int clampedEchoAmount = clamp(_EchoAmount, 1, 20);
-                    _Offset.x *= (envMask);
-                    _Offset.y *= (envMask);
+                    float vignetteMask = SAMPLE_TEXTURE2D(_Vignette, sampler_Vignette, input.texcoord).r;
+
+                    _Offset.x *= (envMask * vignetteMask);
+                    _Offset.y *= (envMask * vignetteMask);
 
                     for(int i = 0; i < clampedEchoAmount; i++)
                     {
