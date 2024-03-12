@@ -24,6 +24,12 @@ public class LevelGeneration : MonoBehaviour
 
     public List<Vector3> pickupPoints = new();
 
+#if UNITY_EDITOR
+    [Header("Gizmo options")]
+    public Color mainGizmoColor = Color.red;
+    public float pointGizmoSphereRadius = 0.2f;
+#endif
+
     private void Awake() => instance = this;
 
     private SquareGrid GetGrid()
@@ -65,21 +71,28 @@ public class LevelGeneration : MonoBehaviour
     private IEnumerator ScatterAssets(SquareGrid grid)
     {
         loadingBar.gameObject.SetActive(true);
-        steps = 3;
+        steps = 8;
         currentStep = 0;
 
         ClearGrid();
-        StartCoroutine(ScatterRoutine(grid));
+        currentStep++;
+        loadingBar.value = currentStep / steps;
+        yield return ScatterRoutine(grid);
+
         currentStep++;
         loadingBar.value = currentStep / steps;
         yield return null;
-        StartCoroutine(SpawnSmoke(grid));
+        currentStep++;
+        loadingBar.value = currentStep / steps;
+        yield return SpawnSmoke(grid);
+
+        yield return null;
+        currentStep++;
+        loadingBar.value = currentStep / steps;
+        yield return SetPickupPoints(grid);
         currentStep++;
         loadingBar.value = currentStep / steps;
         yield return null;
-        StartCoroutine(SetPickupPoints(grid));
-        currentStep++;
-        loadingBar.value = currentStep / steps;
 
         finishedGenerating = true;
         loadingBar.gameObject.SetActive(false);
@@ -113,9 +126,11 @@ public class LevelGeneration : MonoBehaviour
 
             instancedPrefab.name = "RandomlyPlacedObject" + environmentPrefabs[random].prefab.name + "_" + i;
             scatteredObjects.Add(instancedPrefab);
-
-            yield return null; 
         }
+
+        currentStep++;
+        loadingBar.value = currentStep / steps;
+        yield return null;
     }
 
     private IEnumerator SetPickupPoints(SquareGrid grid)
@@ -132,14 +147,21 @@ public class LevelGeneration : MonoBehaviour
                         {
                             if (!pickupPoints.Contains(grid.points[i]))
                             {
-                                pickupPoints.Add(grid.points[i]);
-                                yield return null; 
+                                if (!grid.borderPoints.Contains(grid.points[i]))
+                                {
+                                    pickupPoints.Add(grid.points[i]);
+       
+                                }
                             }
                         }
                     }
                 }
             }
         }
+
+        currentStep++;
+        loadingBar.value = currentStep / steps;
+        yield return null;
     }
 
     private IEnumerator SpawnSmoke(SquareGrid grid)
@@ -167,9 +189,24 @@ public class LevelGeneration : MonoBehaviour
 
                     instancedPrefab.name = "VFX_" + vfxPrefabs[random].prefab.name + "_" + i;
                     scatteredObjects.Add(instancedPrefab);
-                    yield return null; 
+     
                 }
             }
         }
+
+        currentStep++;
+        loadingBar.value = currentStep / steps;
+        yield return null;
     }
+
+#if UNITY_EDITOR
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = mainGizmoColor;
+        for (int i = 0; i < pickupPoints.Count; i++)
+        {
+            Gizmos.DrawSphere(pickupPoints[i], pointGizmoSphereRadius);
+        }
+    }
+#endif
 }
