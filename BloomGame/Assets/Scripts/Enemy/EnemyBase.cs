@@ -1,3 +1,4 @@
+using SmoothShakePro;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -92,6 +93,7 @@ public class EnemyBase : MonoBehaviour
     {
         if (Vector3.Distance(player.position, transform.position) < attackDistance)
         {
+            FeedbackManager.instance.hitShake.StartShake(FeedbackManager.instance.hitShakePlayer);
             Player.instance.health--;
             Debug.Log("Player health is " + Player.instance.health);
         }
@@ -99,6 +101,7 @@ public class EnemyBase : MonoBehaviour
 
     public void Damage()
     {
+        FeedbackManager.instance.hitShake.StartShake(FeedbackManager.instance.hitShakeEnemy);
         health--;
         if(health == 0) Die();
     }

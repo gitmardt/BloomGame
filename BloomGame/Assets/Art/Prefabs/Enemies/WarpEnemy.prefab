@@ -127,6 +127,9 @@ MonoBehaviour:
   - ScreenWarp
   - Quantization
   - Bloom
+  hitShake: {fileID: 0}
+  playerHitShake: {fileID: 11400000, guid: 482247d0252523643b5b90889a62d03c, type: 2}
+  enemyHitShake: {fileID: 11400000, guid: eed28822bf8cdbc4eacda13d97ebb14a, type: 2}
   health: 2
   hitPosition: {fileID: 2305952489101742787}
   attackRange: 3
