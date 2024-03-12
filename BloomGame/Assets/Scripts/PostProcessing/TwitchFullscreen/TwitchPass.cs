@@ -1,15 +1,15 @@
 using UnityEngine.Rendering;
 using UnityEngine;
-public class TwitchPass : BasePass
+public class TwitchFullscreenPass : BasePass
 {
-    public TwitchPass(string name)
+    public TwitchFullscreenPass(string name)
     {
         m_ProfilingSampler = new ProfilingSampler(name);
     }
 
     public override void Blit(CommandBuffer cmd)
     {
-        TwitchSettings twitchSettings = m_Settings as TwitchSettings;
+        TwitchFullscreenSettings twitchSettings = m_Settings as TwitchFullscreenSettings;
         if (twitchSettings == null) return;
 
         m_Material.SetVector("_Offset", twitchSettings.offset.value);
@@ -30,5 +30,5 @@ public class TwitchPass : BasePass
         Blitter.BlitCameraTexture(cmd, source, m_Renderer.cameraColorTargetHandle);
     }
 
-    public override void GetSettings() => m_Settings = GetStackComponent<TwitchSettings>();
+    public override void GetSettings() => m_Settings = GetStackComponent<TwitchFullscreenSettings>();
 }

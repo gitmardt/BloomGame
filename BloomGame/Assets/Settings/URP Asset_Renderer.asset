@@ -108,7 +108,8 @@ MonoBehaviour:
   - {fileID: -4980782419118923496}
   - {fileID: -7584712783754881044}
   - {fileID: 3305075512603298680}
-  m_RendererFeatureMap: 7cc26c7ed605e9d314303d337961534e2db40bb9c622ca0661eabe796234fc6080118eb4e862008cb5f2c2c32fbd2ceb18e1e774c7b4e0baec17eda0e8afbd9678cb8fecaafcdd2d
+  - {fileID: 1430067020026271422}
+  m_RendererFeatureMap: 7cc26c7ed605e9d314303d337961534e2db40bb9c622ca0661eabe796234fc6080118eb4e862008cb5f2c2c32fbd2ceb18e1e774c7b4e0baec17eda0e8afbd9678cb8fecaafcdd2dbed6aabd609ed813
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -164,6 +165,23 @@ MonoBehaviour:
   renderPassEvent: 550
   profilerName: Quantization
   onlyGameView: 0
+--- !u!114 &1430067020026271422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ec68c3c174df247ab949d5dccb76f6, type: 3}
+  m_Name: TwitchFullscreenFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  m_Shader: {fileID: 4800000, guid: 120a433057ba19d42b40da31da7f7547, type: 3}
+  renderPassEvent: 550
+  profilerName: TwitchFullscreen
+  onlyGameView: 1
 --- !u!114 &3305075512603298680
 MonoBehaviour:
   m_ObjectHideFlags: 0

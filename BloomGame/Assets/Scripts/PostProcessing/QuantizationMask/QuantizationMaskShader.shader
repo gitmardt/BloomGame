@@ -109,7 +109,7 @@ Shader "PostProcessing/QuantizationMask"
                 // Sample the noise texture
                 float noiseValue = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, input.texcoord).r;
 
-                if (mask > 0.2 && mask < 0.5) 
+                if (mask > 0.1) 
                 {
                     if(envMask > depth)
                     {

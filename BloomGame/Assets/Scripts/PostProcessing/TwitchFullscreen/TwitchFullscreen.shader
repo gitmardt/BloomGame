@@ -1,5 +1,12 @@
-Shader "PostProcessing/ScreenWarpShader"
+Shader "PostProcessing/TwitchFullscreen"
 {
+    Properties
+    {
+        _BlitTexture ("Texture", 2D) = "white" {}
+        _Offset ("Offset", Vector) = (0, 0, 0, 0)
+        _Color1 ("Color1", Color) = (1, 1, 1, 1)
+        _EchoAmount ("EchoAmount", Int) = 1
+    }
     SubShader
     {
         Tags { "RenderType"="Opaque" "RenderPipeline" = "UniversalPipeline"}
@@ -11,6 +18,8 @@ Shader "PostProcessing/ScreenWarpShader"
 
             HLSLPROGRAM
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+            #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
+            #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
 
             #pragma vertex Vert
             #pragma fragment frag
@@ -60,22 +69,23 @@ Shader "PostProcessing/ScreenWarpShader"
             SAMPLER(sampler_Vignette);
             /////////
 
-            float _Intensity;
-            float _Speed;
-            float _NoiseScale;
-            float2 _Tiling;
+            float2 _Offset;
+            float4 _Color1;
+            int _EchoAmount;
             float _MaskMultiplier;
+            float _Speed;
+            float2 _Tiling;
 
             half4 frag (Varyings input) : SV_Target
             {
+                float4 col = SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord);
+
                 //Masking
                 float mask = SAMPLE_TEXTURE2D(_MaskTex, sampler_MaskTex, input.texcoord).r;
                 float envMask = SAMPLE_TEXTURE2D(_EnvTex, sampler_EnvTex, input.texcoord).r;
                 float depth = SAMPLE_TEXTURE2D(_DepthTex, sampler_DepthTex, input.texcoord).r;
 
-                float2 newTexcoord = input.texcoord;
-
-                 float offset = _Time.x * _Speed;
+                float offset = _Time.x * _Speed;
 
                 float2 noiseTexcoord = input.texcoord * _Tiling;
 
@@ -90,23 +100,24 @@ Shader "PostProcessing/ScreenWarpShader"
 
                 float2 noiseValue = noise * noise2;
 
-                if (mask > 0.1) 
-                {
-                    if(envMask > depth)
-                    {
-                        newTexcoord += (noiseValue * _NoiseScale);
-                    }
-                }
-
                 if(envMask < _MaskMultiplier)
                 {
+                    int clampedEchoAmount = clamp(_EchoAmount, 1, 20);
                     float vignetteMask = SAMPLE_TEXTURE2D(_Vignette, sampler_Vignette, input.texcoord).r;
 
-                    newTexcoord += noiseValue * (_NoiseScale * (envMask * vignetteMask));
+                    _Offset.x *= (envMask * vignetteMask * noiseValue);
+                    _Offset.y *= (envMask * vignetteMask * noiseValue);
+
+                    for(int i = 0; i < clampedEchoAmount; i++)
+                    {
+                        col += SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord + (_Offset / 100) * i) * _Color1;
+                        col += SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord - (_Offset / 100) * i) * (1 - _Color1);
+                    }
+
+                    col /= (_EchoAmount + 1);
                 }
 
-                float4 color = SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, newTexcoord);
-				return color;
+                return col;
             }
             ENDHLSL
         }

@@ -200,6 +200,7 @@
 
                 if(envMask > depth)
                 {
+                    if(mask.r < 0.8) mask *= 3;
                     maskedCol = screen * (mask * 2);
                 }
                 else

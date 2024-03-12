@@ -39,6 +39,60 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: {fileID: 0}
     dimension: 1
+--- !u!114 &-6237436663952241695
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e7fbfd328977f84d96f306c09c4ab80, type: 3}
+  m_Name: TwitchFullscreenSettings
+  m_EditorClassIdentifier: 
+  active: 1
+  maskRenderTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
+    dimension: 1
+  depthTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
+    dimension: 1
+  environmentTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 8400000, guid: 65eaa0f67b7314a4e846d25515b7f550, type: 2}
+    dimension: 1
+  downSampler:
+    m_OverrideState: 1
+    m_Value: 1
+  tintColor:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0, b: 0, a: 1}
+  offset:
+    m_OverrideState: 1
+    m_Value: {x: 2, y: 2}
+  echoAmount:
+    m_OverrideState: 1
+    m_Value: 8
+  maskMultiplier:
+    m_OverrideState: 1
+    m_Value: 1
+  vignetteTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: b2da3dfe26d9c4b4e9eb5dda70a0abc8, type: 3}
+    dimension: 1
+  noiseTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: 115c08dc983958b46a6301ab539d3e98, type: 3}
+    dimension: 1
+  speed:
+    m_OverrideState: 1
+    m_Value: 1
+  tiling:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1}
 --- !u!114 &-5522460720872658004
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -72,17 +126,27 @@ MonoBehaviour:
     m_Value: {r: 1, g: 0.021337267, b: 0, a: 1}
   offset:
     m_OverrideState: 1
-    m_Value: {x: 1.22, y: 1.57}
+    m_Value: {x: 1, y: 1}
   echoAmount:
     m_OverrideState: 1
-    m_Value: 3
+    m_Value: 10
   maskMultiplier:
     m_OverrideState: 1
     m_Value: 5
   vignetteTexture:
     m_OverrideState: 1
-    m_Value: {fileID: 2800000, guid: 581e49f6df6fcfc4b99d969a62520fee, type: 3}
+    m_Value: {fileID: 2800000, guid: b2da3dfe26d9c4b4e9eb5dda70a0abc8, type: 3}
     dimension: 1
+  noiseTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: 115c08dc983958b46a6301ab539d3e98, type: 3}
+    dimension: 1
+  speed:
+    m_OverrideState: 1
+    m_Value: 2
+  tiling:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1}
 --- !u!114 &-4333525503352236266
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -207,6 +271,7 @@ MonoBehaviour:
   - {fileID: -5522460720872658004}
   - {fileID: -1983950267635678015}
   - {fileID: -4333525503352236266}
+  - {fileID: -6237436663952241695}
 --- !u!114 &383484505055380267
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -483,7 +548,7 @@ MonoBehaviour:
     m_Value: 5
   vignetteTexture:
     m_OverrideState: 1
-    m_Value: {fileID: 2800000, guid: 581e49f6df6fcfc4b99d969a62520fee, type: 3}
+    m_Value: {fileID: 2800000, guid: b2da3dfe26d9c4b4e9eb5dda70a0abc8, type: 3}
     dimension: 1
 --- !u!114 &6444631016328238269
 MonoBehaviour:

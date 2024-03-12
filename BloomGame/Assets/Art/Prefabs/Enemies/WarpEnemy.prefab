@@ -121,6 +121,12 @@ MonoBehaviour:
   attackDistance: 3
   attackDamage: 1
   destroyOnAttack: 0
+  randomLayer: 1
+  layers:
+  - Twitch
+  - ScreenWarp
+  - Quantization
+  - Bloom
   health: 2
   hitPosition: {fileID: 2305952489101742787}
   attackRange: 3

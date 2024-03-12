@@ -2,8 +2,8 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-[System.Serializable, VolumeComponentMenuForRenderPipeline("Custom/Twitch", typeof(UniversalRenderPipeline))]
-public class TwitchSettings : BaseSettings
+[System.Serializable, VolumeComponentMenuForRenderPipeline("Custom/TwitchFullscreen", typeof(UniversalRenderPipeline))]
+public class TwitchFullscreenSettings : BaseSettings
 {
     public ColorParameter tintColor = new(Color.red);
     public Vector2Parameter offset = new(new Vector2(0.5f, 0.5f));

@@ -52,6 +52,9 @@ Shader "PostProcessing/Twitch"
             TEXTURE2D(_BlitTexture);
             SAMPLER(sampler_BlitTexture);
 
+            TEXTURE2D(_NoiseTex);
+            SAMPLER(sampler_NoiseTex);
+
             //Masking 
             TEXTURE2D(_MaskTex);
             SAMPLER(sampler_MaskTex);
@@ -70,6 +73,8 @@ Shader "PostProcessing/Twitch"
             float4 _Color1;
             int _EchoAmount;
             float _MaskMultiplier;
+            float _Speed;
+            float2 _Tiling;
 
             half4 frag (Varyings input) : SV_Target
             {
@@ -80,13 +85,28 @@ Shader "PostProcessing/Twitch"
                 float envMask = SAMPLE_TEXTURE2D(_EnvTex, sampler_EnvTex, input.texcoord).r;
                 float depth = SAMPLE_TEXTURE2D(_DepthTex, sampler_DepthTex, input.texcoord).r;
 
-                if(mask > 0.2 && mask < 0.5)
+                float offset = _Time.x * _Speed;
+
+                float2 noiseTexcoord = input.texcoord * _Tiling;
+
+                noiseTexcoord.y += offset;
+
+                float2 noiseTexcoord2 =  input.texcoord * _Tiling;
+                noiseTexcoord2.y -= offset;
+                noiseTexcoord2.x += 0.25;
+
+                float2 noise = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, noiseTexcoord).xy;
+                float2 noise2 = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, noiseTexcoord2).xy; 
+
+                float2 noiseValue = noise * noise2;
+
+                if(mask > 0.1)
                 {
                     if(envMask > depth)
                     {
                         int clampedEchoAmount = clamp(_EchoAmount, 1, 20);
-                        //_Offset.x *= (mask * _MaskMultiplier);
-                        //_Offset.y *= (mask * _MaskMultiplier);
+                        _Offset.x *= (mask * noiseValue);
+                        _Offset.y *= (mask * noiseValue);
 
                         for(int i = 0; i < clampedEchoAmount; i++)
                         {
@@ -96,23 +116,6 @@ Shader "PostProcessing/Twitch"
 
                         col /= (_EchoAmount + 1);
                     }
-                }
-
-                if(envMask < _MaskMultiplier)
-                {
-                    int clampedEchoAmount = clamp(_EchoAmount, 1, 20);
-                    float vignetteMask = SAMPLE_TEXTURE2D(_Vignette, sampler_Vignette, input.texcoord).r;
-
-                    _Offset.x *= (envMask * vignetteMask);
-                    _Offset.y *= (envMask * vignetteMask);
-
-                    for(int i = 0; i < clampedEchoAmount; i++)
-                    {
-                        col += SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord + (_Offset / 100) * i) * _Color1;
-                        col += SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord - (_Offset / 100) * i) * (1 - _Color1);
-                    }
-
-                    col /= (_EchoAmount + 1);
                 }
 
                 return col;

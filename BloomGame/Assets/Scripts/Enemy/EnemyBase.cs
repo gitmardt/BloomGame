@@ -2,8 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Playables;
-using SmoothShakePro;
-using UnityEditor.ShaderKeywordFilter;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyBase : MonoBehaviour
@@ -14,6 +12,9 @@ public class EnemyBase : MonoBehaviour
     public float attackDistance = 5;
     public float attackDamage = 1;
     public bool destroyOnAttack = true;
+
+    public bool randomLayer = true;
+    public string[] layers;
 
     //Variables
     public float health = 5;
@@ -32,6 +33,30 @@ public class EnemyBase : MonoBehaviour
     private void Start()
     {
         player = Player.instance.gameObject.transform;
+
+        if (randomLayer)
+        {
+            string selectedLayer = layers[Random.Range(0, layers.Length)];
+
+            //Debug.Log(selectedLayer + " " + LayerMask.NameToLayer(selectedLayer));
+
+            gameObject.layer = LayerMask.NameToLayer(selectedLayer);
+
+            foreach (Transform child in gameObject.transform)
+            {
+                child.gameObject.layer = LayerMask.NameToLayer(selectedLayer);
+                SetLayerRecursively(child.gameObject, LayerMask.NameToLayer(selectedLayer));
+            }
+        }
+    }
+
+    void SetLayerRecursively(GameObject obj, int newLayer)
+    {
+        foreach (Transform child in obj.transform)
+        {
+            child.gameObject.layer = newLayer;
+            SetLayerRecursively(child.gameObject, newLayer);
+        }
     }
 
     public virtual float AttackDuration() => 5;

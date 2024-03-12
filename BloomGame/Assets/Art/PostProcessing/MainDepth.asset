@@ -35,6 +35,10 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: {fileID: 2800000, guid: 115c08dc983958b46a6301ab539d3e98, type: 3}
     dimension: 1
+  vignetteTexture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+    dimension: 1
 --- !u!114 &-7058278815661234698
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -63,6 +67,60 @@ MonoBehaviour:
   saturation:
     m_OverrideState: 1
     m_Value: 0
+--- !u!114 &-6876624153960556207
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e7fbfd328977f84d96f306c09c4ab80, type: 3}
+  m_Name: TwitchFullscreenSettings
+  m_EditorClassIdentifier: 
+  active: 1
+  maskRenderTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
+    dimension: 1
+  depthTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
+    dimension: 1
+  environmentTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
+    dimension: 1
+  downSampler:
+    m_OverrideState: 1
+    m_Value: 1
+  tintColor:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0, b: 0, a: 1}
+  offset:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0}
+  echoAmount:
+    m_OverrideState: 1
+    m_Value: 1
+  maskMultiplier:
+    m_OverrideState: 1
+    m_Value: 1
+  vignetteTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
+    dimension: 1
+  noiseTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
+    dimension: 1
+  speed:
+    m_OverrideState: 1
+    m_Value: 1
+  tiling:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1}
 --- !u!114 &-6402372557752431657
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -401,6 +459,20 @@ MonoBehaviour:
   maskMultiplier:
     m_OverrideState: 0
     m_Value: 1
+  vignetteTexture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+    dimension: 1
+  noiseTexture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+    dimension: 1
+  speed:
+    m_OverrideState: 0
+    m_Value: 1
+  tiling:
+    m_OverrideState: 0
+    m_Value: {x: 1, y: 1}
 --- !u!114 &-2560494168590208148
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -483,6 +555,7 @@ MonoBehaviour:
   - {fileID: 37678796201898712}
   - {fileID: -3528295605774204697}
   - {fileID: -5387462769296225272}
+  - {fileID: -6876624153960556207}
 --- !u!114 &37678796201898712
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -530,6 +603,10 @@ MonoBehaviour:
   envEffectRange:
     m_OverrideState: 0
     m_Value: 1
+  vignetteTexture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+    dimension: 1
 --- !u!114 &6729871029710529955
 MonoBehaviour:
   m_ObjectHideFlags: 3
