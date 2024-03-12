@@ -10,8 +10,6 @@ public class LevelGeneration : MonoBehaviour
     public Slider loadingBar;
     private float steps, currentStep;
 
-    private bool finishedGenerating = false;
-
     public static LevelGeneration instance;
 
     SquareGrid squareGrid;
@@ -19,9 +17,7 @@ public class LevelGeneration : MonoBehaviour
     public GameObject environmentFolder;
     public List<GenerationPrefab> environmentPrefabs = new();
     public List<GenerationPrefab> vfxPrefabs = new();
-
     public List<GameObject> scatteredObjects = new();
-
     public List<Vector3> pickupPoints = new();
 
 #if UNITY_EDITOR
@@ -94,7 +90,6 @@ public class LevelGeneration : MonoBehaviour
         loadingBar.value = currentStep / steps;
         yield return null;
 
-        finishedGenerating = true;
         loadingBar.gameObject.SetActive(false);
         GameManager.instance.UpdateGameState(GameState.Combat);
     }
@@ -150,7 +145,6 @@ public class LevelGeneration : MonoBehaviour
                                 if (!grid.borderPoints.Contains(grid.points[i]))
                                 {
                                     pickupPoints.Add(grid.points[i]);
-       
                                 }
                             }
                         }

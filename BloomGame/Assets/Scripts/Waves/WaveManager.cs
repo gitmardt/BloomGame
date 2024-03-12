@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +7,8 @@ public class WaveManager : MonoBehaviour
 {
     public static WaveManager instance;
 
+    public GameObject goalPrefab;
+    public float minimumDistanceFromPlayer = 100;
     public SquareGrid grid;
     public GameObject enemyStorage;
     public GameObject pickupStorage;
@@ -19,6 +20,7 @@ public class WaveManager : MonoBehaviour
 
     public List<GameObject> enemies;
     public List<GameObject> pickups;
+    public GameObject EndGoal;
 
     public void Awake() => instance = this;
 
@@ -32,12 +34,38 @@ public class WaveManager : MonoBehaviour
     IEnumerator WaveRoutine(Wave wave)
     {
         SpawnPickups(wave.pickups);
+        SpawnGoal();
 
         for (int i = 0; i < wave.spawnMoments.Length; i++)
         {
             SpawnEnemies(wave.spawnMoments[i].enemies);
             yield return new WaitForSeconds(wave.spawnMoments[i].waitForSeconds);
         }
+    }
+
+    private void SpawnGoal()
+    {
+        if (EndGoal != null) DespawnGoal();
+
+        Vector3 randomPosition = RandomPosition(LevelGeneration.instance.pickupPoints);
+
+        EndGoal = Instantiate(goalPrefab, randomPosition, Quaternion.identity);
+        EndGoal.name = "EndGoalObject";
+    }
+
+    private void DespawnGoal()
+    {
+        Destroy(EndGoal);
+    }
+
+    private Vector3 RandomPosition(List<Vector3> pointList)
+    {
+        int random = Random.Range(0, pointList.Count);
+
+        while (Vector3.Distance(pointList[random], Player.instance.transform.position) < minimumDistanceFromPlayer)
+            random = Random.Range(0, pointList.Count);
+
+        return pointList[random];
     }
 
     private void SpawnPickups(Wave.SpawnPickup[] pickups)
@@ -54,7 +82,7 @@ public class WaveManager : MonoBehaviour
 
                 if (spawnIndex + extraPickupRandomization < LevelGeneration.instance.pickupPoints.Count && spawnIndex - extraPickupRandomization > 0)
                 {
-                    spawnIndex += UnityEngine.Random.Range(-extraPickupRandomization, extraPickupRandomization);
+                    spawnIndex += Random.Range(-extraPickupRandomization, extraPickupRandomization);
                 }
 
                 if (spawnIndex >= LevelGeneration.instance.pickupPoints.Count || spawnIndex < 0) Debug.Log("SpawnIndex is not correct, it's " + spawnIndex + " and count is " + LevelGeneration.instance.pickupPoints.Count);

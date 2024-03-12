@@ -10,6 +10,7 @@ Shader "FireOrb"
 		_Speed2("Speed2", Vector) = (-1,0,0,0)
 		_firewave_01("firewave_01", 2D) = "white" {}
 		[HDR]_Tint("Tint", Color) = (0.8207547,0.3357196,0.1045301,0)
+		_Tiling("Tiling", Vector) = (1,1,0,0)
 
 
 		//_TessPhongStrength( "Tess Phong Strength", Range( 0, 1 ) ) = 0.5
@@ -255,6 +256,7 @@ Shader "FireOrb"
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _Tint;
+			float2 _Tiling;
 			float2 _Speed;
 			float2 _Speed2;
 			#ifdef ASE_TESSELLATION
@@ -458,7 +460,7 @@ Shader "FireOrb"
 					#endif
 				#endif
 
-				float2 texCoord19 = IN.ase_texcoord3.xy * float2( 1,1 ) + ( _Speed * _TimeParameters.x );
+				float2 texCoord19 = IN.ase_texcoord3.xy * _Tiling + ( _Speed * _TimeParameters.x );
 				float4 tex2DNode75 = tex2D( _firewave_01, texCoord19 );
 				
 				float time43 = _TimeParameters.x;
@@ -574,6 +576,7 @@ Shader "FireOrb"
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _Tint;
+			float2 _Tiling;
 			float2 _Speed;
 			float2 _Speed2;
 			#ifdef ASE_TESSELLATION
@@ -767,7 +770,7 @@ Shader "FireOrb"
 					#endif
 				#endif
 
-				float2 texCoord19 = IN.ase_texcoord2.xy * float2( 1,1 ) + ( _Speed * _TimeParameters.x );
+				float2 texCoord19 = IN.ase_texcoord2.xy * _Tiling + ( _Speed * _TimeParameters.x );
 				float4 tex2DNode75 = tex2D( _firewave_01, texCoord19 );
 				float time43 = _TimeParameters.x;
 				float2 voronoiSmoothId43 = 0;
@@ -855,6 +858,7 @@ Shader "FireOrb"
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _Tint;
+			float2 _Tiling;
 			float2 _Speed;
 			float2 _Speed2;
 			#ifdef ASE_TESSELLATION
@@ -1034,7 +1038,7 @@ Shader "FireOrb"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
-				float2 texCoord19 = IN.ase_texcoord.xy * float2( 1,1 ) + ( _Speed * _TimeParameters.x );
+				float2 texCoord19 = IN.ase_texcoord.xy * _Tiling + ( _Speed * _TimeParameters.x );
 				float4 tex2DNode75 = tex2D( _firewave_01, texCoord19 );
 				float time43 = _TimeParameters.x;
 				float2 voronoiSmoothId43 = 0;
@@ -1128,6 +1132,7 @@ Shader "FireOrb"
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _Tint;
+			float2 _Tiling;
 			float2 _Speed;
 			float2 _Speed2;
 			#ifdef ASE_TESSELLATION
@@ -1304,7 +1309,7 @@ Shader "FireOrb"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
-				float2 texCoord19 = IN.ase_texcoord.xy * float2( 1,1 ) + ( _Speed * _TimeParameters.x );
+				float2 texCoord19 = IN.ase_texcoord.xy * _Tiling + ( _Speed * _TimeParameters.x );
 				float4 tex2DNode75 = tex2D( _firewave_01, texCoord19 );
 				float time43 = _TimeParameters.x;
 				float2 voronoiSmoothId43 = 0;
@@ -1406,6 +1411,7 @@ Shader "FireOrb"
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _Tint;
+			float2 _Tiling;
 			float2 _Speed;
 			float2 _Speed2;
 			#ifdef ASE_TESSELLATION
@@ -1589,7 +1595,7 @@ Shader "FireOrb"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
-				float2 texCoord19 = IN.ase_texcoord1.xy * float2( 1,1 ) + ( _Speed * _TimeParameters.x );
+				float2 texCoord19 = IN.ase_texcoord1.xy * _Tiling + ( _Speed * _TimeParameters.x );
 				float4 tex2DNode75 = tex2D( _firewave_01, texCoord19 );
 				float time43 = _TimeParameters.x;
 				float2 voronoiSmoothId43 = 0;
@@ -1646,6 +1652,7 @@ Node;AmplifyShaderEditor.Vector2Node;47;-1036.597,334.8976;Inherit;False;Propert
 Node;AmplifyShaderEditor.Vector2Node;24;-1027.72,-271.7526;Inherit;False;Property;_Speed;Speed;0;0;Create;True;0;0;0;False;0;False;1,0;1,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;45;-798.0856,254.3205;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT2;0,0;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;17;-754.157,5.674435;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT;0;False;1;FLOAT2;0
+Node;AmplifyShaderEditor.Vector2Node;82;-675.0183,-174.1149;Inherit;False;Property;_Tiling;Tiling;4;0;Create;True;0;0;0;False;0;False;1,1;1,1;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
 Node;AmplifyShaderEditor.TextureCoordinatesNode;46;-477.3855,304.2788;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleTimeNode;81;-408.5134,585.7245;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.TextureCoordinatesNode;19;-501.659,-10.44242;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
@@ -1669,6 +1676,7 @@ WireConnection;45;1;47;0
 WireConnection;17;0;24;0
 WireConnection;17;1;14;0
 WireConnection;46;1;45;0
+WireConnection;19;0;82;0
 WireConnection;19;1;17;0
 WireConnection;43;0;46;0
 WireConnection;43;1;81;0
@@ -1680,4 +1688,4 @@ WireConnection;80;1;43;0
 WireConnection;1;2;78;0
 WireConnection;1;3;80;0
 ASEEND*/
-//CHKSM=F3324DA15FE6EF83EEE8C7727CC6C2D2CDD19377
+//CHKSM=003B3B20D7E9D8598C75F2F233B4F360634944F4
