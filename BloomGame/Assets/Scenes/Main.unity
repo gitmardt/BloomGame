@@ -2587,17 +2587,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 990443844}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &168116921 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1605805167023414372, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
-  m_PrefabInstance: {fileID: 7733134799482445815}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74bb0f9a7f8dee64a94f66481933c4a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &191038547
 GameObject:
   m_ObjectHideFlags: 0
@@ -7700,10 +7689,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1090676044751328322, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1175190788047963418, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
       propertyPath: m_Camera
       value: 
@@ -7724,10 +7709,6 @@ PrefabInstance:
       propertyPath: hitmarkerAM
       value: 
       objectReference: {fileID: 446256175}
-    - target: {fileID: 3072778847026268853, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
-      propertyPath: LightMinionUI
-      value: 
-      objectReference: {fileID: 168116921}
     - target: {fileID: 3072778847026268853, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
       propertyPath: projectileParent
       value: 

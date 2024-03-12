@@ -4,18 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using VInspector;
 
-public class UIarray : MonoBehaviour
+public class ObjectArrayCounter : MonoBehaviour
 {
     public float amount;
-    public Image[] images;
+    public GameObject[] objs;
 
     [Button]
     public void PlaceItems()
     {
-        for (int i = 0; i < images.Length; i++)
+        for (int i = 0; i < objs.Length; i++)
         {
-            if (amount <= i) images[i].gameObject.SetActive(false);
-            else images[i].gameObject.SetActive(true);
+            if (amount <= i) objs[i].SetActive(false);
+            else objs[i].SetActive(true);
         }
     }
 

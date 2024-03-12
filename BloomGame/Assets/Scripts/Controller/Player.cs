@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     public float maxLightAmmo = 5;
 
     public Image ammoBar, healthBar;
-    public UIarray LightMinionUI;
+    public ObjectArrayCounter LightMinionUI;
 
     [Header("Hitmarker info")]
     public Hitmarker hitmarker;
