@@ -123,6 +123,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
+    - _REMOVAL: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
@@ -132,15 +133,17 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _alpha: 0.888
+    - _alpha: 0.77
     - _noiseblend: 0.239
+    - _removal: 0
     - _speed: 0.2
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _RemovalColor: {r: 1, g: 0, b: 0.7737832, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _Tint: {r: 12.996038, g: 1.9051784, b: 0, a: 0}
+    - _Tint: {r: 20.865906, g: 4.642225, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2792709685610549656
 MonoBehaviour:

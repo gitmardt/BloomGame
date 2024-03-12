@@ -14,34 +14,86 @@ public class LightMinionSpawner : MonoBehaviour
     public DecalProjector decalProjector;
     public Vector3 decalProjectorScale;
     public float tweenDuration = 0.5f;
+    public float removalDistance = 5;
+    public float smoothAimDelay = 0.5f;
 
     private List<GameObject> lightMinions = new();
+    private int removalIndex = 0;
 
-    public bool spawnMode = false;
+    public ActiveMode activeMode = ActiveMode.off;
+
+    private Material groundCircle;
+
+    public enum ActiveMode
+    {
+        spawning,
+        removal,
+        off
+    }
 
     private Coroutine activeRoutine = null;
 
     private void Awake()
     {
         instance = this;
+        groundCircle = decalProjector.material;
     }
 
     // Update is called once per frame
     void Update()
     {
-        SpawnMode();
+        Debug.Log(activeMode);
+
+        transparentLightMinionObj.transform.position = 
+            Vector3.Lerp(transparentLightMinionObj.transform.position, Player.instance.mousePosition, Time.deltaTime * smoothAimDelay);
+
+        if (activeMode == ActiveMode.spawning || activeMode == ActiveMode.removal) SpawnMode();
     }
 
     void SpawnMode()
     {
-        transparentLightMinionObj.transform.position = Player.instance.mousePosition;
+        if (lightMinions.Count == 0)
+        {
+            activeMode = ActiveMode.spawning;
+            groundCircle.SetFloat("_removal", 1);
+            return;
+        }
+
+        bool withinRemoval = false;
+
+        for (int i = 0; i < lightMinions.Count; i++)
+        {
+            if (Vector3.Distance(lightMinions[i].transform.position, transparentLightMinionObj.transform.position) <= removalDistance)
+            {
+                activeMode = ActiveMode.removal;
+                groundCircle.SetFloat("_removal", 0);
+                removalIndex = i;
+                withinRemoval = true;
+                break;
+            }
+        }
+
+        if (!withinRemoval)
+        {
+            activeMode = ActiveMode.spawning;
+            groundCircle.SetFloat("_removal", 1);
+        }
     }
 
     public void SpawnLight()
     {
-        GameObject lightObject = Instantiate(lightMinionSpawnObj, transparentLightMinionObj.transform.position, transparentLightMinionObj.transform.rotation, lightMinionParentFolder.transform);
-        lightMinions.Add(lightObject);
-        lightObject.name = "LightMinion" + lightMinions.Count;
+        switch (activeMode)
+        {
+            case ActiveMode.spawning:
+                GameObject lightObject = Instantiate(lightMinionSpawnObj, transparentLightMinionObj.transform.position, transparentLightMinionObj.transform.rotation, lightMinionParentFolder.transform);
+                lightMinions.Add(lightObject);
+                lightObject.name = "LightMinion" + lightMinions.Count;
+                break;
+            case ActiveMode.removal:
+                Destroy(lightMinions[removalIndex]);
+                lightMinions.RemoveAt(removalIndex);
+                break;
+        }
     }
 
     public void StartSpawning()
