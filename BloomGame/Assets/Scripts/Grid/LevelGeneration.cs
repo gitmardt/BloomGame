@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using VInspector;
 
 [RequireComponent(typeof(SquareGrid))]
 public class LevelGeneration : MonoBehaviour
 {
+    public Slider loadingBar;
+    private float steps, currentStep;
+
+    private bool finishedGenerating = false;
+
+    public static LevelGeneration instance;
+
     SquareGrid squareGrid;
 
     public GameObject environmentFolder;
@@ -15,6 +21,10 @@ public class LevelGeneration : MonoBehaviour
     public List<GenerationPrefab> vfxPrefabs = new();
 
     public List<GameObject> scatteredObjects = new();
+
+    public List<Vector3> pickupPoints = new();
+
+    private void Awake() => instance = this;
 
     private SquareGrid GetGrid()
     {
@@ -24,11 +34,17 @@ public class LevelGeneration : MonoBehaviour
     }
 
     [Button]
-    public void GenerateLevel()
+    public IEnumerator GenerateLevel()
     {
+        if (environmentPrefabs == null || environmentPrefabs.Count == 0)
+        {
+            Debug.LogWarning("Can't generate because Environment Prefabs list is empty");
+            yield break;
+        }
+
         SquareGrid grid = GetGrid();
 
-        ScatterAssets(grid);
+        yield return ScatterAssets(grid);
     }
 
     [Button]
@@ -46,15 +62,18 @@ public class LevelGeneration : MonoBehaviour
         scatteredObjects.Clear();
     }
 
-    private void ScatterAssets(SquareGrid grid)
+    private IEnumerator ScatterAssets(SquareGrid grid)
     {
-        if (environmentPrefabs == null || environmentPrefabs.Count == 0) { 
-            Debug.LogWarning("Can't generate because Environment Prefabs list is empty"); 
-            return; }
+        loadingBar.gameObject.SetActive(true);
+        steps = grid.randomlyPickedPoints.Count;
+        currentStep = 0;
 
         ClearGrid();
+        yield return ScatterRoutine(grid);
+    }
 
-
+    private IEnumerator ScatterRoutine(SquareGrid grid)
+    {
         for (int i = 0; i < grid.randomlyPickedPoints.Count; i++)
         {
             int random = Random.Range(0, environmentPrefabs.Count);
@@ -76,12 +95,56 @@ public class LevelGeneration : MonoBehaviour
 
             GameObject instancedPrefab = Instantiate(prefabToPlace, grid.randomlyPickedPoints[i], randomRotation, environmentFolder.transform);
 
-            if (environmentPrefabs[random].randomScale) instancedPrefab.transform.localScale *= Random.Range( 1 + environmentPrefabs[random].scaleModifierMin, 1 + environmentPrefabs[random].scaleModifierMax);
+            if (environmentPrefabs[random].randomScale) instancedPrefab.transform.localScale *= Random.Range(1 + environmentPrefabs[random].scaleModifierMin, 1 + environmentPrefabs[random].scaleModifierMax);
 
             instancedPrefab.name = "RandomlyPlacedObject" + environmentPrefabs[random].prefab.name + "_" + i;
             scatteredObjects.Add(instancedPrefab);
+
+            currentStep++;
+            loadingBar.value = currentStep / steps;
+            yield return null; 
         }
 
+        //yield return SpawnSmoke(grid);
+        //yield return SetPickupPoints(grid);
+
+        StartCoroutine(SpawnSmoke(grid));
+        StartCoroutine(SetPickupPoints(grid));
+
+        finishedGenerating = true;
+        loadingBar.gameObject.SetActive(false);
+        GameManager.instance.UpdateGameState(GameState.Combat);
+    }
+
+    private IEnumerator SetPickupPoints(SquareGrid grid)
+    {
+        for (int i = 0; i < grid.points.Count; i++)
+        {
+            if (!grid.randomlyPickedPoints.Contains(grid.points[i]))
+            {
+                for (int u = 0; u < scatteredObjects.Count; u++)
+                {
+                    if (scatteredObjects[u].GetComponent<Collider>() != null)
+                    {
+                        if (!scatteredObjects[u].GetComponent<Collider>().bounds.Contains(grid.points[i]))
+                        {
+                            if (!pickupPoints.Contains(grid.points[i]))
+                            {
+                                pickupPoints.Add(grid.points[i]);
+
+                                currentStep++;
+                                loadingBar.value = currentStep / steps;
+                                yield return null; 
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private IEnumerator SpawnSmoke(SquareGrid grid)
+    {
         for (int i = 0; i < grid.points.Count; i++)
         {
             if (!grid.randomlyPickedPoints.Contains(grid.points[i]))
@@ -105,8 +168,11 @@ public class LevelGeneration : MonoBehaviour
 
                     instancedPrefab.name = "VFX_" + vfxPrefabs[random].prefab.name + "_" + i;
                     scatteredObjects.Add(instancedPrefab);
-                }
 
+                    currentStep++;
+                    loadingBar.value = currentStep / steps;
+                    yield return null; 
+                }
             }
         }
     }

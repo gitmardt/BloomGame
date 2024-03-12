@@ -42,8 +42,6 @@ public class LightMinionSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(activeMode);
-
         transparentLightMinionObj.transform.position = 
             Vector3.Lerp(transparentLightMinionObj.transform.position, Player.instance.mousePosition, Time.deltaTime * smoothAimDelay);
 

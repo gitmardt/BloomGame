@@ -10,6 +10,7 @@ public class CombatManager : MonoBehaviour
     public NavMeshSurface navMeshSurface;
     public GameObject menuEffectLayer;
     public GameObject mainMenuUI;
+    public GameObject buttons, slider;
     public SmoothShakeCinemachine mainMenuPlayShake;
     public CinemachineVirtualCameraBase menuCam, combatCam;
     public float waveStartDelay = 1f;
@@ -22,7 +23,7 @@ public class CombatManager : MonoBehaviour
 
     private void OnGameStateChanged(GameState state)
     {
-        if (state == GameState.Combat)
+        if (state == GameState.Generating)
         {
             GenerateLevel();
         }
@@ -30,6 +31,8 @@ public class CombatManager : MonoBehaviour
 
     public void GenerateLevel()
     {
+        buttons.SetActive(false);
+        slider.SetActive(true);
         menuEffectLayer.SetActive(true);
         mainMenuPlayShake.StartShake();
         StartCoroutine(StartDelay());
@@ -38,13 +41,14 @@ public class CombatManager : MonoBehaviour
     IEnumerator StartDelay()
     {
         yield return new WaitForSeconds(0.2f);
+        generator.ClearGrid();
+        yield return generator.GenerateLevel();
+
         mainMenuPlayShake.StopShake();
         menuEffectLayer.SetActive(false);
         menuCam.Priority = 0;
         combatCam.Priority = 1;
         mainMenuUI.SetActive(false);
-        generator.ClearGrid();
-        generator.GenerateLevel();
         navMeshSurface.BuildNavMesh();
         StartCoroutine(WaveDelay());
     }

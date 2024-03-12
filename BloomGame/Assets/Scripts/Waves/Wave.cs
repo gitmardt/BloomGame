@@ -6,11 +6,19 @@ using UnityEngine;
 public class Wave : ScriptableObject
 {
     public SpawnMoment[] spawnMoments;
+    public SpawnPickup[] pickups;
 
     [System.Serializable]
     public class SpawnEnemy
     {
         public GameObject enemyType;
+        public int amount = 1;
+    }
+
+    [System.Serializable]
+    public class SpawnPickup
+    {
+        public GameObject pickupType;
         public int amount = 1;
     }
 

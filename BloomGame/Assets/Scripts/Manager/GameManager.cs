@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Gambling:
                 break;
+            case GameState.Generating:
+                break;
         }
 
         OnGameStateChanged?.Invoke(newState);
@@ -45,4 +47,5 @@ public enum GameState
     MainMenu,
     Combat,
     Gambling,
+    Generating
 }
