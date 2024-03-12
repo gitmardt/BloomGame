@@ -78,10 +78,10 @@ MonoBehaviour:
     m_Value: 3
   maskMultiplier:
     m_OverrideState: 1
-    m_Value: 0.71
+    m_Value: 5
   vignetteTexture:
     m_OverrideState: 1
-    m_Value: {fileID: 2800000, guid: 66083bee015dc1e4d9a9624144f462e1, type: 3}
+    m_Value: {fileID: 2800000, guid: 581e49f6df6fcfc4b99d969a62520fee, type: 3}
     dimension: 1
 --- !u!114 &-4333525503352236266
 MonoBehaviour:
@@ -483,7 +483,7 @@ MonoBehaviour:
     m_Value: 5
   vignetteTexture:
     m_OverrideState: 1
-    m_Value: {fileID: 2800000, guid: 66083bee015dc1e4d9a9624144f462e1, type: 3}
+    m_Value: {fileID: 2800000, guid: 581e49f6df6fcfc4b99d969a62520fee, type: 3}
     dimension: 1
 --- !u!114 &6444631016328238269
 MonoBehaviour:
@@ -515,13 +515,13 @@ MonoBehaviour:
     m_Value: 1
   strength:
     m_OverrideState: 1
-    m_Value: 8.52
+    m_Value: 10.72
   threshold:
     m_OverrideState: 1
-    m_Value: 0.893
+    m_Value: 0.955
   thresholdRange:
     m_OverrideState: 1
-    m_Value: 0.625
+    m_Value: 0.349
   range:
     m_OverrideState: 1
     m_Value: 19.2
@@ -543,7 +543,7 @@ MonoBehaviour:
     m_Value: 0
   fade:
     m_OverrideState: 1
-    m_Value: 0.927
+    m_Value: 0.931
 --- !u!114 &7408215953293574255
 MonoBehaviour:
   m_ObjectHideFlags: 3
