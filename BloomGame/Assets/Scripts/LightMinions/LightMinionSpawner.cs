@@ -28,7 +28,7 @@ public class LightMinionSpawner : MonoBehaviour
     {
         spawning,
         removal,
-        off
+        off,
     }
 
     private Coroutine activeRoutine = null;
@@ -54,8 +54,10 @@ public class LightMinionSpawner : MonoBehaviour
         {
             activeMode = ActiveMode.spawning;
             groundCircle.SetFloat("_removal", 1);
+            groundCircle.SetFloat("_alpha", 0.77f);
             return;
         }
+
 
         bool withinRemoval = false;
 
@@ -65,6 +67,7 @@ public class LightMinionSpawner : MonoBehaviour
             {
                 activeMode = ActiveMode.removal;
                 groundCircle.SetFloat("_removal", 0);
+                groundCircle.SetFloat("_alpha", 0.77f);
                 removalIndex = i;
                 withinRemoval = true;
                 break;
@@ -74,7 +77,18 @@ public class LightMinionSpawner : MonoBehaviour
         if (!withinRemoval)
         {
             activeMode = ActiveMode.spawning;
-            groundCircle.SetFloat("_removal", 1);
+
+            if (Player.instance.lightAmmo > 0)
+            {
+                groundCircle.SetFloat("_removal", 1);
+                groundCircle.SetFloat("_alpha", 0.77f);
+            }
+            else
+            {
+                groundCircle.SetFloat("_removal", 0);
+                groundCircle.SetFloat("_alpha", 0);
+            }
+
         }
     }
 
@@ -83,13 +97,22 @@ public class LightMinionSpawner : MonoBehaviour
         switch (activeMode)
         {
             case ActiveMode.spawning:
+                if (Player.instance.lightAmmo == 0)
+                {
+
+                    break;
+                }
                 GameObject lightObject = Instantiate(lightMinionSpawnObj, transparentLightMinionObj.transform.position, transparentLightMinionObj.transform.rotation, lightMinionParentFolder.transform);
                 lightMinions.Add(lightObject);
                 lightObject.name = "LightMinion" + lightMinions.Count;
+                Player.instance.lightAmmo--;
+                Player.instance.LightMinionUI.amount--;
                 break;
             case ActiveMode.removal:
                 Destroy(lightMinions[removalIndex]);
                 lightMinions.RemoveAt(removalIndex);
+                Player.instance.lightAmmo++;
+                Player.instance.LightMinionUI.amount++;
                 break;
         }
     }

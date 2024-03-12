@@ -14,8 +14,11 @@ public class Player : MonoBehaviour
     public float maxHealth = 30;
     public float ammo = 100;
     public float maxAmmo = 150;
+    public float lightAmmo = 4;
+    public float maxLightAmmo = 5;
 
     public Image ammoBar, healthBar;
+    public UIarray LightMinionUI;
 
     [Header("Hitmarker info")]
     public Hitmarker hitmarker;
@@ -120,6 +123,11 @@ public class Player : MonoBehaviour
 
         //Shoot
         controls.Combat.Shoot.performed += ctx => OnShoot();
+    }
+
+    private void Start()
+    {
+        LightMinionUI.amount = lightAmmo;
     }
 
     private void OnGameStateChanged(GameState state)
@@ -329,8 +337,8 @@ public class Player : MonoBehaviour
             return;
         }
 
+        if (!CheckAmmo()) return;
         ammo--;
-        if (!CheckAmmo()) return; 
 
         shootIndex++;
         if (shootIndex == 100) shootIndex = 0;
