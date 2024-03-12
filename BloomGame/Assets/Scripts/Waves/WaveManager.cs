@@ -14,6 +14,8 @@ public class WaveManager : MonoBehaviour
     public int testIndex = 0;
     public bool onStart = false;
 
+    public List<GameObject> enemies;
+
     public void Awake() => instance = this;
 
     public void Start() { if (onStart) StartWave(); }
@@ -41,6 +43,7 @@ public class WaveManager : MonoBehaviour
                 Vector3 randomSpawnPoint = grid.borderPoints[UnityEngine.Random.Range(0, grid.borderPoints.Count)];
                 GameObject Enemy = Instantiate(enemies[i].enemyType, randomSpawnPoint + new Vector3(0,5,0), Quaternion.identity, enemyStorage.transform);
                 Enemy.name = enemies[i].enemyType.name + u;
+                this.enemies.Add(Enemy);
             }
         }
     }

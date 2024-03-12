@@ -13,7 +13,8 @@ Shader "Eyes"
 		_Speed("Speed", Vector) = (1,1,0,0)
 		_Strength("Strength", Float) = 0
 		_Dissolve("Dissolve", Range( 0 , 1)) = 0
-		[HideInInspector] _texcoord( "", 2D ) = "white" {}
+		_EyeOffset("EyeOffset", Vector) = (0,0,0,0)
+		_EyeTiling("EyeTiling", Vector) = (1,1,0,0)
 
 
 		//_TessPhongStrength( "Tess Phong Strength", Range( 0, 1 ) ) = 0.5
@@ -260,10 +261,11 @@ Shader "Eyes"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _Eyes_ST;
 			float4 _Tint;
 			float2 _Tiling;
 			float2 _Speed;
+			float2 _EyeTiling;
+			float2 _EyeOffset;
 			float _Strength;
 			float _Dissolve;
 			#ifdef ASE_TESSELLATION
@@ -438,8 +440,8 @@ Shader "Eyes"
 					#endif
 				#endif
 
-				float2 uv_Eyes = IN.ase_texcoord3.xy * _Eyes_ST.xy + _Eyes_ST.zw;
-				float4 tex2DNode10 = tex2D( _Eyes, uv_Eyes );
+				float2 texCoord27 = IN.ase_texcoord3.xy * _EyeTiling + _EyeOffset;
+				float4 tex2DNode10 = tex2D( _Eyes, texCoord27 );
 				float4 temp_cast_0 = (_Dissolve).xxxx;
 				float2 texCoord18 = IN.ase_texcoord3.xy * _Tiling + ( _Speed * _TimeParameters.x );
 				float4 tex2DNode19 = tex2D( _noisev2, texCoord18 );
@@ -553,10 +555,11 @@ Shader "Eyes"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _Eyes_ST;
 			float4 _Tint;
 			float2 _Tiling;
 			float2 _Speed;
+			float2 _EyeTiling;
+			float2 _EyeOffset;
 			float _Strength;
 			float _Dissolve;
 			#ifdef ASE_TESSELLATION
@@ -741,8 +744,8 @@ Shader "Eyes"
 					#endif
 				#endif
 
-				float2 uv_Eyes = IN.ase_texcoord2.xy * _Eyes_ST.xy + _Eyes_ST.zw;
-				float4 tex2DNode10 = tex2D( _Eyes, uv_Eyes );
+				float2 texCoord27 = IN.ase_texcoord2.xy * _EyeTiling + _EyeOffset;
+				float4 tex2DNode10 = tex2D( _Eyes, texCoord27 );
 				
 
 				float Alpha = tex2DNode10.r;
@@ -835,10 +838,11 @@ Shader "Eyes"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _Eyes_ST;
 			float4 _Tint;
 			float2 _Tiling;
 			float2 _Speed;
+			float2 _EyeTiling;
+			float2 _EyeOffset;
 			float _Strength;
 			float _Dissolve;
 			#ifdef ASE_TESSELLATION
@@ -1003,8 +1007,8 @@ Shader "Eyes"
 					#endif
 				#endif
 
-				float2 uv_Eyes = IN.ase_texcoord2.xy * _Eyes_ST.xy + _Eyes_ST.zw;
-				float4 tex2DNode10 = tex2D( _Eyes, uv_Eyes );
+				float2 texCoord27 = IN.ase_texcoord2.xy * _EyeTiling + _EyeOffset;
+				float4 tex2DNode10 = tex2D( _Eyes, texCoord27 );
 				
 
 				float Alpha = tex2DNode10.r;
@@ -1085,10 +1089,11 @@ Shader "Eyes"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _Eyes_ST;
 			float4 _Tint;
 			float2 _Tiling;
 			float2 _Speed;
+			float2 _EyeTiling;
+			float2 _EyeOffset;
 			float _Strength;
 			float _Dissolve;
 			#ifdef ASE_TESSELLATION
@@ -1239,8 +1244,8 @@ Shader "Eyes"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
-				float2 uv_Eyes = IN.ase_texcoord.xy * _Eyes_ST.xy + _Eyes_ST.zw;
-				float4 tex2DNode10 = tex2D( _Eyes, uv_Eyes );
+				float2 texCoord27 = IN.ase_texcoord.xy * _EyeTiling + _EyeOffset;
+				float4 tex2DNode10 = tex2D( _Eyes, texCoord27 );
 				
 
 				surfaceDescription.Alpha = tex2DNode10.r;
@@ -1327,10 +1332,11 @@ Shader "Eyes"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _Eyes_ST;
 			float4 _Tint;
 			float2 _Tiling;
 			float2 _Speed;
+			float2 _EyeTiling;
+			float2 _EyeOffset;
 			float _Strength;
 			float _Dissolve;
 			#ifdef ASE_TESSELLATION
@@ -1478,8 +1484,8 @@ Shader "Eyes"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
-				float2 uv_Eyes = IN.ase_texcoord.xy * _Eyes_ST.xy + _Eyes_ST.zw;
-				float4 tex2DNode10 = tex2D( _Eyes, uv_Eyes );
+				float2 texCoord27 = IN.ase_texcoord.xy * _EyeTiling + _EyeOffset;
+				float4 tex2DNode10 = tex2D( _Eyes, texCoord27 );
 				
 
 				surfaceDescription.Alpha = tex2DNode10.r;
@@ -1574,10 +1580,11 @@ Shader "Eyes"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _Eyes_ST;
 			float4 _Tint;
 			float2 _Tiling;
 			float2 _Speed;
+			float2 _EyeTiling;
+			float2 _EyeOffset;
 			float _Strength;
 			float _Dissolve;
 			#ifdef ASE_TESSELLATION
@@ -1732,8 +1739,8 @@ Shader "Eyes"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
-				float2 uv_Eyes = IN.ase_texcoord1.xy * _Eyes_ST.xy + _Eyes_ST.zw;
-				float4 tex2DNode10 = tex2D( _Eyes, uv_Eyes );
+				float2 texCoord27 = IN.ase_texcoord1.xy * _EyeTiling + _EyeOffset;
+				float4 tex2DNode10 = tex2D( _Eyes, texCoord27 );
 				
 
 				surfaceDescription.Alpha = tex2DNode10.r;
@@ -1784,8 +1791,11 @@ Node;AmplifyShaderEditor.Vector2Node;17;-1050.853,715.1771;Inherit;False;Propert
 Node;AmplifyShaderEditor.TextureCoordinatesNode;18;-854.2652,653.3914;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SamplerNode;19;-561.121,633.4244;Inherit;True;Property;_noisev2;noisev2;1;0;Create;True;0;0;0;False;0;False;-1;115c08dc983958b46a6301ab539d3e98;115c08dc983958b46a6301ab539d3e98;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.NormalVertexDataNode;20;-257.0608,779.7091;Inherit;False;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.Vector2Node;31;-908.4957,37.74152;Inherit;False;Property;_EyeOffset;EyeOffset;7;0;Create;True;0;0;0;False;0;False;0,0;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
+Node;AmplifyShaderEditor.Vector2Node;30;-903.1129,-96.8296;Inherit;False;Property;_EyeTiling;EyeTiling;8;0;Create;True;0;0;0;False;0;False;1,1;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;21;-57.97318,678.1058;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.RangedFloatNode;22;-61.67728,556.8694;Inherit;False;Property;_Strength;Strength;5;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.TextureCoordinatesNode;27;-615.0815,-21.72107;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.ColorNode;12;-153,174;Inherit;False;Property;_Tint;Tint;2;1;[HDR];Create;True;0;0;0;False;0;False;1,0.4070103,0,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;13;85.09208,-24.18895;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;23;145.6483,641.9965;Inherit;False;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
@@ -1810,10 +1820,13 @@ WireConnection;18;1;16;0
 WireConnection;19;1;18;0
 WireConnection;21;0;20;0
 WireConnection;21;1;19;0
+WireConnection;27;0;30;0
+WireConnection;27;1;31;0
 WireConnection;13;0;10;0
 WireConnection;13;1;12;0
 WireConnection;23;0;22;0
 WireConnection;23;1;21;0
+WireConnection;10;1;27;0
 WireConnection;24;0;25;0
 WireConnection;24;1;19;0
 WireConnection;26;0;13;0
@@ -1823,4 +1836,4 @@ WireConnection;1;3;10;1
 WireConnection;1;4;10;1
 WireConnection;1;5;23;0
 ASEEND*/
-//CHKSM=79F9E679CCAF3F1F83CABD67E61736D27BFC22A1
+//CHKSM=A4E5BAF5B854CF46AFF86B3F3B25B07136096846

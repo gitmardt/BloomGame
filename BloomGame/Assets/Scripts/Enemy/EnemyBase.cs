@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Playables;
 using SmoothShakePro;
+using UnityEditor.ShaderKeywordFilter;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyBase : MonoBehaviour
@@ -81,6 +82,7 @@ public class EnemyBase : MonoBehaviour
     public void Die()
     {
         //Debug.Log("I died");
+        WaveManager.instance.enemies.Remove(gameObject);
         Destroy(gameObject);
     }
 }
