@@ -60,7 +60,7 @@ public class WaveManager : MonoBehaviour
                 if (spawnIndex >= LevelGeneration.instance.pickupPoints.Count || spawnIndex < 0) Debug.Log("SpawnIndex is not correct, it's " + spawnIndex + " and count is " + LevelGeneration.instance.pickupPoints.Count);
 
                 Vector3 spawnPoint = LevelGeneration.instance.pickupPoints[spawnIndex];
-                GameObject pickup = Instantiate(pickups[i].pickupType, spawnPoint + new Vector3(0, 5, 0), Quaternion.identity, pickupStorage.transform);
+                GameObject pickup = Instantiate(pickups[i].pickupType, spawnPoint + new Vector3(0, 3, 0), Quaternion.identity, pickupStorage.transform);
                 pickup.name = pickups[i].pickupType.name + u;
                 this.pickups.Add(pickup);
             }

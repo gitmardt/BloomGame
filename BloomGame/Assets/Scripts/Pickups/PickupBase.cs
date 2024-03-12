@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class PickupBase : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float pickupDistance = 10f;
+    public float unlockDistance = 1f;
+    public float lerpSpeed = 10f;
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Vector3.Distance(Player.instance.transform.position, transform.position) < pickupDistance)
+        {
+            transform.position = Vector3.Lerp(transform.position, Player.instance.transform.position, lerpSpeed * Time.deltaTime);
+
+            if(Vector3.Distance(Player.instance.transform.position, transform.position) < unlockDistance)
+            {
+                UnlockPickup();
+            }
+        }
+    }
+
+    private void UnlockPickup()
+    {
+        Debug.Log("Yea !!");
     }
 }

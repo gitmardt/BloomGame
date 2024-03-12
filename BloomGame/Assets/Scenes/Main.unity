@@ -2782,6 +2782,8 @@ MonoBehaviour:
   - {fileID: 769730246}
   - {fileID: 367008041}
   pickupPoints: []
+  mainGizmoColor: {r: 1, g: 0, b: 0, a: 1}
+  pointGizmoSphereRadius: 0.2
 --- !u!1 &9385623
 GameObject:
   m_ObjectHideFlags: 0
@@ -99746,21 +99748,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoOrb
       objectReference: {fileID: 0}
-    - target: {fileID: 1156286280460435314, guid: 69862bc2683258d4faed45bdf0219ef1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7009879651556311375, guid: 69862bc2683258d4faed45bdf0219ef1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.92
+      value: -12.75
       objectReference: {fileID: 0}
     - target: {fileID: 7009879651556311375, guid: 69862bc2683258d4faed45bdf0219ef1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.07
+      value: 2.9
       objectReference: {fileID: 0}
     - target: {fileID: 7009879651556311375, guid: 69862bc2683258d4faed45bdf0219ef1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.24
+      value: 4.2
       objectReference: {fileID: 0}
     - target: {fileID: 7009879651556311375, guid: 69862bc2683258d4faed45bdf0219ef1, type: 3}
       propertyPath: m_LocalRotation.w
