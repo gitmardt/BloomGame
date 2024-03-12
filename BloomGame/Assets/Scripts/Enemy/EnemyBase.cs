@@ -75,7 +75,6 @@ public class EnemyBase : MonoBehaviour
     public void Damage()
     {
         health--;
-        Debug.Log("Health of " + gameObject.name + " is " + health);
         if(health == 0) Die();
     }
 

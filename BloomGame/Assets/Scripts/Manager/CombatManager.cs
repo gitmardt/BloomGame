@@ -11,6 +11,7 @@ public class CombatManager : MonoBehaviour
     public GameObject menuEffectLayer;
     public GameObject mainMenuUI;
     public GameObject buttons, slider;
+    public GameObject combatUI;
     public SmoothShakeCinemachine mainMenuPlayShake;
     public CinemachineVirtualCameraBase menuCam, combatCam;
     public float waveStartDelay = 1f;
@@ -31,6 +32,7 @@ public class CombatManager : MonoBehaviour
 
     public void GenerateLevel()
     {
+        combatUI.SetActive(false);
         buttons.SetActive(false);
         slider.SetActive(true);
         menuEffectLayer.SetActive(true);
@@ -48,6 +50,7 @@ public class CombatManager : MonoBehaviour
         menuEffectLayer.SetActive(false);
         menuCam.Priority = 0;
         combatCam.Priority = 1;
+        combatUI.SetActive(true);
         mainMenuUI.SetActive(false);
         navMeshSurface.BuildNavMesh();
         StartCoroutine(WaveDelay());

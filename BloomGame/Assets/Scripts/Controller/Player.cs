@@ -3,6 +3,7 @@ using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
 using Cinemachine.Utility;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
@@ -10,6 +11,11 @@ public class Player : MonoBehaviour
     public static Player instance;
 
     public float health = 25;
+    public float maxHealth = 30;
+    public float ammo = 100;
+    public float maxAmmo = 150;
+
+    public Image ammoBar, healthBar;
 
     [Header("Hitmarker info")]
     public Hitmarker hitmarker;
@@ -157,11 +163,18 @@ public class Player : MonoBehaviour
     {
         LockCursor();
         Aim();
+        UpdateUISliders();
     }
 
     void FixedUpdate() 
     {
         Move();
+    }
+
+    private void UpdateUISliders()
+    {
+        ammoBar.fillAmount = Utility.Remap(ammo, 0, maxAmmo, 0, 1);
+        healthBar.fillAmount = Utility.Remap(health, 0, maxHealth, 0, 1);
     }
 
     private void Aim()
@@ -297,6 +310,16 @@ public class Player : MonoBehaviour
         }
     }
 
+    private bool CheckAmmo()
+    {
+        if (ammo == 0)
+        {
+            Debug.Log("No ammo");
+            return false;
+        }
+        else return true;
+    }
+
     public void OnShoot()
     {
         if (LightMinionSpawner.instance.activeMode == LightMinionSpawner.ActiveMode.spawning ||
@@ -305,6 +328,9 @@ public class Player : MonoBehaviour
             LightMinionSpawner.instance.SpawnLight();
             return;
         }
+
+        ammo--;
+        if (!CheckAmmo()) return; 
 
         shootIndex++;
         if (shootIndex == 100) shootIndex = 0;

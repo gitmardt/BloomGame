@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8837586244179390996}
   - component: {fileID: 3862483010886807184}
   - component: {fileID: 6294295122715229373}
-  - component: {fileID: 6589122983505801651}
+  - component: {fileID: 1063039049760292404}
   m_Layer: 0
   m_Name: AmmoOrb
   m_TagString: Untagged
@@ -107,7 +107,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6589122983505801651
+--- !u!114 &1063039049760292404
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1156286280460435314}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a93bc97fa5b06ec4ebf867676d85272d, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f7674985e9d4ef458d9d26b978c30aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pickupDistance: 10

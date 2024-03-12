@@ -22,7 +22,7 @@ public class PickupBase : MonoBehaviour
         }
     }
 
-    private void UnlockPickup()
+    public virtual void UnlockPickup()
     {
         Debug.Log("Yea !!");
     }
