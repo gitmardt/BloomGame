@@ -13,6 +13,8 @@ public class AmmoPickup : PickupBase
         }
         else Player.instance.ammo += ammoAmount;
 
+        FeedbackManager.instance.ammoPickup.Play();
+
         Destroy(gameObject);
     }
 }

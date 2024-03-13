@@ -369,7 +369,7 @@ public class Player : MonoBehaviour
     {
         if (ammo == 0)
         {
-            Debug.Log("No ammo");
+            FeedbackManager.instance.noAmmo.Play();
             return false;
         }
         else return true;
