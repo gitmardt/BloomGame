@@ -11,12 +11,14 @@ public class EnemyBase : MonoBehaviour
     protected Transform player;
     public PlayableDirector attackTimeline;
     public float attackDistance = 5;
+    public float damageRange = 4;
     public float attackDamage = 1;
+    public float attackAngleThreshold = 45f;
     public bool destroyOnAttack = true;
 
     public int layerIndex = 0;
 
-    public AudioSource[] hit, death;
+    public AudioSource[] hit;
 
     public bool randomLayer = true;
     public string[] layers;
@@ -113,7 +115,9 @@ public class EnemyBase : MonoBehaviour
             }
         }
 
-        if (Vector3.Distance(player.position, transform.position) <= attackDistance)
+        Vector3 directionToPlayer = (player.position - transform.position).normalized;
+        float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
+        if (angleToPlayer <= attackAngleThreshold && Vector3.Distance(player.position, transform.position) <= attackDistance)
         {
             activeAttack ??= StartCoroutine(Attack());
         }
@@ -133,6 +137,7 @@ public class EnemyBase : MonoBehaviour
         {
             FeedbackManager.instance.hitShake.StartShake(FeedbackManager.instance.hitShakePlayer);
             FeedbackManager.instance.playerhit.Play();
+            FeedbackManager.instance.gameover.Play();
             Player.instance.health--;
         }
     }

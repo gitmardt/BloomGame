@@ -5,12 +5,11 @@ using UnityEngine;
 public class Grabber : EnemyBase
 {
     public Transform hitPosition;
-    public float attackRange = 5;
     public AnimationClip attackClip;
     public override float AttackDuration() => attackClip.length;
     public override void DealDamage()
     {
-        if (Vector3.Distance(player.position, hitPosition.position) < attackRange)
+        if (Vector3.Distance(player.position, hitPosition.position) < damageRange)
         {
             FeedbackManager.instance.ShakePostProcessing(layerIndex);
             Player.instance.health--;

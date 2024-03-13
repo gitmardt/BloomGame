@@ -6978,8 +6978,7 @@ MonoBehaviour:
   grid: {fileID: 6907278}
   enemyStorage: {fileID: 115744870}
   pickupStorage: {fileID: 58266710}
-  waves:
-  - {fileID: 11400000, guid: 10afc1e1f4f826f4494f4cdd4c757fc6, type: 2}
+  waves: []
   testIndex: 0
   onStart: 0
   extraPickupRandomization: 2
@@ -9572,7 +9571,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8293931153996851951, guid: 3c6338c7f73be3e449412acf61903e4f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8293931153996851951, guid: 3c6338c7f73be3e449412acf61903e4f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9580,7 +9579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8293931153996851951, guid: 3c6338c7f73be3e449412acf61903e4f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8293931153996851951, guid: 3c6338c7f73be3e449412acf61903e4f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10050,14 +10049,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
-    - target: {fileID: 6042780810096729124, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
-      propertyPath: m_Extents.x
-      value: 1.17
-      objectReference: {fileID: 0}
-    - target: {fileID: 6042780810096729124, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
-      propertyPath: m_Extents.z
-      value: 1.17
-      objectReference: {fileID: 0}
     - target: {fileID: 6757757193857777099, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
       propertyPath: m_Name
       value: PlayerParent

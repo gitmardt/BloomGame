@@ -5472,7 +5472,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3e2825bca64ff00479292cf347c5c6b3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 28f55e7b3efaedc4ba6946668e940245, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -6018,7 +6018,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fe116643d6eb3c843a1c0b6a1d81b156, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b40bf12fb3860234fbfaa7442dd9b4fc, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -6493,8 +6493,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 25
   maxHealth: 30
-  ammo: 500
-  maxAmmo: 500
+  ammo: 50
+  maxAmmo: 150
   lightAmmo: 2
   maxLightAmmo: 5
   ammoBar: {fileID: 5271385579716109534}
@@ -9997,6 +9997,7 @@ MonoBehaviour:
   mainTheme: {fileID: 7820932572344342270}
   battleAmbience: {fileID: 6232838756895365045}
   battleTheme: {fileID: 5901856360981594495}
+  musicVolume: 0.5
   fadeDuration: 0.5
   battleThemeRange: 50
 --- !u!1 &8330779362045496339

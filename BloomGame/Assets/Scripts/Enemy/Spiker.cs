@@ -6,12 +6,12 @@ using UnityEngine;
 public class Spiker : EnemyBase
 {
     public Transform hitPosition;
-    public float attackRange = 5;
     public SmoothShake attackShake;
     public override float AttackDuration() => attackShake.timeSettings.GetShakeDuration();
     public override void DealDamage()
     {
-        if (Vector3.Distance(player.position, hitPosition.position) < attackRange)
+        Debug.Log("DealDamage?");
+        if (Vector3.Distance(player.position, hitPosition.position) < damageRange)
         {
             FeedbackManager.instance.ShakePostProcessing(layerIndex);
             Player.instance.health--;

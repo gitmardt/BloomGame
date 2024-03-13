@@ -387,6 +387,8 @@ public class Player : MonoBehaviour
         if (!CheckAmmo()) return;
         ammo--;
 
+        FeedbackManager.instance.sspp.StartShake(FeedbackManager.instance.bloomShot);
+
         shootIndex++;
         if (shootIndex == 100) shootIndex = 0;
 
