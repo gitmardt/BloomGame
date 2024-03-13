@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     public MeshRenderer baseOrbRenderer;
     private Material baseOrbMat;
     public ObjectArrayCounter LightMinionUI;
+    public Transform lightMinionTransparent;
     private bool goalUIActive = false;
 
     [Header("Hitmarker info")]

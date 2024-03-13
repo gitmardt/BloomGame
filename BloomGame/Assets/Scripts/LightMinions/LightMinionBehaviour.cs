@@ -10,7 +10,7 @@ public class LightMinionBehaviour : MonoBehaviour
     {
         if(WaveManager.instance.enemies.Count > 0)
         {
-            GameObject nearestEnemy = NearestEnemy();
+            GameObject nearestEnemy = GetNearestEnemy.instance.NearestEnemy(objectToRotate.transform);
             if(nearestEnemy != null)
             {
                 Vector3 direction = nearestEnemy.transform.position - objectToRotate.position;
@@ -19,22 +19,5 @@ public class LightMinionBehaviour : MonoBehaviour
                 objectToRotate.rotation = Quaternion.Lerp(objectToRotate.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             }
         }
-    }
-
-    public GameObject NearestEnemy()
-    {
-        GameObject nearestEnemy = null;
-        float nearestDistance = Mathf.Infinity;
-        foreach(var enemy in WaveManager.instance.enemies)
-        {
-            float distance = Vector3.Distance(objectToRotate.position, enemy.transform.position);
-            if (distance < nearestDistance)
-            {
-                nearestDistance = distance;
-                nearestEnemy = enemy;
-            }
-        }
-
-        return nearestEnemy;
     }
 }
