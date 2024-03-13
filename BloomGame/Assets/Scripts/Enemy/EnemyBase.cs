@@ -14,6 +14,8 @@ public class EnemyBase : MonoBehaviour
     public float attackDamage = 1;
     public bool destroyOnAttack = true;
 
+    public AudioSource[] hit, death;
+
     public bool randomLayer = true;
     public string[] layers;
     public GameObject[] objectsToRandomlyLayer;
@@ -130,7 +132,13 @@ public class EnemyBase : MonoBehaviour
 
     public void Damage()
     {
-        if(enemyIsHitShake != null) enemyIsHitShake.StartShake();
+        if (hit.Length > 0)
+        {
+            int randomIndex = Random.Range(0, hit.Length);
+            Utility.RandomizePitch(hit, randomIndex, 0.8f, 1.2f);
+            hit[randomIndex].Play();
+        }
+        if (enemyIsHitShake != null) enemyIsHitShake.StartShake();
         health--;
         if(health == 0) Die();
         FeedbackManager.instance.hitShake.StartShake(FeedbackManager.instance.hitShakeEnemy);
@@ -138,6 +146,16 @@ public class EnemyBase : MonoBehaviour
 
     public void Die()
     {
+        if (Random.value > 0.5f)
+        {
+            Utility.RandomizePitch(FeedbackManager.instance.enemyDeath1, 0.8f, 1.2f);
+            FeedbackManager.instance.enemyDeath1.Play();
+        }
+        else
+        {
+            Utility.RandomizePitch(FeedbackManager.instance.enemyDeath2, 0.8f, 1.2f);
+            FeedbackManager.instance.enemyDeath2.Play();
+        }
         FeedbackManager.instance.hitShake.StartShake(FeedbackManager.instance.EnemyDieShake);
         //Debug.Log("I died");
         WaveManager.instance.enemies.Remove(gameObject);

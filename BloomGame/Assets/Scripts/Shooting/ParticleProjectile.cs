@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ParticleProjectile : MonoBehaviour
 {
+    public AudioSource shotSound;
+    public Vector2 shotAudioPitchRange;
     public ParticleSystem particles;
     public Transform trailParent;
     public string tagName = "Enemy";
@@ -16,6 +18,8 @@ public class ParticleProjectile : MonoBehaviour
 
     void Start()
     {
+        Utility.RandomizePitch(shotSound, shotAudioPitchRange.x, shotAudioPitchRange.y);
+
         collided = false;
 
         collisionEvents = new List<ParticleCollisionEvent>();

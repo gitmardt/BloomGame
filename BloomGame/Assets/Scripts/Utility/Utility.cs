@@ -28,4 +28,14 @@ public static class Utility
             list[randomIndex] = temp;
         }
     }
+
+    public static void RandomizePitch(AudioSource audio, float min, float max)
+    {
+        audio.pitch = Random.Range(min, max);
+    }
+
+    public static void RandomizePitch(AudioSource[] audio, int index, float min, float max)
+    {
+        audio[index].pitch = Random.Range(min, max);
+    }
 }

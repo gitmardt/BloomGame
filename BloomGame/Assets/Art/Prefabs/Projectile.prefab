@@ -9896,6 +9896,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6179d1e6aa3839468d251589aeacfe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shotSound: {fileID: 3683534324159567376}
+  shotAudioPitchRange: {x: 0.8, y: 1.2}
   particles: {fileID: 2213870024172511716}
   trailParent: {fileID: 3203660678790460073}
   tagName: Enemy
@@ -24618,8 +24620,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 32.2
+  MaxDistance: 86.48
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -24669,7 +24671,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.24722221
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -24684,7 +24686,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.954
       inSlope: 0
       outSlope: 0
       tangentMode: 0
