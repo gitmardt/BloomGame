@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     public float maxLightAmmo = 5;
 
     public Image ammoBar, healthBar;
+    public MeshRenderer baseOrbRenderer;
+    private Material baseOrbMat;
     public ObjectArrayCounter LightMinionUI;
 
     [Header("Hitmarker info")]
@@ -127,6 +129,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         LightMinionUI.amount = lightAmmo;
+        baseOrbMat = baseOrbRenderer.material;
         ChangeView(true);
     }
 
@@ -183,6 +186,7 @@ public class Player : MonoBehaviour
     {
         ammoBar.fillAmount = Utility.Remap(ammo, 0, maxAmmo, 0, 1);
         healthBar.fillAmount = Utility.Remap(health, 0, maxHealth, 0, 1);
+        baseOrbMat.SetFloat("_BaseColorBlend", Utility.Remap(health, 0, maxHealth, 0, 0.5f));
     }
 
     private void Aim()
