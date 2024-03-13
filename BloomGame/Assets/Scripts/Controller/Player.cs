@@ -337,6 +337,7 @@ public class Player : MonoBehaviour
     {
         if (canDash)
         {
+            FeedbackManager.instance.ssppTrail.StartShake();
             canDash = false;
             float t = 0;
             while(t < dashDuration)

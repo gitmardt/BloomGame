@@ -7379,7 +7379,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.016666412
+        time: 0
         value: 1
         inSlope: 0
         outSlope: 0
@@ -7388,13 +7388,13 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.9916687
-        value: 0.0070762634
-        inSlope: 2
-        outSlope: 2
+        time: 1
+        value: -0.0004576128
+        inSlope: -0.10722426
+        outSlope: -0.10722426
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0
+        inWeight: 0.09381609
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -7410,7 +7410,7 @@ MonoBehaviour:
     amplitude: {x: 4, y: 3, z: 0.3}
     frequency: {x: 2, y: 2.5, z: 2.2}
     offset: {x: 0, y: 0, z: 0}
-    phase: {x: 0.4177531, y: -0.01371932, z: -0.015454054}
+    phase: {x: 1.1857604, y: 0.93132854, z: -0.58116984}
     randomizePhase: 1
     maximum: {x: 0, y: 0, z: 0}
     stepSize: {x: 0, y: 0, z: 0}
@@ -7422,6 +7422,7 @@ MonoBehaviour:
       m_RotationOrder: 0
     blendingMode: 0
     lifetime: 1
+  trailShake: []
   shakeToPreview: 0
 --- !u!1 &1518775707 stripped
 GameObject:
@@ -9480,6 +9481,7 @@ MonoBehaviour:
   gameover: {fileID: 1394235968}
   playerhit: {fileID: 1334570604}
   sspp: {fileID: 1489309130}
+  ssppTrail: {fileID: 0}
   warpingShake: {fileID: 11400000, guid: cf96bd0d0c9a3b947b530f18d129adf6, type: 2}
   twitchShake: {fileID: 11400000, guid: 22231e67303120b4b9a22d9b66c099ad, type: 2}
   bloomShake: {fileID: 11400000, guid: cb8fb0ba840985246a1b0c6fc31a50e3, type: 2}
@@ -10027,9 +10029,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 802726350}
     - target: {fileID: 3072778847026268853, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072778847026268853, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
       propertyPath: hitmarker
       value: 
       objectReference: {fileID: 446256173}
+    - target: {fileID: 3072778847026268853, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      propertyPath: dashAmount
+      value: 350
+      objectReference: {fileID: 0}
     - target: {fileID: 3072778847026268853, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
       propertyPath: hitmarkerAM
       value: 

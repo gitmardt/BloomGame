@@ -9,7 +9,7 @@ public class FeedbackManager : MonoBehaviour
     public ShakeBasePreset hitShakeEnemy, hitShakePlayer, EnemyDieShake;
     public AudioSource enemyDeath1, enemyDeath2, ammoPickup, noAmmo, placeLight, removeLight, gameover, playerhit;
 
-    public SmoothShakePostProcessing sspp;
+    public SmoothShakePostProcessing sspp, ssppTrail;
     public SmoothShakePostProcessingPreset warpingShake, twitchShake, bloomShake, quantizationShake, bloomShot;
 
     private void Awake()

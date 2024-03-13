@@ -27,6 +27,18 @@ MonoBehaviour:
   m_Name: TrailSettings
   m_EditorClassIdentifier: 
   active: 1
+  maskRenderTexture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+    dimension: 1
+  depthTexture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+    dimension: 1
+  environmentTexture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+    dimension: 1
   downSampler:
     m_OverrideState: 1
     m_Value: 1
