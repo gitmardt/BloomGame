@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class CombatManager : MonoBehaviour
 {
+    public static CombatManager instance;
+
     public LevelGeneration generator;
     public NavMeshSurface navMeshSurface;
     public GameObject menuEffectLayer;
@@ -15,9 +17,12 @@ public class CombatManager : MonoBehaviour
     public SmoothShakeCinemachine mainMenuPlayShake;
     public CinemachineVirtualCameraBase menuCam, combatCam;
     public float waveStartDelay = 1f;
+    public bool navMeshIsGenerated = false;
 
     private void Awake()
     {
+        instance = this;
+        navMeshIsGenerated = false;
         menuEffectLayer.SetActive(false);
         GameManager.OnGameStateChanged += OnGameStateChanged;
     }
@@ -53,6 +58,7 @@ public class CombatManager : MonoBehaviour
         combatUI.SetActive(true);
         mainMenuUI.SetActive(false);
         navMeshSurface.BuildNavMesh();
+        navMeshIsGenerated = true;
         StartCoroutine(WaveDelay());
     }
 

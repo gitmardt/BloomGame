@@ -16,6 +16,10 @@ public class EnemyBase : MonoBehaviour
 
     public bool randomLayer = true;
     public string[] layers;
+    public GameObject[] objectsToRandomlyLayer;
+    public GameObject[] objectsToRandomlyLayerWithChildren;
+
+    public SmoothShakeStarter enemyIsHitShake;
 
     //Variables
     public float health = 5;
@@ -43,10 +47,32 @@ public class EnemyBase : MonoBehaviour
 
             gameObject.layer = LayerMask.NameToLayer(selectedLayer);
 
-            foreach (Transform child in gameObject.transform)
+            if(objectsToRandomlyLayer.Length > 0)
             {
-                child.gameObject.layer = LayerMask.NameToLayer(selectedLayer);
-                SetLayerRecursively(child.gameObject, LayerMask.NameToLayer(selectedLayer));
+                foreach(GameObject obj in objectsToRandomlyLayer)
+                {
+                    obj.layer = LayerMask.NameToLayer(selectedLayer);
+                }
+
+                if(objectsToRandomlyLayerWithChildren.Length > 0)
+                {
+                    foreach (GameObject obj in objectsToRandomlyLayerWithChildren)
+                    {
+                        foreach (Transform child in obj.transform)
+                        {
+                            child.gameObject.layer = LayerMask.NameToLayer(selectedLayer);
+                            SetLayerRecursively(child.gameObject, LayerMask.NameToLayer(selectedLayer));
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (Transform child in gameObject.transform)
+                {
+                    child.gameObject.layer = LayerMask.NameToLayer(selectedLayer);
+                    SetLayerRecursively(child.gameObject, LayerMask.NameToLayer(selectedLayer));
+                }
             }
         }
     }
@@ -65,19 +91,22 @@ public class EnemyBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(activeAttack == null)
+        if (CombatManager.instance.navMeshIsGenerated)
         {
-            agent.isStopped = false;
-            agent.destination = player.position;
-        }
-        else
-        {
-            agent.isStopped = true;
+            if (activeAttack == null)
+            {
+                agent.isStopped = false;
+                agent.destination = player.position;
+            }
+            else
+            {
+                agent.isStopped = true;
+            }
         }
 
         if (Vector3.Distance(player.position, transform.position) <= attackDistance)
         {
-            if (activeAttack == null) activeAttack = StartCoroutine(Attack());
+            activeAttack ??= StartCoroutine(Attack());
         }
     }
 
@@ -102,6 +131,7 @@ public class EnemyBase : MonoBehaviour
     public void Damage()
     {
         FeedbackManager.instance.hitShake.StartShake(FeedbackManager.instance.hitShakeEnemy);
+        if(enemyIsHitShake != null) enemyIsHitShake.StartShake();
         health--;
         if(health == 0) Die();
     }
