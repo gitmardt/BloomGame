@@ -216,7 +216,9 @@ public class Player : MonoBehaviour
             goalUIActive = true;
         }
 
-        goalUIobject.transform.rotation = Quaternion.LookRotation(WaveManager.instance.EndGoal.transform.position);
+        Vector3 goalDirection = WaveManager.instance.EndGoal.transform.position - transform.position;
+        goalDirection.y = 0;
+        goalUIobject.transform.rotation = Quaternion.LookRotation(goalDirection);
         goalUIobject.SetActive(true);
     }
 

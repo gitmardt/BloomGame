@@ -16,6 +16,10 @@ public class WaveManager : MonoBehaviour
     public int testIndex = 0;
     public bool onStart = false;
 
+    public Coroutine activeWave;
+
+    private int currentWaveIndex = 0;
+
     public int extraPickupRandomization = 2;
 
     public List<GameObject> enemies;
@@ -26,13 +30,54 @@ public class WaveManager : MonoBehaviour
 
     public void Start() { if (onStart) StartWave(); }
 
-    public void StartWave(int index) => StartCoroutine(WaveRoutine(waves[index]));
+    public void StartWave(int index)
+    {
+        if(activeWave == null)
+        {
+            activeWave = StartCoroutine(WaveRoutine(waves[index], index));
+        }
+        else
+        {
+            Debug.LogWarning("Wave is already active, did you mean next wave?");
+        }
+    }
 
     [Button]
-    public void StartWave() => StartCoroutine(WaveRoutine(waves[Mathf.Min(testIndex,waves.Length-1)]));
-
-    IEnumerator WaveRoutine(Wave wave)
+    public void StartWave()
     {
+        if (activeWave == null)
+        {
+            activeWave = StartCoroutine(WaveRoutine(waves[Mathf.Min(testIndex, waves.Length - 1)], testIndex));
+        }
+        else
+        {
+            Debug.LogWarning("Wave is already active, did you mean next wave?");
+        }
+    }
+
+    public void NextWave()
+    {
+        StopActiveWave();
+
+        if (currentWaveIndex + 1 >= waves.Length)
+        {
+            Debug.LogWarning("No next wave available");
+            return;
+        }
+
+        currentWaveIndex++;
+        activeWave = StartCoroutine(WaveRoutine(waves[currentWaveIndex], currentWaveIndex));
+    }
+
+    public void StopActiveWave()
+    {
+        StopCoroutine(activeWave);
+        activeWave = null;
+    }
+
+    IEnumerator WaveRoutine(Wave wave, int index)
+    {
+        currentWaveIndex = index;
         SpawnPickups(wave.pickups);
 
         for (int i = 0; i < wave.spawnMoments.Length; i++)
