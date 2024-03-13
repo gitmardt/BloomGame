@@ -4,6 +4,8 @@ using Cinemachine;
 using UnityEngine.InputSystem;
 using Cinemachine.Utility;
 using UnityEngine.UI;
+using Unity.VisualScripting;
+using DG.Tweening;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
@@ -18,9 +20,14 @@ public class Player : MonoBehaviour
     public float maxLightAmmo = 5;
 
     public Image ammoBar, healthBar;
+    public GameObject goalUIobject;
+    public Vector3 goalUIobjectScale;
+    public float tweenDuration = 0.5f;
+    public float minimumGoalViewDistance = 1000;
     public MeshRenderer baseOrbRenderer;
     private Material baseOrbMat;
     public ObjectArrayCounter LightMinionUI;
+    private bool goalUIActive = false;
 
     [Header("Hitmarker info")]
     public Hitmarker hitmarker;
@@ -130,6 +137,7 @@ public class Player : MonoBehaviour
     {
         LightMinionUI.amount = lightAmmo;
         baseOrbMat = baseOrbRenderer.material;
+        goalUIobjectScale = goalUIobject.transform.localScale;
         ChangeView(true);
     }
 
@@ -177,9 +185,39 @@ public class Player : MonoBehaviour
         UpdateUISliders();
     }
 
+
     void FixedUpdate() 
     {
         Move();
+        UpdateGoalUI();
+    }
+
+    private void UpdateGoalUI()
+    {
+        if (WaveManager.instance.EndGoal == null)
+        {
+            goalUIobject.SetActive(false);
+            return;
+        }
+
+        if (Vector3.Distance(transform.position, WaveManager.instance.EndGoal.transform.position) > minimumGoalViewDistance)
+        {
+            if (goalUIActive == true)
+            {
+                goalUIobject.transform.DOScale(Vector3.zero, tweenDuration);
+                goalUIActive = false;
+            }
+            return;
+        }
+
+        if(goalUIActive == false)
+        {
+            goalUIobject.transform.DOScale(goalUIobjectScale, tweenDuration);
+            goalUIActive = true;
+        }
+
+        goalUIobject.transform.rotation = Quaternion.LookRotation(WaveManager.instance.EndGoal.transform.position);
+        goalUIobject.SetActive(true);
     }
 
     private void UpdateUISliders()
