@@ -73,6 +73,10 @@ public class OSTmanager : MonoBehaviour
                 yield return new WaitForSeconds(fadeDuration);
             }
         }
+        else
+        {
+            audio.volume = musicVolume;
+        }
 
         activeAudioSource = audio;
         activeAudioSource.Play();
