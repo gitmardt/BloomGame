@@ -130,14 +130,15 @@ public class EnemyBase : MonoBehaviour
 
     public void Damage()
     {
-        FeedbackManager.instance.hitShake.StartShake(FeedbackManager.instance.hitShakeEnemy);
         if(enemyIsHitShake != null) enemyIsHitShake.StartShake();
         health--;
         if(health == 0) Die();
+        FeedbackManager.instance.hitShake.StartShake(FeedbackManager.instance.hitShakeEnemy);
     }
 
     public void Die()
     {
+        FeedbackManager.instance.hitShake.StartShake(FeedbackManager.instance.EnemyDieShake);
         //Debug.Log("I died");
         WaveManager.instance.enemies.Remove(gameObject);
         Destroy(gameObject);

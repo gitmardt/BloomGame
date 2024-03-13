@@ -50,12 +50,15 @@ public class Goal : MonoBehaviour
     {
         while(currentCharge < chargeTime)
         {
-            fireMat.SetFloat(fireOrbProperty,Utility.Remap(currentCharge,0,chargeTime,fireOrbRemapRange.x,fireOrbRemapRange.y));
-            groundProj.SetFloat(groundProjProperty, Utility.Remap(currentCharge, 0, chargeTime, groudnProjectionRemapRange.x, groudnProjectionRemapRange.y));
-            Player.instance.goalUISlider.fillAmount = Utility.Remap(currentCharge, 0, chargeTime, 0, 1);
-
-            yield return null;
-            currentCharge += Time.deltaTime;
+            if (Vector3.Distance(transform.position, Player.instance.transform.position) < activationDistance)
+            {
+                fireMat.SetFloat(fireOrbProperty, Utility.Remap(currentCharge, 0, chargeTime, fireOrbRemapRange.x, fireOrbRemapRange.y));
+                groundProj.SetFloat(groundProjProperty, Utility.Remap(currentCharge, 0, chargeTime, groudnProjectionRemapRange.x, groudnProjectionRemapRange.y));
+                Player.instance.goalUISlider.fillAmount = Utility.Remap(currentCharge, 0, chargeTime, 0, 1);
+                yield return null;
+                currentCharge += Time.deltaTime;
+            }
+            else yield return null;
         }
         WaveManager.instance.NextWave();
     }

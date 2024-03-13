@@ -8,7 +8,7 @@ public class FeedbackManager : MonoBehaviour
     public static FeedbackManager instance;
 
     public ShakeBase hitShake;
-    public ShakeBasePreset hitShakeEnemy, hitShakePlayer;
+    public ShakeBasePreset hitShakeEnemy, hitShakePlayer, EnemyDieShake;
 
     private void Awake()
     {

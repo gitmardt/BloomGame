@@ -8120,6 +8120,7 @@ MonoBehaviour:
   hitShake: {fileID: 1941874322}
   hitShakeEnemy: {fileID: 11400000, guid: eed28822bf8cdbc4eacda13d97ebb14a, type: 2}
   hitShakePlayer: {fileID: 11400000, guid: 482247d0252523643b5b90889a62d03c, type: 2}
+  EnemyDieShake: {fileID: 11400000, guid: 6a2e86e3812c47645be900d8fcf86496, type: 2}
 --- !u!1001 &824412288727435656
 PrefabInstance:
   m_ObjectHideFlags: 0
