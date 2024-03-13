@@ -1,8 +1,8 @@
-#if UNITY_EDITOR
 using UnityEngine;
 
 public class SimpleGizmo : MonoBehaviour
 {
+#if UNITY_EDITOR
     [SerializeField] private Color color = Color.red;
     [SerializeField] private float radius = 1;
 
@@ -11,5 +11,6 @@ public class SimpleGizmo : MonoBehaviour
         Gizmos.color = color;
         Gizmos.DrawWireSphere(transform.position, radius);
     }
-}
+
 #endif
+}

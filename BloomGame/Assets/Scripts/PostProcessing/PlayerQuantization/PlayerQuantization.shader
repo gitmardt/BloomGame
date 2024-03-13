@@ -112,8 +112,8 @@ Shader "PostProcessing/PlayerQuantization"
 
                     //8X8
                     float2 screenPos = input.texcoord * float2(_ScreenWidth, _ScreenHeight);
-                    int x = int(screenPos.x) % 8;
-                    int y = int(screenPos.y) % 8;
+                    uint x = uint(screenPos.x) % 8;
+                    uint y = uint(screenPos.y) % 8;
                     float ditherThreshold = bayer8[y][x] / 64.0; // Adjust for 8x8 matrix size
 
                     // Sample the noise texture

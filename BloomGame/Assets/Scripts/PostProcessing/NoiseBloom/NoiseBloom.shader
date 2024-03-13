@@ -163,7 +163,7 @@
                 float upperBound = _Threshold + _ThresholdRange;
 
                 // Use smoothstep to smoothly interpolate between 0 and 1 based on brightness
-                float weight = smoothstep(lowerBound, upperBound, brightness);
+                float weight = smoothstep(lowerBound, upperBound, brightness.r);
 
                 // Apply the weight to the original color
                 float3 blendedCol = col * weight;
@@ -185,13 +185,13 @@
 
             half4 frag_screen (Varyings input) : SV_Target
             {
-                float3 col = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, input.texcoord);
-                float3 screen = SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord);
+                float3 col = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, input.texcoord).rgb;
+                float3 screen = SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord).rgb;
 
                 // Multiply time by a factor to speed up the rate of change
                 float fastTime = _Time.x * _MaskSpeed; // Adjust the multiplier to control the frequency
 
-                float3 mask = SAMPLE_TEXTURE2D(_MaskTex, sampler_MaskTex, input.texcoord * _MaskTiling);
+                float3 mask = SAMPLE_TEXTURE2D(_MaskTex, sampler_MaskTex, input.texcoord * _MaskTiling).rgb;
 
                 float3 maskedCol = float3(0,0,0);
 

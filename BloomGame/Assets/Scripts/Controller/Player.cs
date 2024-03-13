@@ -100,7 +100,6 @@ public class Player : MonoBehaviour
         controls.Combat.Movement.canceled += ctx => inputDirection = Vector2.zero;
 
         //Aim
-        ChangeView(true);
         controls.Combat.Aim.performed += ctx => ChangeView(false);
         controls.Combat.Aim.canceled += ctx => ChangeView(true);
 
@@ -128,6 +127,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         LightMinionUI.amount = lightAmmo;
+        ChangeView(true);
     }
 
     private void OnGameStateChanged(GameState state)

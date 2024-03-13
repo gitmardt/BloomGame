@@ -105,8 +105,8 @@ Shader "PostProcessing/TwitchFullscreen"
                     int clampedEchoAmount = clamp(_EchoAmount, 1, 20);
                     float vignetteMask = SAMPLE_TEXTURE2D(_Vignette, sampler_Vignette, input.texcoord).r;
 
-                    _Offset.x *= (envMask * vignetteMask * noiseValue);
-                    _Offset.y *= (envMask * vignetteMask * noiseValue);
+                    _Offset.x *= (envMask * vignetteMask * noiseValue.r);
+                    _Offset.y *= (envMask * vignetteMask * noiseValue.r);
 
                     for(int i = 0; i < clampedEchoAmount; i++)
                     {

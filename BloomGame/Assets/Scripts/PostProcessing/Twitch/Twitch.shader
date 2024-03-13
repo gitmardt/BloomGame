@@ -105,8 +105,8 @@ Shader "PostProcessing/Twitch"
                     if(envMask > depth)
                     {
                         int clampedEchoAmount = clamp(_EchoAmount, 1, 20);
-                        _Offset.x *= (mask * noiseValue);
-                        _Offset.y *= (mask * noiseValue);
+                        _Offset.x *= (mask * noiseValue.r);
+                        _Offset.y *= (mask * noiseValue.r);
 
                         for(int i = 0; i < clampedEchoAmount; i++)
                         {
