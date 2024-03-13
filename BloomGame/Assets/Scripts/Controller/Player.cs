@@ -6,6 +6,7 @@ using Cinemachine.Utility;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 using DG.Tweening;
+using System.Drawing;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
@@ -244,7 +245,7 @@ public class Player : MonoBehaviour
             mousePosition = point;
 
             aimDirection = point - transform.position;
-            aimDirection.y = 0; 
+            aimDirection.y = 0;
         }
     }
 
@@ -405,7 +406,7 @@ public class Player : MonoBehaviour
             spawnPosition = barrel.position;
         }
 
-        Vector3 newAim = aimDirection - barrel.localPosition;
+        Vector3 newAim = mousePosition - barrel.position;
         newAim.y = 0;
         GameObject projectile = Instantiate(this.projectile, spawnPosition, Quaternion.LookRotation(newAim.normalized), projectileParent);
         ParticleProjectile pp = projectile.GetComponent<ParticleProjectile>();

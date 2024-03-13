@@ -8806,6 +8806,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 5228575449139898259, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228575449139898259, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.9
+      objectReference: {fileID: 0}
     - target: {fileID: 6757757193857777099, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
       propertyPath: m_Name
       value: PlayerParent
