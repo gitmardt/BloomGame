@@ -11,6 +11,7 @@ public class OSTmanager : MonoBehaviour
 
     private AudioSource activeAudioSource;
 
+    public float musicVolume = 0.5f;
     public float fadeDuration = 2;
 
     private GameState activeState = GameState.MainMenu;
@@ -75,7 +76,7 @@ public class OSTmanager : MonoBehaviour
 
         activeAudioSource = audio;
         activeAudioSource.Play();
-        activeAudioSource.DOFade(1, fadeDuration);
+        activeAudioSource.DOFade(musicVolume, fadeDuration);
     }
 
 }

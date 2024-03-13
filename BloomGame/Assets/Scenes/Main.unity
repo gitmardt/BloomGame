@@ -8987,6 +8987,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 5901856360981594495, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 28f55e7b3efaedc4ba6946668e940245, type: 3}
+    - target: {fileID: 6232838756895365045, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b40bf12fb3860234fbfaa7442dd9b4fc, type: 3}
     - target: {fileID: 6757757193857777099, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
       propertyPath: m_Name
       value: PlayerParent
