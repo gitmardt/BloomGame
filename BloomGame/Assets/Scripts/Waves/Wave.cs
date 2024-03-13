@@ -25,6 +25,7 @@ public class Wave : ScriptableObject
     [System.Serializable]
     public class SpawnMoment
     {
+        public bool spawnGoal = false;
         public SpawnEnemy[] enemies;
         public float waitForSeconds = 5;
     }

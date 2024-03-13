@@ -34,11 +34,11 @@ public class WaveManager : MonoBehaviour
     IEnumerator WaveRoutine(Wave wave)
     {
         SpawnPickups(wave.pickups);
-        SpawnGoal();
 
         for (int i = 0; i < wave.spawnMoments.Length; i++)
         {
             SpawnEnemies(wave.spawnMoments[i].enemies);
+            if (wave.spawnMoments[i].spawnGoal) SpawnGoal();
             yield return new WaitForSeconds(wave.spawnMoments[i].waitForSeconds);
         }
     }
