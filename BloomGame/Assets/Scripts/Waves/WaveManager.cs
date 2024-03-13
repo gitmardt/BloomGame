@@ -8,7 +8,7 @@ public class WaveManager : MonoBehaviour
     public static WaveManager instance;
 
     public GameObject goalPrefab;
-    public float minimumDistanceFromPlayer = 100;
+    public Vector2 minMaxDistanceFromPlayer = new Vector2(100, 400);
     public SquareGrid grid;
     public GameObject enemyStorage;
     public GameObject pickupStorage;
@@ -107,8 +107,11 @@ public class WaveManager : MonoBehaviour
     {
         int random = Random.Range(0, pointList.Count);
 
-        while (Vector3.Distance(pointList[random], Player.instance.transform.position) < minimumDistanceFromPlayer)
+        while (Vector3.Distance(pointList[random], Player.instance.transform.position) < minMaxDistanceFromPlayer.x && 
+            Vector3.Distance(pointList[random], Player.instance.transform.position) > minMaxDistanceFromPlayer.y)
+        {
             random = Random.Range(0, pointList.Count);
+        }
 
         return pointList[random];
     }

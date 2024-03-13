@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
 
     public Image ammoBar, healthBar;
     public GameObject goalUIobject;
+    public Image goalUISlider;
     public Vector3 goalUIobjectScale;
     public float tweenDuration = 0.5f;
     public float minimumGoalViewDistance = 1000;

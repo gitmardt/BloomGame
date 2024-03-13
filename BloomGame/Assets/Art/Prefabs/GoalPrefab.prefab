@@ -109,8 +109,8 @@ MonoBehaviour:
   fireOrb: {fileID: 6476442957121633206}
   fireOrbProperty: _Intensity
   groundProjProperty: _alpha
-  fireOrbRemapRange: {x: 0.349, y: 1}
-  groudnProjectionRemapRange: {x: 0.161, y: 1}
+  fireOrbRemapRange: {x: 0.44, y: 1.57}
+  groudnProjectionRemapRange: {x: 0.416, y: 1}
 --- !u!1001 &5629894463333738290
 PrefabInstance:
   m_ObjectHideFlags: 0

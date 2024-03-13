@@ -77,7 +77,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture:
-        m_Texture: {fileID: 2800000, guid: 832606889f90f6d498cc4f4e48f07ba3, type: 3}
+        m_Texture: {fileID: 2800000, guid: a640655b7fb597740a136dfc51dae35a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _noise:
@@ -135,7 +135,7 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _alpha: 0.25937784
+    - _alpha: 0.416
     - _noiseblend: 0
     - _removal: 1
     - _speed: 0.2
