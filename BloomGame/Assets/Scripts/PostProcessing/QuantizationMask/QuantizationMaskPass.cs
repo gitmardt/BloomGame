@@ -26,6 +26,7 @@ public class QuantizationMaskPass : BasePass
         /////
         ///
         m_Material.SetFloat("_EnvMultiplier", quantizationSettings.envMultiplier.value);
+        m_Material.SetFloat("_OverrideScreen", quantizationSettings.envMultiplier.value);
 
         Blitter.BlitCameraTexture(cmd, m_Renderer.cameraColorTargetHandle, source, m_Material, 0);
         Blitter.BlitCameraTexture(cmd, source, m_Renderer.cameraColorTargetHandle);

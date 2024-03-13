@@ -35,6 +35,8 @@ Shader "PostProcessing/QuantizationMask"
 
         float _EnvMultiplier;
 
+        float _OverrideScreen;
+
         static const int bayer2[2][2] = {
             { 0, 2 }, 
             { 3, 1 } 
@@ -106,9 +108,6 @@ Shader "PostProcessing/QuantizationMask"
                 //int y = int(screenPos.y) % 8;
                 //float ditherThreshold = bayer8[y][x] / 64.0; // Adjust for 8x8 matrix size
 
-                // Sample the noise texture
-                float noiseValue = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, input.texcoord).r;
-
                 if (mask > 0.1) 
                 {
                     if(envMask > depth)
@@ -121,9 +120,11 @@ Shader "PostProcessing/QuantizationMask"
 
                       color.rgb = 1.0 - color.rgb;
                     }
+                }
 
-   
-
+                if(_OverrideScreen > 0)
+                {
+                    color.rgb = lerp(color.rgb, 1.0 - color.rgb, _OverrideScreen);
                 }
 
                 //if(envMask < _EnvMultiplier)

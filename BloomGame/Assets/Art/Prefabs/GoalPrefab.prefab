@@ -138,9 +138,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeDing: {fileID: 526748859593857500}
   success: {fileID: 2884626014644273270}
-  chargeSoundStepDelay: 5
-  pitchSteps: 0.05
-  startPitch: 0.5
+  chargeSoundStepDelay: 0.1
+  pitchSteps: 0.0005
+  startPitch: 0.1
   currentCharge: 0
   chargeTime: 50
   activationDistance: 20
@@ -320,9 +320,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: bb8a1c21d8a47f64cb53095d4db1a959, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 429ecf9de40785846acc83fa7e93f63f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.494
+  m_Volume: 0.253
   m_Pitch: 1
   Loop: 0
   Mute: 0

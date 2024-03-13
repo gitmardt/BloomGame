@@ -66,6 +66,8 @@ Shader "PostProcessing/ScreenWarpShader"
             float2 _Tiling;
             float _MaskMultiplier;
 
+            float _OverrideScreen;
+
             half4 frag (Varyings input) : SV_Target
             {
                 //Masking
@@ -103,6 +105,11 @@ Shader "PostProcessing/ScreenWarpShader"
                     float vignetteMask = SAMPLE_TEXTURE2D(_Vignette, sampler_Vignette, input.texcoord).r;
 
                     newTexcoord += noiseValue * (_NoiseScale * (envMask * vignetteMask));
+                }
+
+                if(_OverrideScreen > 0)
+                {
+                    newTexcoord += noiseValue * (_NoiseScale * (envMask * _OverrideScreen));
                 }
 
                 float4 color = SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, newTexcoord);

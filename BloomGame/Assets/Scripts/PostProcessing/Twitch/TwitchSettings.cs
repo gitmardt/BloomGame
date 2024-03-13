@@ -13,6 +13,7 @@ public class TwitchSettings : BaseSettings
     public TextureParameter noiseTexture = new(null);
     public FloatParameter speed = new(1);
     public Vector2Parameter tiling = new(new Vector2(1, 1));
+    public FloatParameter overrideScreen = new(0f);
 
     public override bool IsActive() => offset.value.x > 0f && active || offset.value.y > 0f && active || echoAmount == 1;
 }

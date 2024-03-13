@@ -70,6 +70,7 @@
         float _MaskSpeed;
         float _MaskBlend;
         float _Saturation;
+        float _OverrideScreen;
 
         half4 EncodeHDR(half3 color)
         {
@@ -206,6 +207,11 @@
                 else
                 {
                     maskedCol = screen;
+                }
+
+                if(_OverrideScreen > 0)
+                {
+                    maskedCol += _OverrideScreen;
                 }
 
                 screen = lerp(screen, maskedCol, _MaskBlend);

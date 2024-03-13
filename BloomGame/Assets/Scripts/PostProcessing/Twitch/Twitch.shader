@@ -76,6 +76,8 @@ Shader "PostProcessing/Twitch"
             float _Speed;
             float2 _Tiling;
 
+            float _OverrideScreen;
+
             half4 frag (Varyings input) : SV_Target
             {
                 float4 col = SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord);
@@ -116,6 +118,21 @@ Shader "PostProcessing/Twitch"
 
                         col /= (_EchoAmount + 1);
                     }
+                }
+
+                if(_OverrideScreen > 0)
+                {
+                    int clampedEchoAmount = clamp(_EchoAmount, 1, 20);
+                    _Offset.x *= (_OverrideScreen * noiseValue.r);
+                    _Offset.y *= (_OverrideScreen * noiseValue.r);
+
+                    for(int i = 0; i < clampedEchoAmount; i++)
+                    {
+                        col += SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord + (_Offset / 100) * i) * _Color1;
+                        col += SAMPLE_TEXTURE2D(_BlitTexture, sampler_BlitTexture, input.texcoord - (_Offset / 100) * i) * (1 - _Color1);
+                    }
+
+                    col /= (_EchoAmount + 1);
                 }
 
                 return col;

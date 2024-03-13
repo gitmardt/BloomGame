@@ -149,6 +149,8 @@ public class NoiseBloomFeature : ScriptableRendererFeature
 
                 m_Material.SetTexture("_MainTex", m_Renderer.cameraColorTargetHandle);
 
+                m_Material.SetFloat("_OverrideScreen", m_Settings.overrideScreen.value);
+
                 //Screen color to first blur texture
                 Blitter.BlitCameraTexture(cmd, m_Renderer.cameraColorTargetHandle, bloomTex);
 

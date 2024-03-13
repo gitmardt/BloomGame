@@ -18,6 +18,7 @@ public class CombatManager : MonoBehaviour
     public CinemachineVirtualCameraBase menuCam, combatCam;
     public float waveStartDelay = 1f;
     public bool navMeshIsGenerated = false;
+    public bool gameover = false;
 
     private void Awake()
     {
@@ -25,6 +26,20 @@ public class CombatManager : MonoBehaviour
         navMeshIsGenerated = false;
         menuEffectLayer.SetActive(false);
         GameManager.OnGameStateChanged += OnGameStateChanged;
+    }
+
+    private void Update()
+    {
+        if(Player.instance.health == 0 && !gameover)
+        {
+            GameOver();
+            gameover = true;
+        }
+    }
+
+    private void GameOver()
+    {
+        FeedbackManager.instance.gameover.Play();
     }
 
     private void OnGameStateChanged(GameState state)

@@ -27,6 +27,7 @@ public class ScreenWarpPass : BasePass
         m_Material.SetTexture("_EnvTex", settings.environmentTexture.value);
         m_Material.SetTexture("_Vignette", settings.vignetteTexture.value);
         /////
+        m_Material.SetFloat("_OverrideScreen", settings.overrideScreen.value);
 
         Blitter.BlitCameraTexture(cmd, m_Renderer.cameraColorTargetHandle, source, m_Material, 0);
         Blitter.BlitCameraTexture(cmd, source, m_Renderer.cameraColorTargetHandle);

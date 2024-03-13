@@ -16,7 +16,7 @@ public class NoiseBloomSettings : BaseSettings
     public ClampedFloatParameter maskBlend = new(0.5f, 0f, 1f);
     public FloatParameter maskSpeed = new(0f);
     public ClampedFloatParameter fade = new(1f, 0f, 1f);
-
+    public FloatParameter overrideScreen = new(0f);
 
     public override bool IsActive() => strength.value > 0f && active;
 }

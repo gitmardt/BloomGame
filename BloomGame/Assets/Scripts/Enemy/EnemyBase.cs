@@ -14,6 +14,8 @@ public class EnemyBase : MonoBehaviour
     public float attackDamage = 1;
     public bool destroyOnAttack = true;
 
+    public int layerIndex = 0;
+
     public AudioSource[] hit, death;
 
     public bool randomLayer = true;
@@ -48,8 +50,9 @@ public class EnemyBase : MonoBehaviour
             //Debug.Log(selectedLayer + " " + LayerMask.NameToLayer(selectedLayer));
 
             gameObject.layer = LayerMask.NameToLayer(selectedLayer);
+            layerIndex = LayerMask.NameToLayer(selectedLayer);
 
-            if(objectsToRandomlyLayer.Length > 0)
+            if (objectsToRandomlyLayer.Length > 0)
             {
                 foreach(GameObject obj in objectsToRandomlyLayer)
                 {
@@ -76,6 +79,10 @@ public class EnemyBase : MonoBehaviour
                     SetLayerRecursively(child.gameObject, LayerMask.NameToLayer(selectedLayer));
                 }
             }
+        }
+        else
+        {
+            layerIndex = gameObject.layer;
         }
     }
 
@@ -125,8 +132,8 @@ public class EnemyBase : MonoBehaviour
         if (Vector3.Distance(player.position, transform.position) < attackDistance)
         {
             FeedbackManager.instance.hitShake.StartShake(FeedbackManager.instance.hitShakePlayer);
+            FeedbackManager.instance.playerhit.Play();
             Player.instance.health--;
-            Debug.Log("Player health is " + Player.instance.health);
         }
     }
 

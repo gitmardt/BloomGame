@@ -12,8 +12,10 @@ public class Grabber : EnemyBase
     {
         if (Vector3.Distance(player.position, hitPosition.position) < attackRange)
         {
+            FeedbackManager.instance.ShakePostProcessing(layerIndex);
             Player.instance.health--;
-            Debug.Log("Player health is " + Player.instance.health);
+            FeedbackManager.instance.hitShake.StartShake(FeedbackManager.instance.hitShakePlayer);
+            FeedbackManager.instance.playerhit.Play();
         }
     }
 }

@@ -25,6 +25,7 @@ public class TwitchPass : BasePass
         m_Material.SetTexture("_NoiseTex", twitchSettings.noiseTexture.value);
         m_Material.SetFloat("_Speed", twitchSettings.speed.value);
         m_Material.SetVector("_Tiling", twitchSettings.tiling.value);
+        m_Material.SetFloat("_OverrideScreen", twitchSettings.overrideScreen.value);
 
         Blitter.BlitCameraTexture(cmd, m_Renderer.cameraColorTargetHandle, source, m_Material, 0);
         Blitter.BlitCameraTexture(cmd, source, m_Renderer.cameraColorTargetHandle);
