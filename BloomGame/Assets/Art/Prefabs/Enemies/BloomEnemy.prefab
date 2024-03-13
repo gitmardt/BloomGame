@@ -687,6 +687,7 @@ MonoBehaviour:
   - {fileID: 1685424370958604409}
   - {fileID: 5172061952142890686}
   - {fileID: 5080624694253640576}
+  objectsToRandomlyLayerWithChildren: []
   enemyIsHitShake: {fileID: 1413625339250293565}
   health: 2
   hitPosition: {fileID: 6607517297309817139}
@@ -711,7 +712,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.52
+  m_Radius: 2.48
   m_Height: 6.05
   m_Direction: 1
   m_Center: {x: 0, y: 2.83, z: 0}
