@@ -9,7 +9,7 @@ public class FeedbackManager : MonoBehaviour
 
     public ShakeBase hitShake;
     public ShakeBasePreset hitShakeEnemy, hitShakePlayer, EnemyDieShake;
-    public AudioSource enemyDeath1, enemyDeath2, ammoPickup, noAmmo;
+    public AudioSource enemyDeath1, enemyDeath2, ammoPickup, noAmmo, placeLight, removeLight;
 
     private void Awake()
     {

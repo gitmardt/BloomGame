@@ -99,9 +99,10 @@ public class LightMinionSpawner : MonoBehaviour
             case ActiveMode.spawning:
                 if (Player.instance.lightAmmo == 0)
                 {
-
+                    FeedbackManager.instance.noAmmo.Play();
                     break;
                 }
+                FeedbackManager.instance.placeLight.Play();
                 GameObject lightObject = Instantiate(lightMinionSpawnObj, transparentLightMinionObj.transform.position, transparentLightMinionObj.transform.rotation, lightMinionParentFolder.transform);
                 lightMinions.Add(lightObject);
                 lightObject.name = "LightMinion" + lightMinions.Count;
@@ -109,6 +110,7 @@ public class LightMinionSpawner : MonoBehaviour
                 Player.instance.LightMinionUI.amount--;
                 break;
             case ActiveMode.removal:
+                FeedbackManager.instance.removeLight.Play();
                 Destroy(lightMinions[removalIndex]);
                 lightMinions.RemoveAt(removalIndex);
                 Player.instance.lightAmmo++;
