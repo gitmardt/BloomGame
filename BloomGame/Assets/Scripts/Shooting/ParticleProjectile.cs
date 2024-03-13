@@ -12,8 +12,12 @@ public class ParticleProjectile : MonoBehaviour
     [HideInInspector] public float spread = 6f;
     private float randomSpread = 0f;
 
+    bool collided = false;
+
     void Start()
     {
+        collided = false;
+
         collisionEvents = new List<ParticleCollisionEvent>();
 
         var main = particles.main;
@@ -24,13 +28,9 @@ public class ParticleProjectile : MonoBehaviour
 
     private void Update()
     {
-        trailParent.position += transform.forward * (speed * Time.deltaTime);
+        if(!collided) trailParent.position += transform.forward * (speed * Time.deltaTime);
     }
 
-    private void OnParticleTrigger()
-    {
-        
-    }
     private void OnParticleCollision(GameObject other)
     {
         ParticlePhysicsExtensions.GetCollisionEvents(particles, other, collisionEvents);
@@ -45,9 +45,6 @@ public class ParticleProjectile : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < collisionEvents.Count; i++)
-        {
-            //Impact particle?
-        }
+       collided = true;
     }
 }
