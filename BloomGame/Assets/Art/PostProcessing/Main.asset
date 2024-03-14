@@ -589,10 +589,10 @@ MonoBehaviour:
     m_Value: 1
   strength:
     m_OverrideState: 1
-    m_Value: 10.72
+    m_Value: 7.9
   threshold:
     m_OverrideState: 1
-    m_Value: 0.955
+    m_Value: 0.918
   thresholdRange:
     m_OverrideState: 1
     m_Value: 0.349
@@ -617,7 +617,7 @@ MonoBehaviour:
     m_Value: 0
   fade:
     m_OverrideState: 1
-    m_Value: 0.931
+    m_Value: 0.944
   overrideScreen:
     m_OverrideState: 1
     m_Value: 0

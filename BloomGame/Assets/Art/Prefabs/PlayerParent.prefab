@@ -6649,15 +6649,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 25
   maxHealth: 30
-  ammo: 50
-  maxAmmo: 150
-  lightAmmo: 3
-  maxLightAmmo: 5
+  ammo: 250
+  maxAmmo: 250
+  lightAmmo: 2
+  maxLightAmmo: 2
   ammoBar: {fileID: 5271385579716109534}
   healthBar: {fileID: 639866452601484444}
   goalUIobject: {fileID: 7516421620956108225}
   goalUISlider: {fileID: 2196987136908879366}
   goalUIobjectScale: {x: 0, y: 0, z: 0}
+  goalUIprogressBarObject: {fileID: 4429731302217653955}
   tweenDuration: 0.2
   minimumGoalViewDistance: 150
   baseOrbRenderer: {fileID: 9004111363568001892}
@@ -7938,7 +7939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &10183503852878956
 RectTransform:
   m_ObjectHideFlags: 0

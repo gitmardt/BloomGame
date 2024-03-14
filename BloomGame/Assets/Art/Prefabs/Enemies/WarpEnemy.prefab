@@ -468,11 +468,6 @@ MonoBehaviour:
   hit:
   - {fileID: 1634369317943540689}
   randomLayer: 1
-  layers:
-  - Twitch
-  - ScreenWarp
-  - Quantization
-  - Bloom
   objectsToRandomlyLayer:
   - {fileID: 5596285507308239934}
   - {fileID: 5998266987084830984}
@@ -1439,7 +1434,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 55aa0fd1ebca7264b81b2dad71fca64e, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0

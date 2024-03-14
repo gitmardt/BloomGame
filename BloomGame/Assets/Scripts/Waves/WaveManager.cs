@@ -47,21 +47,21 @@ public class WaveManager : MonoBehaviour
 
     public void NextWave()
     {
+        if(activeWave != null) currentWaveIndex++;
         StopActiveWave();
         StartCoroutine(WaveTransition());
     }
 
     private IEnumerator WaveTransition()
     {
-        if (currentWaveIndex + 1 >= waves.Length)
+        if (currentWaveIndex + 1 > waves.Length)
         {
             Debug.LogWarning("No next wave available");
             yield break;
         }
 
         yield return WaveScreen();
-        currentWaveIndex++;
-        activeWave = StartCoroutine(WaveRoutine(waves[currentWaveIndex], currentWaveIndex));
+        activeWave = StartCoroutine(WaveRoutine(waves[currentWaveIndex]));
     }
 
     private IEnumerator WaveScreen()
@@ -81,6 +81,10 @@ public class WaveManager : MonoBehaviour
         waveTransition.StartShake();
 
         Player.instance.transform.position = playerStartPosition;
+        Player.instance.health = Player.instance.maxHealth;
+        Player.instance.ammo = Player.instance.maxAmmo;
+        Player.instance.lightAmmo = Player.instance.maxLightAmmo;
+        Player.instance.maxLightAmmo++;
 
         yield return new WaitForSeconds(transitionTextDuration);
 
@@ -99,6 +103,8 @@ public class WaveManager : MonoBehaviour
 
     public void StopActiveWave()
     {
+        if (activeWave == null) return;
+
         DespawnGoal();
         for (int i = 0; i < enemies.Count; i++)
         {
@@ -109,12 +115,32 @@ public class WaveManager : MonoBehaviour
         activeWave = null;
     }
 
-    IEnumerator WaveRoutine(Wave wave, int index)
+    IEnumerator WaveRoutine(Wave wave)
     {
         Player.instance.minimumGoalViewDistance = wave.minDistanceForHint;
-
-        currentWaveIndex = index;
         SpawnPickups(wave.pickups);
+
+        switch (currentWaveIndex)
+        {
+            case 0:
+                StartCoroutine(TextBarManager.instance.PlayDialogue("intro")); 
+                break;
+            case 1:
+                StartCoroutine(TextBarManager.instance.PlayDialogue("wave2"));
+                break;
+            case 2:
+                StartCoroutine(TextBarManager.instance.PlayDialogue("wave3"));
+                break;
+            case 3:
+                StartCoroutine(TextBarManager.instance.PlayDialogue("wave4"));
+                break;
+            case 4:
+                StartCoroutine(TextBarManager.instance.PlayDialogue("wave5"));
+                break;
+
+        }
+
+        yield return new WaitForSeconds(8);
 
         for (int i = 0; i < wave.spawnMoments.Length; i++)
         {

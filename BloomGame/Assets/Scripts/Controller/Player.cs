@@ -182,6 +182,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        LightMinionUI.amount = lightAmmo;
         LockCursor();
         Aim();
         UpdateUISliders();

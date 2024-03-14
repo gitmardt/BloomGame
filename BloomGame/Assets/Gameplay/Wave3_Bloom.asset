@@ -19,6 +19,10 @@ MonoBehaviour:
       amount: 15
     - enemyType: {fileID: 8973848208678981798, guid: a70b0388dc93f8746b337b5b7e6f8a60, type: 3}
       amount: 15
+    - enemyType: {fileID: 5596285507308239934, guid: 3c6338c7f73be3e449412acf61903e4f, type: 3}
+      amount: 15
+    - enemyType: {fileID: 3443197889535534767, guid: cf6aeb422ac4d134cb9070c601dd9090, type: 3}
+      amount: 25
     waitForSeconds: 30
   - spawnGoal: 0
     enemies:
@@ -26,6 +30,8 @@ MonoBehaviour:
       amount: 25
     - enemyType: {fileID: 8973848208678981798, guid: a70b0388dc93f8746b337b5b7e6f8a60, type: 3}
       amount: 25
+    - enemyType: {fileID: 5596285507308239934, guid: 3c6338c7f73be3e449412acf61903e4f, type: 3}
+      amount: 25
     waitForSeconds: 15
   - spawnGoal: 0
     enemies:
@@ -33,10 +39,14 @@ MonoBehaviour:
       amount: 15
     - enemyType: {fileID: 8973848208678981798, guid: a70b0388dc93f8746b337b5b7e6f8a60, type: 3}
       amount: 15
+    - enemyType: {fileID: 5596285507308239934, guid: 3c6338c7f73be3e449412acf61903e4f, type: 3}
+      amount: 15
+    - enemyType: {fileID: 3443197889535534767, guid: cf6aeb422ac4d134cb9070c601dd9090, type: 3}
+      amount: 15
     waitForSeconds: 15
   pickups:
   - pickupType: {fileID: 1156286280460435314, guid: 69862bc2683258d4faed45bdf0219ef1, type: 3}
-    amount: 50
+    amount: 100
   allowedLayers:
   - ScreenWarp
   - Bloom
