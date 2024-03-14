@@ -41,6 +41,7 @@ public class CombatManager : MonoBehaviour
     private void GameOver()
     {
         FeedbackManager.instance.gameover.Play();
+        StartCoroutine(GameOverRoutine());
     }
 
     IEnumerator GameOverRoutine()

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Playables;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyBase : MonoBehaviour
@@ -41,58 +42,35 @@ public class EnemyBase : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    int[] GetLayerNumbers(LayerMask layerMask)
-    {
-        List<int> layers = new List<int>();
-
-        for (int i = 0; i < 32; i++)
-        {
-            if (layerMask == (layerMask | (1 << i)))
-            {
-                layers.Add(i);
-            }
-        }
-
-        return layers.ToArray();
-    }
-
     private void Start()
     {
         player = Player.instance.gameObject.transform;
 
         if (randomLayer)
         {
-            LayerMask mask = WaveManager.instance.waves[WaveManager.instance.currentWaveIndex].allowedLayers;
-            int[] layers = GetLayerNumbers(mask);
+            string[] allowedLayers = WaveManager.instance.waves[WaveManager.instance.currentWaveIndex].allowedLayers;
+            string selectedLayer = allowedLayers[Random.Range(0, allowedLayers.Length)];
 
-            if (layers.Length > 0)
-            {
-                int randomIndex = Random.Range(0, layers.Length);
-                layerIndex = layers[randomIndex];
-            }
-            else
-            {
-                Debug.LogWarning("LayerMask is empty.");
-                return;
-            }
+            //Debug.Log(selectedLayer + " " + LayerMask.NameToLayer(selectedLayer));
 
-            gameObject.layer = layerIndex;
+            gameObject.layer = LayerMask.NameToLayer(selectedLayer);
+            layerIndex = LayerMask.NameToLayer(selectedLayer);
 
             if (objectsToRandomlyLayer.Length > 0)
             {
-                foreach(GameObject obj in objectsToRandomlyLayer)
+                foreach (GameObject obj in objectsToRandomlyLayer)
                 {
-                    obj.layer = layerIndex;
+                    obj.layer = LayerMask.NameToLayer(selectedLayer);
                 }
 
-                if(objectsToRandomlyLayerWithChildren.Length > 0)
+                if (objectsToRandomlyLayerWithChildren.Length > 0)
                 {
                     foreach (GameObject obj in objectsToRandomlyLayerWithChildren)
                     {
                         foreach (Transform child in obj.transform)
                         {
-                            child.gameObject.layer = layerIndex;
-                            SetLayerRecursively(child.gameObject, layerIndex);
+                            child.gameObject.layer = LayerMask.NameToLayer(selectedLayer);
+                            SetLayerRecursively(child.gameObject, LayerMask.NameToLayer(selectedLayer));
                         }
                     }
                 }
@@ -101,8 +79,8 @@ public class EnemyBase : MonoBehaviour
             {
                 foreach (Transform child in gameObject.transform)
                 {
-                    child.gameObject.layer = layerIndex;
-                    SetLayerRecursively(child.gameObject, layerIndex);
+                    child.gameObject.layer = LayerMask.NameToLayer(selectedLayer);
+                    SetLayerRecursively(child.gameObject, LayerMask.NameToLayer(selectedLayer));
                 }
             }
         }

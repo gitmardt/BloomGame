@@ -8,7 +8,7 @@ public class Wave : ScriptableObject
     public SpawnMoment[] spawnMoments;
     public SpawnPickup[] pickups;
 
-    public LayerMask allowedLayers;
+    public string[] allowedLayers;
 
     public float minDistanceForHint = 5000;
 
