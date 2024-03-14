@@ -6649,7 +6649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 25
   maxHealth: 30
-  ammo: 250
+  ammo: 150
   maxAmmo: 250
   lightAmmo: 2
   maxLightAmmo: 2

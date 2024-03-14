@@ -81,8 +81,8 @@ public class WaveManager : MonoBehaviour
         waveTransition.StartShake();
 
         Player.instance.transform.position = playerStartPosition;
-        Player.instance.health = Player.instance.maxHealth;
-        Player.instance.ammo = Player.instance.maxAmmo;
+        Player.instance.health += 5;
+        if (Player.instance.health > Player.instance.maxHealth) Player.instance.health = Player.instance.maxHealth;
         Player.instance.lightAmmo = Player.instance.maxLightAmmo;
         Player.instance.maxLightAmmo++;
 
