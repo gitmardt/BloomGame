@@ -31,6 +31,8 @@ public class Goal : MonoBehaviour
 
     private bool successCheck = false;
 
+    private float speedModifier = 1;
+
     private void Start()
     {
         fireMat = fireOrb.material;
@@ -58,7 +60,7 @@ public class Goal : MonoBehaviour
 
     public void Success()
     {
-        Player.instance.goalUISlider.gameObject.SetActive(false);
+        Player.instance.goalUIprogressBarObject.SetActive(false);
         successCheck = true;
         success.Play();
         goalAnimator.SetTrigger("Success");
@@ -92,13 +94,19 @@ public class Goal : MonoBehaviour
                     chargeDing.Play();
                 }
 
+                speedModifier *= Vector3.Distance(GetNearestEnemy.instance.NearestEnemy(transform).transform.position, transform.position) / 100;
+
+                float actualModifier = 1;
+                if (speedModifier < 1) actualModifier = 1;
+                else actualModifier = speedModifier;
+
                 Player.instance.goalUIprogressBarObject.SetActive(true);
 
                 fireMat.SetFloat(fireOrbProperty, Utility.Remap(currentCharge, 0, chargeTime, fireOrbRemapRange.x, fireOrbRemapRange.y));
                 groundProj.SetFloat(groundProjProperty, Utility.Remap(currentCharge, 0, chargeTime, groudnProjectionRemapRange.x, groudnProjectionRemapRange.y));
                 Player.instance.goalUISlider.fillAmount = Utility.Remap(currentCharge, 0, chargeTime, 0, 1);
                 yield return null;
-                currentCharge += Time.deltaTime;
+                currentCharge += Time.deltaTime * actualModifier;
             }
             else
             {

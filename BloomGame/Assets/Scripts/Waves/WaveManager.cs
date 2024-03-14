@@ -11,6 +11,7 @@ public class WaveManager : MonoBehaviour
 
     public SmoothShake waveTransition;
     public float transitionTextDuration;
+    public GameObject gameOverText;
     public GameObject[] waveTexts;
     public GameObject goalPrefab;
     public Vector2 minMaxDistanceFromPlayer = new Vector2(100, 400);

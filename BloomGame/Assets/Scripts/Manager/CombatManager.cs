@@ -3,6 +3,7 @@ using SmoothShakePro;
 using System.Collections;
 using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CombatManager : MonoBehaviour
 {
@@ -40,6 +41,27 @@ public class CombatManager : MonoBehaviour
     private void GameOver()
     {
         FeedbackManager.instance.gameover.Play();
+    }
+
+    IEnumerator GameOverRoutine()
+    {
+        WaveManager.instance.waveTransition.StartShake();
+
+        WaveManager.instance.gameOverText.SetActive(true);
+
+        yield return new WaitForSeconds(WaveManager.instance.transitionTextDuration);
+
+        TextReferences typewriter = WaveManager.instance.gameOverText.GetComponent<TextReferences>();
+        for (int u = 0; u < typewriter.typewriters.Length; u++)
+        {
+            typewriter.typewriters[u].StartDisappearingText();
+        }
+
+        yield return new WaitForSeconds(3);
+
+        WaveManager.instance.gameOverText.SetActive(false);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnGameStateChanged(GameState state)
