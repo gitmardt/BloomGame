@@ -1,7 +1,7 @@
-# BloomGame
+# Bullet Bloom
 Experimental prototype & submission for the Acerola Jam 0 
 
-(Game name to be changed)
+https://daburo.itch.io/bulletbloom
 
 The following paid tools were used and need to be manually added if you want to open this project in Unity:
 
