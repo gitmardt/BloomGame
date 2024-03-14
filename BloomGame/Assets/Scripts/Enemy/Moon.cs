@@ -10,7 +10,6 @@ public class Moon : EnemyBase
     public override float AttackDuration() => attackClip.length;
     public override void DealDamage()
     {
-        Debug.Log("DealDamage?");
         if (Vector3.Distance(player.position, hitPosition.position) < damageRange)
         {
             FeedbackManager.instance.ShakePostProcessing(layerIndex);

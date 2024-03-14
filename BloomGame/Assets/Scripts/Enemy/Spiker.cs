@@ -10,7 +10,6 @@ public class Spiker : EnemyBase
     public override float AttackDuration() => attackShake.timeSettings.GetShakeDuration();
     public override void DealDamage()
     {
-        Debug.Log("DealDamage?");
         if (Vector3.Distance(player.position, hitPosition.position) < damageRange)
         {
             FeedbackManager.instance.ShakePostProcessing(layerIndex);

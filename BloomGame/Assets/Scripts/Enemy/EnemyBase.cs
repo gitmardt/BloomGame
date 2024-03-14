@@ -173,7 +173,6 @@ public class EnemyBase : MonoBehaviour
         FeedbackManager.instance.StartCoroutine(FeedbackManager.instance.InstantiateAndKill(enemyDieEffect,2f));
 
         FeedbackManager.instance.hitShake.StartShake(FeedbackManager.instance.EnemyDieShake);
-        //Debug.Log("I died");
         WaveManager.instance.enemies.Remove(gameObject);
         Destroy(gameObject);
     }

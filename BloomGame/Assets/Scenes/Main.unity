@@ -4973,22 +4973,6 @@ MonoBehaviour:
       m_RotationOrder: 4
   preset: {fileID: 11400000, guid: 67fb6e4b3b684734fba052a4bf9e797a, type: 2}
   positionShake:
-  - noiseType: 1
-    amplitude: {x: 0.1, y: 0.1, z: 0.1}
-    frequency: {x: 1.5, y: 1.2, z: 1.7}
-    offset: {x: 0, y: 0, z: 0}
-    phase: {x: 2.6870892, y: -1.2659783, z: -5.785}
-    randomizePhase: 1
-    maximum: {x: 0, y: 0, z: 0}
-    stepSize: {x: 0, y: 0, z: 0}
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 0
-      m_PostInfinity: 0
-      m_RotationOrder: 0
-    blendingMode: 0
-    lifetime: 0.183
   - noiseType: 6
     amplitude: {x: 0, y: 0, z: -0.5}
     frequency: {x: 0, y: 0, z: 0}
@@ -5023,7 +5007,7 @@ MonoBehaviour:
     lifetime: 1
   rotationShake:
   - noiseType: 6
-    amplitude: {x: -25, y: 0, z: 0}
+    amplitude: {x: -15, y: 0, z: 0}
     frequency: {x: 0, y: 0, z: 0}
     offset: {x: 0, y: 0, z: 0}
     phase: {x: 0, y: 0, z: 0}
@@ -10013,7 +9997,6 @@ MonoBehaviour:
   gameover: {fileID: 1394235968}
   playerhit: {fileID: 1334570604}
   sspp: {fileID: 1489309130}
-  ssppTrail: {fileID: 0}
   warpingShake: {fileID: 11400000, guid: cf96bd0d0c9a3b947b530f18d129adf6, type: 2}
   twitchShake: {fileID: 11400000, guid: 22231e67303120b4b9a22d9b66c099ad, type: 2}
   bloomShake: {fileID: 11400000, guid: cb8fb0ba840985246a1b0c6fc31a50e3, type: 2}
@@ -10538,7 +10521,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6346182631318233006, guid: 4f82f3d49cdd46746aa21a64cd4a0f55, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7473911562277352839, guid: 4f82f3d49cdd46746aa21a64cd4a0f55, type: 3}
+      propertyPath: chargeTime
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10950,6 +10937,6 @@ SceneRoots:
   - {fileID: 1668200611}
   - {fileID: 1339502315}
   - {fileID: 1757043791}
+  - {fileID: 7733134799482445815}
   - {fileID: 78219800}
   - {fileID: 737284658}
-  - {fileID: 7733134799482445815}

@@ -397,6 +397,7 @@ GameObject:
   - component: {fileID: 7854920176766116454}
   - component: {fileID: 4246542484096676185}
   - component: {fileID: 6699279236455217021}
+  - component: {fileID: 1244960387785490038}
   m_Layer: 8
   m_Name: WarpEnemy
   m_TagString: Enemy
@@ -543,6 +544,33 @@ MonoBehaviour:
   shakes:
   - {fileID: 1751319966696588441}
   - {fileID: 1388992833552430011}
+--- !u!54 &1244960387785490038
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5596285507308239934}
+  serializedVersion: 4
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 2
 --- !u!1 &5998266987084830984
 GameObject:
   m_ObjectHideFlags: 0

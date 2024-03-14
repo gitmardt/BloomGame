@@ -29,6 +29,8 @@ public class Goal : MonoBehaviour
     public Vector2 fireOrbRemapRange;
     public Vector2 groudnProjectionRemapRange;
 
+    private bool successCheck = false;
+
     private void Start()
     {
         fireMat = fireOrb.material;
@@ -56,8 +58,21 @@ public class Goal : MonoBehaviour
 
     public void Success()
     {
+        successCheck = true;
         success.Play();
         goalAnimator.SetTrigger("Success");
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Enemy") && successCheck)
+        {
+            if (other.GetComponent<EnemyBase>() != null)
+            {
+                EnemyBase enemy = other.GetComponent<EnemyBase>();
+                enemy.Die();
+            }
+        }
     }
 
     public IEnumerator Activate()
