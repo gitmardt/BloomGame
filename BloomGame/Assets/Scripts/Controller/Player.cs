@@ -1,12 +1,9 @@
 using System.Collections;
 using UnityEngine;
 using Cinemachine;
-using UnityEngine.InputSystem;
-using Cinemachine.Utility;
 using UnityEngine.UI;
-using Unity.VisualScripting;
 using DG.Tweening;
-using System.Drawing;
+using SmoothShakePro;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
@@ -40,6 +37,7 @@ public class Player : MonoBehaviour
 
     //Temp projectiles
     [Header("Projectiles")]
+    public SmoothShakeStarter shootAnimation;
     public GameObject projectile;
     public bool twoBarrels;
     public Transform barrel, barrel2, projectileParent;
@@ -337,7 +335,6 @@ public class Player : MonoBehaviour
     {
         if (canDash)
         {
-            FeedbackManager.instance.ssppTrail.StartShake();
             canDash = false;
             float t = 0;
             while(t < dashDuration)
@@ -387,6 +384,7 @@ public class Player : MonoBehaviour
 
         if (!CheckAmmo()) return;
         ammo--;
+        shootAnimation.StartShake();
 
         FeedbackManager.instance.sspp.StartShake(FeedbackManager.instance.bloomShot);
 

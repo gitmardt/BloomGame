@@ -4916,6 +4916,146 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2390417828050425774, guid: c0657403074038d45b55331f9a907507, type: 3}
   m_PrefabInstance: {fileID: 4363395011663268817}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &704778392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8546361041892303749, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+  m_PrefabInstance: {fileID: 7733134799482445815}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &704778396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704778392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d80a078b496884ab6ea469322f05d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeSettings:
+    fadeValue: 0
+    enableOnStart: 0
+    constantShake: 0
+    loop: 0
+    fadeInDuration: 0
+    fadeInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    holdDuration: 0
+    fadeOutDuration: 0.2
+    fadeOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: -0.0004576128
+        inSlope: -0.10722426
+        outSlope: -0.10722426
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.09381609
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  preset: {fileID: 11400000, guid: 67fb6e4b3b684734fba052a4bf9e797a, type: 2}
+  positionShake:
+  - noiseType: 1
+    amplitude: {x: 0.1, y: 0.1, z: 0.1}
+    frequency: {x: 1.5, y: 1.2, z: 1.7}
+    offset: {x: 0, y: 0, z: 0}
+    phase: {x: 2.6870892, y: -1.2659783, z: -5.785}
+    randomizePhase: 1
+    maximum: {x: 0, y: 0, z: 0}
+    stepSize: {x: 0, y: 0, z: 0}
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    blendingMode: 0
+    lifetime: 0.183
+  - noiseType: 6
+    amplitude: {x: 0, y: 0, z: -0.5}
+    frequency: {x: 0, y: 0, z: 0}
+    offset: {x: 0, y: 0, z: 0}
+    phase: {x: 0, y: 0, z: 0}
+    randomizePhase: 0
+    maximum: {x: 0, y: 0, z: 0}
+    stepSize: {x: 0, y: 0, z: 0}
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    blendingMode: 0
+    lifetime: 1
+  - noiseType: 0
+    amplitude: {x: 0.2, y: 0.2, z: 0.2}
+    frequency: {x: 1.5, y: 1.2, z: 1.7}
+    offset: {x: 0, y: 0, z: 0}
+    phase: {x: -4.713546, y: -7.0896654, z: -3.4804306}
+    randomizePhase: 1
+    maximum: {x: 0, y: 0, z: 0}
+    stepSize: {x: 0, y: 0, z: 0}
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    blendingMode: 0
+    lifetime: 1
+  rotationShake:
+  - noiseType: 6
+    amplitude: {x: -25, y: 0, z: 0}
+    frequency: {x: 0, y: 0, z: 0}
+    offset: {x: 0, y: 0, z: 0}
+    phase: {x: 0, y: 0, z: 0}
+    randomizePhase: 0
+    maximum: {x: 0, y: 0, z: 0}
+    stepSize: {x: 0, y: 0, z: 0}
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    blendingMode: 0
+    lifetime: 1
+  - noiseType: 0
+    amplitude: {x: 2, y: 2, z: 2}
+    frequency: {x: 2.5, y: 2.2, z: 2.3}
+    offset: {x: 0, y: 0, z: 0}
+    phase: {x: 8.77942, y: 5.3458757, z: -0.20145977}
+    randomizePhase: 1
+    maximum: {x: 0, y: 0, z: 0}
+    stepSize: {x: 0, y: 0, z: 0}
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    blendingMode: 0
+    lifetime: 1
+  scaleShake: []
+  FOVShake: []
 --- !u!4 &723974768 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7522116502226271068, guid: 9f3f160607b3e5841a1d8997acc811db, type: 3}
@@ -5620,8 +5760,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.37734112, y: 0.00000002253463, z: -0.00000000918203, w: 0.9260743}
-  m_LocalPosition: {x: 0.2, y: 18.09, z: -16.050001}
+  m_LocalRotation: {x: 0.003935128, y: 0.98609775, z: -0.16443528, w: 0.02359847}
+  m_LocalPosition: {x: 2.9226046, y: 6.7541895, z: 5.525948}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6260,7 +6400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1216513316
 Transform:
   m_ObjectHideFlags: 0
@@ -7179,6 +7319,32 @@ MonoBehaviour:
   enemies: []
   pickups: []
   EndGoal: {fileID: 0}
+--- !u!1 &1459710040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3925431939848808046, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+  m_PrefabInstance: {fileID: 7733134799482445815}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1459710043
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459710040}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8fe46fb7f9149ce46a5ad3a1b8058de9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1471171496
 GameObject:
   m_ObjectHideFlags: 0
@@ -9172,7 +9338,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1899931321
 Transform:
   m_ObjectHideFlags: 0
@@ -10412,6 +10578,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 446256175}
     - target: {fileID: 3072778847026268853, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      propertyPath: shootAnimation
+      value: 
+      objectReference: {fileID: 7733134799482445818}
+    - target: {fileID: 3072778847026268853, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
       propertyPath: projectileParent
       value: 
       objectReference: {fileID: 1425387522}
@@ -10427,6 +10597,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 3632554861145325399, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6042780810096729124, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
       propertyPath: m_Extents.x
       value: 1.17
@@ -10490,8 +10664,147 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2569345095153415595, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7733134799482445818}
+    - targetCorrespondingSourceObject: {fileID: 2569345095153415595, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7733134799482445817}
+    - targetCorrespondingSourceObject: {fileID: 3925431939848808046, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1459710043}
+    - targetCorrespondingSourceObject: {fileID: 8546361041892303749, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 704778396}
   m_SourcePrefab: {fileID: 100100000, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+--- !u!1 &7733134799482445816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2569345095153415595, guid: f875a8467a5b6da4e850191ee0ba696b, type: 3}
+  m_PrefabInstance: {fileID: 7733134799482445815}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7733134799482445817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7733134799482445816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d80a078b496884ab6ea469322f05d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeSettings:
+    fadeValue: 0
+    enableOnStart: 0
+    constantShake: 0
+    loop: 0
+    fadeInDuration: 0
+    fadeInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    holdDuration: 0
+    fadeOutDuration: 0.4
+    fadeOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: -0.0004576128
+        inSlope: -0.10722426
+        outSlope: -0.10722426
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.09381609
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  preset: {fileID: 11400000, guid: b6c49e09ea4d2854c942b90cb845965b, type: 2}
+  positionShake:
+  - noiseType: 0
+    amplitude: {x: 0.05, y: 0, z: 0.2}
+    frequency: {x: 0, y: 0, z: 2}
+    offset: {x: 0, y: 0, z: 0}
+    phase: {x: -11.098529, y: 1.53339, z: 11.541277}
+    randomizePhase: 1
+    maximum: {x: 0, y: 0, z: 0}
+    stepSize: {x: 0, y: 0, z: 0}
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    blendingMode: 0
+    lifetime: 1
+  rotationShake:
+  - noiseType: 0
+    amplitude: {x: -4, y: -1, z: -1}
+    frequency: {x: 2, y: 1.5, z: 2.5}
+    offset: {x: -6, y: 0, z: 0}
+    phase: {x: 3.0328884, y: 9.456595, z: -1.2851168}
+    randomizePhase: 1
+    maximum: {x: 0, y: 0, z: 0}
+    stepSize: {x: 0, y: 0, z: 0}
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    blendingMode: 0
+    lifetime: 1
+  scaleShake: []
+  FOVShake: []
+--- !u!114 &7733134799482445818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7733134799482445816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c5d46deb818e14cb139d9910a53659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeSettings:
+    fadeValue: 0
+    enableOnStart: 0
+    constantShake: 0
+    loop: 0
+    fadeInDuration: 0
+    fadeInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    holdDuration: 0
+    fadeOutDuration: 0
+    fadeOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  shakes:
+  - {fileID: 7733134799482445817}
+  - {fileID: 704778396}
 --- !u!1001 &8388298375569741767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10615,7 +10928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3660866609893892295, guid: 0be0f7dd421df0844a453db65772a1af, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4779045472929466261, guid: 0be0f7dd421df0844a453db65772a1af, type: 3}
       propertyPath: m_Name
@@ -10636,7 +10949,7 @@ SceneRoots:
   - {fileID: 316678037}
   - {fileID: 1668200611}
   - {fileID: 1339502315}
-  - {fileID: 7733134799482445815}
   - {fileID: 1757043791}
   - {fileID: 78219800}
   - {fileID: 737284658}
+  - {fileID: 7733134799482445815}
