@@ -1,3 +1,5 @@
+using Febucci.UI;
+using SmoothShakePro;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +9,7 @@ public class WaveManager : MonoBehaviour
 {
     public static WaveManager instance;
 
-    public Animator waveTransitionMesh;
+    public SmoothShake waveTransition;
     public float transitionTextDuration;
     public GameObject[] waveTexts;
     public GameObject goalPrefab;
@@ -16,7 +18,7 @@ public class WaveManager : MonoBehaviour
     public GameObject enemyStorage;
     public GameObject pickupStorage;
     public Wave[] waves;
-    Vector3 playerStartPosition = Vector3.zero;
+    public Vector3 playerStartPosition = Vector3.zero;
 
     public Coroutine activeWave;
 
@@ -65,15 +67,31 @@ public class WaveManager : MonoBehaviour
     {
         for (int i = 0; i < waveTexts.Length; i++)
         {
-            if (i == currentWaveIndex) waveTexts[i].SetActive(true);
-            else waveTexts[i].SetActive(false);
+            if (i == currentWaveIndex)
+            {
+                waveTexts[i].SetActive(true);
+            }
+            else
+            {
+                waveTexts[i].SetActive(false);
+            }
         }
 
-        waveTransitionMesh.SetTrigger("In");
+        waveTransition.StartShake();
+
+        Player.instance.transform.position = playerStartPosition;
 
         yield return new WaitForSeconds(transitionTextDuration);
 
-        waveTransitionMesh.SetTrigger("Out");
+        waveTransition.StopShake();
+
+        TextReferences typewriter = waveTexts[currentWaveIndex].GetComponent<TextReferences>();
+        for (int u = 0; u < typewriter.typewriters.Length; u++)
+        {
+            typewriter.typewriters[u].StartDisappearingText();
+        }
+
+        yield return new WaitForSeconds(3);
 
         waveTexts[currentWaveIndex].SetActive(false);
     }
@@ -92,7 +110,7 @@ public class WaveManager : MonoBehaviour
 
     IEnumerator WaveRoutine(Wave wave, int index)
     {
-        Player.instance.transform.position = playerStartPosition;
+        Player.instance.minimumGoalViewDistance = wave.minDistanceForHint;
 
         currentWaveIndex = index;
         SpawnPickups(wave.pickups);
@@ -112,7 +130,11 @@ public class WaveManager : MonoBehaviour
 
         Goal goal = EndGoal.GetComponent<Goal>();
 
-        if(!goal.success) SpawnPickups(wave.pickups); 
+        if (!goal.success)
+        {
+            Player.instance.minimumGoalViewDistance = 5000;
+            SpawnPickups(wave.pickups);
+        }
 
         while (!goal.success)
         {

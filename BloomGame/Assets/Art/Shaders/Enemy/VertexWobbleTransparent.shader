@@ -12,6 +12,7 @@ Shader "VertexWobbleTransparent"
 		_Strength("Strength", Float) = 0
 		_Color("Color", Color) = (0.735849,0.6629583,0.6629583,0)
 		_Dissolve("Dissolve", Range( 0 , 1)) = 0
+		_alpha("alpha", Range( 0 , 1)) = 1
 
 
 		//_TessPhongStrength( "Tess Phong Strength", Range( 0, 1 ) ) = 0.5
@@ -261,6 +262,7 @@ Shader "VertexWobbleTransparent"
 			float2 _Tiling;
 			float2 _Speed;
 			float _Strength;
+			float _alpha;
 			float _Dissolve;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
@@ -439,7 +441,7 @@ Shader "VertexWobbleTransparent"
 				float3 BakedAlbedo = 0;
 				float3 BakedEmission = 0;
 				float3 Color = _Color.rgb;
-				float Alpha = step( _Dissolve , tex2DNode10.r );
+				float Alpha = ( _alpha * step( _Dissolve , tex2DNode10.r ) );
 				float AlphaClipThreshold = 0.5;
 				float AlphaClipThresholdShadow = 0.5;
 
@@ -548,6 +550,7 @@ Shader "VertexWobbleTransparent"
 			float2 _Tiling;
 			float2 _Speed;
 			float _Strength;
+			float _alpha;
 			float _Dissolve;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
@@ -734,7 +737,7 @@ Shader "VertexWobbleTransparent"
 				float4 tex2DNode10 = tex2D( _noisev2, texCoord16 );
 				
 
-				float Alpha = step( _Dissolve , tex2DNode10.r );
+				float Alpha = ( _alpha * step( _Dissolve , tex2DNode10.r ) );
 				float AlphaClipThreshold = 0.5;
 				float AlphaClipThresholdShadow = 0.5;
 
@@ -827,6 +830,7 @@ Shader "VertexWobbleTransparent"
 			float2 _Tiling;
 			float2 _Speed;
 			float _Strength;
+			float _alpha;
 			float _Dissolve;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
@@ -993,7 +997,7 @@ Shader "VertexWobbleTransparent"
 				float4 tex2DNode10 = tex2D( _noisev2, texCoord16 );
 				
 
-				float Alpha = step( _Dissolve , tex2DNode10.r );
+				float Alpha = ( _alpha * step( _Dissolve , tex2DNode10.r ) );
 				float AlphaClipThreshold = 0.5;
 
 				#ifdef _ALPHATEST_ON
@@ -1074,6 +1078,7 @@ Shader "VertexWobbleTransparent"
 			float2 _Tiling;
 			float2 _Speed;
 			float _Strength;
+			float _alpha;
 			float _Dissolve;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
@@ -1226,7 +1231,7 @@ Shader "VertexWobbleTransparent"
 				float4 tex2DNode10 = tex2D( _noisev2, texCoord16 );
 				
 
-				surfaceDescription.Alpha = step( _Dissolve , tex2DNode10.r );
+				surfaceDescription.Alpha = ( _alpha * step( _Dissolve , tex2DNode10.r ) );
 				surfaceDescription.AlphaClipThreshold = 0.5;
 
 				#if _ALPHATEST_ON
@@ -1313,6 +1318,7 @@ Shader "VertexWobbleTransparent"
 			float2 _Tiling;
 			float2 _Speed;
 			float _Strength;
+			float _alpha;
 			float _Dissolve;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
@@ -1462,7 +1468,7 @@ Shader "VertexWobbleTransparent"
 				float4 tex2DNode10 = tex2D( _noisev2, texCoord16 );
 				
 
-				surfaceDescription.Alpha = step( _Dissolve , tex2DNode10.r );
+				surfaceDescription.Alpha = ( _alpha * step( _Dissolve , tex2DNode10.r ) );
 				surfaceDescription.AlphaClipThreshold = 0.5;
 
 				#if _ALPHATEST_ON
@@ -1557,6 +1563,7 @@ Shader "VertexWobbleTransparent"
 			float2 _Tiling;
 			float2 _Speed;
 			float _Strength;
+			float _alpha;
 			float _Dissolve;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
@@ -1713,7 +1720,7 @@ Shader "VertexWobbleTransparent"
 				float4 tex2DNode10 = tex2D( _noisev2, texCoord16 );
 				
 
-				surfaceDescription.Alpha = step( _Dissolve , tex2DNode10.r );
+				surfaceDescription.Alpha = ( _alpha * step( _Dissolve , tex2DNode10.r ) );
 				surfaceDescription.AlphaClipThreshold = 0.5;
 
 				#if _ALPHATEST_ON
@@ -1761,14 +1768,16 @@ Node;AmplifyShaderEditor.Vector2Node;15;-838.1442,151.3955;Inherit;False;Propert
 Node;AmplifyShaderEditor.TextureCoordinatesNode;16;-641.5568,89.60977;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SamplerNode;10;-348.4127,69.64285;Inherit;True;Property;_noisev2;noisev2;0;0;Create;True;0;0;0;False;0;False;-1;115c08dc983958b46a6301ab539d3e98;115c08dc983958b46a6301ab539d3e98;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.NormalVertexDataNode;22;-44.35246,215.9275;Inherit;False;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.RangedFloatNode;34;954.1055,-325.0978;Inherit;False;Property;_Dissolve;Dissolve;6;0;Create;True;0;0;0;False;0;False;0;0;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;26;151.0311,-6.91211;Inherit;False;Property;_Strength;Strength;3;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;18;132.8541,107.8887;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.RangedFloatNode;34;954.1055,-325.0978;Inherit;False;Property;_Dissolve;Dissolve;6;0;Create;True;0;0;0;False;0;False;0;0;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.StepOpNode;32;955.7483,-10.69619;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;35;1321.405,-107.8536;Inherit;False;Property;_alpha;alpha;7;0;Create;True;0;0;0;False;0;False;1;0;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;28;358.3566,78.21487;Inherit;False;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.RangedFloatNode;30;384.7968,245.52;Inherit;False;Property;_Alpha;Alpha;5;0;Create;True;0;0;0;False;0;False;1;1;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.ColorNode;33;668.9758,-344.7791;Inherit;False;Constant;_Color0;Color 0;6;0;Create;True;0;0;0;False;0;False;0,0,0,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.ColorNode;29;333.6422,-167.5546;Inherit;False;Property;_Color;Color;4;0;Create;True;0;0;0;False;0;False;0.735849,0.6629583,0.6629583,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.StepOpNode;32;955.7483,-10.69619;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;36;1325.597,-24.4787;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ExtraPrePass;0;0;ExtraPrePass;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;0;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;2;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=ShadowCaster;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;3;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;True;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;False;False;True;1;LightMode=DepthOnly;False;False;0;;0;0;Standard;0;False;0
@@ -1786,12 +1795,14 @@ WireConnection;16;1;13;0
 WireConnection;10;1;16;0
 WireConnection;18;0;22;0
 WireConnection;18;1;10;0
-WireConnection;28;0;26;0
-WireConnection;28;1;18;0
 WireConnection;32;0;34;0
 WireConnection;32;1;10;1
+WireConnection;28;0;26;0
+WireConnection;28;1;18;0
+WireConnection;36;0;35;0
+WireConnection;36;1;32;0
 WireConnection;1;2;29;0
-WireConnection;1;3;32;0
+WireConnection;1;3;36;0
 WireConnection;1;5;28;0
 ASEEND*/
-//CHKSM=C2BBCF54C9BD3C5914054D0EA6739E8CED2FC61D
+//CHKSM=5976BD361020E16EFB5FB971F75B270AAB1B00E0

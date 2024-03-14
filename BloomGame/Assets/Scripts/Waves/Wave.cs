@@ -10,6 +10,8 @@ public class Wave : ScriptableObject
 
     public LayerMask allowedLayers;
 
+    public float minDistanceForHint = 5000;
+
     [System.Serializable]
     public class SpawnEnemy
     {

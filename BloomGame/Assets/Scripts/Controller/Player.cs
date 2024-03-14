@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     public GameObject goalUIobject;
     public Image goalUISlider;
     public Vector3 goalUIobjectScale;
+    public GameObject goalUIprogressBarObject;
     public float tweenDuration = 0.5f;
     public float minimumGoalViewDistance = 1000;
     public MeshRenderer baseOrbRenderer;

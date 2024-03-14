@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Wave2_Warped
   m_EditorClassIdentifier: 
   spawnMoments:
-  - spawnGoal: 0
+  - spawnGoal: 1
     enemies:
     - enemyType: {fileID: 2549892707977204346, guid: c0657403074038d45b55331f9a907507, type: 3}
       amount: 15
     - enemyType: {fileID: 8973848208678981798, guid: a70b0388dc93f8746b337b5b7e6f8a60, type: 3}
       amount: 15
     waitForSeconds: 30
-  - spawnGoal: 1
+  - spawnGoal: 0
     enemies:
     - enemyType: {fileID: 2549892707977204346, guid: c0657403074038d45b55331f9a907507, type: 3}
       amount: 25
@@ -40,3 +40,4 @@ MonoBehaviour:
   allowedLayers:
     serializedVersion: 2
     m_Bits: 64
+  minDistanceForHint: 500

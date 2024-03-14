@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wave1_Inverted
   m_EditorClassIdentifier: 
   spawnMoments:
-  - spawnGoal: 0
+  - spawnGoal: 1
     enemies:
     - enemyType: {fileID: 2549892707977204346, guid: c0657403074038d45b55331f9a907507, type: 3}
       amount: 45
@@ -24,7 +24,7 @@ MonoBehaviour:
     - enemyType: {fileID: 5596285507308239934, guid: 3c6338c7f73be3e449412acf61903e4f, type: 3}
       amount: 45
     waitForSeconds: 30
-  - spawnGoal: 1
+  - spawnGoal: 0
     enemies:
     - enemyType: {fileID: 2549892707977204346, guid: c0657403074038d45b55331f9a907507, type: 3}
       amount: 35

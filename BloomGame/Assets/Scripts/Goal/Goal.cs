@@ -58,6 +58,7 @@ public class Goal : MonoBehaviour
 
     public void Success()
     {
+        Player.instance.goalUISlider.gameObject.SetActive(false);
         successCheck = true;
         success.Play();
         goalAnimator.SetTrigger("Success");
@@ -91,13 +92,19 @@ public class Goal : MonoBehaviour
                     chargeDing.Play();
                 }
 
+                Player.instance.goalUIprogressBarObject.SetActive(true);
+
                 fireMat.SetFloat(fireOrbProperty, Utility.Remap(currentCharge, 0, chargeTime, fireOrbRemapRange.x, fireOrbRemapRange.y));
                 groundProj.SetFloat(groundProjProperty, Utility.Remap(currentCharge, 0, chargeTime, groudnProjectionRemapRange.x, groudnProjectionRemapRange.y));
                 Player.instance.goalUISlider.fillAmount = Utility.Remap(currentCharge, 0, chargeTime, 0, 1);
                 yield return null;
                 currentCharge += Time.deltaTime;
             }
-            else yield return null;
+            else
+            {
+                Player.instance.goalUIprogressBarObject.SetActive(false);
+                yield return null;
+            }
         }
         Success();
         yield return new WaitForSeconds(goalFinishClip.length / 2);
