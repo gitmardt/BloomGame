@@ -14,3 +14,4 @@ Paid Assets I made:
 Other:
 - Amplify Shader Editor: https://prf.hn/l/OqnlGmm
 - Editor Enhancers bundle (VInspector, VHierarchy 2, VFolders, VFavorites, VTabs): https://prf.hn/l/YLqnZbg
+- Text Animator: https://prf.hn/l/mVEMOWv
