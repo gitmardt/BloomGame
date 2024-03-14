@@ -80,6 +80,6 @@ public class CombatManager : MonoBehaviour
     IEnumerator WaveDelay()
     {
         yield return new WaitForSeconds(waveStartDelay);
-        WaveManager.instance.StartWave(0);
+        WaveManager.instance.StartWave();
     }
 }

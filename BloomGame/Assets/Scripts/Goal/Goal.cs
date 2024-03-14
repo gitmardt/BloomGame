@@ -100,7 +100,7 @@ public class Goal : MonoBehaviour
             else yield return null;
         }
         Success();
-        yield return new WaitForSeconds(goalFinishClip.length);
+        yield return new WaitForSeconds(goalFinishClip.length / 2);
         WaveManager.instance.NextWave();
     }
 }

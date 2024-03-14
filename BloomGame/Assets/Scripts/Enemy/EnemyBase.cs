@@ -1,5 +1,6 @@
 using SmoothShakePro;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Playables;
@@ -21,7 +22,6 @@ public class EnemyBase : MonoBehaviour
     public AudioSource[] hit;
 
     public bool randomLayer = true;
-    public string[] layers;
     public GameObject[] objectsToRandomlyLayer;
     public GameObject[] objectsToRandomlyLayerWithChildren;
 
@@ -41,24 +41,48 @@ public class EnemyBase : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
+    int[] GetLayerNumbers(LayerMask layerMask)
+    {
+        List<int> layers = new List<int>();
+
+        for (int i = 0; i < 32; i++)
+        {
+            if (layerMask == (layerMask | (1 << i)))
+            {
+                layers.Add(i);
+            }
+        }
+
+        return layers.ToArray();
+    }
+
     private void Start()
     {
         player = Player.instance.gameObject.transform;
 
         if (randomLayer)
         {
-            string selectedLayer = layers[Random.Range(0, layers.Length)];
+            LayerMask mask = WaveManager.instance.waves[WaveManager.instance.currentWaveIndex].allowedLayers;
+            int[] layers = GetLayerNumbers(mask);
 
-            //Debug.Log(selectedLayer + " " + LayerMask.NameToLayer(selectedLayer));
+            if (layers.Length > 0)
+            {
+                int randomIndex = Random.Range(0, layers.Length);
+                layerIndex = layers[randomIndex];
+            }
+            else
+            {
+                Debug.LogWarning("LayerMask is empty.");
+                return;
+            }
 
-            gameObject.layer = LayerMask.NameToLayer(selectedLayer);
-            layerIndex = LayerMask.NameToLayer(selectedLayer);
+            gameObject.layer = layerIndex;
 
             if (objectsToRandomlyLayer.Length > 0)
             {
                 foreach(GameObject obj in objectsToRandomlyLayer)
                 {
-                    obj.layer = LayerMask.NameToLayer(selectedLayer);
+                    obj.layer = layerIndex;
                 }
 
                 if(objectsToRandomlyLayerWithChildren.Length > 0)
@@ -67,8 +91,8 @@ public class EnemyBase : MonoBehaviour
                     {
                         foreach (Transform child in obj.transform)
                         {
-                            child.gameObject.layer = LayerMask.NameToLayer(selectedLayer);
-                            SetLayerRecursively(child.gameObject, LayerMask.NameToLayer(selectedLayer));
+                            child.gameObject.layer = layerIndex;
+                            SetLayerRecursively(child.gameObject, layerIndex);
                         }
                     }
                 }
@@ -77,8 +101,8 @@ public class EnemyBase : MonoBehaviour
             {
                 foreach (Transform child in gameObject.transform)
                 {
-                    child.gameObject.layer = LayerMask.NameToLayer(selectedLayer);
-                    SetLayerRecursively(child.gameObject, LayerMask.NameToLayer(selectedLayer));
+                    child.gameObject.layer = layerIndex;
+                    SetLayerRecursively(child.gameObject, layerIndex);
                 }
             }
         }

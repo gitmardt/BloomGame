@@ -8,6 +8,8 @@ public class Wave : ScriptableObject
     public SpawnMoment[] spawnMoments;
     public SpawnPickup[] pickups;
 
+    public LayerMask allowedLayers;
+
     [System.Serializable]
     public class SpawnEnemy
     {

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84d73f13542ce524188a2a1c42177cbd, type: 3}
+  m_Name: Wave2_Warped
+  m_EditorClassIdentifier: 
+  spawnMoments:
+  - spawnGoal: 0
+    enemies:
+    - enemyType: {fileID: 2549892707977204346, guid: c0657403074038d45b55331f9a907507, type: 3}
+      amount: 15
+    - enemyType: {fileID: 8973848208678981798, guid: a70b0388dc93f8746b337b5b7e6f8a60, type: 3}
+      amount: 15
+    waitForSeconds: 30
+  - spawnGoal: 1
+    enemies:
+    - enemyType: {fileID: 2549892707977204346, guid: c0657403074038d45b55331f9a907507, type: 3}
+      amount: 25
+    - enemyType: {fileID: 8973848208678981798, guid: a70b0388dc93f8746b337b5b7e6f8a60, type: 3}
+      amount: 25
+    waitForSeconds: 15
+  - spawnGoal: 0
+    enemies:
+    - enemyType: {fileID: 2549892707977204346, guid: c0657403074038d45b55331f9a907507, type: 3}
+      amount: 15
+    - enemyType: {fileID: 8973848208678981798, guid: a70b0388dc93f8746b337b5b7e6f8a60, type: 3}
+      amount: 15
+    waitForSeconds: 15
+  pickups:
+  - pickupType: {fileID: 1156286280460435314, guid: 69862bc2683258d4faed45bdf0219ef1, type: 3}
+    amount: 75
+  allowedLayers:
+    serializedVersion: 2
+    m_Bits: 64

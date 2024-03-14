@@ -123,8 +123,8 @@ Shader "PostProcessing/Twitch"
                 if(_OverrideScreen > 0)
                 {
                     int clampedEchoAmount = clamp(_EchoAmount, 1, 20);
-                    _Offset.x *= (_OverrideScreen * noiseValue.r);
-                    _Offset.y *= (_OverrideScreen * noiseValue.r);
+                    _Offset.x *= (_OverrideScreen);
+                    _Offset.y *= (_OverrideScreen);
 
                     for(int i = 0; i < clampedEchoAmount; i++)
                     {

@@ -7,18 +7,20 @@ public class WaveManager : MonoBehaviour
 {
     public static WaveManager instance;
 
+    public Animator waveTransitionMesh;
+    public float transitionTextDuration;
+    public GameObject[] waveTexts;
     public GameObject goalPrefab;
     public Vector2 minMaxDistanceFromPlayer = new Vector2(100, 400);
     public SquareGrid grid;
     public GameObject enemyStorage;
     public GameObject pickupStorage;
     public Wave[] waves;
-    public int testIndex = 0;
-    public bool onStart = false;
+    Vector3 playerStartPosition = Vector3.zero;
 
     public Coroutine activeWave;
 
-    private int currentWaveIndex = 0;
+    public int currentWaveIndex = 0;
 
     public int extraPickupRandomization = 2;
 
@@ -28,26 +30,11 @@ public class WaveManager : MonoBehaviour
 
     public void Awake() => instance = this;
 
-    public void Start() { if (onStart) StartWave(); }
-
-    public void StartWave(int index)
+    public void StartWave()
     {
         if(activeWave == null)
         {
-            activeWave = StartCoroutine(WaveRoutine(waves[index], index));
-        }
-        else
-        {
-            Debug.LogWarning("Wave is already active, did you mean next wave?");
-        }
-    }
-
-    [Button]
-    public void StartWave()
-    {
-        if (activeWave == null)
-        {
-            activeWave = StartCoroutine(WaveRoutine(waves[Mathf.Min(testIndex, waves.Length - 1)], testIndex));
+            StartCoroutine(WaveTransition());
         }
         else
         {
@@ -58,25 +45,55 @@ public class WaveManager : MonoBehaviour
     public void NextWave()
     {
         StopActiveWave();
+        StartCoroutine(WaveTransition());
+    }
 
+    private IEnumerator WaveTransition()
+    {
         if (currentWaveIndex + 1 >= waves.Length)
         {
             Debug.LogWarning("No next wave available");
-            return;
+            yield break;
         }
 
+        yield return WaveScreen();
         currentWaveIndex++;
         activeWave = StartCoroutine(WaveRoutine(waves[currentWaveIndex], currentWaveIndex));
     }
 
+    private IEnumerator WaveScreen()
+    {
+        for (int i = 0; i < waveTexts.Length; i++)
+        {
+            if (i == currentWaveIndex) waveTexts[i].SetActive(true);
+            else waveTexts[i].SetActive(false);
+        }
+
+        waveTransitionMesh.SetTrigger("In");
+
+        yield return new WaitForSeconds(transitionTextDuration);
+
+        waveTransitionMesh.SetTrigger("Out");
+
+        waveTexts[currentWaveIndex].SetActive(false);
+    }
+
     public void StopActiveWave()
     {
+        DespawnGoal();
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            Destroy(enemies[i]);
+        }
+        enemies.Clear();
         StopCoroutine(activeWave);
         activeWave = null;
     }
 
     IEnumerator WaveRoutine(Wave wave, int index)
     {
+        Player.instance.transform.position = playerStartPosition;
+
         currentWaveIndex = index;
         SpawnPickups(wave.pickups);
 
@@ -86,11 +103,27 @@ public class WaveManager : MonoBehaviour
             if (wave.spawnMoments[i].spawnGoal) SpawnGoal();
             yield return new WaitForSeconds(wave.spawnMoments[i].waitForSeconds);
         }
+
+        if (EndGoal == null)
+        {
+            Debug.LogWarning("Uhm this shouldnt happen");
+            yield break;
+        }
+
+        Goal goal = EndGoal.GetComponent<Goal>();
+
+        if(!goal.success) SpawnPickups(wave.pickups); 
+
+        while (!goal.success)
+        {
+            SpawnEnemies(wave.spawnMoments[^1].enemies);
+            yield return new WaitForSeconds(wave.spawnMoments[^1].waitForSeconds);
+        }
     }
 
     private void SpawnGoal()
     {
-        if (EndGoal != null) DespawnGoal();
+        DespawnGoal();
 
         Vector3 randomPosition = RandomPosition(LevelGeneration.instance.pickupPoints);
 
@@ -100,7 +133,7 @@ public class WaveManager : MonoBehaviour
 
     private void DespawnGoal()
     {
-        Destroy(EndGoal);
+        if(EndGoal != null) Destroy(EndGoal);
     }
 
     private Vector3 RandomPosition(List<Vector3> pointList)
