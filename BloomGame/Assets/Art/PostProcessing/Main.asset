@@ -126,7 +126,7 @@ MonoBehaviour:
     m_Value: {r: 1, g: 0.021337267, b: 0, a: 1}
   offset:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1}
+    m_Value: {x: 7.41, y: 7.41}
   echoAmount:
     m_OverrideState: 1
     m_Value: 4

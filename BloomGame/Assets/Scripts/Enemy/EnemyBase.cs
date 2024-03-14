@@ -168,6 +168,10 @@ public class EnemyBase : MonoBehaviour
             Utility.RandomizePitch(FeedbackManager.instance.enemyDeath2, 0.8f, 1.2f);
             FeedbackManager.instance.enemyDeath2.Play();
         }
+
+        GameObject enemyDieEffect = Instantiate(FeedbackManager.instance.enemyDieEffectPrefab, transform.position, Quaternion.identity);
+        FeedbackManager.instance.StartCoroutine(FeedbackManager.instance.InstantiateAndKill(enemyDieEffect,2f));
+
         FeedbackManager.instance.hitShake.StartShake(FeedbackManager.instance.EnemyDieShake);
         //Debug.Log("I died");
         WaveManager.instance.enemies.Remove(gameObject);

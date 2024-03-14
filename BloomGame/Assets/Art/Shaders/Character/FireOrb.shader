@@ -12,6 +12,7 @@ Shader "FireOrb"
 		[HDR]_Tint("Tint", Color) = (0.8207547,0.3357196,0.1045301,0)
 		_Tiling("Tiling", Vector) = (1,1,0,0)
 		_Intensity("Intensity", Float) = 1
+		_alpha("alpha", Range( 0 , 1)) = 1
 
 
 		//_TessPhongStrength( "Tess Phong Strength", Range( 0, 1 ) ) = 0.5
@@ -261,6 +262,7 @@ Shader "FireOrb"
 			float2 _Speed;
 			float2 _Speed2;
 			float _Intensity;
+			float _alpha;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -476,7 +478,7 @@ Shader "FireOrb"
 				float3 BakedAlbedo = 0;
 				float3 BakedEmission = 0;
 				float3 Color = ( _Intensity * ( _Tint * tex2DNode75 ) ).rgb;
-				float Alpha = ( tex2DNode75.r * voroi43 );
+				float Alpha = ( ( tex2DNode75.r * voroi43 ) * _alpha );
 				float AlphaClipThreshold = 0.5;
 				float AlphaClipThresholdShadow = 0.5;
 
@@ -582,6 +584,7 @@ Shader "FireOrb"
 			float2 _Speed;
 			float2 _Speed2;
 			float _Intensity;
+			float _alpha;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -784,7 +787,7 @@ Shader "FireOrb"
 				float voroi43 = voronoi43( coords43, time43, id43, uv43, 0, voronoiSmoothId43 );
 				
 
-				float Alpha = ( tex2DNode75.r * voroi43 );
+				float Alpha = ( ( tex2DNode75.r * voroi43 ) * _alpha );
 				float AlphaClipThreshold = 0.5;
 
 				#ifdef _ALPHATEST_ON
@@ -865,6 +868,7 @@ Shader "FireOrb"
 			float2 _Speed;
 			float2 _Speed2;
 			float _Intensity;
+			float _alpha;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -1053,7 +1057,7 @@ Shader "FireOrb"
 				float voroi43 = voronoi43( coords43, time43, id43, uv43, 0, voronoiSmoothId43 );
 				
 
-				surfaceDescription.Alpha = ( tex2DNode75.r * voroi43 );
+				surfaceDescription.Alpha = ( ( tex2DNode75.r * voroi43 ) * _alpha );
 				surfaceDescription.AlphaClipThreshold = 0.5;
 
 				#if _ALPHATEST_ON
@@ -1140,6 +1144,7 @@ Shader "FireOrb"
 			float2 _Speed;
 			float2 _Speed2;
 			float _Intensity;
+			float _alpha;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -1325,7 +1330,7 @@ Shader "FireOrb"
 				float voroi43 = voronoi43( coords43, time43, id43, uv43, 0, voronoiSmoothId43 );
 				
 
-				surfaceDescription.Alpha = ( tex2DNode75.r * voroi43 );
+				surfaceDescription.Alpha = ( ( tex2DNode75.r * voroi43 ) * _alpha );
 				surfaceDescription.AlphaClipThreshold = 0.5;
 
 				#if _ALPHATEST_ON
@@ -1420,6 +1425,7 @@ Shader "FireOrb"
 			float2 _Speed;
 			float2 _Speed2;
 			float _Intensity;
+			float _alpha;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -1612,7 +1618,7 @@ Shader "FireOrb"
 				float voroi43 = voronoi43( coords43, time43, id43, uv43, 0, voronoiSmoothId43 );
 				
 
-				surfaceDescription.Alpha = ( tex2DNode75.r * voroi43 );
+				surfaceDescription.Alpha = ( ( tex2DNode75.r * voroi43 ) * _alpha );
 				surfaceDescription.AlphaClipThreshold = 0.5;
 
 				#if _ALPHATEST_ON
@@ -1664,11 +1670,13 @@ Node;AmplifyShaderEditor.SimpleTimeNode;81;-408.5134,585.7245;Inherit;False;1;0;
 Node;AmplifyShaderEditor.TextureCoordinatesNode;19;-501.659,-10.44242;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.VoronoiNode;43;-177.0701,322.8409;Inherit;False;0;0;1;0;1;False;1;False;False;False;4;0;FLOAT2;0,0;False;1;FLOAT;2;False;2;FLOAT;5;False;3;FLOAT;0;False;3;FLOAT;0;FLOAT2;1;FLOAT2;2
 Node;AmplifyShaderEditor.SamplerNode;75;-232.6953,-111.4641;Inherit;True;Property;_firewave_01;firewave_01;2;0;Create;True;0;0;0;False;0;False;-1;c0521657127b7ae49876a512ca533a45;c0521657127b7ae49876a512ca533a45;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;80;247.8729,41.5292;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;85;434.472,189.4699;Inherit;False;Property;_alpha;alpha;6;0;Create;True;0;0;0;False;0;False;1;1;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;78;124.1991,-218.6131;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.ColorNode;77;-165.9205,-375.4346;Inherit;False;Property;_Tint;Tint;3;1;[HDR];Create;True;0;0;0;False;0;False;0.8207547,0.3357196,0.1045301,0;0.8207547,0.3357196,0.1045301,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;80;342.3883,22.91254;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;84;643.5518,-237.2812;Inherit;False;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.RangedFloatNode;83;282.675,-383.3504;Inherit;False;Property;_Intensity;Intensity;5;0;Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;86;533.2834,20.48792;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;208.1763,-24.17531;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ExtraPrePass;0;0;ExtraPrePass;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;0;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;2;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=ShadowCaster;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;3;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;False;False;False;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Unlit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;True;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;False;False;True;1;LightMode=DepthOnly;False;False;0;;0;0;Standard;0;False;0
@@ -1689,13 +1697,15 @@ WireConnection;19;1;17;0
 WireConnection;43;0;46;0
 WireConnection;43;1;81;0
 WireConnection;75;1;19;0
-WireConnection;78;0;77;0
-WireConnection;78;1;75;0
 WireConnection;80;0;75;1
 WireConnection;80;1;43;0
+WireConnection;78;0;77;0
+WireConnection;78;1;75;0
 WireConnection;84;0;83;0
 WireConnection;84;1;78;0
+WireConnection;86;0;80;0
+WireConnection;86;1;85;0
 WireConnection;1;2;84;0
-WireConnection;1;3;80;0
+WireConnection;1;3;86;0
 ASEEND*/
-//CHKSM=31530DDB21C3BDBFB06228D6D0E770FBFF012C63
+//CHKSM=8484C17B657A57698658D16EA6BACB23DC453D8A

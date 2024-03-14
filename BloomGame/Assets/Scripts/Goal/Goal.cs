@@ -6,6 +6,8 @@ using UnityEngine.Rendering.Universal;
 
 public class Goal : MonoBehaviour
 {
+    public Animator goalAnimator;
+    public AnimationClip goalFinishClip;
     public AudioSource chargeDing;
     public AudioSource success;
     public float chargeSoundStepDelay = 5;
@@ -52,6 +54,12 @@ public class Goal : MonoBehaviour
         }
     }
 
+    public void Success()
+    {
+        success.Play();
+        goalAnimator.SetTrigger("Success");
+    }
+
     public IEnumerator Activate()
     {
         float soundStep = chargeSoundStepDelay;
@@ -76,7 +84,8 @@ public class Goal : MonoBehaviour
             }
             else yield return null;
         }
-        success.Play();
+        Success();
+        yield return new WaitForSeconds(goalFinishClip.length);
         WaveManager.instance.NextWave();
     }
 }

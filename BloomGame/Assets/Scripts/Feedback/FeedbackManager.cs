@@ -1,4 +1,5 @@
 using SmoothShakePro;
+using System.Collections;
 using UnityEngine;
 
 public class FeedbackManager : MonoBehaviour
@@ -11,6 +12,14 @@ public class FeedbackManager : MonoBehaviour
 
     public SmoothShakePostProcessing sspp, ssppTrail;
     public SmoothShakePostProcessingPreset warpingShake, twitchShake, bloomShake, quantizationShake, bloomShot;
+
+    public GameObject enemyDieEffectPrefab;
+
+    public IEnumerator InstantiateAndKill(GameObject obj, float lifetime)
+    {
+        yield return new WaitForSeconds(lifetime);
+        Destroy(obj);
+    }
 
     private void Awake()
     {
